@@ -3,6 +3,7 @@ import { routing } from '@/i18n/routing';
 import { hasLocale, Locale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { ReactNode } from 'react';
+import './global.css';
 
 type LayoutProps = {
   children: ReactNode;
