@@ -1,4 +1,4 @@
-import { Field, HStack, RadioGroup } from '@chakra-ui/react';
+import { Field, RadioGroup } from '@chakra-ui/react';
 import { ComponentProps, forwardRef } from 'react';
 
 type RadioProps = ComponentProps<typeof RadioGroup.Root> & {
@@ -15,18 +15,16 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
     return (
       <Field.Root invalid={!!error} disabled={props.disabled}>
         <Field.Label>{label}</Field.Label>
-        <RadioGroup.Root {...props} ref={ref}>
-          <HStack gap="6">
-            {options.map((option) => {
-              return (
-                <RadioGroup.Item key={option.value} value={option.value}>
-                  <RadioGroup.ItemHiddenInput />
-                  <RadioGroup.ItemIndicator />
-                  <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
-                </RadioGroup.Item>
-              );
-            })}
-          </HStack>
+        <RadioGroup.Root className="flex gap-6 flex-wrap" {...props} ref={ref}>
+          {options.map((option) => {
+            return (
+              <RadioGroup.Item key={option.value} value={option.value}>
+                <RadioGroup.ItemHiddenInput />
+                <RadioGroup.ItemIndicator />
+                <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
+              </RadioGroup.Item>
+            );
+          })}
         </RadioGroup.Root>
         <Field.ErrorText>{error}</Field.ErrorText>
       </Field.Root>

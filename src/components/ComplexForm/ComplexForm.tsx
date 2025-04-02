@@ -6,7 +6,7 @@ import { Form } from '@/components/Form/Form';
 import { Radio } from '@/components/Form/Radio';
 import { Select } from '@/components/Form/Select';
 import { TextInput } from '@/components/Form/TextInput';
-import { Field } from '@chakra-ui/react';
+import { Button, Field } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { Controller, useForm } from 'react-hook-form';
@@ -41,7 +41,6 @@ const ComplexForm = () => {
 
   return (
     <Form onSubmit={handleSubmit((data) => console.log(data))} noValidate>
-      {/* Vehicle Data */}
       <Fieldset legend={t('vehicleData.legend')}>
         <Controller
           name="vehicleData.make"
@@ -77,7 +76,6 @@ const ComplexForm = () => {
         />
       </Fieldset>
 
-      {/* Characteristics */}
       <Fieldset legend={t('characteristics.legend')}>
         <Controller
           name="characteristics.bodyType"
@@ -150,7 +148,6 @@ const ComplexForm = () => {
         />
       </Fieldset>
 
-      {/* Condition */}
       <Fieldset legend={t('condition.legend')}>
         <Controller
           name="condition.vehicleOfferType"
@@ -357,7 +354,6 @@ const ComplexForm = () => {
         />
       </Fieldset>
 
-      {/* Motor */}
       <Fieldset legend={t('motor.legend')}>
         <Controller
           name="motor.driveType"
@@ -421,7 +417,6 @@ const ComplexForm = () => {
         />
       </Fieldset>
 
-      {/* Fuel */}
       <Fieldset legend={t('fuel.legend')}>
         <Controller
           name="fuel.fuelType"
@@ -513,7 +508,9 @@ const ComplexForm = () => {
         />
       </Fieldset>
 
-      <button type="submit">{t('submit')}</button>
+      <Button justifySelf="center" type="submit" size="lg" position="sticky" bottom="4" px="10">
+        {t('submit')}
+      </Button>
     </Form>
   );
 };
