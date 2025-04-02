@@ -1,9 +1,8 @@
 {
   "HomePage": {
-    "title": "next-intl Beispiel"
+    "title": "Komplexes Formular"
   },
   "LocaleSwitcher": {
-    "label": "Sprache ändern",
     "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 Englisch} other {Unbekannt}}"
   },
   "ComplexForm": {
