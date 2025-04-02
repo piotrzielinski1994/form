@@ -18,36 +18,61 @@
       "seats": "Seats",
       "doors": "Doors",
       "color": "Color",
-      "typeOfPaint": "Type of paint",
-      "metallic": "Metallic"
+      "typeOfPaint": "Type of Paint",
+      "metallic": "Metallic",
+      "upholstery": "Upholstery",
+      "interiorColor": "Interior Color"
     },
     "condition": {
       "legend": "Condition",
+      "vehicleOfferType": "Vehicle Offer Type",
       "mileage": "Mileage",
       "firstRegistration": "First Registration",
+      "owners": "Number of Owners",
+      "deliveryDay": "Delivery Day",
+      "deliveryDate": "Delivery Date",
       "fullServiceHistory": "Full Service History",
-      "nonSmoking": "Non-Smoking Vehicle"
+      "nonSmoking": "Non-Smoking Vehicle",
+      "nextInspection": "Next Inspection",
+      "lastTechnicalService": "Last Technical Service",
+      "lastCamBeltService": "Last Cam Belt Service",
+      "damagedVehicle": "Damaged Vehicle",
+      "accidentVehicle": "Accident Vehicle",
+      "roadWorthiness": "Road Worthiness"
     },
     "motor": {
       "legend": "Motor",
       "driveType": "Drive Type",
       "transmission": "Transmission",
-      "powerKW": "Power (kW)"
+      "powerKW": "Power (kW)",
+      "powerHP": "Power (HP)",
+      "gears": "Number of Gears",
+      "cylinders": "Number of Cylinders",
+      "engineCapacity": "Engine Capacity",
+      "emptyWeight": "Empty Weight"
     },
     "fuel": {
       "legend": "Fuel",
       "fuelType": "Fuel Type",
-      "consumptionCombined": "Consumption Combined"
+      "consumptionCombined": "Consumption Combined",
+      "co2Emissions": "CO2 Emissions",
+      "efficiencyClass": "Efficiency Class",
+      "pollutionClass": "Pollution Class",
+      "emissionSticker": "Emission Sticker"
     },
     "price": {
       "legend": "Price",
       "amount": "Amount",
-      "negotiable": "Negotiable"
+      "negotiable": "Negotiable",
+      "taxDeductible": "Tax Deductible"
     },
     "contactInformation": {
       "legend": "Contact Information",
       "postalCode": "Postal Code",
       "city": "City",
+      "phoneCountryCode": "Phone Country Code",
+      "phoneAreaCode": "Phone Area Code",
+      "phoneNumber": "Phone Number",
       "hidePhoneNumber": "Hide Phone Number"
     },
     "photos": {

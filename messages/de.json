@@ -10,44 +10,69 @@
       "legend": "Fahrzeugdaten",
       "make": "Marke",
       "model": "Modell",
-      "modelVersion": "Modellversion"
+      "modelVersion": "Modellvariante"
     },
     "characteristics": {
       "legend": "Merkmale",
       "bodyType": "Karosserietyp",
       "seats": "Sitzplätze",
       "doors": "Türen",
-      "color": "Farbe",
+      "color": "Außenfarbe",
       "typeOfPaint": "Lackierungsart",
-      "metallic": "Metallic"
+      "metallic": "Metallic",
+      "upholstery": "Innenausstattung",
+      "interiorColor": "Farbe der Innenausstattung"
     },
     "condition": {
       "legend": "Zustand",
+      "vehicleOfferType": "Fahrzeugart",
       "mileage": "Kilometerstand",
       "firstRegistration": "Erstzulassung",
+      "owners": "Fahrzeughalter",
+      "deliveryDay": "Lieferungstag",
+      "deliveryDate": "Lieferdatum",
       "fullServiceHistory": "Scheckheftgepflegt",
-      "nonSmoking": "Nichtraucherfahrzeug"
+      "nonSmoking": "Nichtraucherfahrzeug",
+      "nextInspection": "Nächste Hauptuntersuchung (HU/AU)",
+      "lastTechnicalService": "Letzte Inspektion",
+      "lastCamBeltService": "Letzter Zahnriemenwechsel",
+      "damagedVehicle": "Beschädigtes Fahrzeug",
+      "accidentVehicle": "Unfallfahrzeug",
+      "roadWorthiness": "Verkehrstauglichkeit"
     },
     "motor": {
       "legend": "Motor",
       "driveType": "Antriebsart",
       "transmission": "Getriebe",
-      "powerKW": "Leistung (kW)"
+      "powerKW": "Leistung (kW)",
+      "powerHP": "Leistung (PS)",
+      "gears": "Anzahl Gänge",
+      "cylinders": "Anzahl Zylinder",
+      "engineCapacity": "Hubraum",
+      "emptyWeight": "Leergewicht"
     },
     "fuel": {
       "legend": "Kraftstoff",
       "fuelType": "Kraftstoffart",
-      "consumptionCombined": "Verbrauch kombiniert"
+      "consumptionCombined": "Verbrauch kombiniert",
+      "co2Emissions": "CO2-Emissionen",
+      "efficiencyClass": "Effizienzklasse",
+      "pollutionClass": "Schadstoffklasse",
+      "emissionSticker": "Feinstaubplakette"
     },
     "price": {
       "legend": "Preis",
       "amount": "Betrag",
-      "negotiable": "Verhandelbar"
+      "negotiable": "Verhandelbar",
+      "taxDeductible": "Mehrwertsteuer ausweisbar"
     },
     "contactInformation": {
       "legend": "Kontaktinformationen",
       "postalCode": "Postleitzahl",
       "city": "Stadt",
+      "phoneCountryCode": "Telefon-Ländervorwahl",
+      "phoneAreaCode": "Telefon-Vorwahl",
+      "phoneNumber": "Telefonnummer",
       "hidePhoneNumber": "Telefonnummer verbergen"
     },
     "photos": {

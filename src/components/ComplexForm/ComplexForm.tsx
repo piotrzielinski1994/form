@@ -6,11 +6,22 @@ import { Form } from '@/components/Form/Form';
 import { Radio } from '@/components/Form/Radio';
 import { Select } from '@/components/Form/Select';
 import { TextInput } from '@/components/Form/TextInput';
-import { Field } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { Controller, useForm } from 'react-hook-form';
-import { bodyColors, bodyTypes, makes, models } from './options';
+import {
+  bodyColors,
+  bodyTypes,
+  co2ClassOptions,
+  driveTypeOptions,
+  fuelTypeOptions,
+  interiorColorOptions,
+  makes,
+  models,
+  transmissionOptions,
+  upholsteryOptions,
+  vehicleOfferTypeOptions,
+} from './options';
 import { defaultValues, FormFields, schema } from './schema';
 
 const ComplexForm = () => {
@@ -29,6 +40,7 @@ const ComplexForm = () => {
 
   return (
     <Form onSubmit={handleSubmit((data) => console.log(data))} noValidate>
+      {/* Vehicle Data */}
       <Fieldset legend={t('vehicleData.legend')}>
         <Controller
           name="vehicleData.make"
@@ -64,6 +76,7 @@ const ComplexForm = () => {
         />
       </Fieldset>
 
+      {/* Characteristics */}
       <Fieldset legend={t('characteristics.legend')}>
         <Controller
           name="characteristics.bodyType"
@@ -102,17 +115,51 @@ const ComplexForm = () => {
             />
           )}
         />
-        <Field.Root>
-          <Field.Label>{t('characteristics.typeOfPaint')}</Field.Label>
-          <Checkbox
-            label={t('characteristics.metallic')}
-            {...register('characteristics.metallic')}
-            error={errors.characteristics?.metallic?.message}
-          />
-        </Field.Root>
+        <Checkbox
+          label={t('characteristics.metallic')}
+          {...register('characteristics.metallic')}
+          error={errors.characteristics?.metallic?.message}
+        />
+        <Controller
+          name="characteristics.upholstery"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('characteristics.upholstery')}
+              error={errors.characteristics?.upholstery?.message}
+              options={upholsteryOptions}
+              {...field}
+            />
+          )}
+        />
+        <Controller
+          name="characteristics.interiorColor"
+          control={control}
+          render={({ field }) => (
+            <Radio
+              options={interiorColorOptions}
+              label={t('characteristics.interiorColor')}
+              error={errors.characteristics?.interiorColor?.message}
+              {...field}
+            />
+          )}
+        />
       </Fieldset>
 
+      {/* Condition */}
       <Fieldset legend={t('condition.legend')}>
+        <Controller
+          name="condition.vehicleOfferType"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('condition.vehicleOfferType')}
+              error={errors.condition?.vehicleOfferType?.message}
+              options={vehicleOfferTypeOptions}
+              {...field}
+            />
+          )}
+        />
         <TextInput
           label={t('condition.mileage')}
           type="number"
@@ -124,6 +171,22 @@ const ComplexForm = () => {
           {...register('condition.firstRegistration')}
           error={errors.condition?.firstRegistration?.message}
         />
+        <TextInput
+          label={t('condition.owners')}
+          type="number"
+          {...register('condition.owners')}
+          error={errors.condition?.owners?.message}
+        />
+        <TextInput
+          label={t('condition.deliveryDay')}
+          {...register('condition.deliveryDay')}
+          error={errors.condition?.deliveryDay?.message}
+        />
+        <TextInput
+          label={t('condition.deliveryDate')}
+          {...register('condition.deliveryDate')}
+          error={errors.condition?.deliveryDate?.message}
+        />
         <Checkbox
           label={t('condition.fullServiceHistory')}
           {...register('condition.fullServiceHistory')}
@@ -134,18 +197,63 @@ const ComplexForm = () => {
           {...register('condition.nonSmoking')}
           error={errors.condition?.nonSmoking?.message}
         />
-      </Fieldset>
-
-      <Fieldset legend={t('motor.legend')}>
         <TextInput
-          label={t('motor.driveType')}
-          {...register('motor.driveType')}
-          error={errors.motor?.driveType?.message}
+          label={t('condition.nextInspection')}
+          {...register('condition.nextInspection')}
+          error={errors.condition?.nextInspection?.message}
         />
         <TextInput
-          label={t('motor.transmission')}
-          {...register('motor.transmission')}
-          error={errors.motor?.transmission?.message}
+          label={t('condition.lastTechnicalService')}
+          {...register('condition.lastTechnicalService')}
+          error={errors.condition?.lastTechnicalService?.message}
+        />
+        <TextInput
+          label={t('condition.lastCamBeltService')}
+          {...register('condition.lastCamBeltService')}
+          error={errors.condition?.lastCamBeltService?.message}
+        />
+        <Checkbox
+          label={t('condition.damagedVehicle')}
+          {...register('condition.damagedVehicle')}
+          error={errors.condition?.damagedVehicle?.message}
+        />
+        <Checkbox
+          label={t('condition.accidentVehicle')}
+          {...register('condition.accidentVehicle')}
+          error={errors.condition?.accidentVehicle?.message}
+        />
+        <Checkbox
+          label={t('condition.roadWorthiness')}
+          {...register('condition.roadWorthiness')}
+          error={errors.condition?.roadWorthiness?.message}
+        />
+      </Fieldset>
+
+      {/* Motor */}
+      <Fieldset legend={t('motor.legend')}>
+        <Controller
+          name="motor.driveType"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('motor.driveType')}
+              error={errors.motor?.driveType?.message}
+              options={driveTypeOptions}
+              {...field}
+            />
+          )}
+        />
+        <Controller
+          name="motor.transmission"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('motor.transmission')}
+              error={errors.motor?.transmission?.message}
+              options={transmissionOptions}
+              {...field}
+            />
+          )}
         />
         <TextInput
           label={t('motor.powerKW')}
@@ -153,13 +261,51 @@ const ComplexForm = () => {
           {...register('motor.powerKW')}
           error={errors.motor?.powerKW?.message}
         />
+        <TextInput
+          label={t('motor.powerHP')}
+          type="number"
+          {...register('motor.powerHP')}
+          error={errors.motor?.powerHP?.message}
+        />
+        <TextInput
+          label={t('motor.gears')}
+          type="number"
+          {...register('motor.gears')}
+          error={errors.motor?.gears?.message}
+        />
+        <TextInput
+          label={t('motor.cylinders')}
+          type="number"
+          {...register('motor.cylinders')}
+          error={errors.motor?.cylinders?.message}
+        />
+        <TextInput
+          label={t('motor.engineCapacity')}
+          type="number"
+          {...register('motor.engineCapacity')}
+          error={errors.motor?.engineCapacity?.message}
+        />
+        <TextInput
+          label={t('motor.emptyWeight')}
+          type="number"
+          {...register('motor.emptyWeight')}
+          error={errors.motor?.emptyWeight?.message}
+        />
       </Fieldset>
 
+      {/* Fuel */}
       <Fieldset legend={t('fuel.legend')}>
-        <TextInput
-          label={t('fuel.fuelType')}
-          {...register('fuel.fuelType')}
-          error={errors.fuel?.fuelType?.message}
+        <Controller
+          name="fuel.fuelType"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('fuel.fuelType')}
+              error={errors.fuel?.fuelType?.message}
+              options={fuelTypeOptions}
+              {...field}
+            />
+          )}
         />
         <TextInput
           label={t('fuel.consumptionCombined')}
@@ -167,8 +313,37 @@ const ComplexForm = () => {
           {...register('fuel.consumptionCombined')}
           error={errors.fuel?.consumptionCombined?.message}
         />
+        <TextInput
+          label={t('fuel.co2Emissions')}
+          type="number"
+          {...register('fuel.co2Emissions')}
+          error={errors.fuel?.co2Emissions?.message}
+        />
+        <Controller
+          name="fuel.efficiencyClass"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('fuel.efficiencyClass')}
+              error={errors.fuel?.efficiencyClass?.message}
+              options={co2ClassOptions}
+              {...field}
+            />
+          )}
+        />
+        <TextInput
+          label={t('fuel.pollutionClass')}
+          {...register('fuel.pollutionClass')}
+          error={errors.fuel?.pollutionClass?.message}
+        />
+        <TextInput
+          label={t('fuel.emissionSticker')}
+          {...register('fuel.emissionSticker')}
+          error={errors.fuel?.emissionSticker?.message}
+        />
       </Fieldset>
 
+      {/* Price */}
       <Fieldset legend={t('price.legend')}>
         <TextInput
           label={t('price.amount')}
@@ -181,8 +356,14 @@ const ComplexForm = () => {
           {...register('price.negotiable')}
           error={errors.price?.negotiable?.message}
         />
+        <Checkbox
+          label={t('price.taxDeductible')}
+          {...register('price.taxDeductible')}
+          error={errors.price?.taxDeductible?.message}
+        />
       </Fieldset>
 
+      {/* Contact Information */}
       <Fieldset legend={t('contactInformation.legend')}>
         <TextInput
           label={t('contactInformation.postalCode')}
@@ -194,6 +375,21 @@ const ComplexForm = () => {
           {...register('contactInformation.city')}
           error={errors.contactInformation?.city?.message}
         />
+        <TextInput
+          label={t('contactInformation.phoneCountryCode')}
+          {...register('contactInformation.phoneCountryCode')}
+          error={errors.contactInformation?.phoneCountryCode?.message}
+        />
+        <TextInput
+          label={t('contactInformation.phoneAreaCode')}
+          {...register('contactInformation.phoneAreaCode')}
+          error={errors.contactInformation?.phoneAreaCode?.message}
+        />
+        <TextInput
+          label={t('contactInformation.phoneNumber')}
+          {...register('contactInformation.phoneNumber')}
+          error={errors.contactInformation?.phoneNumber?.message}
+        />
         <Checkbox
           label={t('contactInformation.hidePhoneNumber')}
           {...register('contactInformation.hidePhoneNumber')}
@@ -201,6 +397,7 @@ const ComplexForm = () => {
         />
       </Fieldset>
 
+      {/* Photos */}
       <Fieldset legend={t('photos.legend')}>
         <TextInput
           label={t('photos.images')}
@@ -209,6 +406,7 @@ const ComplexForm = () => {
         />
       </Fieldset>
 
+      {/* Description */}
       <Fieldset legend={t('description.legend')}>
         <TextInput
           label={t('description.text')}

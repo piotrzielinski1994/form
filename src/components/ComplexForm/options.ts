@@ -310,4 +310,85 @@ const bodyColors = [
   { value: '14', label: 'Weiß' },
 ];
 
-export { bodyColors, bodyTypes, makes, models };
+const upholsteryOptions = [
+  { value: 'AL', label: 'Alcantara' },
+  { value: 'CL', label: 'Stoff' },
+  { value: 'PL', label: 'Teilleder' },
+  { value: 'LE', label: 'Leder' },
+  { value: 'VL', label: 'Velours' },
+  { value: 'SO', label: 'Sonstige' },
+];
+
+const interiorColorOptions = [
+  { value: '1', label: 'Beige' },
+  { value: '2', label: 'Blau' },
+  { value: '3', label: 'Braun' },
+  { value: '4', label: 'Bronze' },
+  { value: '5', label: 'Gelb' },
+  { value: '16', label: 'Gold' },
+  { value: '6', label: 'Grau' },
+  { value: '7', label: 'Grün' },
+  { value: '15', label: 'Orange' },
+  { value: '10', label: 'Rot' },
+  { value: '11', label: 'Schwarz' },
+  { value: '12', label: 'Silber' },
+  { value: '13', label: 'Violett' },
+  { value: '14', label: 'Weiß' },
+];
+
+const vehicleOfferTypeOptions = [
+  { value: 'U', label: 'Gebraucht' },
+  { value: 'O', label: 'Oldtimer' },
+];
+
+const driveTypeOptions = [
+  { value: '0', label: 'Bitte auswählen' },
+  { value: '4', label: 'Allrad' },
+  { value: 'F', label: 'Front' },
+  { value: 'R', label: 'Heck' },
+];
+
+const transmissionOptions = [
+  { value: '0', label: 'Bitte auswählen' },
+  { value: 'A', label: 'Automatik' },
+  { value: 'M', label: 'Schaltgetriebe' },
+  { value: 'S', label: 'Halbautomatik' },
+];
+
+const fuelTypeOptions = [
+  { value: '0', label: 'Bitte auswählen' },
+  { value: 'B', label: 'Benzin' },
+  { value: 'D', label: 'Diesel' },
+  { value: 'L', label: 'Autogas (LPG)' },
+  { value: 'C', label: 'Erdgas (CNG)' },
+  { value: '2', label: 'Elektro/Benzin' },
+  { value: '3', label: 'Elektro/Diesel' },
+  { value: 'M', label: 'Ethanol' },
+  { value: 'E', label: 'Elektro' },
+  { value: 'H', label: 'Wasserstoff' },
+  { value: 'O', label: 'Sonstige' },
+];
+
+const co2ClassOptions = [
+  { value: '0', label: 'Bitte auswählen' },
+  { value: '10', label: 'A' },
+  { value: '20', label: 'B' },
+  { value: '30', label: 'C' },
+  { value: '40', label: 'D' },
+  { value: '50', label: 'E' },
+  { value: '60', label: 'F' },
+];
+
+export {
+  bodyColors,
+  bodyTypes,
+  co2ClassOptions,
+  driveTypeOptions,
+  fuelTypeOptions,
+  interiorColorOptions,
+  makes,
+  models,
+  transmissionOptions,
+  upholsteryOptions,
+  vehicleOfferTypeOptions,
+};
