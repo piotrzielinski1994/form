@@ -6,6 +6,7 @@ import { Form } from '@/components/Form/Form';
 import { Radio } from '@/components/Form/Radio';
 import { Select } from '@/components/Form/Select';
 import { TextInput } from '@/components/Form/TextInput';
+import { Field } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { Controller, useForm } from 'react-hook-form';
@@ -115,19 +116,22 @@ const ComplexForm = () => {
             />
           )}
         />
-        <Checkbox
-          label={t('characteristics.metallic')}
-          {...register('characteristics.metallic')}
-          error={errors.characteristics?.metallic?.message}
-        />
+        <Field.Root>
+          <Field.Label>{t('characteristics.typeOfPaint')}</Field.Label>
+          <Checkbox
+            label={t('characteristics.metallic')}
+            {...register('characteristics.metallic')}
+            error={errors.characteristics?.metallic?.message}
+          />
+        </Field.Root>
         <Controller
           name="characteristics.upholstery"
           control={control}
           render={({ field }) => (
-            <Select
+            <Radio
+              options={upholsteryOptions}
               label={t('characteristics.upholstery')}
               error={errors.characteristics?.upholstery?.message}
-              options={upholsteryOptions}
               {...field}
             />
           )}
@@ -166,26 +170,43 @@ const ComplexForm = () => {
           {...register('condition.mileage')}
           error={errors.condition?.mileage?.message}
         />
-        <TextInput
-          label={t('condition.firstRegistration')}
-          {...register('condition.firstRegistration')}
-          error={errors.condition?.firstRegistration?.message}
-        />
+        <div>
+          <Controller
+            name="condition.firstRegistrationMonth"
+            control={control}
+            render={({ field }) => (
+              <Select
+                label={t('condition.firstRegistrationMonth')}
+                error={errors.condition?.firstRegistrationMonth?.message}
+                options={Array.from({ length: 12 }, (_, i) => ({
+                  value: String(i + 1).padStart(2, '0'),
+                  label: String(i + 1).padStart(2, '0'),
+                }))}
+                {...field}
+              />
+            )}
+          />
+          <Controller
+            name="condition.firstRegistrationYear"
+            control={control}
+            render={({ field }) => (
+              <Select
+                label={t('condition.firstRegistrationYear')}
+                error={errors.condition?.firstRegistrationYear?.message}
+                options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
+                  value: String(1900 + i),
+                  label: String(1900 + i),
+                }))}
+                {...field}
+              />
+            )}
+          />
+        </div>
         <TextInput
           label={t('condition.owners')}
           type="number"
           {...register('condition.owners')}
           error={errors.condition?.owners?.message}
-        />
-        <TextInput
-          label={t('condition.deliveryDay')}
-          {...register('condition.deliveryDay')}
-          error={errors.condition?.deliveryDay?.message}
-        />
-        <TextInput
-          label={t('condition.deliveryDate')}
-          {...register('condition.deliveryDate')}
-          error={errors.condition?.deliveryDate?.message}
         />
         <Checkbox
           label={t('condition.fullServiceHistory')}
@@ -197,35 +218,142 @@ const ComplexForm = () => {
           {...register('condition.nonSmoking')}
           error={errors.condition?.nonSmoking?.message}
         />
-        <TextInput
-          label={t('condition.nextInspection')}
-          {...register('condition.nextInspection')}
-          error={errors.condition?.nextInspection?.message}
+        <div>
+          <Controller
+            name="condition.nextInspectionMonth"
+            control={control}
+            render={({ field }) => (
+              <Select
+                label={t('condition.nextInspectionMonth')}
+                error={errors.condition?.nextInspectionMonth?.message}
+                options={Array.from({ length: 12 }, (_, i) => ({
+                  value: String(i + 1).padStart(2, '0'),
+                  label: String(i + 1).padStart(2, '0'),
+                }))}
+                {...field}
+              />
+            )}
+          />
+          <Controller
+            name="condition.nextInspectionYear"
+            control={control}
+            render={({ field }) => (
+              <Select
+                label={t('condition.nextInspectionYear')}
+                error={errors.condition?.nextInspectionYear?.message}
+                options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
+                  value: String(1900 + i),
+                  label: String(1900 + i),
+                }))}
+                {...field}
+              />
+            )}
+          />
+        </div>
+        <Controller
+          name="condition.lastTechnicalServiceMonth"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('condition.lastTechnicalServiceMonth')}
+              error={errors.condition?.lastTechnicalServiceMonth?.message}
+              options={Array.from({ length: 12 }, (_, i) => ({
+                value: String(i + 1).padStart(2, '0'),
+                label: String(i + 1).padStart(2, '0'),
+              }))}
+              {...field}
+            />
+          )}
         />
-        <TextInput
-          label={t('condition.lastTechnicalService')}
-          {...register('condition.lastTechnicalService')}
-          error={errors.condition?.lastTechnicalService?.message}
+        <Controller
+          name="condition.lastTechnicalServiceYear"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('condition.lastTechnicalServiceYear')}
+              error={errors.condition?.lastTechnicalServiceYear?.message}
+              options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
+                value: String(1900 + i),
+                label: String(1900 + i),
+              }))}
+              {...field}
+            />
+          )}
         />
-        <TextInput
-          label={t('condition.lastCamBeltService')}
-          {...register('condition.lastCamBeltService')}
-          error={errors.condition?.lastCamBeltService?.message}
+        <Controller
+          name="condition.lastCamBeltServiceMonth"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('condition.lastCamBeltServiceMonth')}
+              error={errors.condition?.lastCamBeltServiceMonth?.message}
+              options={Array.from({ length: 12 }, (_, i) => ({
+                value: String(i + 1).padStart(2, '0'),
+                label: String(i + 1).padStart(2, '0'),
+              }))}
+              {...field}
+            />
+          )}
         />
-        <Checkbox
-          label={t('condition.damagedVehicle')}
-          {...register('condition.damagedVehicle')}
-          error={errors.condition?.damagedVehicle?.message}
+        <Controller
+          name="condition.lastCamBeltServiceYear"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('condition.lastCamBeltServiceYear')}
+              error={errors.condition?.lastCamBeltServiceYear?.message}
+              options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
+                value: String(1900 + i),
+                label: String(1900 + i),
+              }))}
+              {...field}
+            />
+          )}
         />
-        <Checkbox
-          label={t('condition.accidentVehicle')}
-          {...register('condition.accidentVehicle')}
-          error={errors.condition?.accidentVehicle?.message}
+        <Controller
+          name="condition.damagedVehicle"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('condition.damagedVehicle')}
+              error={errors.condition?.damagedVehicle?.message}
+              options={[
+                { value: 'yes', label: t('yes') },
+                { value: 'no', label: t('no') },
+              ]}
+              {...field}
+            />
+          )}
         />
-        <Checkbox
-          label={t('condition.roadWorthiness')}
-          {...register('condition.roadWorthiness')}
-          error={errors.condition?.roadWorthiness?.message}
+        <Controller
+          name="condition.accidentVehicle"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('condition.accidentVehicle')}
+              error={errors.condition?.accidentVehicle?.message}
+              options={[
+                { value: 'yes', label: t('yes') },
+                { value: 'no', label: t('no') },
+              ]}
+              {...field}
+            />
+          )}
+        />
+        <Controller
+          name="condition.roadWorthiness"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('condition.roadWorthiness')}
+              error={errors.condition?.roadWorthiness?.message}
+              options={[
+                { value: 'yes', label: t('yes') },
+                { value: 'no', label: t('no') },
+              ]}
+              {...field}
+            />
+          )}
         />
       </Fieldset>
 
@@ -307,111 +435,81 @@ const ComplexForm = () => {
             />
           )}
         />
-        <TextInput
-          label={t('fuel.consumptionCombined')}
-          type="number"
-          {...register('fuel.consumptionCombined')}
-          error={errors.fuel?.consumptionCombined?.message}
-        />
-        <TextInput
-          label={t('fuel.co2Emissions')}
-          type="number"
-          {...register('fuel.co2Emissions')}
-          error={errors.fuel?.co2Emissions?.message}
-        />
         <Controller
-          name="fuel.efficiencyClass"
+          name="fuel.primaryFuelType"
           control={control}
           render={({ field }) => (
             <Select
-              label={t('fuel.efficiencyClass')}
-              error={errors.fuel?.efficiencyClass?.message}
+              label={t('fuel.primaryFuelTypeLabel')}
+              error={errors.fuel?.primaryFuelType?.message}
+              options={[
+                { value: 'gasoline', label: t('fuel.primaryFuelType.gasoline') },
+                { value: 'diesel', label: t('fuel.primaryFuelType.diesel') },
+                { value: 'electric', label: t('fuel.primaryFuelType.electric') },
+              ]}
+              {...field}
+            />
+          )}
+        />
+        <Checkbox
+          label={t('fuel.sootParticles')}
+          {...register('fuel.sootParticles')}
+          error={errors.fuel?.sootParticles?.message}
+        />
+        <TextInput
+          label={t('fuel.wltpConsumptionCombined')}
+          type="number"
+          {...register('fuel.wltpConsumptionCombined')}
+          error={errors.fuel?.wltpConsumptionCombined?.message}
+        />
+        <TextInput
+          label={t('fuel.wltpCo2EmissionsCombined')}
+          type="number"
+          {...register('fuel.wltpCo2EmissionsCombined')}
+          error={errors.fuel?.wltpCo2EmissionsCombined?.message}
+        />
+        <Controller
+          name="fuel.wltpCo2Class"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('fuel.wltpCo2Class')}
+              error={errors.fuel?.wltpCo2Class?.message}
               options={co2ClassOptions}
               {...field}
             />
           )}
         />
-        <TextInput
-          label={t('fuel.pollutionClass')}
-          {...register('fuel.pollutionClass')}
-          error={errors.fuel?.pollutionClass?.message}
+        <Controller
+          name="fuel.pollutionClass"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('fuel.pollutionClassLabel')}
+              error={errors.fuel?.pollutionClass?.message}
+              options={[
+                { value: 'euro6', label: t('fuel.pollutionClass.euro6') },
+                { value: 'euro5', label: t('fuel.pollutionClass.euro5') },
+              ]}
+              {...field}
+            />
+          )}
         />
-        <TextInput
-          label={t('fuel.emissionSticker')}
-          {...register('fuel.emissionSticker')}
-          error={errors.fuel?.emissionSticker?.message}
-        />
-      </Fieldset>
-
-      {/* Price */}
-      <Fieldset legend={t('price.legend')}>
-        <TextInput
-          label={t('price.amount')}
-          type="number"
-          {...register('price.amount')}
-          error={errors.price?.amount?.message}
-        />
-        <Checkbox
-          label={t('price.negotiable')}
-          {...register('price.negotiable')}
-          error={errors.price?.negotiable?.message}
-        />
-        <Checkbox
-          label={t('price.taxDeductible')}
-          {...register('price.taxDeductible')}
-          error={errors.price?.taxDeductible?.message}
-        />
-      </Fieldset>
-
-      {/* Contact Information */}
-      <Fieldset legend={t('contactInformation.legend')}>
-        <TextInput
-          label={t('contactInformation.postalCode')}
-          {...register('contactInformation.postalCode')}
-          error={errors.contactInformation?.postalCode?.message}
-        />
-        <TextInput
-          label={t('contactInformation.city')}
-          {...register('contactInformation.city')}
-          error={errors.contactInformation?.city?.message}
-        />
-        <TextInput
-          label={t('contactInformation.phoneCountryCode')}
-          {...register('contactInformation.phoneCountryCode')}
-          error={errors.contactInformation?.phoneCountryCode?.message}
-        />
-        <TextInput
-          label={t('contactInformation.phoneAreaCode')}
-          {...register('contactInformation.phoneAreaCode')}
-          error={errors.contactInformation?.phoneAreaCode?.message}
-        />
-        <TextInput
-          label={t('contactInformation.phoneNumber')}
-          {...register('contactInformation.phoneNumber')}
-          error={errors.contactInformation?.phoneNumber?.message}
-        />
-        <Checkbox
-          label={t('contactInformation.hidePhoneNumber')}
-          {...register('contactInformation.hidePhoneNumber')}
-          error={errors.contactInformation?.hidePhoneNumber?.message}
-        />
-      </Fieldset>
-
-      {/* Photos */}
-      <Fieldset legend={t('photos.legend')}>
-        <TextInput
-          label={t('photos.images')}
-          {...register('photos.images')}
-          error={errors.photos?.images?.message}
-        />
-      </Fieldset>
-
-      {/* Description */}
-      <Fieldset legend={t('description.legend')}>
-        <TextInput
-          label={t('description.text')}
-          {...register('description.text')}
-          error={errors.description?.text?.message}
+        <Controller
+          name="fuel.emissionSticker"
+          control={control}
+          render={({ field }) => (
+            <Radio
+              label={t('fuel.emissionSticker')}
+              options={[
+                { value: '1', label: t('fuel.emissionStickerOptions.none') },
+                { value: '2', label: t('fuel.emissionStickerOptions.green') },
+                { value: '3', label: t('fuel.emissionStickerOptions.yellow') },
+                { value: '4', label: t('fuel.emissionStickerOptions.red') },
+              ]}
+              {...field}
+            />
+          )}
         />
       </Fieldset>
 

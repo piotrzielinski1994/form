@@ -17,7 +17,7 @@
       "bodyType": "Body Type",
       "seats": "Seats",
       "doors": "Doors",
-      "color": "Color",
+      "color": "Exterior Color",
       "typeOfPaint": "Type of Paint",
       "metallic": "Metallic",
       "upholstery": "Upholstery",
@@ -27,21 +27,40 @@
       "legend": "Condition",
       "vehicleOfferType": "Vehicle Offer Type",
       "mileage": "Mileage",
-      "firstRegistration": "First Registration",
+      "firstRegistrationMonth": "First Registration (Month)",
+      "firstRegistrationYear": "First Registration (Year)",
       "owners": "Number of Owners",
       "deliveryDay": "Delivery Day",
       "deliveryDate": "Delivery Date",
       "fullServiceHistory": "Full Service History",
       "nonSmoking": "Non-Smoking Vehicle",
-      "nextInspection": "Next Inspection",
-      "lastTechnicalService": "Last Technical Service",
-      "lastCamBeltService": "Last Cam Belt Service",
+      "nextInspectionMonth": "Next Inspection (Month)",
+      "nextInspectionYear": "Next Inspection (Year)",
+      "lastTechnicalServiceMonth": "Last Technical Service (Month)",
+      "lastTechnicalServiceYear": "Last Technical Service (Year)",
+      "lastCamBeltServiceMonth": "Last Cam Belt Service (Month)",
+      "lastCamBeltServiceYear": "Last Cam Belt Service (Year)",
       "damagedVehicle": "Damaged Vehicle",
       "accidentVehicle": "Accident Vehicle",
       "roadWorthiness": "Road Worthiness"
     },
+    "equipment": {
+      "legend": "Equipment",
+      "airConditioning": "Air Conditioning",
+      "navigationSystem": "Navigation System",
+      "heatedSeats": "Heated Seats",
+      "parkingSensors": "Parking Sensors",
+      "cruiseControl": "Cruise Control",
+      "sunroof": "Sunroof",
+      "bluetooth": "Bluetooth",
+      "ledHeadlights": "LED Headlights",
+      "keylessEntry": "Keyless Entry",
+      "rearCamera": "Rear Camera",
+      "laneAssist": "Lane Assist",
+      "adaptiveCruiseControl": "Adaptive Cruise Control"
+    },
     "motor": {
-      "legend": "Motor",
+      "legend": "Drive",
       "driveType": "Drive Type",
       "transmission": "Transmission",
       "powerKW": "Power (kW)",
@@ -52,37 +71,60 @@
       "emptyWeight": "Empty Weight"
     },
     "fuel": {
-      "legend": "Fuel",
+      "legend": "Environment",
       "fuelType": "Fuel Type",
-      "consumptionCombined": "Consumption Combined",
-      "co2Emissions": "CO2 Emissions",
+      "primaryFuelTypeLabel": "Primary Fuel Type",
+      "pollutionClassLabel": "Pollution Class",
+      "primaryFuelType": {
+        "gasoline": "Gasoline",
+        "diesel": "Diesel",
+        "electric": "Electric"
+      },
+      "consumptionCombined": "Combined Fuel Consumption",
+      "wltpConsumptionCombined": "WLTP Combined Consumption",
+      "co2Emissions": "CO2 Emissions Combined",
+      "wltpCo2EmissionsCombined": "WLTP CO2 Emissions Combined",
       "efficiencyClass": "Efficiency Class",
-      "pollutionClass": "Pollution Class",
-      "emissionSticker": "Emission Sticker"
+      "wltpCo2Class": "CO2 Class",
+      "pollutionClass": {
+        "euro6": "Euro 6",
+        "euro5": "Euro 5"
+      },
+      "emissionSticker": "Emission Sticker",
+      "emissionStickerOptions": {
+        "none": "None",
+        "green": "Green",
+        "yellow": "Yellow",
+        "red": "Red"
+      },
+      "sootParticles": "Soot Particles Filter",
+      "nedcWltp": "NEDC/WLTP"
+    },
+    "photos": {
+      "legend": "Photos",
+      "images": "Upload Images"
+    },
+    "description": {
+      "legend": "Vehicle Description",
+      "text": "Description"
     },
     "price": {
       "legend": "Price",
-      "amount": "Amount",
+      "amount": "Your Offer Price for Your Vehicle:",
       "negotiable": "Negotiable",
       "taxDeductible": "Tax Deductible"
     },
     "contactInformation": {
-      "legend": "Contact Information",
+      "legend": "Contact",
       "postalCode": "Postal Code",
       "city": "City",
-      "phoneCountryCode": "Phone Country Code",
-      "phoneAreaCode": "Phone Area Code",
-      "phoneNumber": "Phone Number",
-      "hidePhoneNumber": "Hide Phone Number"
+      "phoneCountryCode": "Country Code",
+      "phoneAreaCode": "Area Code",
+      "phoneSubscriberNumber": "Phone Number",
+      "hidePhoneNumber": "Add as a Contact Option to the Listing?"
     },
-    "photos": {
-      "legend": "Photos",
-      "images": "Images (comma-separated URLs)"
-    },
-    "description": {
-      "legend": "Description",
-      "text": "Description"
-    },
+    "yes": "Yes",
+    "no": "No",
     "submit": "Submit"
   }
 }

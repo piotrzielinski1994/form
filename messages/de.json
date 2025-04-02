@@ -14,7 +14,7 @@
     },
     "characteristics": {
       "legend": "Merkmale",
-      "bodyType": "Karosserietyp",
+      "bodyType": "Aufbau",
       "seats": "Sitzplätze",
       "doors": "Türen",
       "color": "Außenfarbe",
@@ -27,21 +27,40 @@
       "legend": "Zustand",
       "vehicleOfferType": "Fahrzeugart",
       "mileage": "Kilometerstand",
-      "firstRegistration": "Erstzulassung",
+      "firstRegistrationMonth": "Erstzulassung (Monat)",
+      "firstRegistrationYear": "Erstzulassung (Jahr)",
       "owners": "Fahrzeughalter",
       "deliveryDay": "Lieferungstag",
       "deliveryDate": "Lieferdatum",
       "fullServiceHistory": "Scheckheftgepflegt",
       "nonSmoking": "Nichtraucherfahrzeug",
-      "nextInspection": "Nächste Hauptuntersuchung (HU/AU)",
-      "lastTechnicalService": "Letzte Inspektion",
-      "lastCamBeltService": "Letzter Zahnriemenwechsel",
+      "nextInspectionMonth": "Nächste Hauptuntersuchung (Monat)",
+      "nextInspectionYear": "Nächste Hauptuntersuchung (Jahr)",
+      "lastTechnicalServiceMonth": "Letzte Inspektion (Monat)",
+      "lastTechnicalServiceYear": "Letzte Inspektion (Jahr)",
+      "lastCamBeltServiceMonth": "Letzter Zahnriemenwechsel (Monat)",
+      "lastCamBeltServiceYear": "Letzter Zahnriemenwechsel (Jahr)",
       "damagedVehicle": "Beschädigtes Fahrzeug",
       "accidentVehicle": "Unfallfahrzeug",
       "roadWorthiness": "Verkehrstauglichkeit"
     },
+    "equipment": {
+      "legend": "Ausstattung",
+      "airConditioning": "Klimaanlage",
+      "navigationSystem": "Navigationssystem",
+      "heatedSeats": "Sitzheizung",
+      "parkingSensors": "Einparkhilfe",
+      "cruiseControl": "Tempomat",
+      "sunroof": "Schiebedach",
+      "bluetooth": "Bluetooth",
+      "ledHeadlights": "LED-Scheinwerfer",
+      "keylessEntry": "Schlüsselloser Zugang",
+      "rearCamera": "Rückfahrkamera",
+      "laneAssist": "Spurhalteassistent",
+      "adaptiveCruiseControl": "Adaptiver Tempomat"
+    },
     "motor": {
-      "legend": "Motor",
+      "legend": "Antrieb",
       "driveType": "Antriebsart",
       "transmission": "Getriebe",
       "powerKW": "Leistung (kW)",
@@ -52,37 +71,60 @@
       "emptyWeight": "Leergewicht"
     },
     "fuel": {
-      "legend": "Kraftstoff",
+      "legend": "Umwelt",
       "fuelType": "Kraftstoffart",
-      "consumptionCombined": "Verbrauch kombiniert",
-      "co2Emissions": "CO2-Emissionen",
+      "primaryFuelTypeLabel": "Energieträger/Kraftstoff",
+      "pollutionClassLabel": "Schadstoffklasse",
+      "primaryFuelType": {
+        "gasoline": "Benzin",
+        "diesel": "Diesel",
+        "electric": "Elektrisch"
+      },
+      "consumptionCombined": "Kraftstoffverbrauch kombiniert",
+      "wltpConsumptionCombined": "WLTP-Verbrauch kombiniert",
+      "co2Emissions": "CO2-Emissionen kombiniert",
+      "wltpCo2EmissionsCombined": "WLTP-CO2-Emissionen kombiniert",
       "efficiencyClass": "Effizienzklasse",
-      "pollutionClass": "Schadstoffklasse",
-      "emissionSticker": "Feinstaubplakette"
+      "wltpCo2Class": "CO2-Klasse",
+      "pollutionClass": {
+        "euro6": "Euro 6",
+        "euro5": "Euro 5"
+      },
+      "emissionSticker": "Feinstaubplakette",
+      "emissionStickerOptions": {
+        "none": "Keine",
+        "green": "Grün",
+        "yellow": "Gelb",
+        "red": "Rot"
+      },
+      "sootParticles": "Rußpartikelfilter",
+      "nedcWltp": "NEDC/WLTP"
+    },
+    "photos": {
+      "legend": "Bilder",
+      "images": "Bilder hochladen"
+    },
+    "description": {
+      "legend": "Fahrzeugbeschreibung",
+      "text": "Beschreibung"
     },
     "price": {
       "legend": "Preis",
-      "amount": "Betrag",
+      "amount": "Dein Angebotspreis für dein Fahrzeug:",
       "negotiable": "Verhandelbar",
       "taxDeductible": "Mehrwertsteuer ausweisbar"
     },
     "contactInformation": {
-      "legend": "Kontaktinformationen",
+      "legend": "Kontakt",
       "postalCode": "Postleitzahl",
       "city": "Stadt",
-      "phoneCountryCode": "Telefon-Ländervorwahl",
-      "phoneAreaCode": "Telefon-Vorwahl",
-      "phoneNumber": "Telefonnummer",
-      "hidePhoneNumber": "Telefonnummer verbergen"
+      "phoneCountryCode": "Ländervorwahl",
+      "phoneAreaCode": "Vorwahl",
+      "phoneSubscriberNumber": "Rufnummer",
+      "hidePhoneNumber": "Als Kontaktmöglichkeit dem Inserat hinzufügen?"
     },
-    "photos": {
-      "legend": "Fotos",
-      "images": "Bilder (kommagetrennte URLs)"
-    },
-    "description": {
-      "legend": "Beschreibung",
-      "text": "Beschreibung"
-    },
+    "yes": "Ja",
+    "no": "Nein",
     "submit": "Absenden"
   }
 }
