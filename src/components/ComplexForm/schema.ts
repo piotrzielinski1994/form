@@ -4,9 +4,9 @@ type FormFields = z.infer<typeof schema>;
 
 const schema = z.object({
   vehicleData: z.object({
-    make: z.string().min(1, 'Make is required'),
-    model: z.string().min(1, 'Model is required'),
-    modelVersion: z.string().min(1, 'Model version is required'),
+    make: z.string().min(1),
+    model: z.string().min(1),
+    modelVersion: z.string().min(1),
   }),
   characteristics: z.object({
     bodyType: z.string().optional(),
@@ -44,7 +44,7 @@ const schema = z.object({
     emptyWeight: z.number().optional(),
   }),
   fuel: z.object({
-    fuelType: z.string().min(1, 'Fuel type is required'),
+    fuelType: z.string().min(1),
     consumptionCombined: z.number().optional(),
     co2Emissions: z.number().optional(),
     efficiencyClass: z.string().optional(),
@@ -52,13 +52,13 @@ const schema = z.object({
     emissionSticker: z.string().optional(),
   }),
   price: z.object({
-    amount: z.number().min(1, 'Price is required'),
+    amount: z.number().min(1),
     negotiable: z.boolean().optional(),
     taxDeductible: z.boolean().optional(),
   }),
   contactInformation: z.object({
-    postalCode: z.string().min(1, 'Postal code is required'),
-    city: z.string().min(1, 'City is required'),
+    postalCode: z.string().min(1),
+    city: z.string().min(1),
     phoneCountryCode: z.string().optional(),
     phoneAreaCode: z.string().optional(),
     phoneNumber: z.string().optional(),

@@ -11,12 +11,13 @@ type TextInputProps = ComponentProps<typeof Input> & {
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ label, error, ...props }, ref) => {
     return (
-      <Field.Root required>
+      <Field.Root required={props.required} invalid={!!error}>
         <Field.Label>
-          {label} <Field.RequiredIndicator />
+          {label}
+          {props.required && <Field.RequiredIndicator />}
         </Field.Label>
         <Input {...props} ref={ref} />
-        {!!error && <Field.ErrorText>{error}</Field.ErrorText>}
+        <Field.ErrorText>{error}</Field.ErrorText>
       </Field.Root>
     );
   }
