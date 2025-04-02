@@ -1,8 +1,9 @@
 'use client';
 
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { Field, Input } from '@chakra-ui/react';
+import { ComponentProps, forwardRef } from 'react';
 
-type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
+type TextInputProps = ComponentProps<typeof Input> & {
   label: string;
   error?: string;
 };
@@ -10,11 +11,13 @@ type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ label, error, ...props }, ref) => {
     return (
-      <div className="grid">
-        <label htmlFor={props.id}>{label}</label>
-        <input ref={ref} {...props} />
-        {error && <span className="text-red-500 text-sm">{error}</span>}
-      </div>
+      <Field.Root required>
+        <Field.Label>
+          {label} <Field.RequiredIndicator />
+        </Field.Label>
+        <Input {...props} ref={ref} />
+        {!!error && <Field.ErrorText>{error}</Field.ErrorText>}
+      </Field.Root>
     );
   }
 );

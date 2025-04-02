@@ -1,4 +1,4 @@
-import { Form } from '@/components/Form/Form';
+import { ComplexForm } from '@/components/ComplexForm/ComplexForm';
 import { useTranslations } from 'next-intl';
 
 export default function IndexPage() {
@@ -6,7 +6,7 @@ export default function IndexPage() {
   return (
     <div>
       <h1>{t('title')}</h1>
-      <Form />
+      <ComplexForm />
     </div>
   );
 }

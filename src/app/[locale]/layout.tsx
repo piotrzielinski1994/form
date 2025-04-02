@@ -17,7 +17,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   return (
     <html className="h-full" lang={locale}>
-      <body>
+      <body className="p-10">
         <NextIntlClientProvider>
           <Provider>
             <LocaleSwitcher />
