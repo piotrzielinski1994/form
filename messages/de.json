@@ -4,6 +4,60 @@
   },
   "LocaleSwitcher": {
     "label": "Sprache ändern",
-    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unbekannt}}"
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 Englisch} other {Unbekannt}}"
+  },
+  "ComplexForm": {
+    "vehicleData": {
+      "legend": "Fahrzeugdaten",
+      "make": "Marke",
+      "model": "Modell",
+      "modelVersion": "Modellversion"
+    },
+    "characteristics": {
+      "legend": "Merkmale",
+      "bodyType": "Karosserietyp",
+      "seats": "Sitzplätze",
+      "doors": "Türen",
+      "color": "Farbe",
+      "metallic": "Metallic"
+    },
+    "condition": {
+      "legend": "Zustand",
+      "mileage": "Kilometerstand",
+      "firstRegistration": "Erstzulassung",
+      "fullServiceHistory": "Scheckheftgepflegt",
+      "nonSmoking": "Nichtraucherfahrzeug"
+    },
+    "motor": {
+      "legend": "Motor",
+      "driveType": "Antriebsart",
+      "transmission": "Getriebe",
+      "powerKW": "Leistung (kW)"
+    },
+    "fuel": {
+      "legend": "Kraftstoff",
+      "fuelType": "Kraftstoffart",
+      "consumptionCombined": "Verbrauch kombiniert"
+    },
+    "price": {
+      "legend": "Preis",
+      "amount": "Betrag",
+      "negotiable": "Verhandelbar"
+    },
+    "contactInformation": {
+      "legend": "Kontaktinformationen",
+      "postalCode": "Postleitzahl",
+      "city": "Stadt",
+      "hidePhoneNumber": "Telefonnummer verbergen"
+    },
+    "photos": {
+      "legend": "Fotos",
+      "images": "Bilder (kommagetrennte URLs)"
+    },
+    "description": {
+      "legend": "Beschreibung",
+      "text": "Beschreibung"
+    },
+    "submit": "Absenden"
   }
 }

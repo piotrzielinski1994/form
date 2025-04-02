@@ -2,44 +2,143 @@ import { z } from 'zod';
 
 type FormFields = z.infer<typeof schema>;
 
-const schema = z
-  .object({
-    personalDetails: z.object({
-      name: z.string().min(1),
-      surname: z.string().min(1),
-      email: z.string().email(),
-      hasAddress: z.boolean(),
-    }),
-    address: z
-      .object({
-        street: z.string().min(1),
-        city: z.string().min(1),
-        zipCode: z.string().min(1),
-        country: z.string().min(1),
-      })
-      .optional(),
-    phoneDetails: z.object({
-      countryCode: z.string().min(1),
-      areaCode: z.string().min(1),
-      phoneNumber: z.string().min(1),
-    }),
-  })
-  .refine((data) => (data.personalDetails.hasAddress ? data.address !== undefined : true), {
-    message: "Address is required if 'hasAddress' is selected",
-    path: ['address'],
-  });
+const schema = z.object({
+  vehicleData: z.object({
+    make: z.string().min(1, 'Make is required'),
+    model: z.string().min(1, 'Model is required'),
+    modelVersion: z.string().min(1, 'Model version is required'),
+  }),
+  characteristics: z.object({
+    bodyType: z.string().optional(),
+    seats: z.number().int().optional(),
+    doors: z.number().int().optional(),
+    color: z.string().optional(),
+    metallic: z.boolean().optional(),
+    upholstery: z.string().optional(),
+    interiorColor: z.string().optional(),
+  }),
+  condition: z.object({
+    vehicleOfferType: z.string().optional(),
+    mileage: z.number().int().optional(),
+    firstRegistration: z.string().optional(),
+    owners: z.number().int().optional(),
+    deliveryDay: z.string().optional(),
+    deliveryDate: z.string().optional(),
+    fullServiceHistory: z.boolean().optional(),
+    nonSmoking: z.boolean().optional(),
+    nextInspection: z.string().optional(),
+    lastTechnicalService: z.string().optional(),
+    lastCamBeltService: z.string().optional(),
+    damagedVehicle: z.boolean().optional(),
+    accidentVehicle: z.boolean().optional(),
+    roadWorthiness: z.boolean().optional(),
+  }),
+  motor: z.object({
+    driveType: z.string().optional(),
+    transmission: z.string().optional(),
+    powerKW: z.number().int().optional(),
+    powerHP: z.number().int().optional(),
+    gears: z.number().int().optional(),
+    cylinders: z.number().int().optional(),
+    engineCapacity: z.number().optional(),
+    emptyWeight: z.number().optional(),
+  }),
+  fuel: z.object({
+    fuelType: z.string().min(1, 'Fuel type is required'),
+    consumptionCombined: z.number().optional(),
+    co2Emissions: z.number().optional(),
+    efficiencyClass: z.string().optional(),
+    pollutionClass: z.string().optional(),
+    emissionSticker: z.string().optional(),
+  }),
+  price: z.object({
+    amount: z.number().min(1, 'Price is required'),
+    negotiable: z.boolean().optional(),
+    taxDeductible: z.boolean().optional(),
+  }),
+  contactInformation: z.object({
+    postalCode: z.string().min(1, 'Postal code is required'),
+    city: z.string().min(1, 'City is required'),
+    phoneCountryCode: z.string().optional(),
+    phoneAreaCode: z.string().optional(),
+    phoneNumber: z.string().optional(),
+    hidePhoneNumber: z.boolean().optional(),
+  }),
+  photos: z.object({
+    images: z.array(z.string()).optional(),
+  }),
+  description: z.object({
+    text: z.string().optional(),
+  }),
+});
 
 const defaultValues: FormFields = {
-  personalDetails: {
-    name: '',
-    surname: '',
-    email: '',
-    hasAddress: false,
+  vehicleData: {
+    make: '',
+    model: '',
+    modelVersion: '',
   },
-  phoneDetails: {
-    countryCode: '',
-    areaCode: '',
+  characteristics: {
+    bodyType: '',
+    seats: undefined,
+    doors: undefined,
+    color: '',
+    metallic: false,
+    upholstery: '',
+    interiorColor: '',
+  },
+  condition: {
+    vehicleOfferType: '',
+    mileage: undefined,
+    firstRegistration: '',
+    owners: undefined,
+    deliveryDay: '',
+    deliveryDate: '',
+    fullServiceHistory: false,
+    nonSmoking: false,
+    nextInspection: '',
+    lastTechnicalService: '',
+    lastCamBeltService: '',
+    damagedVehicle: false,
+    accidentVehicle: false,
+    roadWorthiness: false,
+  },
+  motor: {
+    driveType: '',
+    transmission: '',
+    powerKW: undefined,
+    powerHP: undefined,
+    gears: undefined,
+    cylinders: undefined,
+    engineCapacity: undefined,
+    emptyWeight: undefined,
+  },
+  fuel: {
+    fuelType: '',
+    consumptionCombined: undefined,
+    co2Emissions: undefined,
+    efficiencyClass: '',
+    pollutionClass: '',
+    emissionSticker: '',
+  },
+  price: {
+    amount: 1,
+    negotiable: false,
+    taxDeductible: false,
+  },
+  contactInformation: {
+    postalCode: '',
+    city: '',
+    phoneCountryCode: '',
+    phoneAreaCode: '',
     phoneNumber: '',
+    hidePhoneNumber: false,
+  },
+  photos: {
+    images: [],
+  },
+  description: {
+    text: '',
   },
 };
 

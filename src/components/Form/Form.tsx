@@ -5,7 +5,7 @@ type FormProps = FormHTMLAttributes<HTMLFormElement>;
 
 const Form = forwardRef<HTMLFormElement, FormProps>(({ children, className, ...props }, ref) => {
   return (
-    <form className={clsx('', className)} {...props} ref={ref}>
+    <form className={clsx('grid gap-10', className)} {...props} ref={ref}>
       {children}
     </form>
   );

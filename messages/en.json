@@ -5,5 +5,59 @@
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+  },
+  "ComplexForm": {
+    "vehicleData": {
+      "legend": "Vehicle Data",
+      "make": "Make",
+      "model": "Model",
+      "modelVersion": "Model Version"
+    },
+    "characteristics": {
+      "legend": "Characteristics",
+      "bodyType": "Body Type",
+      "seats": "Seats",
+      "doors": "Doors",
+      "color": "Color",
+      "metallic": "Metallic"
+    },
+    "condition": {
+      "legend": "Condition",
+      "mileage": "Mileage",
+      "firstRegistration": "First Registration",
+      "fullServiceHistory": "Full Service History",
+      "nonSmoking": "Non-Smoking Vehicle"
+    },
+    "motor": {
+      "legend": "Motor",
+      "driveType": "Drive Type",
+      "transmission": "Transmission",
+      "powerKW": "Power (kW)"
+    },
+    "fuel": {
+      "legend": "Fuel",
+      "fuelType": "Fuel Type",
+      "consumptionCombined": "Consumption Combined"
+    },
+    "price": {
+      "legend": "Price",
+      "amount": "Amount",
+      "negotiable": "Negotiable"
+    },
+    "contactInformation": {
+      "legend": "Contact Information",
+      "postalCode": "Postal Code",
+      "city": "City",
+      "hidePhoneNumber": "Hide Phone Number"
+    },
+    "photos": {
+      "legend": "Photos",
+      "images": "Images (comma-separated URLs)"
+    },
+    "description": {
+      "legend": "Description",
+      "text": "Description"
+    },
+    "submit": "Submit"
   }
 }
