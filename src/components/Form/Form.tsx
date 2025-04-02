@@ -16,7 +16,6 @@ const Form = () => {
     mode: 'onBlur',
     resolver: zodResolver(schema),
   });
-
   const hasAddress = watch('personalDetails.hasAddress');
 
   return (
