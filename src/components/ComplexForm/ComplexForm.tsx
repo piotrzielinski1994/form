@@ -50,6 +50,7 @@ const ComplexForm = () => {
               label={t('vehicleData.model')}
               error={errors.vehicleData?.model?.message}
               options={models[watch('vehicleData.make')] ?? []}
+              disabled={!watch('vehicleData.make')}
               {...field}
             />
           )}

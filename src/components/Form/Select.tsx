@@ -10,12 +10,13 @@ type SelectProps = ComponentProps<typeof NativeSelect.Field> & {
   }>;
   label: string;
   error?: string;
+  disabled?: boolean;
 };
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ options, label, error, ...props }, ref) => {
     return (
-      <Field.Root invalid={!!error}>
+      <Field.Root invalid={!!error} disabled={props.disabled}>
         <Field.Label>{label}</Field.Label>
         <NativeSelect.Root>
           <NativeSelect.Field {...props} ref={ref}>
