@@ -1,3 +1,4 @@
+import LocaleSwitcher from '@/components/LocaleSwitcher';
 import { routing } from '@/i18n/routing';
 import { hasLocale, Locale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
@@ -16,7 +17,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     <html className="h-full" lang={locale}>
       <body>
         <NextIntlClientProvider>
-          {/* <Navigation /> */}
+          <LocaleSwitcher />
           <main>{children}</main>
         </NextIntlClientProvider>
       </body>
