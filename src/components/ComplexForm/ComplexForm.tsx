@@ -3,12 +3,14 @@
 import { Checkbox } from '@/components/Form/Checkbox';
 import { Fieldset } from '@/components/Form/Fieldset';
 import { Form } from '@/components/Form/Form';
+import { Radio } from '@/components/Form/Radio';
+import { Select } from '@/components/Form/Select';
 import { TextInput } from '@/components/Form/TextInput';
+import { Field } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { Controller, useForm } from 'react-hook-form';
-import { Select } from '../Form/Select';
-import { bodyTypes, makes, models } from './options';
+import { bodyColors, bodyTypes, makes, models } from './options';
 import { defaultValues, FormFields, schema } from './schema';
 
 const ComplexForm = () => {
@@ -88,16 +90,26 @@ const ComplexForm = () => {
           {...register('characteristics.doors')}
           error={errors.characteristics?.doors?.message}
         />
-        <TextInput
-          label={t('characteristics.color')}
-          {...register('characteristics.color')}
-          error={errors.characteristics?.color?.message}
+        <Controller
+          name="characteristics.color"
+          control={control}
+          render={({ field }) => (
+            <Radio
+              options={bodyColors}
+              label={t('characteristics.color')}
+              error={errors.characteristics?.color?.message}
+              {...field}
+            />
+          )}
         />
-        <Checkbox
-          label={t('characteristics.metallic')}
-          {...register('characteristics.metallic')}
-          error={errors.characteristics?.metallic?.message}
-        />
+        <Field.Root>
+          <Field.Label>{t('characteristics.typeOfPaint')}</Field.Label>
+          <Checkbox
+            label={t('characteristics.metallic')}
+            {...register('characteristics.metallic')}
+            error={errors.characteristics?.metallic?.message}
+          />
+        </Field.Root>
       </Fieldset>
 
       <Fieldset legend={t('condition.legend')}>

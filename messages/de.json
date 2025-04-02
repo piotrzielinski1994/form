@@ -18,6 +18,7 @@
       "seats": "Sitzplätze",
       "doors": "Türen",
       "color": "Farbe",
+      "typeOfPaint": "Lackierungsart",
       "metallic": "Metallic"
     },
     "condition": {

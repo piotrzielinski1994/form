@@ -293,4 +293,21 @@ const bodyTypes = [
   { value: 7, label: 'Sonstige' },
 ];
 
-export { bodyTypes, makes, models };
+const bodyColors = [
+  { value: '1', label: 'Beige' },
+  { value: '2', label: 'Blau' },
+  { value: '3', label: 'Braun' },
+  { value: '4', label: 'Bronze' },
+  { value: '5', label: 'Gelb' },
+  { value: '16', label: 'Gold' },
+  { value: '6', label: 'Grau' },
+  { value: '7', label: 'Grün' },
+  { value: '15', label: 'Orange' },
+  { value: '10', label: 'Rot' },
+  { value: '11', label: 'Schwarz' },
+  { value: '12', label: 'Silber' },
+  { value: '13', label: 'Violett' },
+  { value: '14', label: 'Weiß' },
+];
+
+export { bodyColors, bodyTypes, makes, models };

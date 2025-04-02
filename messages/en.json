@@ -18,6 +18,7 @@
       "seats": "Seats",
       "doors": "Doors",
       "color": "Color",
+      "typeOfPaint": "Type of paint",
       "metallic": "Metallic"
     },
     "condition": {
