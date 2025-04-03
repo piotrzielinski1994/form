@@ -11,27 +11,25 @@ type RadioProps = ComponentProps<typeof RadioGroup.Root> & {
   error?: string;
 };
 
-const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ options, label, error, className, ...props }, ref) => {
-    return (
-      <Field.Root invalid={!!error} disabled={props.disabled}>
-        <Field.Label>{label}</Field.Label>
-        <RadioGroup.Root className={clsx('flex gap-6 flex-wrap', className)} {...props} ref={ref}>
-          {options.map((option) => {
-            return (
-              <RadioGroup.Item key={option.value} value={option.value}>
-                <RadioGroup.ItemHiddenInput />
-                <RadioGroup.ItemIndicator />
-                <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
-              </RadioGroup.Item>
-            );
-          })}
-        </RadioGroup.Root>
-        <Field.ErrorText>{error}</Field.ErrorText>
-      </Field.Root>
-    );
-  }
-);
+const Radio = forwardRef<HTMLInputElement, RadioProps>(({ options, label, error, className, ...props }, ref) => {
+  return (
+    <Field.Root invalid={!!error} disabled={props.disabled}>
+      <Field.Label>{label}</Field.Label>
+      <RadioGroup.Root className={clsx('grid grid-cols-4 gap-4', className)} {...props} ref={ref}>
+        {options.map((option) => {
+          return (
+            <RadioGroup.Item key={option.value} value={option.value}>
+              <RadioGroup.ItemHiddenInput />
+              <RadioGroup.ItemIndicator />
+              <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
+            </RadioGroup.Item>
+          );
+        })}
+      </RadioGroup.Root>
+      <Field.ErrorText>{error}</Field.ErrorText>
+    </Field.Root>
+  );
+});
 
 Radio.displayName = 'Radio';
 
