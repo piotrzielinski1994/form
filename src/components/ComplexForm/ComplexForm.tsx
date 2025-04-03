@@ -508,6 +508,68 @@ const ComplexForm = () => {
         />
       </Fieldset>
 
+      <Fieldset legend={t('price.legend')}>
+        <TextInput
+          label={t('price.amount')}
+          type="number"
+          {...register('price.amount', { valueAsNumber: true })}
+          error={errors.price?.amount?.message}
+        />
+        <Checkbox
+          label={t('price.negotiable')}
+          {...register('price.negotiable')}
+          error={errors.price?.negotiable?.message}
+        />
+        <Checkbox
+          label={t('price.taxDeductible')}
+          {...register('price.taxDeductible')}
+          error={errors.price?.taxDeductible?.message}
+        />
+      </Fieldset>
+
+      <Fieldset legend={t('contactInformation.legend')}>
+        <TextInput
+          label={t('contactInformation.postalCode')}
+          {...register('contactInformation.postalCode')}
+          error={errors.contactInformation?.postalCode?.message}
+        />
+        <TextInput
+          label={t('contactInformation.city')}
+          {...register('contactInformation.city')}
+          error={errors.contactInformation?.city?.message}
+        />
+        <TextInput
+          label={t('contactInformation.phoneCountryCode')}
+          {...register('contactInformation.phoneCountryCode')}
+          error={errors.contactInformation?.phoneCountryCode?.message}
+        />
+        <TextInput
+          label={t('contactInformation.phoneAreaCode')}
+          {...register('contactInformation.phoneAreaCode')}
+          error={errors.contactInformation?.phoneAreaCode?.message}
+        />
+        <TextInput
+          label={t('contactInformation.phoneSubscriberNumber')}
+          {...register('contactInformation.phoneSubscriberNumber')}
+          error={errors.contactInformation?.phoneSubscriberNumber?.message}
+        />
+        <Controller
+          name="contactInformation.hidePhoneNumber"
+          control={control}
+          render={({ field }) => (
+            <Radio
+              label={t('contactInformation.hidePhoneNumber')}
+              options={[
+                { value: 'yes', label: t('yes') },
+                { value: 'no', label: t('no') },
+              ]}
+              error={errors.contactInformation?.hidePhoneNumber?.message}
+              {...field}
+            />
+          )}
+        />
+      </Fieldset>
+
       <Button justifySelf="center" type="submit" size="lg" position="sticky" bottom="4" px="10">
         {t('submit')}
       </Button>
