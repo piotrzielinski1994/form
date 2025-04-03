@@ -1,3 +1,5 @@
+import { FormFields } from './schema';
+
 const defaultValues: FormFields = {
   vehicleData: {
     make: '',

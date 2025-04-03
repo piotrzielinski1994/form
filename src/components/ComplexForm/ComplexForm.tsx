@@ -25,6 +25,7 @@ import {
   vehicleOfferTypeOptions,
 } from './options';
 import { FormFields, schema } from './schema';
+import { useWltpCo2EmissionsCombinedVisibility } from './visibility';
 
 const ComplexForm = () => {
   const t = useTranslations('ComplexForm');
@@ -39,6 +40,7 @@ const ComplexForm = () => {
     mode: 'onBlur',
     resolver: zodResolver(schema),
   });
+  const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
 
   return (
     <Form onSubmit={handleSubmit((data) => console.log(data))} noValidate>
@@ -1053,6 +1055,21 @@ const ComplexForm = () => {
           )}
         />
         <Controller
+          name="fuel.environmentalProtocol"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={t('fuel.environmentalProtocol')}
+              error={errors.fuel?.environmentalProtocol?.message}
+              options={[
+                { value: 'nedc', label: t('fuel.environmentalProtocolOptions.nedc') },
+                { value: 'wltp', label: t('fuel.environmentalProtocolOptions.wltp') },
+              ]}
+              {...field}
+            />
+          )}
+        />
+        <Controller
           name="fuel.primaryFuelType"
           control={control}
           render={({ field }) => (
@@ -1079,12 +1096,15 @@ const ComplexForm = () => {
           {...register('fuel.wltpConsumptionCombined')}
           error={errors.fuel?.wltpConsumptionCombined?.message}
         />
-        <TextInput
-          label={t('fuel.wltpCo2EmissionsCombined')}
-          type="number"
-          {...register('fuel.wltpCo2EmissionsCombined')}
-          error={errors.fuel?.wltpCo2EmissionsCombined?.message}
-        />
+        {isWltpCo2EmissionsCombinedVisible && (
+          <TextInput
+            label={t('fuel.wltpCo2EmissionsCombined')}
+            type="number"
+            {...register('fuel.wltpCo2EmissionsCombined')}
+            error={errors.fuel?.wltpCo2EmissionsCombined?.message}
+          />
+        )}
+
         <Controller
           name="fuel.wltpCo2Class"
           control={control}

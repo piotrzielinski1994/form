@@ -207,7 +207,13 @@
     "fuel": {
       "legend": "Environment",
       "fuelType": "Fuel Type",
+      "environmentalProtocol": "Environmental Protocol",
+      "environmentalProtocolOptions": {
+        "nedc": "NEDC",
+        "wltp": "WLTP"
+      },
       "primaryFuelTypeLabel": "Primary Fuel Type",
+      "isPluginHybrid": "Plug-in Hybrid",
       "pollutionClassLabel": "Pollution Class",
       "primaryFuelType": {
         "gasoline": "Gasoline",

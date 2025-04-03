@@ -185,6 +185,8 @@ const schema = z.object({
   fuel: z.object({
     fuelType: z.string().min(1),
     primaryFuelType: z.string().optional(),
+    environmentalProtocol: z.string().optional(),
+    isPluginHybrid: z.boolean().optional(),
     consumptionCombined: z.number().optional(),
     wltpConsumptionCombined: z.number().optional(),
     co2Emissions: z.number().optional(),
