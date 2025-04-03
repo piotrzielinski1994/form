@@ -20,7 +20,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       <body className="p-10 grid justify-center">
         <NextIntlClientProvider>
           <Provider>
-            <main className="max-w-xl mx-auto grid gap-10">
+            <main className="max-w-2xl mx-auto grid gap-10">
               <LocaleSwitcher />
               {children}
             </main>

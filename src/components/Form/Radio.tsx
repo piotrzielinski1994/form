@@ -1,4 +1,5 @@
 import { Field, RadioGroup } from '@chakra-ui/react';
+import clsx from 'clsx';
 import { ComponentProps, forwardRef } from 'react';
 
 type RadioProps = ComponentProps<typeof RadioGroup.Root> & {
@@ -11,11 +12,11 @@ type RadioProps = ComponentProps<typeof RadioGroup.Root> & {
 };
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ options, label, error, ...props }, ref) => {
+  ({ options, label, error, className, ...props }, ref) => {
     return (
       <Field.Root invalid={!!error} disabled={props.disabled}>
         <Field.Label>{label}</Field.Label>
-        <RadioGroup.Root className="flex gap-6 flex-wrap" {...props} ref={ref}>
+        <RadioGroup.Root className={clsx('flex gap-6 flex-wrap', className)} {...props} ref={ref}>
           {options.map((option) => {
             return (
               <RadioGroup.Item key={option.value} value={option.value}>

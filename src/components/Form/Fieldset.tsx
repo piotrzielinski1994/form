@@ -15,7 +15,7 @@ const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
         ref={ref}
       >
         <Stack>
-          <ChakraFieldset.Legend>{legend}</ChakraFieldset.Legend>
+          <ChakraFieldset.Legend className="text-lg">{legend}</ChakraFieldset.Legend>
         </Stack>
         <ChakraFieldset.Content>{children}</ChakraFieldset.Content>
       </ChakraFieldset.Root>
