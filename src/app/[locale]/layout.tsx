@@ -17,10 +17,10 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   return (
     <html className="h-full" lang={locale}>
-      <body className="p-4 grid justify-center">
+      <body className="p-4 grid">
         <NextIntlClientProvider>
           <Provider>
-            <main className="max-w-2xl mx-auto grid gap-10">
+            <main className="w-full max-w-[32rem] mx-auto grid gap-10">
               <LocaleSwitcher />
               {children}
             </main>
