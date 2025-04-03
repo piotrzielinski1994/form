@@ -10,6 +10,7 @@ import { Button } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { Controller, useForm } from 'react-hook-form';
+import { defaultValues } from './default';
 import {
   bodyColors,
   bodyTypes,
@@ -23,7 +24,7 @@ import {
   upholsteryOptions,
   vehicleOfferTypeOptions,
 } from './options';
-import { defaultValues, FormFields, schema } from './schema';
+import { FormFields, schema } from './schema';
 
 const ComplexForm = () => {
   const t = useTranslations('ComplexForm');
