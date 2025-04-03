@@ -6,7 +6,7 @@ import { Form } from '@/components/Form/Form';
 import { Radio } from '@/components/Form/Radio';
 import { Select } from '@/components/Form/Select';
 import { TextInput } from '@/components/Form/TextInput';
-import { Button, Field } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { Controller, useForm } from 'react-hook-form';
@@ -114,14 +114,14 @@ const ComplexForm = () => {
             />
           )}
         />
-        <Field.Root>
-          <Field.Label>{t('characteristics.typeOfPaint')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('characteristics.typeOfPaint')}</div>
           <Checkbox
             label={t('characteristics.metallic')}
             {...register('characteristics.metallic')}
             error={errors.characteristics?.metallic?.message}
           />
-        </Field.Root>
+        </div>
         <Controller
           name="characteristics.upholstery"
           control={control}
@@ -424,8 +424,8 @@ const ComplexForm = () => {
       </Fieldset>
 
       <Fieldset legend={t('equipment.legend')}>
-        <Field.Root>
-          <Field.Label>{t('equipment.airbags.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.airbags.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.airbags.rearAirbag')}
@@ -453,10 +453,10 @@ const ComplexForm = () => {
               error={errors.equipment?.airbags?.sideAirbag?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.assistanceSystems.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.assistanceSystems.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.assistanceSystems.distanceWarning')}
@@ -499,10 +499,10 @@ const ComplexForm = () => {
               error={errors.equipment?.assistanceSystems?.nightVisionAssist?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.parkingAssist.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.parkingAssist.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.parkingAssist.camera360')}
@@ -530,10 +530,10 @@ const ComplexForm = () => {
               error={errors.equipment?.parkingAssist?.parkingCamera?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.extras.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.extras.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.extras.allWeatherTires')}
@@ -601,10 +601,10 @@ const ComplexForm = () => {
               error={errors.equipment?.extras?.rearSeatHeating?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.climateControl.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.climateControl.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.climateControl.twoZoneClimateControl')}
@@ -632,10 +632,10 @@ const ComplexForm = () => {
               error={errors.equipment?.climateControl?.fourZoneClimateControl?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.comfort.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.comfort.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.comfort.armrest')}
@@ -728,10 +728,10 @@ const ComplexForm = () => {
               error={errors.equipment?.comfort?.startStopSystem?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.lighting.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.lighting.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.lighting.biXenonHeadlights')}
@@ -789,10 +789,10 @@ const ComplexForm = () => {
               error={errors.equipment?.lighting?.laserLights?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.safety.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.safety.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.safety.abs')}
@@ -840,10 +840,10 @@ const ComplexForm = () => {
               error={errors.equipment?.safety?.fatigueWarningSystem?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.seats.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.seats.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.seats.electricSeats')}
@@ -886,10 +886,10 @@ const ComplexForm = () => {
               error={errors.equipment?.seats?.splitRearSeat?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.cruiseControl.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.cruiseControl.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.cruiseControl.adaptiveCruiseControl')}
@@ -902,10 +902,10 @@ const ComplexForm = () => {
               error={errors.equipment?.cruiseControl?.cruiseControl?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.entertainment.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.entertainment.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.entertainment.androidAuto')}
@@ -968,10 +968,10 @@ const ComplexForm = () => {
               error={errors.equipment?.entertainment?.wifiHotspot?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.media.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.media.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.media.bluetooth')}
@@ -1014,10 +1014,10 @@ const ComplexForm = () => {
               error={errors.equipment?.media?.radio?.message}
             />
           </div>
-        </Field.Root>
+        </div>
 
-        <Field.Root>
-          <Field.Label>{t('equipment.centralLocking.legend')}</Field.Label>
+        <div className="grid gap-1">
+          <div>{t('equipment.centralLocking.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
             <Checkbox
               label={t('equipment.centralLocking.keylessCentralLocking')}
@@ -1035,7 +1035,7 @@ const ComplexForm = () => {
               error={errors.equipment?.centralLocking?.centralLocking?.message}
             />
           </div>
-        </Field.Root>
+        </div>
       </Fieldset>
 
       <Fieldset legend={t('fuel.legend')}>
