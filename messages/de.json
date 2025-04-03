@@ -123,6 +123,19 @@
       "phoneSubscriberNumber": "Rufnummer",
       "hidePhoneNumber": "Als Kontaktmöglichkeit dem Inserat hinzufügen?"
     },
+    "financingOffer": {
+      "legend": "Finanzierungsangebot",
+      "price": "Preis",
+      "netPrice": "Nettopreis",
+      "taxDeductible": "Mehrwertsteuer ausweisbar",
+      "negotiable": "Verhandelbar",
+      "vatRate": "Mehrwertsteuersatz",
+      "duration": "Laufzeit",
+      "monthlyRate": "Monatliche Rate",
+      "annualPercentageRate": "Effektiver Jahreszins",
+      "initialPayment": "Anzahlung",
+      "endingRate": "Schlussrate"
+    },
     "yes": "Ja",
     "no": "Nein",
     "submit": "Absenden"

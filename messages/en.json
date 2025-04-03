@@ -3,7 +3,7 @@
     "title": "Complex Form"
   },
   "LocaleSwitcher": {
-    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+    "locale": "{locale, select, de {🇩🇪 German} en {🇺🇸 English} other {Unknown}}"
   },
   "ComplexForm": {
     "vehicleData": {
@@ -122,6 +122,19 @@
       "phoneAreaCode": "Area Code",
       "phoneSubscriberNumber": "Phone Number",
       "hidePhoneNumber": "Add as a Contact Option to the Listing?"
+    },
+    "financingOffer": {
+      "legend": "Financing Offer",
+      "price": "Price",
+      "netPrice": "Net Price",
+      "taxDeductible": "Tax Deductible",
+      "negotiable": "Negotiable",
+      "vatRate": "VAT Rate",
+      "duration": "Duration",
+      "monthlyRate": "Monthly Rate",
+      "annualPercentageRate": "Annual Percentage Rate",
+      "initialPayment": "Initial Payment",
+      "endingRate": "Ending Rate"
     },
     "yes": "Yes",
     "no": "No",

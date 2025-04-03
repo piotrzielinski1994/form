@@ -33,9 +33,9 @@ const schema = z.object({
     lastTechnicalServiceYear: z.string().optional(),
     lastCamBeltServiceMonth: z.string().optional(),
     lastCamBeltServiceYear: z.string().optional(),
-    damagedVehicle: z.string().optional(),
-    accidentVehicle: z.string().optional(),
-    roadWorthiness: z.string().optional(),
+    damagedVehicle: z.boolean().optional(),
+    accidentVehicle: z.boolean().optional(),
+    roadWorthiness: z.boolean().optional(),
   }),
   equipment: z.object({
     airConditioning: z.boolean().optional(),
@@ -82,7 +82,7 @@ const schema = z.object({
     phoneCountryCode: z.string().optional(),
     phoneAreaCode: z.string().optional(),
     phoneSubscriberNumber: z.string().optional(),
-    hidePhoneNumber: z.string().optional(),
+    hidePhoneNumber: z.boolean().optional(),
   }),
   photos: z.object({
     images: z.array(z.string()).optional(),
@@ -90,6 +90,20 @@ const schema = z.object({
   description: z.object({
     text: z.string().optional(),
   }),
+  financingOffer: z
+    .object({
+      price: z.number().min(1).optional(),
+      netPrice: z.number().optional(),
+      taxDeductible: z.boolean().optional(),
+      negotiable: z.boolean().optional(),
+      vatRate: z.number().optional(),
+      duration: z.number().int().optional(),
+      monthlyRate: z.number().optional(),
+      annualPercentageRate: z.number().optional(),
+      initialPayment: z.number().optional(),
+      endingRate: z.number().optional(),
+    })
+    .optional(),
 });
 
 const defaultValues: FormFields = {
@@ -123,9 +137,9 @@ const defaultValues: FormFields = {
     lastTechnicalServiceYear: '',
     lastCamBeltServiceMonth: '',
     lastCamBeltServiceYear: '',
-    damagedVehicle: '',
-    accidentVehicle: '',
-    roadWorthiness: '',
+    damagedVehicle: false,
+    accidentVehicle: false,
+    roadWorthiness: false,
   },
   equipment: {
     airConditioning: false,
@@ -178,6 +192,18 @@ const defaultValues: FormFields = {
   },
   description: {
     text: '',
+  },
+  financingOffer: {
+    price: undefined,
+    netPrice: undefined,
+    taxDeductible: false,
+    negotiable: false,
+    vatRate: undefined,
+    duration: undefined,
+    monthlyRate: undefined,
+    annualPercentageRate: undefined,
+    initialPayment: undefined,
+    endingRate: undefined,
   },
 };
 

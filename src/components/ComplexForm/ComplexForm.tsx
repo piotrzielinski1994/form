@@ -315,10 +315,12 @@ const ComplexForm = () => {
               label={t('condition.damagedVehicle')}
               error={errors.condition?.damagedVehicle?.message}
               options={[
-                { value: 'yes', label: t('yes') },
-                { value: 'no', label: t('no') },
+                { value: 'true', label: t('yes') },
+                { value: 'false', label: t('no') },
               ]}
               {...field}
+              value={field.value === true ? 'true' : 'false'}
+              onChange={(e) => field.onChange(e.target.value === 'true')}
             />
           )}
         />
@@ -330,10 +332,12 @@ const ComplexForm = () => {
               label={t('condition.accidentVehicle')}
               error={errors.condition?.accidentVehicle?.message}
               options={[
-                { value: 'yes', label: t('yes') },
-                { value: 'no', label: t('no') },
+                { value: 'true', label: t('yes') },
+                { value: 'false', label: t('no') },
               ]}
               {...field}
+              value={field.value === true ? 'true' : 'false'}
+              onChange={(e) => field.onChange(e.target.value === 'true')}
             />
           )}
         />
@@ -345,10 +349,12 @@ const ComplexForm = () => {
               label={t('condition.roadWorthiness')}
               error={errors.condition?.roadWorthiness?.message}
               options={[
-                { value: 'yes', label: t('yes') },
-                { value: 'no', label: t('no') },
+                { value: 'true', label: t('yes') },
+                { value: 'false', label: t('no') },
               ]}
               {...field}
+              value={field.value === true ? 'true' : 'false'}
+              onChange={(e) => field.onChange(e.target.value === 'true')}
             />
           )}
         />
@@ -560,13 +566,76 @@ const ComplexForm = () => {
             <Radio
               label={t('contactInformation.hidePhoneNumber')}
               options={[
-                { value: 'yes', label: t('yes') },
-                { value: 'no', label: t('no') },
+                { value: 'true', label: t('yes') },
+                { value: 'false', label: t('no') },
               ]}
               error={errors.contactInformation?.hidePhoneNumber?.message}
               {...field}
+              value={field.value === true ? 'true' : 'false'}
+              onChange={(e) => field.onChange((e.target as HTMLInputElement).value === 'true')}
             />
           )}
+        />
+      </Fieldset>
+
+      <Fieldset legend={t('financingOffer.legend')}>
+        <TextInput
+          label={t('financingOffer.price')}
+          type="number"
+          {...register('financingOffer.price', { valueAsNumber: true })}
+          error={errors.financingOffer?.price?.message}
+        />
+        <TextInput
+          label={t('financingOffer.netPrice')}
+          type="number"
+          {...register('financingOffer.netPrice', { valueAsNumber: true })}
+          error={errors.financingOffer?.netPrice?.message}
+        />
+        <Checkbox
+          label={t('financingOffer.taxDeductible')}
+          {...register('financingOffer.taxDeductible')}
+          error={errors.financingOffer?.taxDeductible?.message}
+        />
+        <Checkbox
+          label={t('financingOffer.negotiable')}
+          {...register('financingOffer.negotiable')}
+          error={errors.financingOffer?.negotiable?.message}
+        />
+        <TextInput
+          label={t('financingOffer.vatRate')}
+          type="number"
+          {...register('financingOffer.vatRate', { valueAsNumber: true })}
+          error={errors.financingOffer?.vatRate?.message}
+        />
+        <TextInput
+          label={t('financingOffer.duration')}
+          type="number"
+          {...register('financingOffer.duration', { valueAsNumber: true })}
+          error={errors.financingOffer?.duration?.message}
+        />
+        <TextInput
+          label={t('financingOffer.monthlyRate')}
+          type="number"
+          {...register('financingOffer.monthlyRate', { valueAsNumber: true })}
+          error={errors.financingOffer?.monthlyRate?.message}
+        />
+        <TextInput
+          label={t('financingOffer.annualPercentageRate')}
+          type="number"
+          {...register('financingOffer.annualPercentageRate', { valueAsNumber: true })}
+          error={errors.financingOffer?.annualPercentageRate?.message}
+        />
+        <TextInput
+          label={t('financingOffer.initialPayment')}
+          type="number"
+          {...register('financingOffer.initialPayment', { valueAsNumber: true })}
+          error={errors.financingOffer?.initialPayment?.message}
+        />
+        <TextInput
+          label={t('financingOffer.endingRate')}
+          type="number"
+          {...register('financingOffer.endingRate', { valueAsNumber: true })}
+          error={errors.financingOffer?.endingRate?.message}
         />
       </Fieldset>
 
