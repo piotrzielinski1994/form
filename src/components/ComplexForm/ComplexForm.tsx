@@ -35,7 +35,7 @@ const ComplexForm = () => {
     formState: { errors },
     control,
     watch,
-  } = useForm({ resolver: zodResolver(schema) });
+  } = useForm({ mode: 'onSubmit', resolver: zodResolver(schema) });
   const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
 
   return (
