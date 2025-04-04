@@ -11,7 +11,6 @@ import { Button } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { Controller, useForm } from 'react-hook-form';
-import { defaultValues } from './default';
 import {
   bodyColors,
   bodyTypes,
@@ -25,7 +24,7 @@ import {
   upholsteryOptions,
   vehicleOfferTypeOptions,
 } from './options';
-import { FormFields, schema } from './schema';
+import { schema } from './schema';
 import { useWltpCo2EmissionsCombinedVisibility } from './visibility';
 
 const ComplexForm = () => {
@@ -36,10 +35,7 @@ const ComplexForm = () => {
     formState: { errors },
     control,
     watch,
-  } = useForm<FormFields>({
-    defaultValues,
-    resolver: zodResolver(schema),
-  });
+  } = useForm({ resolver: zodResolver(schema) });
   const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
 
   return (
