@@ -1213,7 +1213,7 @@ const ComplexForm = () => {
 
       <Fieldset legend={t('price.legend')}>
         <Controller
-          name="valueAsNumber: true "
+          name="price.amount"
           control={control}
           render={({ field }) => (
             <NumericInput
@@ -1282,7 +1282,7 @@ const ComplexForm = () => {
 
       <Fieldset legend={t('financingOffer.legend')}>
         <Controller
-          name="valueAsNumber: true "
+          name="financingOffer.price"
           control={control}
           render={({ field }) => (
             <NumericInput
@@ -1293,7 +1293,7 @@ const ComplexForm = () => {
           )}
         />
         <Controller
-          name="valueAsNumber: true "
+          name="financingOffer.netPrice"
           control={control}
           render={({ field }) => (
             <NumericInput
@@ -1314,7 +1314,7 @@ const ComplexForm = () => {
           error={errors.financingOffer?.negotiable?.message}
         />
         <Controller
-          name="valueAsNumber: true "
+          name="financingOffer.vatRate"
           control={control}
           render={({ field }) => (
             <NumericInput
@@ -1325,7 +1325,7 @@ const ComplexForm = () => {
           )}
         />
         <Controller
-          name="valueAsNumber: true "
+          name="financingOffer.duration"
           control={control}
           render={({ field }) => (
             <NumericInput
@@ -1336,7 +1336,7 @@ const ComplexForm = () => {
           )}
         />
         <Controller
-          name="valueAsNumber: true "
+          name="financingOffer.monthlyRate"
           control={control}
           render={({ field }) => (
             <NumericInput
@@ -1347,7 +1347,7 @@ const ComplexForm = () => {
           )}
         />
         <Controller
-          name="valueAsNumber: true "
+          name="financingOffer.annualPercentageRate"
           control={control}
           render={({ field }) => (
             <NumericInput
@@ -1358,7 +1358,7 @@ const ComplexForm = () => {
           )}
         />
         <Controller
-          name="valueAsNumber: true "
+          name="financingOffer.initialPayment"
           control={control}
           render={({ field }) => (
             <NumericInput
@@ -1369,7 +1369,7 @@ const ComplexForm = () => {
           )}
         />
         <Controller
-          name="valueAsNumber: true "
+          name="financingOffer.endingRate"
           control={control}
           render={({ field }) => (
             <NumericInput
