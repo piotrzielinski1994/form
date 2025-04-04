@@ -38,7 +38,6 @@ const ComplexForm = () => {
     watch,
   } = useForm<FormFields>({
     defaultValues,
-    mode: 'onBlur',
     resolver: zodResolver(schema),
   });
   const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
@@ -97,12 +96,16 @@ const ComplexForm = () => {
         <NumericInput
           label={t('characteristics.seats')}
           error={errors.characteristics?.seats?.message}
-          {...register('characteristics.seats', { valueAsNumber: true })}
+          {...register('characteristics.seats', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <NumericInput
           label={t('characteristics.doors')}
           error={errors.characteristics?.doors?.message}
-          {...register('characteristics.doors', { valueAsNumber: true })}
+          {...register('characteristics.doors', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <Controller
           name="characteristics.color"
@@ -166,7 +169,9 @@ const ComplexForm = () => {
         <NumericInput
           label={t('condition.mileage')}
           error={errors.condition?.mileage?.message}
-          {...register('condition.mileage', { valueAsNumber: true })}
+          {...register('condition.mileage', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <div>
           <Controller
@@ -203,7 +208,9 @@ const ComplexForm = () => {
         <NumericInput
           label={t('condition.owners')}
           error={errors.condition?.owners?.message}
-          {...register('condition.owners', { valueAsNumber: true })}
+          {...register('condition.owners', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <Checkbox
           label={t('condition.fullServiceHistory')}
@@ -388,32 +395,38 @@ const ComplexForm = () => {
         <NumericInput
           label={t('motor.powerKW')}
           error={errors.motor?.powerKW?.message}
-          {...register('motor.powerKW', { valueAsNumber: true })}
+          {...register('motor.powerKW', { setValueAs: (v) => (v === '' ? undefined : Number(v)) })}
         />
         <NumericInput
           label={t('motor.powerHP')}
           error={errors.motor?.powerHP?.message}
-          {...register('motor.powerHP', { valueAsNumber: true })}
+          {...register('motor.powerHP', { setValueAs: (v) => (v === '' ? undefined : Number(v)) })}
         />
         <NumericInput
           label={t('motor.gears')}
           error={errors.motor?.gears?.message}
-          {...register('motor.gears', { valueAsNumber: true })}
+          {...register('motor.gears', { setValueAs: (v) => (v === '' ? undefined : Number(v)) })}
         />
         <NumericInput
           label={t('motor.cylinders')}
           error={errors.motor?.cylinders?.message}
-          {...register('motor.cylinders', { valueAsNumber: true })}
+          {...register('motor.cylinders', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <NumericInput
           label={t('motor.engineCapacity')}
           error={errors.motor?.engineCapacity?.message}
-          {...register('motor.engineCapacity', { valueAsNumber: true })}
+          {...register('motor.engineCapacity', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <NumericInput
           label={t('motor.emptyWeight')}
           error={errors.motor?.emptyWeight?.message}
-          {...register('motor.emptyWeight', { valueAsNumber: true })}
+          {...register('motor.emptyWeight', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
       </Fieldset>
 
@@ -1084,13 +1097,17 @@ const ComplexForm = () => {
         <NumericInput
           label={t('fuel.wltpConsumptionCombined')}
           error={errors.fuel?.wltpConsumptionCombined?.message}
-          {...register('fuel.wltpConsumptionCombined', { valueAsNumber: true })}
+          {...register('fuel.wltpConsumptionCombined', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         {isWltpCo2EmissionsCombinedVisible && (
           <NumericInput
             label={t('fuel.wltpCo2EmissionsCombined')}
             error={errors.fuel?.wltpCo2EmissionsCombined?.message}
-            {...register('fuel.wltpCo2EmissionsCombined', { valueAsNumber: true })}
+            {...register('fuel.wltpCo2EmissionsCombined', {
+              setValueAs: (v) => (v === '' ? undefined : Number(v)),
+            })}
           />
         )}
 
@@ -1143,7 +1160,7 @@ const ComplexForm = () => {
         <NumericInput
           label={t('price.amount')}
           error={errors.price?.amount?.message}
-          {...register('price.amount', { valueAsNumber: true })}
+          {...register('price.amount', { setValueAs: (v) => (v === '' ? undefined : Number(v)) })}
         />
         <Checkbox
           label={t('price.negotiable')}
@@ -1206,12 +1223,16 @@ const ComplexForm = () => {
         <NumericInput
           label={t('financingOffer.price')}
           error={errors.financingOffer?.price?.message}
-          {...register('financingOffer.price', { valueAsNumber: true })}
+          {...register('financingOffer.price', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <NumericInput
           label={t('financingOffer.netPrice')}
           error={errors.financingOffer?.netPrice?.message}
-          {...register('financingOffer.netPrice', { valueAsNumber: true })}
+          {...register('financingOffer.netPrice', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <Checkbox
           label={t('financingOffer.taxDeductible')}
@@ -1226,32 +1247,44 @@ const ComplexForm = () => {
         <NumericInput
           label={t('financingOffer.vatRate')}
           error={errors.financingOffer?.vatRate?.message}
-          {...register('financingOffer.vatRate', { valueAsNumber: true })}
+          {...register('financingOffer.vatRate', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <NumericInput
           label={t('financingOffer.duration')}
           error={errors.financingOffer?.duration?.message}
-          {...register('financingOffer.duration', { valueAsNumber: true })}
+          {...register('financingOffer.duration', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <NumericInput
           label={t('financingOffer.monthlyRate')}
           error={errors.financingOffer?.monthlyRate?.message}
-          {...register('financingOffer.monthlyRate', { valueAsNumber: true })}
+          {...register('financingOffer.monthlyRate', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <NumericInput
           label={t('financingOffer.annualPercentageRate')}
           error={errors.financingOffer?.annualPercentageRate?.message}
-          {...register('financingOffer.annualPercentageRate', { valueAsNumber: true })}
+          {...register('financingOffer.annualPercentageRate', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <NumericInput
           label={t('financingOffer.initialPayment')}
           error={errors.financingOffer?.initialPayment?.message}
-          {...register('financingOffer.initialPayment', { valueAsNumber: true })}
+          {...register('financingOffer.initialPayment', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
         <NumericInput
           label={t('financingOffer.endingRate')}
           error={errors.financingOffer?.endingRate?.message}
-          {...register('financingOffer.endingRate', { valueAsNumber: true })}
+          {...register('financingOffer.endingRate', {
+            setValueAs: (v) => (v === '' ? undefined : Number(v)),
+          })}
         />
       </Fieldset>
 
