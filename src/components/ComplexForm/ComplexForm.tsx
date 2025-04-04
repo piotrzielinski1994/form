@@ -94,27 +94,15 @@ const ComplexForm = () => {
             />
           )}
         />
-        <Controller
-          name="characteristics.seats"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('characteristics.seats')}
-              error={errors.characteristics?.seats?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('characteristics.seats')}
+          error={errors.characteristics?.seats?.message}
+          {...register('characteristics.seats', { valueAsNumber: true })}
         />
-        <Controller
-          name="characteristics.doors"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('characteristics.doors')}
-              error={errors.characteristics?.doors?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('characteristics.doors')}
+          error={errors.characteristics?.doors?.message}
+          {...register('characteristics.doors', { valueAsNumber: true })}
         />
         <Controller
           name="characteristics.color"
@@ -175,16 +163,10 @@ const ComplexForm = () => {
             />
           )}
         />
-        <Controller
-          name="condition.mileage"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('condition.mileage')}
-              error={errors.condition?.mileage?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('condition.mileage')}
+          error={errors.condition?.mileage?.message}
+          {...register('condition.mileage', { valueAsNumber: true })}
         />
         <div>
           <Controller
@@ -218,16 +200,10 @@ const ComplexForm = () => {
             )}
           />
         </div>
-        <Controller
-          name="condition.owners"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('condition.owners')}
-              error={errors.condition?.owners?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('condition.owners')}
+          error={errors.condition?.owners?.message}
+          {...register('condition.owners', { valueAsNumber: true })}
         />
         <Checkbox
           label={t('condition.fullServiceHistory')}
@@ -409,71 +385,35 @@ const ComplexForm = () => {
             />
           )}
         />
-        <Controller
-          name="motor.powerKW"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('motor.powerKW')}
-              error={errors.motor?.powerKW?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('motor.powerKW')}
+          error={errors.motor?.powerKW?.message}
+          {...register('motor.powerKW', { valueAsNumber: true })}
         />
-        <Controller
-          name="motor.powerHP"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('motor.powerHP')}
-              error={errors.motor?.powerHP?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('motor.powerHP')}
+          error={errors.motor?.powerHP?.message}
+          {...register('motor.powerHP', { valueAsNumber: true })}
         />
-        <Controller
-          name="motor.gears"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('motor.gears')}
-              error={errors.motor?.gears?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('motor.gears')}
+          error={errors.motor?.gears?.message}
+          {...register('motor.gears', { valueAsNumber: true })}
         />
-        <Controller
-          name="motor.cylinders"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('motor.cylinders')}
-              error={errors.motor?.cylinders?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('motor.cylinders')}
+          error={errors.motor?.cylinders?.message}
+          {...register('motor.cylinders', { valueAsNumber: true })}
         />
-        <Controller
-          name="motor.engineCapacity"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('motor.engineCapacity')}
-              error={errors.motor?.engineCapacity?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('motor.engineCapacity')}
+          error={errors.motor?.engineCapacity?.message}
+          {...register('motor.engineCapacity', { valueAsNumber: true })}
         />
-        <Controller
-          name="motor.emptyWeight"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('motor.emptyWeight')}
-              error={errors.motor?.emptyWeight?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('motor.emptyWeight')}
+          error={errors.motor?.emptyWeight?.message}
+          {...register('motor.emptyWeight', { valueAsNumber: true })}
         />
       </Fieldset>
 
@@ -1141,28 +1081,16 @@ const ComplexForm = () => {
           {...register('fuel.sootParticles')}
           error={errors.fuel?.sootParticles?.message}
         />
-        <Controller
-          name="fuel.wltpConsumptionCombined"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('fuel.wltpConsumptionCombined')}
-              error={errors.fuel?.wltpConsumptionCombined?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('fuel.wltpConsumptionCombined')}
+          error={errors.fuel?.wltpConsumptionCombined?.message}
+          {...register('fuel.wltpConsumptionCombined', { valueAsNumber: true })}
         />
         {isWltpCo2EmissionsCombinedVisible && (
-          <Controller
-            name="fuel.wltpCo2EmissionsCombined"
-            control={control}
-            render={({ field }) => (
-              <NumericInput
-                label={t('fuel.wltpCo2EmissionsCombined')}
-                error={errors.fuel?.wltpCo2EmissionsCombined?.message}
-                {...field}
-              />
-            )}
+          <NumericInput
+            label={t('fuel.wltpCo2EmissionsCombined')}
+            error={errors.fuel?.wltpCo2EmissionsCombined?.message}
+            {...register('fuel.wltpCo2EmissionsCombined', { valueAsNumber: true })}
           />
         )}
 
@@ -1212,16 +1140,10 @@ const ComplexForm = () => {
       </Fieldset>
 
       <Fieldset legend={t('price.legend')}>
-        <Controller
-          name="price.amount"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('price.amount')}
-              error={errors.price?.amount?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('price.amount')}
+          error={errors.price?.amount?.message}
+          {...register('price.amount', { valueAsNumber: true })}
         />
         <Checkbox
           label={t('price.negotiable')}
@@ -1281,27 +1203,15 @@ const ComplexForm = () => {
       </Fieldset>
 
       <Fieldset legend={t('financingOffer.legend')}>
-        <Controller
-          name="financingOffer.price"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('financingOffer.price')}
-              error={errors.financingOffer?.price?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('financingOffer.price')}
+          error={errors.financingOffer?.price?.message}
+          {...register('financingOffer.price', { valueAsNumber: true })}
         />
-        <Controller
-          name="financingOffer.netPrice"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('financingOffer.netPrice')}
-              error={errors.financingOffer?.netPrice?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('financingOffer.netPrice')}
+          error={errors.financingOffer?.netPrice?.message}
+          {...register('financingOffer.netPrice', { valueAsNumber: true })}
         />
         <Checkbox
           label={t('financingOffer.taxDeductible')}
@@ -1313,71 +1223,35 @@ const ComplexForm = () => {
           {...register('financingOffer.negotiable')}
           error={errors.financingOffer?.negotiable?.message}
         />
-        <Controller
-          name="financingOffer.vatRate"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('financingOffer.vatRate')}
-              error={errors.financingOffer?.vatRate?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('financingOffer.vatRate')}
+          error={errors.financingOffer?.vatRate?.message}
+          {...register('financingOffer.vatRate', { valueAsNumber: true })}
         />
-        <Controller
-          name="financingOffer.duration"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('financingOffer.duration')}
-              error={errors.financingOffer?.duration?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('financingOffer.duration')}
+          error={errors.financingOffer?.duration?.message}
+          {...register('financingOffer.duration', { valueAsNumber: true })}
         />
-        <Controller
-          name="financingOffer.monthlyRate"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('financingOffer.monthlyRate')}
-              error={errors.financingOffer?.monthlyRate?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('financingOffer.monthlyRate')}
+          error={errors.financingOffer?.monthlyRate?.message}
+          {...register('financingOffer.monthlyRate', { valueAsNumber: true })}
         />
-        <Controller
-          name="financingOffer.annualPercentageRate"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('financingOffer.annualPercentageRate')}
-              error={errors.financingOffer?.annualPercentageRate?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('financingOffer.annualPercentageRate')}
+          error={errors.financingOffer?.annualPercentageRate?.message}
+          {...register('financingOffer.annualPercentageRate', { valueAsNumber: true })}
         />
-        <Controller
-          name="financingOffer.initialPayment"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('financingOffer.initialPayment')}
-              error={errors.financingOffer?.initialPayment?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('financingOffer.initialPayment')}
+          error={errors.financingOffer?.initialPayment?.message}
+          {...register('financingOffer.initialPayment', { valueAsNumber: true })}
         />
-        <Controller
-          name="financingOffer.endingRate"
-          control={control}
-          render={({ field }) => (
-            <NumericInput
-              label={t('financingOffer.endingRate')}
-              error={errors.financingOffer?.endingRate?.message}
-              {...field}
-            />
-          )}
+        <NumericInput
+          label={t('financingOffer.endingRate')}
+          error={errors.financingOffer?.endingRate?.message}
+          {...register('financingOffer.endingRate', { valueAsNumber: true })}
         />
       </Fieldset>
 
