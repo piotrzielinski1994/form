@@ -1,7 +1,7 @@
 'use client';
 
 import { Field, Input, NumberInput } from '@chakra-ui/react';
-import { ComponentProps, forwardRef } from 'react';
+import { ChangeEvent, ComponentProps, forwardRef } from 'react';
 
 type NumericInputProps = ComponentProps<typeof Input> & {
   label: string;
@@ -16,7 +16,13 @@ const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
           {label}
           {props.required && <Field.RequiredIndicator />}
         </Field.Label>
-        <NumberInput.Root className="w-full">
+        <NumberInput.Root
+          className="w-full"
+          onValueChange={({ valueAsNumber }) => {
+            const value = valueAsNumber as unknown as ChangeEvent<HTMLInputElement>;
+            props.onChange?.(value);
+          }}
+        >
           <NumberInput.Control />
           <NumberInput.Input {...props} ref={ref} />
         </NumberInput.Root>
