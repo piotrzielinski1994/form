@@ -3,6 +3,7 @@
 import { Checkbox } from '@/components/Form/Checkbox';
 import { Fieldset } from '@/components/Form/Fieldset';
 import { Form } from '@/components/Form/Form';
+import { NumericInput } from '@/components/Form/NumericInput';
 import { Radio } from '@/components/Form/Radio';
 import { Select } from '@/components/Form/Select';
 import { TextInput } from '@/components/Form/TextInput';
@@ -93,15 +94,13 @@ const ComplexForm = () => {
             />
           )}
         />
-        <TextInput
+        <NumericInput
           label={t('characteristics.seats')}
-          type="number"
           {...register('characteristics.seats')}
           error={errors.characteristics?.seats?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('characteristics.doors')}
-          type="number"
           {...register('characteristics.doors')}
           error={errors.characteristics?.doors?.message}
         />
@@ -164,9 +163,8 @@ const ComplexForm = () => {
             />
           )}
         />
-        <TextInput
+        <NumericInput
           label={t('condition.mileage')}
-          type="number"
           {...register('condition.mileage')}
           error={errors.condition?.mileage?.message}
         />
@@ -202,9 +200,8 @@ const ComplexForm = () => {
             )}
           />
         </div>
-        <TextInput
+        <NumericInput
           label={t('condition.owners')}
-          type="number"
           {...register('condition.owners')}
           error={errors.condition?.owners?.message}
         />
@@ -388,39 +385,33 @@ const ComplexForm = () => {
             />
           )}
         />
-        <TextInput
+        <NumericInput
           label={t('motor.powerKW')}
-          type="number"
           {...register('motor.powerKW')}
           error={errors.motor?.powerKW?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('motor.powerHP')}
-          type="number"
           {...register('motor.powerHP')}
           error={errors.motor?.powerHP?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('motor.gears')}
-          type="number"
           {...register('motor.gears')}
           error={errors.motor?.gears?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('motor.cylinders')}
-          type="number"
           {...register('motor.cylinders')}
           error={errors.motor?.cylinders?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('motor.engineCapacity')}
-          type="number"
           {...register('motor.engineCapacity')}
           error={errors.motor?.engineCapacity?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('motor.emptyWeight')}
-          type="number"
           {...register('motor.emptyWeight')}
           error={errors.motor?.emptyWeight?.message}
         />
@@ -1090,16 +1081,14 @@ const ComplexForm = () => {
           {...register('fuel.sootParticles')}
           error={errors.fuel?.sootParticles?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('fuel.wltpConsumptionCombined')}
-          type="number"
           {...register('fuel.wltpConsumptionCombined')}
           error={errors.fuel?.wltpConsumptionCombined?.message}
         />
         {isWltpCo2EmissionsCombinedVisible && (
-          <TextInput
+          <NumericInput
             label={t('fuel.wltpCo2EmissionsCombined')}
-            type="number"
             {...register('fuel.wltpCo2EmissionsCombined')}
             error={errors.fuel?.wltpCo2EmissionsCombined?.message}
           />
@@ -1151,9 +1140,8 @@ const ComplexForm = () => {
       </Fieldset>
 
       <Fieldset legend={t('price.legend')}>
-        <TextInput
+        <NumericInput
           label={t('price.amount')}
-          type="number"
           {...register('price.amount', { valueAsNumber: true })}
           error={errors.price?.amount?.message}
         />
@@ -1215,15 +1203,13 @@ const ComplexForm = () => {
       </Fieldset>
 
       <Fieldset legend={t('financingOffer.legend')}>
-        <TextInput
+        <NumericInput
           label={t('financingOffer.price')}
-          type="number"
           {...register('financingOffer.price', { valueAsNumber: true })}
           error={errors.financingOffer?.price?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('financingOffer.netPrice')}
-          type="number"
           {...register('financingOffer.netPrice', { valueAsNumber: true })}
           error={errors.financingOffer?.netPrice?.message}
         />
@@ -1237,39 +1223,33 @@ const ComplexForm = () => {
           {...register('financingOffer.negotiable')}
           error={errors.financingOffer?.negotiable?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('financingOffer.vatRate')}
-          type="number"
           {...register('financingOffer.vatRate', { valueAsNumber: true })}
           error={errors.financingOffer?.vatRate?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('financingOffer.duration')}
-          type="number"
           {...register('financingOffer.duration', { valueAsNumber: true })}
           error={errors.financingOffer?.duration?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('financingOffer.monthlyRate')}
-          type="number"
           {...register('financingOffer.monthlyRate', { valueAsNumber: true })}
           error={errors.financingOffer?.monthlyRate?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('financingOffer.annualPercentageRate')}
-          type="number"
           {...register('financingOffer.annualPercentageRate', { valueAsNumber: true })}
           error={errors.financingOffer?.annualPercentageRate?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('financingOffer.initialPayment')}
-          type="number"
           {...register('financingOffer.initialPayment', { valueAsNumber: true })}
           error={errors.financingOffer?.initialPayment?.message}
         />
-        <TextInput
+        <NumericInput
           label={t('financingOffer.endingRate')}
-          type="number"
           {...register('financingOffer.endingRate', { valueAsNumber: true })}
           error={errors.financingOffer?.endingRate?.message}
         />

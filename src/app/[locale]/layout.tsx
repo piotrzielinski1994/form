@@ -16,7 +16,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   if (!hasLocale(routing.locales, locale)) return notFound();
 
   return (
-    <html className="h-full" lang={locale}>
+    <html className="h-full" lang={locale} suppressHydrationWarning>
       <body className="p-4 grid">
         <NextIntlClientProvider>
           <Provider>
