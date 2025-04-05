@@ -8,7 +8,7 @@ import { Radio, RadioContainer } from '@/components/Form/Radio';
 import { Select, SelectContainer } from '@/components/Form/Select';
 import { TextInputContainer } from '@/components/Form/TextInput';
 import { getZodErrorMap } from '@/i18n/validation';
-import { Button } from '@chakra-ui/react';
+import { ActionBar, Button, Portal } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
@@ -40,6 +40,7 @@ const ComplexForm = () => {
     formState: { errors },
     control,
     watch,
+    reset,
   } = methods;
   const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
 
@@ -49,6 +50,7 @@ const ComplexForm = () => {
         storageKey="complex-form"
         onSubmit={handleSubmit((data) => console.log(data))}
         noValidate
+        id="complex-form"
       >
         <Fieldset legend={t('vehicleData.legend')}>
           <SelectContainer
@@ -1108,9 +1110,37 @@ const ComplexForm = () => {
           />
         </Fieldset>
 
-        <Button justifySelf="center" type="submit" size="lg" position="sticky" bottom="4" px="10">
-          {t('submit')}
-        </Button>
+        <ActionBar.Root open>
+          <Portal>
+            <ActionBar.Positioner className="z-10">
+              <ActionBar.Content>
+                <Button
+                  variant="outline"
+                  justifySelf="center"
+                  type="button"
+                  size="lg"
+                  position="sticky"
+                  bottom="4"
+                  px="10"
+                  onClick={() => reset()}
+                >
+                  {t('reset')}
+                </Button>
+                <Button
+                  form="complex-form"
+                  justifySelf="center"
+                  type="submit"
+                  size="lg"
+                  position="sticky"
+                  bottom="4"
+                  px="10"
+                >
+                  {t('submit')}
+                </Button>
+              </ActionBar.Content>
+            </ActionBar.Positioner>
+          </Portal>
+        </ActionBar.Root>
       </Form>
     </FormProvider>
   );

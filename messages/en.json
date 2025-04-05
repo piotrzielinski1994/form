@@ -278,7 +278,8 @@
     },
     "yes": "Yes",
     "no": "No",
-    "submit": "Submit"
+    "submit": "Submit",
+    "reset": "Reset"
   },
   "zod": {
     "invalid_type": "Expected {expected}, received {received}",

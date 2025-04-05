@@ -278,7 +278,8 @@
     },
     "yes": "Ja",
     "no": "Nein",
-    "submit": "Absenden"
+    "submit": "Absenden",
+    "reset": "Zurücksetzen"
   },
   "zod": {
     "invalid_type": "Erwartet {expected}, erhalten {received}",
