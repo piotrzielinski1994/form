@@ -2,7 +2,7 @@ import { Checkbox as ChakraCheckbox } from '@chakra-ui/react';
 import { ComponentProps, forwardRef } from 'react';
 import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
-type CheckboxProps = ComponentProps<typeof ChakraCheckbox.Control> & {
+type CheckboxProps = ComponentProps<typeof ChakraCheckbox.HiddenInput> & {
   label: string;
   error?: string;
 };
@@ -16,8 +16,8 @@ type CheckboxContainerProps<T extends FieldValues> = {
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({ label, error, ...props }, ref) => {
   return (
     <ChakraCheckbox.Root invalid={!!error}>
-      <ChakraCheckbox.HiddenInput suppressHydrationWarning />
-      <ChakraCheckbox.Control {...props} ref={ref} />
+      <ChakraCheckbox.HiddenInput suppressHydrationWarning {...props} ref={ref} />
+      <ChakraCheckbox.Control />
       <ChakraCheckbox.Label>{label}</ChakraCheckbox.Label>
     </ChakraCheckbox.Root>
   );

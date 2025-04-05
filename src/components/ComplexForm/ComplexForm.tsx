@@ -20,11 +20,12 @@ import {
   fuelTypeOptions,
   interiorColorOptions,
   makes,
-  models,
   transmissionOptions,
   upholsteryOptions,
   vehicleOfferTypeOptions,
-} from './options';
+} from './constants';
+import { defaultValues } from './default';
+import { useVehicleDataModelOptions } from './options';
 import { schema } from './schema';
 import { useWltpCo2EmissionsCombinedVisibility } from './visibility';
 
@@ -33,16 +34,17 @@ const ComplexForm = () => {
   const tZod = useTranslations('zod');
   const methods = useForm({
     mode: 'onSubmit',
+    defaultValues,
     resolver: zodResolver(schema, { errorMap: getZodErrorMap(tZod) }),
   });
   const {
     handleSubmit,
     formState: { errors },
     control,
-    watch,
     reset,
   } = methods;
   const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
+  const vehicleDataModelOptions = useVehicleDataModelOptions(control);
 
   return (
     <FormProvider {...methods}>
@@ -62,7 +64,8 @@ const ComplexForm = () => {
           <SelectContainer
             name="vehicleData.model"
             label={t('vehicleData.model')}
-            options={models[watch('vehicleData.make')] ?? []}
+            options={vehicleDataModelOptions.models}
+            disabled={vehicleDataModelOptions.isLoading}
             control={control}
           />
           <TextInputContainer

@@ -1,5 +1,5 @@
 import LocaleSwitcher from '@/components/LocaleSwitcher';
-import { Provider } from '@/components/Provider';
+import { Providers } from '@/components/Providers';
 import { routing } from '@/i18n/routing';
 import { hasLocale, Locale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
@@ -19,12 +19,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
     <html className="h-full" lang={locale} suppressHydrationWarning>
       <body className="p-4 grid">
         <NextIntlClientProvider>
-          <Provider>
+          <Providers>
             <main className="w-full max-w-[32rem] mx-auto grid gap-10">
               <LocaleSwitcher />
               {children}
             </main>
-          </Provider>
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>
