@@ -1,6 +1,6 @@
 'use client';
 
-import { Checkbox } from '@/components/Form/Checkbox';
+import { CheckboxContainer } from '@/components/Form/Checkbox';
 import { Fieldset } from '@/components/Form/Fieldset';
 import { Form } from '@/components/Form/Form';
 import { NumericInputContainer } from '@/components/Form/NumericInput';
@@ -32,7 +32,6 @@ const ComplexForm = () => {
   const t = useTranslations('ComplexForm');
   const tZod = useTranslations('zod');
   const {
-    register,
     handleSubmit,
     formState: { errors },
     control,
@@ -96,10 +95,10 @@ const ComplexForm = () => {
         />
         <div className="grid gap-1">
           <div>{t('characteristics.typeOfPaint')}</div>
-          <Checkbox
+          <CheckboxContainer
+            name="characteristics.metallic"
             label={t('characteristics.metallic')}
-            {...register('characteristics.metallic')}
-            error={errors.characteristics?.metallic?.message}
+            control={control}
           />
         </div>
         <Controller
@@ -165,15 +164,15 @@ const ComplexForm = () => {
           control={control}
           name="condition.owners"
         />
-        <Checkbox
+        <CheckboxContainer
+          name="condition.fullServiceHistory"
           label={t('condition.fullServiceHistory')}
-          {...register('condition.fullServiceHistory')}
-          error={errors.condition?.fullServiceHistory?.message}
+          control={control}
         />
-        <Checkbox
+        <CheckboxContainer
+          name="condition.nonSmoking"
           label={t('condition.nonSmoking')}
-          {...register('condition.nonSmoking')}
-          error={errors.condition?.nonSmoking?.message}
+          control={control}
         />
         <div>
           <SelectContainer
@@ -318,30 +317,30 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.airbags.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.airbags.rearAirbag"
               label={t('equipment.airbags.rearAirbag')}
-              {...register('equipment.airbags.rearAirbag')}
-              error={errors.equipment?.airbags?.rearAirbag?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.airbags.passengerAirbag"
               label={t('equipment.airbags.passengerAirbag')}
-              {...register('equipment.airbags.passengerAirbag')}
-              error={errors.equipment?.airbags?.passengerAirbag?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.airbags.driverAirbag"
               label={t('equipment.airbags.driverAirbag')}
-              {...register('equipment.airbags.driverAirbag')}
-              error={errors.equipment?.airbags?.driverAirbag?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.airbags.headAirbag"
               label={t('equipment.airbags.headAirbag')}
-              {...register('equipment.airbags.headAirbag')}
-              error={errors.equipment?.airbags?.headAirbag?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.airbags.sideAirbag"
               label={t('equipment.airbags.sideAirbag')}
-              {...register('equipment.airbags.sideAirbag')}
-              error={errors.equipment?.airbags?.sideAirbag?.message}
+              control={control}
             />
           </div>
         </div>
@@ -349,45 +348,45 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.assistanceSystems.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.assistanceSystems.distanceWarning"
               label={t('equipment.assistanceSystems.distanceWarning')}
-              {...register('equipment.assistanceSystems.distanceWarning')}
-              error={errors.equipment?.assistanceSystems?.distanceWarning?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.assistanceSystems.emergencyBrakeAssist"
               label={t('equipment.assistanceSystems.emergencyBrakeAssist')}
-              {...register('equipment.assistanceSystems.emergencyBrakeAssist')}
-              error={errors.equipment?.assistanceSystems?.emergencyBrakeAssist?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.assistanceSystems.hillStartAssist"
               label={t('equipment.assistanceSystems.hillStartAssist')}
-              {...register('equipment.assistanceSystems.hillStartAssist')}
-              error={errors.equipment?.assistanceSystems?.hillStartAssist?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.assistanceSystems.laneKeepingAssist"
               label={t('equipment.assistanceSystems.laneKeepingAssist')}
-              {...register('equipment.assistanceSystems.laneKeepingAssist')}
-              error={errors.equipment?.assistanceSystems?.laneKeepingAssist?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.assistanceSystems.blindSpotAssist"
               label={t('equipment.assistanceSystems.blindSpotAssist')}
-              {...register('equipment.assistanceSystems.blindSpotAssist')}
-              error={errors.equipment?.assistanceSystems?.blindSpotAssist?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.assistanceSystems.highBeamAssist"
               label={t('equipment.assistanceSystems.highBeamAssist')}
-              {...register('equipment.assistanceSystems.highBeamAssist')}
-              error={errors.equipment?.assistanceSystems?.highBeamAssist?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.assistanceSystems.trafficSignRecognition"
               label={t('equipment.assistanceSystems.trafficSignRecognition')}
-              {...register('equipment.assistanceSystems.trafficSignRecognition')}
-              error={errors.equipment?.assistanceSystems?.trafficSignRecognition?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.assistanceSystems.nightVisionAssist"
               label={t('equipment.assistanceSystems.nightVisionAssist')}
-              {...register('equipment.assistanceSystems.nightVisionAssist')}
-              error={errors.equipment?.assistanceSystems?.nightVisionAssist?.message}
+              control={control}
             />
           </div>
         </div>
@@ -395,30 +394,30 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.parkingAssist.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.parkingAssist.camera360"
               label={t('equipment.parkingAssist.camera360')}
-              {...register('equipment.parkingAssist.camera360')}
-              error={errors.equipment?.parkingAssist?.camera360?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.parkingAssist.frontSensors"
               label={t('equipment.parkingAssist.frontSensors')}
-              {...register('equipment.parkingAssist.frontSensors')}
-              error={errors.equipment?.parkingAssist?.frontSensors?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.parkingAssist.rearSensors"
               label={t('equipment.parkingAssist.rearSensors')}
-              {...register('equipment.parkingAssist.rearSensors')}
-              error={errors.equipment?.parkingAssist?.rearSensors?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.parkingAssist.selfSteeringSystem"
               label={t('equipment.parkingAssist.selfSteeringSystem')}
-              {...register('equipment.parkingAssist.selfSteeringSystem')}
-              error={errors.equipment?.parkingAssist?.selfSteeringSystem?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.parkingAssist.parkingCamera"
               label={t('equipment.parkingAssist.parkingCamera')}
-              {...register('equipment.parkingAssist.parkingCamera')}
-              error={errors.equipment?.parkingAssist?.parkingCamera?.message}
+              control={control}
             />
           </div>
         </div>
@@ -426,70 +425,70 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.extras.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.allWeatherTires"
               label={t('equipment.extras.allWeatherTires')}
-              {...register('equipment.extras.allWeatherTires')}
-              error={errors.equipment?.extras?.allWeatherTires?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.punctureKit"
               label={t('equipment.extras.punctureKit')}
-              {...register('equipment.extras.punctureKit')}
-              error={errors.equipment?.extras?.punctureKit?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.alloyWheels"
               label={t('equipment.extras.alloyWheels')}
-              {...register('equipment.extras.alloyWheels')}
-              error={errors.equipment?.extras?.alloyWheels?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.smokerPackage"
               label={t('equipment.extras.smokerPackage')}
-              {...register('equipment.extras.smokerPackage')}
-              error={errors.equipment?.extras?.smokerPackage?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.ambientLighting"
               label={t('equipment.extras.ambientLighting')}
-              {...register('equipment.extras.ambientLighting')}
-              error={errors.equipment?.extras?.ambientLighting?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.towBar"
               label={t('equipment.extras.towBar')}
-              {...register('equipment.extras.towBar')}
-              error={errors.equipment?.extras?.towBar?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.rangeExtender"
               label={t('equipment.extras.rangeExtender')}
-              {...register('equipment.extras.rangeExtender')}
-              error={errors.equipment?.extras?.rangeExtender?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.batteryCertificate"
               label={t('equipment.extras.batteryCertificate')}
-              {...register('equipment.extras.batteryCertificate')}
-              error={errors.equipment?.extras?.batteryCertificate?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.spareWheel"
               label={t('equipment.extras.spareWheel')}
-              {...register('equipment.extras.spareWheel')}
-              error={errors.equipment?.extras?.spareWheel?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.wheelchairAccessible"
               label={t('equipment.extras.wheelchairAccessible')}
-              {...register('equipment.extras.wheelchairAccessible')}
-              error={errors.equipment?.extras?.wheelchairAccessible?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.headlightCleaning"
               label={t('equipment.extras.headlightCleaning')}
-              {...register('equipment.extras.headlightCleaning')}
-              error={errors.equipment?.extras?.headlightCleaning?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.bidirectionalCharging"
               label={t('equipment.extras.bidirectionalCharging')}
-              {...register('equipment.extras.bidirectionalCharging')}
-              error={errors.equipment?.extras?.bidirectionalCharging?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.extras.rearSeatHeating"
               label={t('equipment.extras.rearSeatHeating')}
-              {...register('equipment.extras.rearSeatHeating')}
-              error={errors.equipment?.extras?.rearSeatHeating?.message}
+              control={control}
             />
           </div>
         </div>
@@ -497,30 +496,30 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.climateControl.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.climateControl.twoZoneClimateControl"
               label={t('equipment.climateControl.twoZoneClimateControl')}
-              {...register('equipment.climateControl.twoZoneClimateControl')}
-              error={errors.equipment?.climateControl?.twoZoneClimateControl?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.climateControl.airConditioning"
               label={t('equipment.climateControl.airConditioning')}
-              {...register('equipment.climateControl.airConditioning')}
-              error={errors.equipment?.climateControl?.airConditioning?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.climateControl.threeZoneClimateControl"
               label={t('equipment.climateControl.threeZoneClimateControl')}
-              {...register('equipment.climateControl.threeZoneClimateControl')}
-              error={errors.equipment?.climateControl?.threeZoneClimateControl?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.climateControl.automaticClimateControl"
               label={t('equipment.climateControl.automaticClimateControl')}
-              {...register('equipment.climateControl.automaticClimateControl')}
-              error={errors.equipment?.climateControl?.automaticClimateControl?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.climateControl.fourZoneClimateControl"
               label={t('equipment.climateControl.fourZoneClimateControl')}
-              {...register('equipment.climateControl.fourZoneClimateControl')}
-              error={errors.equipment?.climateControl?.fourZoneClimateControl?.message}
+              control={control}
             />
           </div>
         </div>
@@ -528,95 +527,95 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.comfort.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.armrest"
               label={t('equipment.comfort.armrest')}
-              {...register('equipment.comfort.armrest')}
-              error={errors.equipment?.comfort?.armrest?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.panoramicRoof"
               label={t('equipment.comfort.panoramicRoof')}
-              {...register('equipment.comfort.panoramicRoof')}
-              error={errors.equipment?.comfort?.panoramicRoof?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.heatedWindshield"
               label={t('equipment.comfort.heatedWindshield')}
-              {...register('equipment.comfort.heatedWindshield')}
-              error={errors.equipment?.comfort?.heatedWindshield?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.rainSensor"
               label={t('equipment.comfort.rainSensor')}
-              {...register('equipment.comfort.rainSensor')}
-              error={errors.equipment?.comfort?.rainSensor?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.heatedSteeringWheel"
               label={t('equipment.comfort.heatedSteeringWheel')}
-              {...register('equipment.comfort.heatedSteeringWheel')}
-              error={errors.equipment?.comfort?.heatedSteeringWheel?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.paddleShifters"
               label={t('equipment.comfort.paddleShifters')}
-              {...register('equipment.comfort.paddleShifters')}
-              error={errors.equipment?.comfort?.paddleShifters?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.electricWindows"
               label={t('equipment.comfort.electricWindows')}
-              {...register('equipment.comfort.electricWindows')}
-              error={errors.equipment?.comfort?.electricWindows?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.sunroof"
               label={t('equipment.comfort.sunroof')}
-              {...register('equipment.comfort.sunroof')}
-              error={errors.equipment?.comfort?.sunroof?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.electricTailgate"
               label={t('equipment.comfort.electricTailgate')}
-              {...register('equipment.comfort.electricTailgate')}
-              error={errors.equipment?.comfort?.electricTailgate?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.slidingDoor"
               label={t('equipment.comfort.slidingDoor')}
-              {...register('equipment.comfort.slidingDoor')}
-              error={errors.equipment?.comfort?.slidingDoor?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.electricSideMirrors"
               label={t('equipment.comfort.electricSideMirrors')}
-              {...register('equipment.comfort.electricSideMirrors')}
-              error={errors.equipment?.comfort?.electricSideMirrors?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.headUpDisplay"
               label={t('equipment.comfort.headUpDisplay')}
-              {...register('equipment.comfort.headUpDisplay')}
-              error={errors.equipment?.comfort?.headUpDisplay?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.leatherSteeringWheel"
               label={t('equipment.comfort.leatherSteeringWheel')}
-              {...register('equipment.comfort.leatherSteeringWheel')}
-              error={errors.equipment?.comfort?.leatherSteeringWheel?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.powerSteering"
               label={t('equipment.comfort.powerSteering')}
-              {...register('equipment.comfort.powerSteering')}
-              error={errors.equipment?.comfort?.powerSteering?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.lightSensor"
               label={t('equipment.comfort.lightSensor')}
-              {...register('equipment.comfort.lightSensor')}
-              error={errors.equipment?.comfort?.lightSensor?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.parkingHeater"
               label={t('equipment.comfort.parkingHeater')}
-              {...register('equipment.comfort.parkingHeater')}
-              error={errors.equipment?.comfort?.parkingHeater?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.airSuspension"
               label={t('equipment.comfort.airSuspension')}
-              {...register('equipment.comfort.airSuspension')}
-              error={errors.equipment?.comfort?.airSuspension?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.comfort.startStopSystem"
               label={t('equipment.comfort.startStopSystem')}
-              {...register('equipment.comfort.startStopSystem')}
-              error={errors.equipment?.comfort?.startStopSystem?.message}
+              control={control}
             />
           </div>
         </div>
@@ -624,60 +623,60 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.lighting.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.lighting.biXenonHeadlights"
               label={t('equipment.lighting.biXenonHeadlights')}
-              {...register('equipment.lighting.biXenonHeadlights')}
-              error={errors.equipment?.lighting?.biXenonHeadlights?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.lighting.lightSensor"
               label={t('equipment.lighting.lightSensor')}
-              {...register('equipment.lighting.lightSensor')}
-              error={errors.equipment?.lighting?.lightSensor?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.lighting.glareFreeHighBeam"
               label={t('equipment.lighting.glareFreeHighBeam')}
-              {...register('equipment.lighting.glareFreeHighBeam')}
-              error={errors.equipment?.lighting?.glareFreeHighBeam?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.lighting.fogLights"
               label={t('equipment.lighting.fogLights')}
-              {...register('equipment.lighting.fogLights')}
-              error={errors.equipment?.lighting?.fogLights?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.lighting.corneringLights"
               label={t('equipment.lighting.corneringLights')}
-              {...register('equipment.lighting.corneringLights')}
-              error={errors.equipment?.lighting?.corneringLights?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.lighting.daytimeRunningLights"
               label={t('equipment.lighting.daytimeRunningLights')}
-              {...register('equipment.lighting.daytimeRunningLights')}
-              error={errors.equipment?.lighting?.daytimeRunningLights?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.lighting.ledHeadlights"
               label={t('equipment.lighting.ledHeadlights')}
-              {...register('equipment.lighting.ledHeadlights')}
-              error={errors.equipment?.lighting?.ledHeadlights?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.lighting.fullLedHeadlights"
               label={t('equipment.lighting.fullLedHeadlights')}
-              {...register('equipment.lighting.fullLedHeadlights')}
-              error={errors.equipment?.lighting?.fullLedHeadlights?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.lighting.ledDaytimeRunningLights"
               label={t('equipment.lighting.ledDaytimeRunningLights')}
-              {...register('equipment.lighting.ledDaytimeRunningLights')}
-              error={errors.equipment?.lighting?.ledDaytimeRunningLights?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.lighting.xenonHeadlights"
               label={t('equipment.lighting.xenonHeadlights')}
-              {...register('equipment.lighting.xenonHeadlights')}
-              error={errors.equipment?.lighting?.xenonHeadlights?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.lighting.laserLights"
               label={t('equipment.lighting.laserLights')}
-              {...register('equipment.lighting.laserLights')}
-              error={errors.equipment?.lighting?.laserLights?.message}
+              control={control}
             />
           </div>
         </div>
@@ -685,50 +684,50 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.safety.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.safety.abs"
               label={t('equipment.safety.abs')}
-              {...register('equipment.safety.abs')}
-              error={errors.equipment?.safety?.abs?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.safety.emergencyCallSystem"
               label={t('equipment.safety.emergencyCallSystem')}
-              {...register('equipment.safety.emergencyCallSystem')}
-              error={errors.equipment?.safety?.emergencyCallSystem?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.safety.alarmSystem"
               label={t('equipment.safety.alarmSystem')}
-              {...register('equipment.safety.alarmSystem')}
-              error={errors.equipment?.safety?.alarmSystem?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.safety.tirePressureMonitoring"
               label={t('equipment.safety.tirePressureMonitoring')}
-              {...register('equipment.safety.tirePressureMonitoring')}
-              error={errors.equipment?.safety?.tirePressureMonitoring?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.safety.esp"
               label={t('equipment.safety.esp')}
-              {...register('equipment.safety.esp')}
-              error={errors.equipment?.safety?.esp?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.safety.tractionControl"
               label={t('equipment.safety.tractionControl')}
-              {...register('equipment.safety.tractionControl')}
-              error={errors.equipment?.safety?.tractionControl?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.safety.isofix"
               label={t('equipment.safety.isofix')}
-              {...register('equipment.safety.isofix')}
-              error={errors.equipment?.safety?.isofix?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.safety.immobilizer"
               label={t('equipment.safety.immobilizer')}
-              {...register('equipment.safety.immobilizer')}
-              error={errors.equipment?.safety?.immobilizer?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.safety.fatigueWarningSystem"
               label={t('equipment.safety.fatigueWarningSystem')}
-              {...register('equipment.safety.fatigueWarningSystem')}
-              error={errors.equipment?.safety?.fatigueWarningSystem?.message}
+              control={control}
             />
           </div>
         </div>
@@ -736,45 +735,45 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.seats.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.seats.electricSeats"
               label={t('equipment.seats.electricSeats')}
-              {...register('equipment.seats.electricSeats')}
-              error={errors.equipment?.seats?.electricSeats?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.seats.heatedSeats"
               label={t('equipment.seats.heatedSeats')}
-              {...register('equipment.seats.heatedSeats')}
-              error={errors.equipment?.seats?.heatedSeats?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.seats.lumbarSupport"
               label={t('equipment.seats.lumbarSupport')}
-              {...register('equipment.seats.lumbarSupport')}
-              error={errors.equipment?.seats?.lumbarSupport?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.seats.sportSeats"
               label={t('equipment.seats.sportSeats')}
-              {...register('equipment.seats.sportSeats')}
-              error={errors.equipment?.seats?.sportSeats?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.seats.massageSeats"
               label={t('equipment.seats.massageSeats')}
-              {...register('equipment.seats.massageSeats')}
-              error={errors.equipment?.seats?.massageSeats?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.seats.foldablePassengerSeat"
               label={t('equipment.seats.foldablePassengerSeat')}
-              {...register('equipment.seats.foldablePassengerSeat')}
-              error={errors.equipment?.seats?.foldablePassengerSeat?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.seats.ventilatedSeats"
               label={t('equipment.seats.ventilatedSeats')}
-              {...register('equipment.seats.ventilatedSeats')}
-              error={errors.equipment?.seats?.ventilatedSeats?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.seats.splitRearSeat"
               label={t('equipment.seats.splitRearSeat')}
-              {...register('equipment.seats.splitRearSeat')}
-              error={errors.equipment?.seats?.splitRearSeat?.message}
+              control={control}
             />
           </div>
         </div>
@@ -782,15 +781,15 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.cruiseControl.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.cruiseControl.adaptiveCruiseControl"
               label={t('equipment.cruiseControl.adaptiveCruiseControl')}
-              {...register('equipment.cruiseControl.adaptiveCruiseControl')}
-              error={errors.equipment?.cruiseControl?.adaptiveCruiseControl?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.cruiseControl.cruiseControl"
               label={t('equipment.cruiseControl.cruiseControl')}
-              {...register('equipment.cruiseControl.cruiseControl')}
-              error={errors.equipment?.cruiseControl?.cruiseControl?.message}
+              control={control}
             />
           </div>
         </div>
@@ -798,65 +797,65 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.entertainment.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.androidAuto"
               label={t('equipment.entertainment.androidAuto')}
-              {...register('equipment.entertainment.androidAuto')}
-              error={errors.equipment?.entertainment?.androidAuto?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.voiceControl"
               label={t('equipment.entertainment.voiceControl')}
-              {...register('equipment.entertainment.voiceControl')}
-              error={errors.equipment?.entertainment?.voiceControl?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.appleCarPlay"
               label={t('equipment.entertainment.appleCarPlay')}
-              {...register('equipment.entertainment.appleCarPlay')}
-              error={errors.equipment?.entertainment?.appleCarPlay?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.tv"
               label={t('equipment.entertainment.tv')}
-              {...register('equipment.entertainment.tv')}
-              error={errors.equipment?.entertainment?.tv?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.dabRadio"
               label={t('equipment.entertainment.dabRadio')}
-              {...register('equipment.entertainment.dabRadio')}
-              error={errors.equipment?.entertainment?.dabRadio?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.touchscreen"
               label={t('equipment.entertainment.touchscreen')}
-              {...register('equipment.entertainment.touchscreen')}
-              error={errors.equipment?.entertainment?.touchscreen?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.wirelessCharging"
               label={t('equipment.entertainment.wirelessCharging')}
-              {...register('equipment.entertainment.wirelessCharging')}
-              error={errors.equipment?.entertainment?.wirelessCharging?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.usb"
               label={t('equipment.entertainment.usb')}
-              {...register('equipment.entertainment.usb')}
-              error={errors.equipment?.entertainment?.usb?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.integratedMusicStreaming"
               label={t('equipment.entertainment.integratedMusicStreaming')}
-              {...register('equipment.entertainment.integratedMusicStreaming')}
-              error={errors.equipment?.entertainment?.integratedMusicStreaming?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.digitalInstrumentCluster"
               label={t('equipment.entertainment.digitalInstrumentCluster')}
-              {...register('equipment.entertainment.digitalInstrumentCluster')}
-              error={errors.equipment?.entertainment?.digitalInstrumentCluster?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.soundSystem"
               label={t('equipment.entertainment.soundSystem')}
-              {...register('equipment.entertainment.soundSystem')}
-              error={errors.equipment?.entertainment?.soundSystem?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.entertainment.wifiHotspot"
               label={t('equipment.entertainment.wifiHotspot')}
-              {...register('equipment.entertainment.wifiHotspot')}
-              error={errors.equipment?.entertainment?.wifiHotspot?.message}
+              control={control}
             />
           </div>
         </div>
@@ -864,45 +863,45 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.media.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.media.bluetooth"
               label={t('equipment.media.bluetooth')}
-              {...register('equipment.media.bluetooth')}
-              error={errors.equipment?.media?.bluetooth?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.media.mp3"
               label={t('equipment.media.mp3')}
-              {...register('equipment.media.mp3')}
-              error={errors.equipment?.media?.mp3?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.media.onboardComputer"
               label={t('equipment.media.onboardComputer')}
-              {...register('equipment.media.onboardComputer')}
-              error={errors.equipment?.media?.onboardComputer?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.media.multifunctionSteeringWheel"
               label={t('equipment.media.multifunctionSteeringWheel')}
-              {...register('equipment.media.multifunctionSteeringWheel')}
-              error={errors.equipment?.media?.multifunctionSteeringWheel?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.media.cd"
               label={t('equipment.media.cd')}
-              {...register('equipment.media.cd')}
-              error={errors.equipment?.media?.cd?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.media.navigationSystem"
               label={t('equipment.media.navigationSystem')}
-              {...register('equipment.media.navigationSystem')}
-              error={errors.equipment?.media?.navigationSystem?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.media.handsFreeSystem"
               label={t('equipment.media.handsFreeSystem')}
-              {...register('equipment.media.handsFreeSystem')}
-              error={errors.equipment?.media?.handsFreeSystem?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.media.radio"
               label={t('equipment.media.radio')}
-              {...register('equipment.media.radio')}
-              error={errors.equipment?.media?.radio?.message}
+              control={control}
             />
           </div>
         </div>
@@ -910,20 +909,20 @@ const ComplexForm = () => {
         <div className="grid gap-1">
           <div>{t('equipment.centralLocking.legend')}</div>
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.centralLocking.keylessCentralLocking"
               label={t('equipment.centralLocking.keylessCentralLocking')}
-              {...register('equipment.centralLocking.keylessCentralLocking')}
-              error={errors.equipment?.centralLocking?.keylessCentralLocking?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.centralLocking.remoteCentralLocking"
               label={t('equipment.centralLocking.remoteCentralLocking')}
-              {...register('equipment.centralLocking.remoteCentralLocking')}
-              error={errors.equipment?.centralLocking?.remoteCentralLocking?.message}
+              control={control}
             />
-            <Checkbox
+            <CheckboxContainer
+              name="equipment.centralLocking.centralLocking"
               label={t('equipment.centralLocking.centralLocking')}
-              {...register('equipment.centralLocking.centralLocking')}
-              error={errors.equipment?.centralLocking?.centralLocking?.message}
+              control={control}
             />
           </div>
         </div>
@@ -955,10 +954,10 @@ const ComplexForm = () => {
           ]}
           control={control}
         />
-        <Checkbox
+        <CheckboxContainer
+          name="fuel.sootParticles"
           label={t('fuel.sootParticles')}
-          {...register('fuel.sootParticles')}
-          error={errors.fuel?.sootParticles?.message}
+          control={control}
         />
         <NumericInputContainer
           label={t('fuel.wltpConsumptionCombined')}
@@ -1008,15 +1007,15 @@ const ComplexForm = () => {
 
       <Fieldset legend={t('price.legend')}>
         <NumericInputContainer label={t('price.amount')} control={control} name="price.amount" />
-        <Checkbox
+        <CheckboxContainer
+          name="price.negotiable"
           label={t('price.negotiable')}
-          {...register('price.negotiable')}
-          error={errors.price?.negotiable?.message}
+          control={control}
         />
-        <Checkbox
+        <CheckboxContainer
+          name="price.taxDeductible"
           label={t('price.taxDeductible')}
-          {...register('price.taxDeductible')}
-          error={errors.price?.taxDeductible?.message}
+          control={control}
         />
       </Fieldset>
 
@@ -1076,15 +1075,15 @@ const ComplexForm = () => {
           control={control}
           name="financingOffer.netPrice"
         />
-        <Checkbox
+        <CheckboxContainer
+          name="financingOffer.taxDeductible"
           label={t('financingOffer.taxDeductible')}
-          {...register('financingOffer.taxDeductible')}
-          error={errors.financingOffer?.taxDeductible?.message}
+          control={control}
         />
-        <Checkbox
+        <CheckboxContainer
+          name="financingOffer.negotiable"
           label={t('financingOffer.negotiable')}
-          {...register('financingOffer.negotiable')}
-          error={errors.financingOffer?.negotiable?.message}
+          control={control}
         />
         <NumericInputContainer
           label={t('financingOffer.vatRate')}
