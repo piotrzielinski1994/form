@@ -38,7 +38,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
           {options.map((option) => {
             return (
               <RadioGroup.Item key={option.value} value={option.value}>
-                <RadioGroup.ItemHiddenInput />
+                <RadioGroup.ItemHiddenInput suppressHydrationWarning />
                 <RadioGroup.ItemIndicator />
                 <RadioGroup.ItemText>{option.label}</RadioGroup.ItemText>
               </RadioGroup.Item>

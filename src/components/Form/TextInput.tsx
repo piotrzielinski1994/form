@@ -16,14 +16,14 @@ type TextInputContainerProps<T extends FieldValues> = {
 };
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ label, error, ...props }, ref) => {
+  ({ label, error, value, ...props }, ref) => {
     return (
       <Field.Root required={props.required} invalid={!!error}>
         <Field.Label>
           {label}
           {props.required && <Field.RequiredIndicator />}
         </Field.Label>
-        <Input {...props} ref={ref} />
+        <Input {...props} ref={ref} value={value ?? ''} />
         <Field.ErrorText>{error}</Field.ErrorText>
       </Field.Root>
     );
