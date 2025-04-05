@@ -25,7 +25,7 @@ const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
           {props.required && <Field.RequiredIndicator />}
         </Field.Label>
         <NumberInput.Root className="w-full">
-          <NumberInput.Control /> // TODO: This does not trigger onChange
+          <NumberInput.Control /> {/* TODO: This does not trigger onChange */}
           <NumberInput.Input {...props} ref={ref} />
         </NumberInput.Root>
         <Field.ErrorText>{error}</Field.ErrorText>
