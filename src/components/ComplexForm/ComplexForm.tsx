@@ -4,7 +4,7 @@ import { CheckboxContainer } from '@/components/Form/Checkbox';
 import { Fieldset } from '@/components/Form/Fieldset';
 import { Form } from '@/components/Form/Form';
 import { NumericInputContainer } from '@/components/Form/NumericInput';
-import { Radio, RadioContainer } from '@/components/Form/Radio';
+import { RadioContainer } from '@/components/Form/Radio';
 import { Select, SelectContainer } from '@/components/Form/Select';
 import { TextInputContainer } from '@/components/Form/TextInput';
 import { getZodErrorMap } from '@/i18n/validation';
@@ -32,22 +32,17 @@ import { useWltpCo2EmissionsCombinedVisibility } from './visibility';
 const ComplexForm = () => {
   const t = useTranslations('ComplexForm');
   const tZod = useTranslations('zod');
-  const methods = useForm({
+  const form = useForm({
     mode: 'onSubmit',
     defaultValues,
     resolver: zodResolver(schema, { errorMap: getZodErrorMap(tZod) }),
   });
-  const {
-    handleSubmit,
-    formState: { errors },
-    control,
-    reset,
-  } = methods;
+  const { handleSubmit, control, reset } = form;
   const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
   const vehicleDataModelOptions = useVehicleDataModelOptions(control);
 
   return (
-    <FormProvider {...methods}>
+    <FormProvider {...form}>
       <Form
         storageKey="complex-form"
         onSubmit={handleSubmit((data) => console.log(data))}
@@ -1041,23 +1036,14 @@ const ComplexForm = () => {
             name="contactInformation.phoneSubscriberNumber"
             control={control}
           />
-          <Controller
-            name="contactInformation.hidePhoneNumber"
-            control={control}
-            render={({ field }) => (
-              <Radio
-                label={t('contactInformation.hidePhoneNumber')}
-                options={[
-                  { value: 'true', label: t('yes') },
-                  { value: 'false', label: t('no') },
-                ]}
-                error={errors.contactInformation?.hidePhoneNumber?.message}
-                {...field}
-                value={field.value === true ? 'true' : 'false'}
-                onChange={(e) => field.onChange((e.target as HTMLInputElement).value === 'true')}
-              />
-            )}
-          />
+          <div className="grid gap-1">
+            <div>{t('contactInformation.hidePhoneNumber')}</div>
+            <CheckboxContainer
+              name="contactInformation.hidePhoneNumber"
+              label={t('yes')}
+              control={control}
+            />
+          </div>
         </Fieldset>
 
         <Fieldset legend={t('financingOffer.legend')}>
