@@ -5,7 +5,7 @@ import { Fieldset } from '@/components/Form/Fieldset';
 import { Form } from '@/components/Form/Form';
 import { NumericInputContainer } from '@/components/Form/NumericInput';
 import { Radio } from '@/components/Form/Radio';
-import { Select } from '@/components/Form/Select';
+import { Select, SelectContainer } from '@/components/Form/Select';
 import { TextInputContainer } from '@/components/Form/TextInput';
 import { getZodErrorMap } from '@/i18n/validation';
 import { Button } from '@chakra-ui/react';
@@ -46,32 +46,17 @@ const ComplexForm = () => {
   return (
     <Form onSubmit={handleSubmit((data) => console.log(data))} noValidate>
       <Fieldset legend={t('vehicleData.legend')}>
-        <Controller
+        <SelectContainer
           name="vehicleData.make"
+          label={t('vehicleData.make')}
+          options={makes.map((m) => ({ ...m, value: String(m.value) }))}
           control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <Select
-              label={t('vehicleData.make')}
-              error={errors.vehicleData?.make?.message}
-              options={makes.map((m) => ({ ...m, value: String(m.value) }))}
-              {...field}
-            />
-          )}
         />
-        <Controller
+        <SelectContainer
           name="vehicleData.model"
+          label={t('vehicleData.model')}
+          options={models[watch('vehicleData.make')] ?? []}
           control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <Select
-              label={t('vehicleData.model')}
-              error={errors.vehicleData?.model?.message}
-              options={models[watch('vehicleData.make')] ?? []}
-              disabled={!watch('vehicleData.make')}
-              {...field}
-            />
-          )}
         />
         <TextInputContainer
           label={t('vehicleData.modelVersion')}
@@ -81,18 +66,11 @@ const ComplexForm = () => {
       </Fieldset>
 
       <Fieldset legend={t('characteristics.legend')}>
-        <Controller
+        <SelectContainer
           name="characteristics.bodyType"
           control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <Select
-              label={t('characteristics.bodyType')}
-              error={errors.characteristics?.bodyType?.message}
-              options={bodyTypes.map((m) => ({ ...m, value: String(m.value) }))}
-              {...field}
-            />
-          )}
+          label={t('characteristics.bodyType')}
+          options={bodyTypes.map((m) => ({ ...m, value: String(m.value) }))}
         />
         <NumericInputContainer
           label={t('characteristics.seats')}
@@ -151,17 +129,11 @@ const ComplexForm = () => {
       </Fieldset>
 
       <Fieldset legend={t('condition.legend')}>
-        <Controller
+        <SelectContainer
           name="condition.vehicleOfferType"
+          label={t('condition.vehicleOfferType')}
+          options={vehicleOfferTypeOptions}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('condition.vehicleOfferType')}
-              error={errors.condition?.vehicleOfferType?.message}
-              options={vehicleOfferTypeOptions}
-              {...field}
-            />
-          )}
         />
         <NumericInputContainer
           label={t('condition.mileage')}
@@ -169,35 +141,23 @@ const ComplexForm = () => {
           name="condition.mileage"
         />
         <div>
-          <Controller
+          <SelectContainer
             name="condition.firstRegistrationMonth"
+            label={t('condition.firstRegistrationMonth')}
+            options={Array.from({ length: 12 }, (_, i) => ({
+              value: String(i + 1).padStart(2, '0'),
+              label: String(i + 1).padStart(2, '0'),
+            }))}
             control={control}
-            render={({ field }) => (
-              <Select
-                label={t('condition.firstRegistrationMonth')}
-                error={errors.condition?.firstRegistrationMonth?.message}
-                options={Array.from({ length: 12 }, (_, i) => ({
-                  value: String(i + 1).padStart(2, '0'),
-                  label: String(i + 1).padStart(2, '0'),
-                }))}
-                {...field}
-              />
-            )}
           />
-          <Controller
+          <SelectContainer
             name="condition.firstRegistrationYear"
+            label={t('condition.firstRegistrationYear')}
+            options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
+              value: String(1900 + i),
+              label: String(1900 + i),
+            }))}
             control={control}
-            render={({ field }) => (
-              <Select
-                label={t('condition.firstRegistrationYear')}
-                error={errors.condition?.firstRegistrationYear?.message}
-                options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
-                  value: String(1900 + i),
-                  label: String(1900 + i),
-                }))}
-                {...field}
-              />
-            )}
           />
         </div>
         <NumericInputContainer
@@ -216,96 +176,60 @@ const ComplexForm = () => {
           error={errors.condition?.nonSmoking?.message}
         />
         <div>
-          <Controller
+          <SelectContainer
             name="condition.nextInspectionMonth"
+            label={t('condition.nextInspectionMonth')}
+            options={Array.from({ length: 12 }, (_, i) => ({
+              value: String(i + 1).padStart(2, '0'),
+              label: String(i + 1).padStart(2, '0'),
+            }))}
             control={control}
-            render={({ field }) => (
-              <Select
-                label={t('condition.nextInspectionMonth')}
-                error={errors.condition?.nextInspectionMonth?.message}
-                options={Array.from({ length: 12 }, (_, i) => ({
-                  value: String(i + 1).padStart(2, '0'),
-                  label: String(i + 1).padStart(2, '0'),
-                }))}
-                {...field}
-              />
-            )}
           />
-          <Controller
+          <SelectContainer
             name="condition.nextInspectionYear"
+            label={t('condition.nextInspectionYear')}
+            options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
+              value: String(1900 + i),
+              label: String(1900 + i),
+            }))}
             control={control}
-            render={({ field }) => (
-              <Select
-                label={t('condition.nextInspectionYear')}
-                error={errors.condition?.nextInspectionYear?.message}
-                options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
-                  value: String(1900 + i),
-                  label: String(1900 + i),
-                }))}
-                {...field}
-              />
-            )}
           />
         </div>
-        <Controller
+        <SelectContainer
           name="condition.lastTechnicalServiceMonth"
+          label={t('condition.lastTechnicalServiceMonth')}
+          options={Array.from({ length: 12 }, (_, i) => ({
+            value: String(i + 1).padStart(2, '0'),
+            label: String(i + 1).padStart(2, '0'),
+          }))}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('condition.lastTechnicalServiceMonth')}
-              error={errors.condition?.lastTechnicalServiceMonth?.message}
-              options={Array.from({ length: 12 }, (_, i) => ({
-                value: String(i + 1).padStart(2, '0'),
-                label: String(i + 1).padStart(2, '0'),
-              }))}
-              {...field}
-            />
-          )}
         />
-        <Controller
+        <SelectContainer
           name="condition.lastTechnicalServiceYear"
+          label={t('condition.lastTechnicalServiceYear')}
+          options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
+            value: String(1900 + i),
+            label: String(1900 + i),
+          }))}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('condition.lastTechnicalServiceYear')}
-              error={errors.condition?.lastTechnicalServiceYear?.message}
-              options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
-                value: String(1900 + i),
-                label: String(1900 + i),
-              }))}
-              {...field}
-            />
-          )}
         />
-        <Controller
+        <SelectContainer
           name="condition.lastCamBeltServiceMonth"
+          label={t('condition.lastCamBeltServiceMonth')}
+          options={Array.from({ length: 12 }, (_, i) => ({
+            value: String(i + 1).padStart(2, '0'),
+            label: String(i + 1).padStart(2, '0'),
+          }))}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('condition.lastCamBeltServiceMonth')}
-              error={errors.condition?.lastCamBeltServiceMonth?.message}
-              options={Array.from({ length: 12 }, (_, i) => ({
-                value: String(i + 1).padStart(2, '0'),
-                label: String(i + 1).padStart(2, '0'),
-              }))}
-              {...field}
-            />
-          )}
         />
-        <Controller
+        <SelectContainer
           name="condition.lastCamBeltServiceYear"
+          label={t('condition.lastCamBeltServiceYear')}
+          options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
+            value: String(1900 + i),
+            label: String(1900 + i),
+          }))}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('condition.lastCamBeltServiceYear')}
-              error={errors.condition?.lastCamBeltServiceYear?.message}
-              options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
-                value: String(1900 + i),
-                label: String(1900 + i),
-              }))}
-              {...field}
-            />
-          )}
         />
         <Controller
           name="condition.damagedVehicle"
@@ -313,7 +237,6 @@ const ComplexForm = () => {
           render={({ field }) => (
             <Select
               label={t('condition.damagedVehicle')}
-              error={errors.condition?.damagedVehicle?.message}
               options={[
                 { value: 'true', label: t('yes') },
                 { value: 'false', label: t('no') },
@@ -330,7 +253,6 @@ const ComplexForm = () => {
           render={({ field }) => (
             <Select
               label={t('condition.accidentVehicle')}
-              error={errors.condition?.accidentVehicle?.message}
               options={[
                 { value: 'true', label: t('yes') },
                 { value: 'false', label: t('no') },
@@ -347,7 +269,6 @@ const ComplexForm = () => {
           render={({ field }) => (
             <Select
               label={t('condition.roadWorthiness')}
-              error={errors.condition?.roadWorthiness?.message}
               options={[
                 { value: 'true', label: t('yes') },
                 { value: 'false', label: t('no') },
@@ -361,29 +282,17 @@ const ComplexForm = () => {
       </Fieldset>
 
       <Fieldset legend={t('motor.legend')}>
-        <Controller
+        <SelectContainer
           name="motor.driveType"
+          label={t('motor.driveType')}
+          options={driveTypeOptions}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('motor.driveType')}
-              error={errors.motor?.driveType?.message}
-              options={driveTypeOptions}
-              {...field}
-            />
-          )}
         />
-        <Controller
+        <SelectContainer
           name="motor.transmission"
+          label={t('motor.transmission')}
+          options={transmissionOptions}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('motor.transmission')}
-              error={errors.motor?.transmission?.message}
-              options={transmissionOptions}
-              {...field}
-            />
-          )}
         />
         <NumericInputContainer label={t('motor.powerKW')} control={control} name="motor.powerKW" />
         <NumericInputContainer label={t('motor.powerHP')} control={control} name="motor.powerHP" />
@@ -1021,48 +930,30 @@ const ComplexForm = () => {
       </Fieldset>
 
       <Fieldset legend={t('fuel.legend')}>
-        <Controller
+        <SelectContainer
           name="fuel.fuelType"
+          label={t('fuel.fuelType')}
+          options={fuelTypeOptions}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('fuel.fuelType')}
-              error={errors.fuel?.fuelType?.message}
-              options={fuelTypeOptions}
-              {...field}
-            />
-          )}
         />
-        <Controller
+        <SelectContainer
           name="fuel.environmentalProtocol"
+          label={t('fuel.environmentalProtocol')}
+          options={[
+            { value: 'nedc', label: t('fuel.environmentalProtocolOptions.nedc') },
+            { value: 'wltp', label: t('fuel.environmentalProtocolOptions.wltp') },
+          ]}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('fuel.environmentalProtocol')}
-              error={errors.fuel?.environmentalProtocol?.message}
-              options={[
-                { value: 'nedc', label: t('fuel.environmentalProtocolOptions.nedc') },
-                { value: 'wltp', label: t('fuel.environmentalProtocolOptions.wltp') },
-              ]}
-              {...field}
-            />
-          )}
         />
-        <Controller
+        <SelectContainer
           name="fuel.primaryFuelType"
+          label={t('fuel.primaryFuelTypeLabel')}
+          options={[
+            { value: 'gasoline', label: t('fuel.primaryFuelType.gasoline') },
+            { value: 'diesel', label: t('fuel.primaryFuelType.diesel') },
+            { value: 'electric', label: t('fuel.primaryFuelType.electric') },
+          ]}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('fuel.primaryFuelTypeLabel')}
-              error={errors.fuel?.primaryFuelType?.message}
-              options={[
-                { value: 'gasoline', label: t('fuel.primaryFuelType.gasoline') },
-                { value: 'diesel', label: t('fuel.primaryFuelType.diesel') },
-                { value: 'electric', label: t('fuel.primaryFuelType.electric') },
-              ]}
-              {...field}
-            />
-          )}
         />
         <Checkbox
           label={t('fuel.sootParticles')}
@@ -1082,32 +973,20 @@ const ComplexForm = () => {
           />
         )}
 
-        <Controller
+        <SelectContainer
           name="fuel.wltpCo2Class"
+          label={t('fuel.wltpCo2Class')}
+          options={co2ClassOptions}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('fuel.wltpCo2Class')}
-              error={errors.fuel?.wltpCo2Class?.message}
-              options={co2ClassOptions}
-              {...field}
-            />
-          )}
         />
-        <Controller
+        <SelectContainer
           name="fuel.pollutionClass"
+          label={t('fuel.pollutionClassLabel')}
+          options={[
+            { value: 'euro6', label: t('fuel.pollutionClass.euro6') },
+            { value: 'euro5', label: t('fuel.pollutionClass.euro5') },
+          ]}
           control={control}
-          render={({ field }) => (
-            <Select
-              label={t('fuel.pollutionClassLabel')}
-              error={errors.fuel?.pollutionClass?.message}
-              options={[
-                { value: 'euro6', label: t('fuel.pollutionClass.euro6') },
-                { value: 'euro5', label: t('fuel.pollutionClass.euro5') },
-              ]}
-              {...field}
-            />
-          )}
         />
         <Controller
           name="fuel.emissionSticker"

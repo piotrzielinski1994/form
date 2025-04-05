@@ -2,6 +2,7 @@
 
 import { Field, NativeSelect } from '@chakra-ui/react';
 import { ComponentProps, forwardRef } from 'react';
+import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 type SelectProps = ComponentProps<typeof NativeSelect.Field> & {
   options: Array<{
@@ -10,6 +11,17 @@ type SelectProps = ComponentProps<typeof NativeSelect.Field> & {
   }>;
   label: string;
   error?: string;
+  disabled?: boolean;
+};
+
+type SelectContainerProps<T extends FieldValues> = {
+  control: Control<T>;
+  label: string;
+  name: Path<T>;
+  options: Array<{
+    value: string;
+    label: string;
+  }>;
   disabled?: boolean;
 };
 
@@ -39,6 +51,23 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
   }
 );
 
+const SelectContainer = <T extends FieldValues>({
+  control,
+  label,
+  name,
+  options,
+  disabled,
+}: SelectContainerProps<T>) => {
+  const {
+    field,
+    fieldState: { error },
+  } = useController({ control, name });
+
+  return (
+    <Select label={label} options={options} error={error?.message} {...field} disabled={disabled} />
+  );
+};
+
 Select.displayName = 'Select';
 
-export { Select };
+export { Select, SelectContainer };
