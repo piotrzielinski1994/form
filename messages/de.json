@@ -279,5 +279,110 @@
     "yes": "Ja",
     "no": "Nein",
     "submit": "Absenden"
+  },
+  "zod": {
+    "invalid_type": "Erwartet {expected}, erhalten {received}",
+    "invalid_type_with_path": "{path} erwartet {expected}, aber erhalten {received}",
+    "invalid_type_received_undefined": "Erforderlich",
+    "invalid_literal": "Ungültiger Literalwert, erwartet {expected}",
+    "unrecognized_keys": "Nicht erkannte Schlüssel im Objekt: {- keys}",
+    "unrecognized_keys_one": "Nicht erkannter Schlüssel im Objekt: {- keys}",
+    "unrecognized_keys_other": "Nicht erkannte Schlüssel im Objekt: {- keys}",
+    "invalid_union": "Ungültige Eingabe",
+    "invalid_union_discriminator": "Ungültiger Diskriminatorwert. Erwartet {- options}",
+    "invalid_enum_value": "Ungültiger Enum-Wert. Erwartet {- options}, erhalten {received}",
+    "invalid_arguments": "Ungültige Funktionsargumente",
+    "invalid_return_type": "Ungültiger Rückgabewert",
+    "invalid_date": "Ungültiges Datum",
+    "custom": "Ungültige Eingabe",
+    "invalid_intersection_types": "Schnittmengen konnten nicht zusammengeführt werden",
+    "not_multiple_of": "Die Zahl muss ein Vielfaches von {multipleOf} sein",
+    "not_finite": "Die Zahl muss endlich sein",
+    "invalid_string": {
+      "email": "Ungültig {validation}",
+      "url": "Ungültig {validation}",
+      "uuid": "Ungültig {validation}",
+      "cuid": "Ungültig {validation}",
+      "regex": "Ungültig",
+      "datetime": "Ungültig {validation}",
+      "startsWith": "Ungültige Eingabe: muss mit {startsWith} beginnen",
+      "endsWith": "Ungültige Eingabe: muss mit {endsWith} enden"
+    },
+    "too_small": {
+      "array": {
+        "inclusive": "Das Array muss mindestens {minimum} Element(e) enthalten",
+        "inclusive_one": "Das Array muss mindestens {minimum} Element enthalten",
+        "inclusive_other": "Das Array muss mindestens {minimum} Elemente enthalten",
+        "not_inclusive": "Das Array muss mehr als {minimum} Element(e) enthalten",
+        "not_inclusive_one": "Das Array muss mehr als {minimum} Element enthalten",
+        "not_inclusive_other": "Das Array muss mehr als {minimum} Elemente enthalten"
+      },
+      "string": {
+        "inclusive": "Der String muss mindestens {minimum} Zeichen enthalten",
+        "inclusive_one": "Der String muss mindestens {minimum} Zeichen enthalten",
+        "inclusive_other": "Der String muss mindestens {minimum} Zeichen enthalten",
+        "inclusive_with_path": "{path} muss mindestens {minimum} Zeichen enthalten",
+        "inclusive_with_path_one": "{path} muss mindestens {minimum} Zeichen enthalten",
+        "inclusive_with_path_other": "{path} muss mindestens {minimum} Zeichen enthalten",
+        "not_inclusive": "Der String muss mehr als {minimum} Zeichen enthalten",
+        "not_inclusive_one": "Der String muss mehr als {minimum} Zeichen enthalten",
+        "not_inclusive_other": "Der String muss mehr als {minimum} Zeichen enthalten",
+        "not_inclusive_with_path": "{path} muss mehr als {minimum} Zeichen enthalten",
+        "not_inclusive_with_path_one": "{path} muss mehr als {minimum} Zeichen enthalten",
+        "not_inclusive_with_path_other": "{path} muss mehr als {minimum} Zeichen enthalten"
+      },
+      "number": {
+        "inclusive": "Die Zahl muss größer oder gleich {minimum} sein",
+        "inclusive_with_path": "{path} muss größer oder gleich {minimum} sein",
+        "not_inclusive": "Die Zahl muss größer als {minimum} sein",
+        "not_inclusive_with_path": "{path} muss größer als {minimum} sein"
+      },
+      "set": {
+        "inclusive": "Ungültige Eingabe",
+        "not_inclusive": "Ungültige Eingabe"
+      },
+      "date": {
+        "inclusive": "Das Datum muss größer oder gleich {- minimum, datetime} sein",
+        "not_inclusive": "Das Datum muss größer als {- minimum, datetime} sein"
+      }
+    },
+    "too_big": {
+      "array": {
+        "inclusive": "Das Array darf höchstens {maximum} Element(e) enthalten",
+        "inclusive_one": "Das Array darf höchstens {maximum} Element enthalten",
+        "inclusive_other": "Das Array darf höchstens {maximum} Elemente enthalten",
+        "not_inclusive": "Das Array darf weniger als {maximum} Element(e) enthalten",
+        "not_inclusive_one": "Das Array darf weniger als {maximum} Element enthalten",
+        "not_inclusive_other": "Das Array darf weniger als {maximum} Elemente enthalten"
+      },
+      "string": {
+        "inclusive": "Der String darf höchstens {maximum} Zeichen enthalten",
+        "inclusive_one": "Der String darf höchstens {maximum} Zeichen enthalten",
+        "inclusive_other": "Der String darf höchstens {maximum} Zeichen enthalten",
+        "inclusive_with_path": "{path} darf höchstens {maximum} Zeichen enthalten",
+        "inclusive_with_path_one": "{path} darf höchstens {maximum} Zeichen enthalten",
+        "inclusive_with_path_other": "{path} darf höchstens {maximum} Zeichen enthalten",
+        "not_inclusive": "Der String darf weniger als {maximum} Zeichen enthalten",
+        "not_inclusive_one": "Der String darf weniger als {maximum} Zeichen enthalten",
+        "not_inclusive_other": "Der String darf weniger als {maximum} Zeichen enthalten",
+        "not_inclusive_with_path": "{path} darf weniger als {maximum} Zeichen enthalten",
+        "not_inclusive_with_path_one": "{path} darf weniger als {maximum} Zeichen enthalten",
+        "not_inclusive_with_path_other": "{path} darf weniger als {maximum} Zeichen enthalten"
+      },
+      "number": {
+        "inclusive": "Die Zahl muss kleiner oder gleich {maximum} sein",
+        "inclusive_with_path": "{path} muss kleiner oder gleich {maximum} sein",
+        "not_inclusive": "Die Zahl muss kleiner als {maximum} sein",
+        "not_inclusive_with_path": "{path} muss kleiner als {maximum} sein"
+      },
+      "set": {
+        "inclusive": "Ungültige Eingabe",
+        "not_inclusive": "Ungültige Eingabe"
+      },
+      "date": {
+        "inclusive": "Das Datum muss kleiner oder gleich {- maximum, datetime} sein",
+        "not_inclusive": "Das Datum muss kleiner als {- maximum, datetime} sein"
+      }
+    }
   }
 }

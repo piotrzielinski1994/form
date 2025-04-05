@@ -7,6 +7,7 @@ import { NumericInput } from '@/components/Form/NumericInput';
 import { Radio } from '@/components/Form/Radio';
 import { Select } from '@/components/Form/Select';
 import { TextInput } from '@/components/Form/TextInput';
+import { getZodErrorMap } from '@/i18n/validation';
 import { Button } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
@@ -29,13 +30,17 @@ import { useWltpCo2EmissionsCombinedVisibility } from './visibility';
 
 const ComplexForm = () => {
   const t = useTranslations('ComplexForm');
+  const tZod = useTranslations('zod');
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
     watch,
-  } = useForm({ mode: 'onSubmit', resolver: zodResolver(schema) });
+  } = useForm({
+    mode: 'onSubmit',
+    resolver: zodResolver(schema, { errorMap: getZodErrorMap(tZod) }),
+  });
   const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
 
   return (
