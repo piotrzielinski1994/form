@@ -4,7 +4,7 @@ import { CheckboxContainer } from '@/components/Form/Checkbox';
 import { Fieldset } from '@/components/Form/Fieldset';
 import { Form } from '@/components/Form/Form';
 import { NumericInputContainer } from '@/components/Form/NumericInput';
-import { Radio } from '@/components/Form/Radio';
+import { Radio, RadioContainer } from '@/components/Form/Radio';
 import { Select, SelectContainer } from '@/components/Form/Select';
 import { TextInputContainer } from '@/components/Form/TextInput';
 import { getZodErrorMap } from '@/i18n/validation';
@@ -81,17 +81,11 @@ const ComplexForm = () => {
           control={control}
           name="characteristics.doors"
         />
-        <Controller
+        <RadioContainer
           name="characteristics.color"
+          options={bodyColors}
+          label={t('characteristics.color')}
           control={control}
-          render={({ field }) => (
-            <Radio
-              options={bodyColors}
-              label={t('characteristics.color')}
-              error={errors.characteristics?.color?.message}
-              {...field}
-            />
-          )}
         />
         <div className="grid gap-1">
           <div>{t('characteristics.typeOfPaint')}</div>
@@ -101,29 +95,17 @@ const ComplexForm = () => {
             control={control}
           />
         </div>
-        <Controller
+        <RadioContainer
           name="characteristics.upholstery"
+          options={upholsteryOptions}
+          label={t('characteristics.upholstery')}
           control={control}
-          render={({ field }) => (
-            <Radio
-              options={upholsteryOptions}
-              label={t('characteristics.upholstery')}
-              error={errors.characteristics?.upholstery?.message}
-              {...field}
-            />
-          )}
         />
-        <Controller
+        <RadioContainer
           name="characteristics.interiorColor"
+          options={interiorColorOptions}
+          label={t('characteristics.interiorColor')}
           control={control}
-          render={({ field }) => (
-            <Radio
-              options={interiorColorOptions}
-              label={t('characteristics.interiorColor')}
-              error={errors.characteristics?.interiorColor?.message}
-              {...field}
-            />
-          )}
         />
       </Fieldset>
 
@@ -987,21 +969,16 @@ const ComplexForm = () => {
           ]}
           control={control}
         />
-        <Controller
+        <RadioContainer
           name="fuel.emissionSticker"
+          label={t('fuel.emissionSticker')}
+          options={[
+            { value: '1', label: t('fuel.emissionStickerOptions.none') },
+            { value: '2', label: t('fuel.emissionStickerOptions.green') },
+            { value: '3', label: t('fuel.emissionStickerOptions.yellow') },
+            { value: '4', label: t('fuel.emissionStickerOptions.red') },
+          ]}
           control={control}
-          render={({ field }) => (
-            <Radio
-              label={t('fuel.emissionSticker')}
-              options={[
-                { value: '1', label: t('fuel.emissionStickerOptions.none') },
-                { value: '2', label: t('fuel.emissionStickerOptions.green') },
-                { value: '3', label: t('fuel.emissionStickerOptions.yellow') },
-                { value: '4', label: t('fuel.emissionStickerOptions.red') },
-              ]}
-              {...field}
-            />
-          )}
         />
       </Fieldset>
 

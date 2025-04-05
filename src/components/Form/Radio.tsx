@@ -1,6 +1,7 @@
 import { Field, RadioGroup } from '@chakra-ui/react';
 import clsx from 'clsx';
 import { ComponentProps, forwardRef } from 'react';
+import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 type RadioProps = ComponentProps<typeof RadioGroup.Root> & {
   options: Array<{
@@ -9,6 +10,16 @@ type RadioProps = ComponentProps<typeof RadioGroup.Root> & {
   }>;
   label: string;
   error?: string;
+};
+
+type RadioContainerProps<T extends FieldValues> = {
+  control: Control<T>;
+  label: string;
+  name: Path<T>;
+  options: Array<{
+    value: string;
+    label: string;
+  }>;
 };
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>(
@@ -40,6 +51,16 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
   }
 );
 
+const RadioContainer = <T extends FieldValues>({
+  control,
+  label,
+  name,
+  options,
+}: RadioContainerProps<T>) => {
+  const { field, fieldState } = useController({ control, name });
+  return <Radio label={label} options={options} error={fieldState.error?.message} {...field} />;
+};
+
 Radio.displayName = 'Radio';
 
-export { Radio };
+export { Radio, RadioContainer };

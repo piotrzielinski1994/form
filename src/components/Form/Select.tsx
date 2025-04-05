@@ -58,13 +58,15 @@ const SelectContainer = <T extends FieldValues>({
   options,
   disabled,
 }: SelectContainerProps<T>) => {
-  const {
-    field,
-    fieldState: { error },
-  } = useController({ control, name });
-
+  const { field, fieldState } = useController({ control, name });
   return (
-    <Select label={label} options={options} error={error?.message} {...field} disabled={disabled} />
+    <Select
+      label={label}
+      options={options}
+      error={fieldState.error?.message}
+      {...field}
+      disabled={disabled}
+    />
   );
 };
 
