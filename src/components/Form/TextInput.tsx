@@ -2,10 +2,17 @@
 
 import { Field, Input } from '@chakra-ui/react';
 import { ComponentProps, forwardRef } from 'react';
+import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 type TextInputProps = ComponentProps<typeof Input> & {
   label: string;
   error?: string;
+};
+
+type TextInputContainerProps<T extends FieldValues> = {
+  control: Control<T>;
+  label: string;
+  name: Path<T>;
 };
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -23,6 +30,15 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   }
 );
 
+const TextInputContainer = <T extends FieldValues>({
+  control,
+  label,
+  name,
+}: TextInputContainerProps<T>) => {
+  const { field, fieldState } = useController({ control, name });
+  return <TextInput label={label} {...field} error={fieldState.error?.message} />;
+};
+
 TextInput.displayName = 'TextInput';
 
-export { TextInput };
+export { TextInput, TextInputContainer };

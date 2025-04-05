@@ -6,7 +6,7 @@ import { Form } from '@/components/Form/Form';
 import { NumericInput } from '@/components/Form/NumericInput';
 import { Radio } from '@/components/Form/Radio';
 import { Select } from '@/components/Form/Select';
-import { TextInput } from '@/components/Form/TextInput';
+import { TextInputContainer } from '@/components/Form/TextInput';
 import { getZodErrorMap } from '@/i18n/validation';
 import { Button } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -73,10 +73,15 @@ const ComplexForm = () => {
             />
           )}
         />
-        <TextInput
+        <TextInputContainer
           label={t('vehicleData.modelVersion')}
-          {...register('vehicleData.modelVersion')}
-          error={errors.vehicleData?.modelVersion?.message}
+          name="vehicleData.modelVersion"
+          control={control}
+        />
+        <TextInputContainer
+          label={t('vehicleData.modelVersion')}
+          name="vehicleData.modelVersion"
+          control={control}
         />
       </Fieldset>
 
@@ -1176,30 +1181,30 @@ const ComplexForm = () => {
       </Fieldset>
 
       <Fieldset legend={t('contactInformation.legend')}>
-        <TextInput
+        <TextInputContainer
           label={t('contactInformation.postalCode')}
-          {...register('contactInformation.postalCode')}
-          error={errors.contactInformation?.postalCode?.message}
+          name="contactInformation.postalCode"
+          control={control}
         />
-        <TextInput
+        <TextInputContainer
           label={t('contactInformation.city')}
-          {...register('contactInformation.city')}
-          error={errors.contactInformation?.city?.message}
+          name="contactInformation.city"
+          control={control}
         />
-        <TextInput
+        <TextInputContainer
           label={t('contactInformation.phoneCountryCode')}
-          {...register('contactInformation.phoneCountryCode')}
-          error={errors.contactInformation?.phoneCountryCode?.message}
+          name="contactInformation.phoneCountryCode"
+          control={control}
         />
-        <TextInput
+        <TextInputContainer
           label={t('contactInformation.phoneAreaCode')}
-          {...register('contactInformation.phoneAreaCode')}
-          error={errors.contactInformation?.phoneAreaCode?.message}
+          name="contactInformation.phoneAreaCode"
+          control={control}
         />
-        <TextInput
+        <TextInputContainer
           label={t('contactInformation.phoneSubscriberNumber')}
-          {...register('contactInformation.phoneSubscriberNumber')}
-          error={errors.contactInformation?.phoneSubscriberNumber?.message}
+          name="contactInformation.phoneSubscriberNumber"
+          control={control}
         />
         <Controller
           name="contactInformation.hidePhoneNumber"
