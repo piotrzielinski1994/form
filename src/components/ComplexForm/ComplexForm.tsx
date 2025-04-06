@@ -12,6 +12,7 @@ import { ActionBar, Button, Portal } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
+import { toaster } from '../../chakra-ui/toaster';
 import {
   bodyColors,
   bodyTypes,
@@ -46,9 +47,13 @@ const ComplexForm = () => {
     <FormProvider {...form}>
       <Form
         storageKey="complex-form"
-        onSubmit={handleSubmit((data) => console.log(data))}
-        noValidate
         id="complex-form"
+        noValidate
+        onSubmit={handleSubmit((data) => {
+          console.log(data);
+          reset();
+          toaster.create({ description: 'Success', type: 'success' });
+        })}
       >
         <Fieldset legend={t('vehicleData.legend')}>
           <SelectContainer
