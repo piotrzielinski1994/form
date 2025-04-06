@@ -197,7 +197,7 @@ const schema = z.object({
   price: z.object({
     amount: z.number(),
     negotiable: z.boolean(),
-    taxDeductible: z.literal(true),
+    taxDeductible: z.literal<boolean>(true),
   }),
   contactInformation: z.object({
     postalCode: z.string().trim(),

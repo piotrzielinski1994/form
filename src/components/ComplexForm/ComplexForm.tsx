@@ -20,6 +20,7 @@ import {
   fuelTypeOptions,
   interiorColorOptions,
   makes,
+  phoneCountryCodes,
   transmissionOptions,
   upholsteryOptions,
   vehicleOfferTypeOptions,
@@ -1051,9 +1052,10 @@ const ComplexForm = () => {
             />
           </div>
           <div className="grid grid-cols-3 gap-2">
-            <TextInputContainer
+            <SelectContainer
               label={t('contactInformation.phoneCountryCode')}
               name="contactInformation.phoneCountryCode"
+              options={phoneCountryCodes}
               control={control}
             />
             <TextInputContainer
