@@ -127,7 +127,7 @@ const ComplexForm = () => {
             control={control}
             name="condition.mileage"
           />
-          <div>
+          <div className="grid grid-cols-2">
             <SelectContainer
               name="condition.firstRegistrationMonth"
               label={t('condition.firstRegistrationMonth')}
@@ -162,7 +162,7 @@ const ComplexForm = () => {
             label={t('condition.nonSmoking')}
             control={control}
           />
-          <div>
+          <div className="inputs-wrapper">
             <SelectContainer
               name="condition.nextInspectionMonth"
               label={t('condition.nextInspectionMonth')}
@@ -175,49 +175,53 @@ const ComplexForm = () => {
             <SelectContainer
               name="condition.nextInspectionYear"
               label={t('condition.nextInspectionYear')}
-              options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
-                value: String(1900 + i),
-                label: String(1900 + i),
-              }))}
+              options={Array.from({ length: 101 }, (_, i) => {
+                const year = new Date().getFullYear() - i;
+                return { value: String(year), label: String(year) };
+              })}
               control={control}
             />
           </div>
-          <SelectContainer
-            name="condition.lastTechnicalServiceMonth"
-            label={t('condition.lastTechnicalServiceMonth')}
-            options={Array.from({ length: 12 }, (_, i) => ({
-              value: String(i + 1).padStart(2, '0'),
-              label: String(i + 1).padStart(2, '0'),
-            }))}
-            control={control}
-          />
-          <SelectContainer
-            name="condition.lastTechnicalServiceYear"
-            label={t('condition.lastTechnicalServiceYear')}
-            options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
-              value: String(1900 + i),
-              label: String(1900 + i),
-            }))}
-            control={control}
-          />
-          <SelectContainer
-            name="condition.lastCamBeltServiceMonth"
-            label={t('condition.lastCamBeltServiceMonth')}
-            options={Array.from({ length: 12 }, (_, i) => ({
-              value: String(i + 1).padStart(2, '0'),
-              label: String(i + 1).padStart(2, '0'),
-            }))}
-            control={control}
-          />
-          <SelectContainer
-            name="condition.lastCamBeltServiceYear"
-            label={t('condition.lastCamBeltServiceYear')}
-            options={Array.from({ length: new Date().getFullYear() - 1900 + 1 }, (_, i) => ({
-              value: String(1900 + i),
-              label: String(1900 + i),
-            }))}
-            control={control}
-          />
+          <div className="inputs-wrapper">
+            <SelectContainer
+              name="condition.lastTechnicalServiceMonth"
+              label={t('condition.lastTechnicalServiceMonth')}
+              options={Array.from({ length: 12 }, (_, i) => ({
+                value: String(i + 1).padStart(2, '0'),
+                label: String(i + 1).padStart(2, '0'),
+              }))}
+              control={control}
+            />
+            <SelectContainer
+              name="condition.lastTechnicalServiceYear"
+              label={t('condition.lastTechnicalServiceYear')}
+              options={Array.from({ length: 101 }, (_, i) => {
+                const year = new Date().getFullYear() - i;
+                return { value: String(year), label: String(year) };
+              })}
+              control={control}
+            />
+          </div>
+          <div className="inputs-wrapper">
+            <SelectContainer
+              name="condition.lastCamBeltServiceMonth"
+              label={t('condition.lastCamBeltServiceMonth')}
+              options={Array.from({ length: 12 }, (_, i) => ({
+                value: String(i + 1).padStart(2, '0'),
+                label: String(i + 1).padStart(2, '0'),
+              }))}
+              control={control}
+            />
+            <SelectContainer
+              name="condition.lastCamBeltServiceYear"
+              label={t('condition.lastCamBeltServiceYear')}
+              options={Array.from({ length: 101 }, (_, i) => {
+                const year = new Date().getFullYear() - i;
+                return { value: String(year), label: String(year) };
+              })}
+              control={control}
+            />
+          </div>
           <Controller
             name="condition.damagedVehicle"
             control={control}
@@ -265,47 +269,6 @@ const ComplexForm = () => {
                 onChange={(e) => field.onChange(e.target.value === 'true')}
               />
             )}
-          />
-        </Fieldset>
-
-        <Fieldset legend={t('motor.legend')}>
-          <SelectContainer
-            name="motor.driveType"
-            label={t('motor.driveType')}
-            options={driveTypeOptions}
-            control={control}
-          />
-          <SelectContainer
-            name="motor.transmission"
-            label={t('motor.transmission')}
-            options={transmissionOptions}
-            control={control}
-          />
-          <NumericInputContainer
-            label={t('motor.powerKW')}
-            control={control}
-            name="motor.powerKW"
-          />
-          <NumericInputContainer
-            label={t('motor.powerHP')}
-            control={control}
-            name="motor.powerHP"
-          />
-          <NumericInputContainer label={t('motor.gears')} control={control} name="motor.gears" />
-          <NumericInputContainer
-            label={t('motor.cylinders')}
-            control={control}
-            name="motor.cylinders"
-          />
-          <NumericInputContainer
-            label={t('motor.engineCapacity')}
-            control={control}
-            name="motor.engineCapacity"
-          />
-          <NumericInputContainer
-            label={t('motor.emptyWeight')}
-            control={control}
-            name="motor.emptyWeight"
           />
         </Fieldset>
 
@@ -924,6 +887,51 @@ const ComplexForm = () => {
           </div>
         </Fieldset>
 
+        <Fieldset legend={t('motor.legend')}>
+          <SelectContainer
+            name="motor.driveType"
+            label={t('motor.driveType')}
+            options={driveTypeOptions}
+            control={control}
+          />
+          <SelectContainer
+            name="motor.transmission"
+            label={t('motor.transmission')}
+            options={transmissionOptions}
+            control={control}
+          />
+          <div className="inputs-wrapper">
+            <NumericInputContainer
+              label={t('motor.powerKW')}
+              control={control}
+              name="motor.powerKW"
+            />
+            <NumericInputContainer
+              label={t('motor.powerHP')}
+              control={control}
+              name="motor.powerHP"
+            />
+          </div>
+          <NumericInputContainer label={t('motor.gears')} control={control} name="motor.gears" />
+          <NumericInputContainer
+            label={t('motor.cylinders')}
+            control={control}
+            name="motor.cylinders"
+          />
+          <div className="inputs-wrapper">
+            <NumericInputContainer
+              label={t('motor.engineCapacity')}
+              control={control}
+              name="motor.engineCapacity"
+            />
+            <NumericInputContainer
+              label={t('motor.emptyWeight')}
+              control={control}
+              name="motor.emptyWeight"
+            />
+          </div>
+        </Fieldset>
+
         <Fieldset legend={t('fuel.legend')}>
           <SelectContainer
             name="fuel.fuelType"
@@ -931,7 +939,7 @@ const ComplexForm = () => {
             options={fuelTypeOptions}
             control={control}
           />
-          <SelectContainer
+          <RadioContainer
             name="fuel.environmentalProtocol"
             label={t('fuel.environmentalProtocol')}
             options={[
@@ -955,17 +963,36 @@ const ComplexForm = () => {
             label={t('fuel.sootParticles')}
             control={control}
           />
-          <NumericInputContainer
-            label={t('fuel.wltpConsumptionCombined')}
-            control={control}
-            name="fuel.wltpConsumptionCombined"
-          />
-          {isWltpCo2EmissionsCombinedVisible && (
-            <NumericInputContainer
-              label={t('fuel.wltpCo2EmissionsCombined')}
-              control={control}
-              name="fuel.wltpCo2EmissionsCombined"
-            />
+          {isWltpCo2EmissionsCombinedVisible ? (
+            <>
+              <NumericInputContainer
+                key="wltpConsumptionCombined"
+                label={t('fuel.wltpConsumptionCombined')}
+                control={control}
+                name="fuel.wltpConsumptionCombined"
+              />
+              <NumericInputContainer
+                key="wltpCo2EmissionsCombined"
+                label={t('fuel.wltpCo2EmissionsCombined')}
+                control={control}
+                name="fuel.wltpCo2EmissionsCombined"
+              />
+            </>
+          ) : (
+            <>
+              <NumericInputContainer
+                key="consumptionCombined"
+                label={t('fuel.consumptionCombined')}
+                control={control}
+                name="fuel.consumptionCombined"
+              />
+              <NumericInputContainer
+                key="co2EmissionsCombined"
+                label={t('fuel.co2EmissionsCombined')}
+                control={control}
+                name="fuel.co2EmissionsCombined"
+              />
+            </>
           )}
 
           <SelectContainer
@@ -1011,31 +1038,35 @@ const ComplexForm = () => {
         </Fieldset>
 
         <Fieldset legend={t('contactInformation.legend')}>
-          <TextInputContainer
-            label={t('contactInformation.postalCode')}
-            name="contactInformation.postalCode"
-            control={control}
-          />
-          <TextInputContainer
-            label={t('contactInformation.city')}
-            name="contactInformation.city"
-            control={control}
-          />
-          <TextInputContainer
-            label={t('contactInformation.phoneCountryCode')}
-            name="contactInformation.phoneCountryCode"
-            control={control}
-          />
-          <TextInputContainer
-            label={t('contactInformation.phoneAreaCode')}
-            name="contactInformation.phoneAreaCode"
-            control={control}
-          />
-          <TextInputContainer
-            label={t('contactInformation.phoneSubscriberNumber')}
-            name="contactInformation.phoneSubscriberNumber"
-            control={control}
-          />
+          <div className="grid grid-cols-3 gap-2">
+            <TextInputContainer
+              label={t('contactInformation.postalCode')}
+              name="contactInformation.postalCode"
+              control={control}
+            />
+            <TextInputContainer
+              label={t('contactInformation.city')}
+              name="contactInformation.city"
+              control={control}
+            />
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            <TextInputContainer
+              label={t('contactInformation.phoneCountryCode')}
+              name="contactInformation.phoneCountryCode"
+              control={control}
+            />
+            <TextInputContainer
+              label={t('contactInformation.phoneAreaCode')}
+              name="contactInformation.phoneAreaCode"
+              control={control}
+            />
+            <TextInputContainer
+              label={t('contactInformation.phoneSubscriberNumber')}
+              name="contactInformation.phoneSubscriberNumber"
+              control={control}
+            />
+          </div>
           <div className="grid gap-1">
             <div>{t('contactInformation.hidePhoneNumber')}</div>
             <CheckboxContainer

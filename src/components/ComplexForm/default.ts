@@ -1,6 +1,6 @@
-import { FormFields } from './schema';
+import { PartialFormFields } from './schema';
 
-const defaultValues: FormFields = {
+const defaultValues: PartialFormFields = {
   vehicleData: {
     make: '',
     model: '',
@@ -182,6 +182,8 @@ const defaultValues: FormFields = {
     fuelType: '',
     primaryFuelType: '',
     environmentalProtocol: '',
+    consumptionCombined: 0,
+    co2EmissionsCombined: 0,
     wltpConsumptionCombined: 0,
     wltpCo2EmissionsCombined: 0,
     wltpCo2Class: '',

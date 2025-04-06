@@ -47,6 +47,7 @@ const NumericInputContainer = <T extends FieldValues>({
       {...field}
       onChange={(e) => {
         const value = e.target.value;
+        console.log('@@@ value | ', value);
         field.onChange(value === '' ? undefined : Number(value));
       }}
       error={fieldState.error?.message}

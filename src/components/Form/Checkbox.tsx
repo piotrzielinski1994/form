@@ -15,7 +15,7 @@ type CheckboxContainerProps<T extends FieldValues> = {
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({ label, error, ...props }, ref) => {
   return (
-    <ChakraCheckbox.Root invalid={!!error}>
+    <ChakraCheckbox.Root invalid={!!error} className="!items-start">
       <ChakraCheckbox.HiddenInput suppressHydrationWarning {...props} ref={ref} />
       <ChakraCheckbox.Control />
       <ChakraCheckbox.Label>{label}</ChakraCheckbox.Label>

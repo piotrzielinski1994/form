@@ -221,9 +221,9 @@
         "electric": "Elektrisch"
       },
       "consumptionCombined": "Kraftstoffverbrauch kombiniert",
-      "wltpConsumptionCombined": "WLTP-Verbrauch kombiniert",
-      "co2Emissions": "CO2-Emissionen kombiniert",
-      "wltpCo2EmissionsCombined": "WLTP-CO2-Emissionen kombiniert",
+      "co2EmissionsCombined": "CO2 Emissionen kombiniert",
+      "wltpConsumptionCombined": "Kraftstoffverbrauch kombiniert (WLTP)",
+      "wltpCo2EmissionsCombined": "CO2 Emissionen kombiniert (WLTP)",
       "efficiencyClass": "Effizienzklasse",
       "wltpCo2Class": "CO2-Klasse",
       "pollutionClass": {

@@ -1,2 +1,22 @@
 @layer reset, component, page, app;
 @import 'tailwindcss';
+
+.inputs-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+}
+
+.inputs-wrapper > [data-part='root'] {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+}
+
+.inputs-wrapper > [data-part='root'] > [data-part='label'] {
+  align-self: end;
+}
+
+.inputs-wrapper > [data-part='root'] > [data-part='error-text'] {
+  align-self: start;
+}
