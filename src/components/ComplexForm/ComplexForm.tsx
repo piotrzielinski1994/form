@@ -1,5 +1,7 @@
 'use client';
 
+import { toaster } from '@/chakra-ui/toaster';
+import { ComplexFormActionBar } from '@/components/ComplexFormActionBar';
 import { CheckboxContainer } from '@/components/Form/Checkbox';
 import { Fieldset } from '@/components/Form/Fieldset';
 import { Form } from '@/components/Form/Form';
@@ -8,11 +10,9 @@ import { RadioContainer } from '@/components/Form/Radio';
 import { Select, SelectContainer } from '@/components/Form/Select';
 import { TextInputContainer } from '@/components/Form/TextInput';
 import { getZodErrorMap } from '@/i18n/validation';
-import { ActionBar, Button, Portal } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
-import { toaster } from '../../chakra-ui/toaster';
 import {
   bodyColors,
   bodyTypes,
@@ -40,6 +40,7 @@ const ComplexForm = () => {
     resolver: zodResolver(schema, { errorMap: getZodErrorMap(tZod) }),
   });
   const { handleSubmit, control, reset } = form;
+
   const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
   const vehicleDataModelOptions = useVehicleDataModelOptions(control);
 
@@ -55,7 +56,7 @@ const ComplexForm = () => {
           toaster.create({ description: 'Success', type: 'success' });
         })}
       >
-        <Fieldset legend={t('vehicleData.legend')}>
+        <Fieldset legend={t('vehicleData.legend')} id="vehicleData">
           <SelectContainer
             name="vehicleData.make"
             label={t('vehicleData.make')}
@@ -76,7 +77,7 @@ const ComplexForm = () => {
           />
         </Fieldset>
 
-        <Fieldset legend={t('characteristics.legend')}>
+        <Fieldset legend={t('characteristics.legend')} id="characteristics">
           <SelectContainer
             name="characteristics.bodyType"
             control={control}
@@ -121,7 +122,7 @@ const ComplexForm = () => {
           />
         </Fieldset>
 
-        <Fieldset legend={t('condition.legend')}>
+        <Fieldset legend={t('condition.legend')} id="condition">
           <SelectContainer
             name="condition.vehicleOfferType"
             label={t('condition.vehicleOfferType')}
@@ -278,7 +279,7 @@ const ComplexForm = () => {
           />
         </Fieldset>
 
-        <Fieldset legend={t('equipment.legend')}>
+        <Fieldset legend={t('equipment.legend')} id="equipment">
           <div className="grid gap-1">
             <div>{t('equipment.airbags.legend')}</div>
             <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
@@ -893,7 +894,7 @@ const ComplexForm = () => {
           </div>
         </Fieldset>
 
-        <Fieldset legend={t('motor.legend')}>
+        <Fieldset legend={t('motor.legend')} id="motor">
           <SelectContainer
             name="motor.driveType"
             label={t('motor.driveType')}
@@ -938,7 +939,7 @@ const ComplexForm = () => {
           </div>
         </Fieldset>
 
-        <Fieldset legend={t('fuel.legend')}>
+        <Fieldset legend={t('fuel.legend')} id="fuel">
           <SelectContainer
             name="fuel.fuelType"
             label={t('fuel.fuelType')}
@@ -1029,7 +1030,7 @@ const ComplexForm = () => {
           />
         </Fieldset>
 
-        <Fieldset legend={t('price.legend')}>
+        <Fieldset legend={t('price.legend')} id="price">
           <NumericInputContainer label={t('price.amount')} control={control} name="price.amount" />
           <CheckboxContainer
             name="price.negotiable"
@@ -1043,7 +1044,7 @@ const ComplexForm = () => {
           />
         </Fieldset>
 
-        <Fieldset legend={t('contactInformation.legend')}>
+        <Fieldset legend={t('contactInformation.legend')} id="contactInformation">
           <div className="grid grid-cols-3 gap-2">
             <TextInputContainer
               label={t('contactInformation.postalCode')}
@@ -1084,7 +1085,7 @@ const ComplexForm = () => {
           </div>
         </Fieldset>
 
-        <Fieldset legend={t('financingOffer.legend')}>
+        <Fieldset legend={t('financingOffer.legend')} id="financingOffer">
           <NumericInputContainer
             label={t('financingOffer.price')}
             control={control}
@@ -1137,37 +1138,7 @@ const ComplexForm = () => {
           />
         </Fieldset>
 
-        <ActionBar.Root open>
-          <Portal>
-            <ActionBar.Positioner className="z-10">
-              <ActionBar.Content>
-                <Button
-                  variant="outline"
-                  justifySelf="center"
-                  type="button"
-                  size="lg"
-                  position="sticky"
-                  bottom="4"
-                  px="10"
-                  onClick={() => reset()}
-                >
-                  {t('reset')}
-                </Button>
-                <Button
-                  form="complex-form"
-                  justifySelf="center"
-                  type="submit"
-                  size="lg"
-                  position="sticky"
-                  bottom="4"
-                  px="10"
-                >
-                  {t('submit')}
-                </Button>
-              </ActionBar.Content>
-            </ActionBar.Positioner>
-          </Portal>
-        </ActionBar.Root>
+        <ComplexFormActionBar formId="complex-form" onCancel={() => reset()} />
       </Form>
     </FormProvider>
   );

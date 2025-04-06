@@ -7,14 +7,14 @@ type FieldsetProps = ComponentProps<typeof ChakraFieldset.Root> & {
 };
 
 const Fieldset = forwardRef<HTMLFieldSetElement, FieldsetProps>(
-  ({ legend, children, className, ...props }, ref) => {
+  ({ legend, children, className, id, ...props }, ref) => {
     return (
       <ChakraFieldset.Root
         className={clsx('p-10 border-1 border-gray-500 rounded-md', className)}
         {...props}
         ref={ref}
       >
-        <Stack>
+        <Stack id={id}>
           <ChakraFieldset.Legend className="text-lg">{legend}</ChakraFieldset.Legend>
         </Stack>
         <ChakraFieldset.Content>{children}</ChakraFieldset.Content>

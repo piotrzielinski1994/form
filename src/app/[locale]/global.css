@@ -1,6 +1,11 @@
 @layer reset, component, page, app;
 @import 'tailwindcss';
 
+html {
+  scroll-padding-top: 60px;
+  scroll-behavior: smooth;
+}
+
 .inputs-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
