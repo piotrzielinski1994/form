@@ -9,7 +9,7 @@ const useVehicleDataModelOptions = (control: Control<PartialFormFields>) => {
     models: (typeof models)[string];
   }>({
     enabled: !!makeId,
-    queryKey: ['GET', '/api/makes/{makeId}/models', makeId],
+    queryKey: ['/api/makes/{makeId}/models', { makeId }],
     queryFn: async () => {
       const response = await fetch(`/api/makes/${makeId}/models`);
       if (!response.ok) throw new Error('Failed to fetch vehicle models');

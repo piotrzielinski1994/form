@@ -68,6 +68,7 @@ const ComplexForm = () => {
             label={t('vehicleData.model')}
             options={vehicleDataModelOptions.models}
             disabled={vehicleDataModelOptions.isLoading}
+            isLoading={vehicleDataModelOptions.isLoading}
             control={control}
           />
           <TextInputContainer
