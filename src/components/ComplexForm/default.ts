@@ -181,11 +181,9 @@ const defaultValues: PartialFormFields = {
   fuel: {
     fuelType: '',
     primaryFuelType: '',
-    environmentalProtocol: '',
+    environmentalProtocol: 'nedc',
     consumptionCombined: 0,
     co2EmissionsCombined: 0,
-    wltpConsumptionCombined: 0,
-    wltpCo2EmissionsCombined: 0,
     wltpCo2Class: '',
     pollutionClass: '',
     emissionSticker: '',
