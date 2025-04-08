@@ -7,7 +7,7 @@ export default function IndexPage() {
   return (
     <>
       <h1 className="text-5xl text-center">{t('title')}</h1>
-      <div className="grid grid-cols-[1fr_auto] gap-10 !items-start">
+      <div className="grid grid-cols-[auto_1fr] gap-10 !items-start">
         <ComplexFormNavigation />
         <ComplexForm />
       </div>

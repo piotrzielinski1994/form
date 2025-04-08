@@ -181,19 +181,29 @@ const schema = z.object({
     engineCapacity: z.number(),
     emptyWeight: z.number(),
   }),
-  fuel: z.object({
-    fuelType: z.string().trim(),
-    primaryFuelType: z.string().trim(),
-    environmentalProtocol: z.string().trim(),
-    consumptionCombined: z.number(),
-    co2EmissionsCombined: z.number(),
-    wltpConsumptionCombined: z.number(),
-    wltpCo2EmissionsCombined: z.number(),
-    wltpCo2Class: z.string().trim(),
-    pollutionClass: z.string().trim(),
-    emissionSticker: z.string().trim(),
-    sootParticles: z.boolean(),
-  }),
+  fuel: z
+    .object({
+      fuelType: z.string().trim(),
+      primaryFuelType: z.string().trim(),
+      wltpCo2Class: z.string().trim(),
+      pollutionClass: z.string().trim(),
+      emissionSticker: z.string().trim(),
+      sootParticles: z.boolean(),
+    })
+    .and(
+      z.discriminatedUnion('environmentalProtocol', [
+        z.object({
+          environmentalProtocol: z.literal('wltp'),
+          wltpConsumptionCombined: z.number().min(10).max(100),
+          wltpCo2EmissionsCombined: z.number(),
+        }),
+        z.object({
+          environmentalProtocol: z.literal('nedc'),
+          consumptionCombined: z.number().min(1).max(10),
+          co2EmissionsCombined: z.number(),
+        }),
+      ])
+    ),
   price: z.object({
     amount: z.number(),
     negotiable: z.boolean(),

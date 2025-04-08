@@ -222,7 +222,7 @@
       },
       "consumptionCombined": "Combined Fuel Consumption",
       "co2EmissionsCombined": "CO2 Emissions Combined",
-      "wltpConsumptionCombined": "WLTP Combined Consumption",
+      "wltpConsumptionCombined": "WLTP Combined Fuel Consumption",
       "wltpCo2EmissionsCombined": "WLTP CO2 Emissions Combined",
       "efficiencyClass": "Efficiency Class",
       "wltpCo2Class": "CO2 Class",
