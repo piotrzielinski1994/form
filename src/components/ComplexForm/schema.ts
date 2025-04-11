@@ -5,9 +5,45 @@ type PartialFormFields = z.input<typeof schema>;
 
 const schema = z.object({
   vehicleData: z.object({
-    make: z.string().trim().min(1),
-    model: z.string().trim().min(1),
-    modelVersion: z.string().trim().min(1),
+    make: z.string().min(1),
+    model: z.string().min(1),
+    modelVersion: z
+      .string()
+      .max(50)
+      .refine((value) => !/[<>()]/.test(value))
+      .refine((val) => !z.string().email().safeParse(val).success)
+      .refine((val) => !z.string().url().safeParse(val).success),
+    modelName: z.string().min(1).max(50),
+    hsn: z
+      .string()
+      .regex(/^[0-9]{4}$/)
+      .or(z.literal('')),
+    tsn: z
+      .string()
+      .regex(/^[a-zA-Z0-9]{3}$/)
+      .or(z.literal('')),
+    licencePlateNumber: z
+      .string()
+      .max(8)
+      .nullable()
+      .refine((value) => value === null || !/[<>()]/.test(value))
+      .refine((val) => !z.string().email().safeParse(val).success)
+      .refine((val) => !z.string().url().safeParse(val).success),
+    vin: z
+      .string()
+      .regex(/^[A-HJ-NPR-Z0-9]{17}$/)
+      .or(z.literal('')),
+    carpassMileageUrl: z.string().url().max(1000).or(z.literal('')),
+    offerReference: z
+      .string()
+      .max(50)
+      .refine((value) => !/[<>()]/.test(value))
+      .refine((val) => !z.string().email().safeParse(val).success)
+      .refine((val) => !z.string().url().safeParse(val).success),
+    natCode: z
+      .string()
+      .regex(/^[0-9]+$/)
+      .or(z.literal('')),
   }),
   characteristics: z.object({
     bodyType: z.string().trim().min(1),
