@@ -14,10 +14,14 @@ const Steps = ({ steps, onClick, className }: StepsProps) => {
   return (
     <ChakraSteps.Root
       orientation="vertical"
-      defaultStep={1}
       count={steps.length}
       className={clsx('!h-auto', className)}
-      onStepChange={({ step }) => onClick(steps[step].id)}
+      onClick={(e) => {
+        const target = e.target as HTMLElement;
+        const step = target.closest('button')?.id.split(':trigger:').at(1);
+        if (step === undefined) return;
+        onClick(steps[Number(step)].id);
+      }}
     >
       <ChakraSteps.List>
         {steps.map((step, index) => (
