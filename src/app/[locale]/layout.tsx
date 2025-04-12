@@ -1,4 +1,4 @@
-import LocaleSwitcher from '@/components/LocaleSwitcher';
+import { Header } from '@/components/Header/Header';
 import { routing } from '@/i18n/routing';
 import { Providers } from '@/providers/Providers';
 import { Container } from '@chakra-ui/react';
@@ -21,11 +21,7 @@ const LocaleLayout = async ({ children, params }: LayoutProps) => {
         <NextIntlClientProvider>
           <Providers>
             <div id="root" className="grid gap-10">
-              <header className="bg-black sticky top-0 z-20 h-12">
-                <Container maxW="3xl" className="grid gap-10">
-                  <LocaleSwitcher />
-                </Container>
-              </header>
+              <Header />
               <Container as="main" maxW="3xl" className="grid gap-10 relative">
                 {children}
               </Container>
