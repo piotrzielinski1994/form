@@ -29,7 +29,12 @@ import {
 import { defaultValues } from './default';
 import { useVehicleDataModelOptions } from './options';
 import { schema } from './schema';
-import { useWltpCo2EmissionsCombinedVisibility } from './visibility';
+import {
+  useCarpassMileageUrlVisibility,
+  useModelNameVisibility,
+  useVinVisibility,
+  useWltpCo2EmissionsCombinedVisibility,
+} from './visibility';
 
 const ComplexForm = () => {
   const t = useTranslations('ComplexForm');
@@ -43,6 +48,9 @@ const ComplexForm = () => {
 
   const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
   const vehicleDataModelOptions = useVehicleDataModelOptions(control);
+  const isModelNameVisible = useModelNameVisibility();
+  const isVinVisible = useVinVisibility();
+  const isCarpassMileageUrlVisible = useCarpassMileageUrlVisibility();
 
   return (
     <FormProvider {...form}>
@@ -76,6 +84,27 @@ const ComplexForm = () => {
             name="vehicleData.modelVersion"
             control={control}
           />
+          {isModelNameVisible && (
+            <TextInputContainer
+              label={t('vehicleData.modelName')}
+              name="vehicleData.modelName"
+              control={control}
+            />
+          )}
+          {isVinVisible && (
+            <TextInputContainer
+              label={t('vehicleData.vin')}
+              name="vehicleData.vin"
+              control={control}
+            />
+          )}
+          {isCarpassMileageUrlVisible && (
+            <TextInputContainer
+              label={t('vehicleData.carpassMileageUrl')}
+              name="vehicleData.carpassMileageUrl"
+              control={control}
+            />
+          )}
         </Fieldset>
 
         <Fieldset legend={t('characteristics.legend')} id="characteristics">

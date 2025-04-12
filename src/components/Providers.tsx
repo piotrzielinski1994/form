@@ -8,7 +8,7 @@ import { VehicleConfig, VehicleConfigProvider } from './VehicleConfigProvider';
 const queryClient = new QueryClient();
 const vehicleConfig: VehicleConfig = {
   culture: 'de-DE',
-  userType: 'D',
+  userType: 'P',
   vehicleType: 'C',
 };
 

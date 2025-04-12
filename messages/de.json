@@ -10,7 +10,15 @@
       "legend": "Fahrzeugdaten",
       "make": "Marke",
       "model": "Modell",
-      "modelVersion": "Modellvariante"
+      "modelVersion": "Modellvariante",
+      "modelName": "Modellname",
+      "hsn": "HSN",
+      "tsn": "TSN",
+      "licencePlateNumber": "Kennzeichen",
+      "vin": "Fahrgestellnummer (VIN)",
+      "carpassMileageUrl": "Carpass-Kilometerstand-URL",
+      "offerReference": "Angebotsreferenz",
+      "natCode": "NAT-Code"
     },
     "characteristics": {
       "legend": "Merkmale",

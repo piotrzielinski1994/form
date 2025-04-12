@@ -14,4 +14,34 @@ const useHsnVisibility = (): boolean => {
   return userType === 'D' && culture === 'de-DE';
 };
 
-export { useHsnVisibility, useWltpCo2EmissionsCombinedVisibility };
+const useModelVisibility = (): boolean => {
+  const { vehicleType } = useVehicleConfig();
+  return !['N', 'X', 'L'].includes(vehicleType);
+};
+
+const useModelNameVisibility = (): boolean => {
+  const { vehicleType, userType } = useVehicleConfig();
+  return !['N', 'X', 'L'].includes(vehicleType) && userType === 'D';
+};
+
+const useVinVisibility = (): boolean => {
+  const { userType, vehicleType } = useVehicleConfig();
+  return userType === 'P' && vehicleType === 'C';
+};
+
+const useCarpassMileageUrlVisibility = (): boolean => {
+  const { vehicleType, userType, culture } = useVehicleConfig();
+  if (['N', 'X', 'L'].includes(vehicleType)) return false;
+  if (!['fr-BE', 'nl-BE'].includes(culture)) return false;
+  if (userType !== 'D') return false;
+  return true;
+};
+
+export {
+  useCarpassMileageUrlVisibility,
+  useHsnVisibility,
+  useModelNameVisibility,
+  useModelVisibility,
+  useVinVisibility,
+  useWltpCo2EmissionsCombinedVisibility,
+};

@@ -10,7 +10,15 @@
       "legend": "Vehicle Data",
       "make": "Make",
       "model": "Model",
-      "modelVersion": "Model Version"
+      "modelVersion": "Model Version",
+      "modelName": "Model Name",
+      "hsn": "HSN",
+      "tsn": "TSN",
+      "licencePlateNumber": "License Plate Number",
+      "vin": "Vehicle Identification Number (VIN)",
+      "carpassMileageUrl": "Carpass Mileage URL",
+      "offerReference": "Offer Reference",
+      "natCode": "NAT Code"
     },
     "characteristics": {
       "legend": "Characteristics",
