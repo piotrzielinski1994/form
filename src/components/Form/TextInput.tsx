@@ -30,11 +30,8 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   }
 );
 
-const TextInputContainer = <T extends FieldValues>({
-  control,
-  label,
-  name,
-}: TextInputContainerProps<T>) => {
+const TextInputContainer = <T extends FieldValues>(props: TextInputContainerProps<T>) => {
+  const { control, label, name } = props;
   const { field, fieldState } = useController({ control, name });
   return <TextInput label={label} {...field} error={fieldState.error?.message} />;
 };

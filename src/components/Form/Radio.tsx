@@ -51,12 +51,8 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
   }
 );
 
-const RadioContainer = <T extends FieldValues>({
-  control,
-  label,
-  name,
-  options,
-}: RadioContainerProps<T>) => {
+const RadioContainer = <T extends FieldValues>(props: RadioContainerProps<T>) => {
+  const { control, label, name, options } = props;
   const { field, fieldState } = useController({ control, name });
   return <Radio label={label} options={options} error={fieldState.error?.message} {...field} />;
 };

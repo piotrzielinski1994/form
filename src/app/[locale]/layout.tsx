@@ -1,17 +1,16 @@
 import LocaleSwitcher from '@/components/LocaleSwitcher';
-import { Providers } from '@/components/Providers';
 import { routing } from '@/i18n/routing';
+import { Providers } from '@/providers/Providers';
 import { hasLocale, Locale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 import './global.css';
 
-type LayoutProps = {
-  children: ReactNode;
+type LayoutProps = PropsWithChildren & {
   params: Promise<{ locale: Locale }>;
 };
 
-export default async function LocaleLayout({ children, params }: LayoutProps) {
+const LocaleLayout = async ({ children, params }: LayoutProps) => {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return notFound();
 
@@ -29,4 +28,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       </body>
     </html>
   );
-}
+};
+
+export default LocaleLayout;

@@ -23,11 +23,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({ label, error, ..
   );
 });
 
-const CheckboxContainer = <T extends FieldValues>({
-  control,
-  label,
-  name,
-}: CheckboxContainerProps<T>) => {
+const CheckboxContainer = <T extends FieldValues>(props: CheckboxContainerProps<T>) => {
+  const { control, label, name } = props;
   const { field, fieldState } = useController({ control, name });
   return <Checkbox label={label} error={fieldState.error?.message} {...field} />;
 };

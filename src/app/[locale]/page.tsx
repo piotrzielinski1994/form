@@ -1,9 +1,9 @@
 import { ComplexForm } from '@/components/ComplexForm/ComplexForm';
 import { ComplexFormNavigation } from '@/components/ComplexFormNavigation';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-export default function IndexPage() {
-  const t = useTranslations('HomePage');
+const HomePage = async () => {
+  const t = await getTranslations('HomePage');
   return (
     <>
       <h1 className="text-5xl text-center">{t('title')}</h1>
@@ -13,4 +13,6 @@ export default function IndexPage() {
       </div>
     </>
   );
-}
+};
+
+export default HomePage;

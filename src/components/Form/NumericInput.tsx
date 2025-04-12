@@ -34,23 +34,19 @@ const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
   }
 );
 
-const NumericInputContainer = <T extends FieldValues>({
-  control,
-  label,
-  name,
-}: NumericInputContainerProps<T>) => {
+const NumericInputContainer = <T extends FieldValues>(props: NumericInputContainerProps<T>) => {
+  const { control, label, name } = props;
   const { field, fieldState } = useController({ control, name });
   return (
     <TextInput
       type="number"
       label={label}
       {...field}
+      error={fieldState.error?.message}
       onChange={(e) => {
         const value = e.target.value;
-        console.log('@@@ value | ', value);
         field.onChange(value === '' ? undefined : Number(value));
       }}
-      error={fieldState.error?.message}
     />
   );
 };

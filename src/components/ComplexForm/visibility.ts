@@ -1,5 +1,5 @@
 import { Control, useWatch } from 'react-hook-form';
-import { useVehicleConfig } from '../VehicleConfigProvider';
+import { useVehicleConfig } from '../../providers/VehicleConfigProvider';
 import { PartialFormFields } from './schema';
 
 const useWltpCo2EmissionsCombinedVisibility = (control: Control<PartialFormFields>): boolean => {

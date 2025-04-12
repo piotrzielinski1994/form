@@ -1,6 +1,6 @@
 'use client';
 
-import { toaster } from '@/chakra-ui/toaster';
+import { toaster } from '@/components/chakra-ui/toaster';
 import { ComplexFormActionBar } from '@/components/ComplexFormActionBar';
 import { CheckboxContainer } from '@/components/Form/Checkbox';
 import { Fieldset } from '@/components/Form/Fieldset';

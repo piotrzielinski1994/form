@@ -17,14 +17,11 @@ type SelectProps = ComponentProps<typeof NativeSelect.Field> & {
 
 type SelectContainerProps<T extends FieldValues> = {
   control: Control<T>;
-  label: string;
   name: Path<T>;
-  options: Array<{
-    value: string;
-    label: string;
-  }>;
-  disabled?: boolean;
-  isLoading?: boolean;
+  label: SelectProps['label'];
+  options: SelectProps['options'];
+  disabled?: SelectProps['disabled'];
+  isLoading?: SelectProps['isLoading'];
 };
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -57,14 +54,8 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
   }
 );
 
-const SelectContainer = <T extends FieldValues>({
-  control,
-  label,
-  name,
-  options,
-  disabled,
-  isLoading,
-}: SelectContainerProps<T>) => {
+const SelectContainer = <T extends FieldValues>(props: SelectContainerProps<T>) => {
+  const { control, label, name, options, disabled, isLoading } = props;
   const { field, fieldState } = useController({ control, name });
   return (
     <Select

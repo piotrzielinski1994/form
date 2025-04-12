@@ -1,6 +1,6 @@
 'use client';
 
-import { Toaster } from '@/chakra-ui/toaster';
+import { Toaster } from '@/components/chakra-ui/toaster';
 import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { VehicleConfig, VehicleConfigProvider } from './VehicleConfigProvider';
