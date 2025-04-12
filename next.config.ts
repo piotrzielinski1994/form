@@ -8,6 +8,9 @@ const withNextIntl = createNextIntlPlugin({
 });
 
 const config: NextConfig = {
+  experimental: {
+    optimizePackageImports: ['@chakra-ui/react'],
+  },
   turbopack: {},
 };
 
