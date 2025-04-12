@@ -1,7 +1,6 @@
 import clsx from 'clsx';
-import { FormHTMLAttributes, forwardRef, useEffect } from 'react';
+import { FormHTMLAttributes, forwardRef, useCallback, useEffect } from 'react';
 import { useFormContext, useWatch } from 'react-hook-form';
-import { FormFields } from '../ComplexForm/schema';
 
 type FormProps = FormHTMLAttributes<HTMLFormElement> & {
   storageKey?: string;
@@ -13,23 +12,25 @@ const Form = forwardRef<HTMLFormElement, FormProps>(({ storageKey, className, ..
 });
 
 const useFormStorage = (storageKey: FormProps['storageKey']) => {
-  const { setValue, control } = useFormContext();
+  const { control, formState, reset } = useFormContext();
   const values = useWatch({ control });
 
-  useEffect(() => {
+  const initFromStorage = useCallback(() => {
     if (!storageKey) return;
     const storedValues = window.sessionStorage.getItem(storageKey);
     if (!storedValues) return;
     const parsedValues = JSON.parse(storedValues);
-    Object.entries(parsedValues).forEach(([key, value]) => {
-      setValue(key as keyof FormFields, value);
-    });
-  }, [storageKey, setValue]);
+    setTimeout(() => reset(parsedValues), 0); // Make sure the `useWatch` is subscribed before reset
+  }, [storageKey, reset]);
 
-  useEffect(() => {
+  const updateStorageOnChange = useCallback(() => {
     if (!storageKey) return;
+    if (!formState.isDirty) return;
     window.sessionStorage.setItem(storageKey, JSON.stringify(values));
-  }, [storageKey, values]);
+  }, [storageKey, values, formState]);
+
+  useEffect(initFromStorage, [initFromStorage]);
+  useEffect(updateStorageOnChange, [updateStorageOnChange]);
 };
 
 Form.displayName = 'Form';

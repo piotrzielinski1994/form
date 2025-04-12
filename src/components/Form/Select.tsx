@@ -63,6 +63,7 @@ const SelectContainer = <T extends FieldValues>(props: SelectContainerProps<T>) 
       options={options}
       error={fieldState.error?.message}
       {...field}
+      value={field.value ?? ''} // to make resetting work for `undefined`
       disabled={disabled}
       isLoading={isLoading}
     />

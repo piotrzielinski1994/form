@@ -28,7 +28,7 @@ import {
 } from './constants';
 import { defaultValues } from './default';
 import { useVehicleDataModelOptions } from './options';
-import { schema } from './schema';
+import { FormFields, schema } from './schema';
 import {
   useCarpassMileageUrlVisibility,
   useModelNameVisibility,
@@ -36,10 +36,12 @@ import {
   useWltpCo2EmissionsCombinedVisibility,
 } from './visibility';
 
+const FORM_ID = 'complex-form';
+
 const ComplexForm = () => {
   const t = useTranslations('ComplexForm');
   const tZod = useTranslations('zod');
-  const form = useForm({
+  const form = useForm<FormFields>({
     mode: 'onSubmit',
     defaultValues,
     resolver: zodResolver(schema, { errorMap: getZodErrorMap(tZod) }),
@@ -55,8 +57,8 @@ const ComplexForm = () => {
   return (
     <FormProvider {...form}>
       <Form
-        storageKey="complex-form"
-        id="complex-form"
+        storageKey={FORM_ID}
+        id={FORM_ID}
         noValidate
         onSubmit={handleSubmit((data) => {
           console.log(data);
@@ -1185,7 +1187,7 @@ const ComplexForm = () => {
                   {t('reset')}
                 </Button>
                 <Button
-                  form="complex-form"
+                  form={FORM_ID}
                   justifySelf="center"
                   type="submit"
                   size="lg"
