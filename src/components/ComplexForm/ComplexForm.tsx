@@ -1,6 +1,6 @@
 'use client';
 
-import { toaster } from '@/components/chakra-ui/toaster';
+import { toaster } from '@/components/ChakraUi/Toaster';
 import { CheckboxContainer } from '@/components/Form/Checkbox';
 import { Fieldset } from '@/components/Form/Fieldset';
 import { Form } from '@/components/Form/Form';

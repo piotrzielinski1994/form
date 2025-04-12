@@ -1,4 +1,4 @@
-import { Toaster } from '@/components/chakra-ui/toaster';
+import { Toaster } from '@/components/ChakraUi/Toaster';
 import { Header } from '@/components/Header/Header';
 import { routing } from '@/i18n/routing';
 import { Providers } from '@/providers/Providers';

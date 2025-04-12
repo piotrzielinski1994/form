@@ -1,5 +1,5 @@
 import { Container, Theme } from '@chakra-ui/react';
-import { ColorModeButton } from '../chakra-ui/color-mode';
+import { ColorModeButton } from '../ChakraUi/ColorMode';
 import LocaleSwitcher from './LocaleSwitcher';
 import { VehicleTypeSwitcher } from './VehicleTypeSwitcher';
 

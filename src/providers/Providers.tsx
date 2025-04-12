@@ -1,6 +1,6 @@
 'use client';
 
-import { ColorModeProvider } from '@/components/chakra-ui/color-mode';
+import { ColorModeProvider } from '@/components/ChakraUi/ColorMode';
 import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { VehicleConfigProvider } from './VehicleConfigProvider';
