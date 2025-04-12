@@ -10,7 +10,7 @@ const ComplexFormNavigation = () => {
 
   return (
     <Steps
-      className="sticky top-4"
+      className="sticky top-16"
       steps={[
         { id: 'vehicleData', heading: t('vehicleData.legend') },
         { id: 'characteristics', heading: t('characteristics.legend') },

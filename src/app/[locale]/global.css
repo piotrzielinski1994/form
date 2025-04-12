@@ -2,7 +2,7 @@
 @import 'tailwindcss';
 
 html {
-  scroll-padding-top: 60px;
+  scroll-padding-top: calc(64px + 0.5rem + 2.5rem);
   scroll-behavior: smooth;
 }
 

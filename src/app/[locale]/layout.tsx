@@ -1,6 +1,7 @@
 import LocaleSwitcher from '@/components/LocaleSwitcher';
 import { routing } from '@/i18n/routing';
 import { Providers } from '@/providers/Providers';
+import { Container } from '@chakra-ui/react';
 import { hasLocale, Locale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { PropsWithChildren } from 'react';
@@ -16,13 +17,19 @@ const LocaleLayout = async ({ children, params }: LayoutProps) => {
 
   return (
     <html className="h-full" lang={locale} suppressHydrationWarning>
-      <body className="p-4 grid">
+      <body>
         <NextIntlClientProvider>
           <Providers>
-            <main className="w-full max-w-[48rem] mx-auto grid gap-10">
-              <LocaleSwitcher />
-              {children}
-            </main>
+            <div id="root" className="grid gap-10">
+              <header className="bg-black sticky top-0 z-20 h-12">
+                <Container maxW="3xl" className="grid gap-10">
+                  <LocaleSwitcher />
+                </Container>
+              </header>
+              <Container as="main" maxW="3xl" className="grid gap-10 relative">
+                {children}
+              </Container>
+            </div>
           </Providers>
         </NextIntlClientProvider>
       </body>
