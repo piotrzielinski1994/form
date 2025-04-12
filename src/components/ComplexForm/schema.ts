@@ -3,16 +3,15 @@ import { z } from 'zod';
 type FormFields = z.infer<typeof schema>;
 type PartialFormFields = z.input<typeof schema>;
 
+const isNotUrl = (val: string | null) => !z.string().url().safeParse(val).success;
+const isNotEmail = (val: string | null) => !z.string().email().safeParse(val).success;
+const isNotHtmlLike = (value: string | null) => value === null || !/[<>()]/.test(value);
+
 const schema = z.object({
   vehicleData: z.object({
     make: z.string().min(1),
     model: z.string().min(1),
-    modelVersion: z
-      .string()
-      .max(50)
-      .refine((value) => !/[<>()]/.test(value))
-      .refine((val) => !z.string().email().safeParse(val).success)
-      .refine((val) => !z.string().url().safeParse(val).success),
+    modelVersion: z.string().max(50).refine(isNotHtmlLike).refine(isNotEmail).refine(isNotUrl),
     modelName: z.string().min(1).max(50),
     hsn: z
       .string()
@@ -26,20 +25,15 @@ const schema = z.object({
       .string()
       .max(8)
       .nullable()
-      .refine((value) => value === null || !/[<>()]/.test(value))
-      .refine((val) => !z.string().email().safeParse(val).success)
-      .refine((val) => !z.string().url().safeParse(val).success),
+      .refine(isNotHtmlLike)
+      .refine(isNotEmail)
+      .refine(isNotUrl),
     vin: z
       .string()
       .regex(/^[A-HJ-NPR-Z0-9]{17}$/)
       .or(z.literal('')),
     carpassMileageUrl: z.string().url().max(1000).or(z.literal('')),
-    offerReference: z
-      .string()
-      .max(50)
-      .refine((value) => !/[<>()]/.test(value))
-      .refine((val) => !z.string().email().safeParse(val).success)
-      .refine((val) => !z.string().url().safeParse(val).success),
+    offerReference: z.string().max(50).refine(isNotHtmlLike).refine(isNotEmail).refine(isNotUrl),
     natCode: z
       .string()
       .regex(/^[0-9]+$/)
