@@ -20,7 +20,7 @@ const useFormStorage = (storageKey: FormProps['storageKey']) => {
     const storedValues = window.sessionStorage.getItem(storageKey);
     if (!storedValues) return;
     const parsedValues = JSON.parse(storedValues);
-    setTimeout(() => reset(parsedValues), 0); // Make sure the `useWatch` is subscribed before reset
+    setTimeout(() => reset(parsedValues, { keepDefaultValues: true }), 0); // Make sure the `useWatch` is subscribed before reset
   }, [storageKey, reset]);
 
   const updateStorageOnChange = useCallback(() => {
