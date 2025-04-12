@@ -1,3 +1,4 @@
+import { Toaster } from '@/components/chakra-ui/toaster';
 import { Header } from '@/components/Header/Header';
 import { routing } from '@/i18n/routing';
 import { Providers } from '@/providers/Providers';
@@ -26,6 +27,7 @@ const LocaleLayout = async ({ children, params }: LayoutProps) => {
                 {children}
               </Container>
             </div>
+            <Toaster />
           </Providers>
         </NextIntlClientProvider>
       </body>

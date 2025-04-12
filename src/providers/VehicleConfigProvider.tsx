@@ -1,4 +1,12 @@
-import React, { createContext, useContext } from 'react';
+import { useLocale } from 'next-intl';
+import {
+  createContext,
+  Dispatch,
+  PropsWithChildren,
+  SetStateAction,
+  useContext,
+  useState,
+} from 'react';
 
 type VehicleConfig = {
   culture: string;
@@ -6,15 +14,19 @@ type VehicleConfig = {
   vehicleType: string;
 };
 
-type VehicleConfigProviderProps = {
-  children: React.ReactNode;
-  config: VehicleConfig;
-};
+const VehicleConfigContext = createContext<
+  [VehicleConfig, Dispatch<SetStateAction<VehicleConfig>>] | undefined
+>(undefined);
 
-const VehicleConfigContext = createContext<VehicleConfig | undefined>(undefined);
+const VehicleConfigProvider = ({ children }: PropsWithChildren) => {
+  const locale = useLocale();
+  const state = useState<VehicleConfig>({
+    culture: locale === 'de' ? 'de-DE' : 'en-US',
+    userType: 'P',
+    vehicleType: 'C',
+  });
 
-const VehicleConfigProvider = ({ children, config }: VehicleConfigProviderProps) => {
-  return <VehicleConfigContext.Provider value={config}>{children}</VehicleConfigContext.Provider>;
+  return <VehicleConfigContext.Provider value={state}>{children}</VehicleConfigContext.Provider>;
 };
 
 const useVehicleConfig = () => {
