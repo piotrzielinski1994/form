@@ -1,7 +1,6 @@
 'use client';
 
 import { toaster } from '@/components/chakra-ui/toaster';
-import { ComplexFormActionBar } from '@/components/ComplexFormActionBar';
 import { CheckboxContainer } from '@/components/Form/Checkbox';
 import { Fieldset } from '@/components/Form/Fieldset';
 import { Form } from '@/components/Form/Form';
@@ -10,6 +9,7 @@ import { RadioContainer } from '@/components/Form/Radio';
 import { Select, SelectContainer } from '@/components/Form/Select';
 import { TextInputContainer } from '@/components/Form/TextInput';
 import { getZodErrorMap } from '@/i18n/validation';
+import { ActionBar, Button, Portal } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
@@ -1168,7 +1168,37 @@ const ComplexForm = () => {
           />
         </Fieldset>
 
-        <ComplexFormActionBar formId="complex-form" onCancel={() => reset()} />
+        <ActionBar.Root open>
+          <Portal>
+            <ActionBar.Positioner className="z-10">
+              <ActionBar.Content>
+                <Button
+                  variant="outline"
+                  justifySelf="center"
+                  type="button"
+                  size="lg"
+                  position="sticky"
+                  bottom="4"
+                  px="10"
+                  onClick={() => reset()}
+                >
+                  {t('reset')}
+                </Button>
+                <Button
+                  form="complex-form"
+                  justifySelf="center"
+                  type="submit"
+                  size="lg"
+                  position="sticky"
+                  bottom="4"
+                  px="10"
+                >
+                  {t('submit')}
+                </Button>
+              </ActionBar.Content>
+            </ActionBar.Positioner>
+          </Portal>
+        </ActionBar.Root>
       </Form>
     </FormProvider>
   );
