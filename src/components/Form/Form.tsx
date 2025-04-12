@@ -6,14 +6,31 @@ type FormProps = FormHTMLAttributes<HTMLFormElement> & {
   storageKey?: string;
 };
 
-const Form = forwardRef<HTMLFormElement, FormProps>(({ storageKey, className, ...props }, ref) => {
-  useFormStorage(storageKey);
-  return <form className={clsx('grid gap-10', className)} {...props} ref={ref} />;
+const Form = forwardRef<HTMLFormElement, FormProps>((props, ref) => {
+  const { storageKey, className, onReset, ...rest } = props;
+  const clearStorage = useFormStorage(storageKey);
+
+  return (
+    <form
+      className={clsx('grid gap-10', className)}
+      ref={ref}
+      {...rest}
+      onReset={(e) => {
+        onReset?.(e);
+        clearStorage();
+      }}
+    />
+  );
 });
 
 const useFormStorage = (storageKey: FormProps['storageKey']) => {
   const { control, formState, reset } = useFormContext();
   const values = useWatch({ control });
+
+  const clearStorage = useCallback(() => {
+    if (!storageKey) return;
+    window.sessionStorage.removeItem(storageKey);
+  }, [storageKey]);
 
   const initFromStorage = useCallback(() => {
     if (!storageKey) return;
@@ -31,6 +48,8 @@ const useFormStorage = (storageKey: FormProps['storageKey']) => {
 
   useEffect(initFromStorage, [initFromStorage]);
   useEffect(updateStorageOnChange, [updateStorageOnChange]);
+
+  return clearStorage;
 };
 
 Form.displayName = 'Form';

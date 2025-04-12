@@ -60,6 +60,7 @@ const ComplexForm = () => {
         storageKey={FORM_ID}
         id={FORM_ID}
         noValidate
+        onReset={() => reset()}
         onSubmit={handleSubmit((data) => {
           console.log(data);
           reset();
@@ -1175,14 +1176,14 @@ const ComplexForm = () => {
             <ActionBar.Positioner className="z-10">
               <ActionBar.Content>
                 <Button
+                  form={FORM_ID}
                   variant="outline"
                   justifySelf="center"
-                  type="button"
+                  type="reset"
                   size="lg"
                   position="sticky"
                   bottom="4"
                   px="10"
-                  onClick={() => reset()}
                 >
                   {t('reset')}
                 </Button>
