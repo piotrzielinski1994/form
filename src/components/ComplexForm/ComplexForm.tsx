@@ -11,6 +11,7 @@ import { TextInputContainer } from '@/components/Form/TextInput';
 import { getZodErrorMap } from '@/i18n/validation';
 import { ActionBar, Button, Portal } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { produce } from 'immer';
 import { useTranslations } from 'next-intl';
 import { Controller, FormProvider, useForm } from 'react-hook-form';
 import {
@@ -41,9 +42,15 @@ const FORM_ID = 'complex-form';
 const ComplexForm = () => {
   const t = useTranslations('ComplexForm');
   const tZod = useTranslations('zod');
-  const form = useForm<FormFields>({
+  const form = useForm({
     mode: 'onSubmit',
-    defaultValues,
+    defaultValues: async () => {
+      const params = new URLSearchParams(window.location.search);
+      return produce(defaultValues as FormFields, (draft) => {
+        if (draft === undefined) return;
+        draft.vehicleData.make = params.get('vehicleData.make') ?? draft.vehicleData.make;
+      });
+    },
     resolver: zodResolver(schema, { errorMap: getZodErrorMap(tZod) }),
   });
   const { handleSubmit, control, reset } = form;
