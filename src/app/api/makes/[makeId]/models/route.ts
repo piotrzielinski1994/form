@@ -1,4 +1,14 @@
-import { models } from '@/components/ComplexForm/constants';
+import { makes } from '@/components/ComplexForm/constants';
+
+const models = Object.fromEntries(
+  makes.map((make) => [
+    make.value,
+    [
+      { value: `${make.value}-model-1`, label: `${make.label} | Model 1` },
+      { value: `${make.value}-model-2`, label: `${make.label} | Model 2` },
+    ],
+  ])
+);
 
 export async function GET(req: Request, { params }: { params: Promise<{ makeId: string }> }) {
   const { makeId } = await params;
@@ -15,3 +25,5 @@ export async function GET(req: Request, { params }: { params: Promise<{ makeId: 
     headers: { 'Content-Type': 'application/json' },
   });
 }
+
+export { models };

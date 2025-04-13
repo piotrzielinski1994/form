@@ -188,7 +188,7 @@ const defaultValues: UseFormProps<FormFields>['defaultValues'] = {
     emptyWeight: undefined,
   },
   fuel: {
-    fuelType: undefined,
+    fuelCategory: undefined,
     primaryFuelType: undefined,
     environmentalProtocol: undefined,
     consumptionCombined: undefined,

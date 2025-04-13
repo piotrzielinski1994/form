@@ -214,7 +214,7 @@
     },
     "fuel": {
       "legend": "Environment",
-      "fuelType": "Fuel Type",
+      "fuelCategory": "Fuel Category",
       "environmentalProtocol": "Environmental Protocol",
       "environmentalProtocolOptions": {
         "nedc": "NEDC",

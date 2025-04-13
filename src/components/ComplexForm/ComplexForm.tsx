@@ -19,7 +19,7 @@ import {
   bodyTypes,
   co2ClassOptions,
   driveTypeOptions,
-  fuelTypeOptions,
+  fuelCategoryOptions,
   interiorColorOptions,
   makes,
   phoneCountryCodes,
@@ -28,7 +28,7 @@ import {
   vehicleOfferTypeOptions,
 } from './constants';
 import { defaultValues } from './default';
-import { useVehicleDataModelOptions } from './options';
+import { usePrimaryFuelTypeOptions, useVehicleDataModelOptions } from './options';
 import { FormFields, schema } from './schema';
 import {
   useCarpassMileageUrlVisibility,
@@ -56,10 +56,12 @@ const ComplexForm = () => {
   const { handleSubmit, control, reset } = form;
 
   const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
-  const vehicleDataModelOptions = useVehicleDataModelOptions(control);
   const isModelNameVisible = useModelNameVisibility();
   const isVinVisible = useVinVisibility();
   const isCarpassMileageUrlVisible = useCarpassMileageUrlVisibility();
+
+  const vehicleDataModelOptions = useVehicleDataModelOptions(control);
+  const primaryFuelTypeOptions = usePrimaryFuelTypeOptions(control);
 
   return (
     <FormProvider {...form}>
@@ -84,9 +86,9 @@ const ComplexForm = () => {
           <SelectContainer
             name="vehicleData.model"
             label={t('vehicleData.model')}
-            options={vehicleDataModelOptions.models}
-            disabled={vehicleDataModelOptions.isLoading}
-            isLoading={vehicleDataModelOptions.isLoading}
+            options={vehicleDataModelOptions.data}
+            disabled={vehicleDataModelOptions.isFetching}
+            isLoading={vehicleDataModelOptions.isFetching}
             control={control}
           />
           <TextInputContainer
@@ -981,9 +983,9 @@ const ComplexForm = () => {
 
         <Fieldset legend={t('fuel.legend')} id="fuel">
           <SelectContainer
-            name="fuel.fuelType"
-            label={t('fuel.fuelType')}
-            options={fuelTypeOptions}
+            name="fuel.fuelCategory"
+            label={t('fuel.fuelCategory')}
+            options={fuelCategoryOptions}
             control={control}
           />
           <RadioContainer
@@ -998,11 +1000,9 @@ const ComplexForm = () => {
           <SelectContainer
             name="fuel.primaryFuelType"
             label={t('fuel.primaryFuelTypeLabel')}
-            options={[
-              { value: 'gasoline', label: t('fuel.primaryFuelType.gasoline') },
-              { value: 'diesel', label: t('fuel.primaryFuelType.diesel') },
-              { value: 'electric', label: t('fuel.primaryFuelType.electric') },
-            ]}
+            options={primaryFuelTypeOptions.data}
+            disabled={primaryFuelTypeOptions.isFetching}
+            isLoading={primaryFuelTypeOptions.isFetching}
             control={control}
           />
           <CheckboxContainer

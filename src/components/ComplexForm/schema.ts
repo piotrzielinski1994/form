@@ -213,7 +213,7 @@ const schema = z.object({
   }),
   fuel: z
     .object({
-      fuelType: z.string().trim(),
+      fuelCategory: z.string().trim(),
       primaryFuelType: z.string().trim(),
       wltpCo2Class: z.string().trim(),
       pollutionClass: z.string().trim(),

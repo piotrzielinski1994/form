@@ -270,16 +270,6 @@ const makes = [
   { value: 16328, label: 'Sonstige' },
 ];
 
-const models = Object.fromEntries(
-  makes.map((make) => [
-    make.value,
-    [
-      { value: `${make.value}-model-1`, label: `${make.label} | Model 1` },
-      { value: `${make.value}-model-2`, label: `${make.label} | Model 2` },
-    ],
-  ])
-);
-
 const bodyTypes = [
   { value: 0, label: 'Bitte auswählen' },
   { value: 2, label: 'Cabrio' },
@@ -355,7 +345,7 @@ const transmissionOptions = [
   { value: 'S', label: 'Halbautomatik' },
 ];
 
-const fuelTypeOptions = [
+const fuelCategoryOptions = [
   { value: '0', label: 'Bitte auswählen' },
   { value: 'B', label: 'Benzin' },
   { value: 'D', label: 'Diesel' },
@@ -435,10 +425,9 @@ export {
   bodyTypes,
   co2ClassOptions,
   driveTypeOptions,
-  fuelTypeOptions,
+  fuelCategoryOptions,
   interiorColorOptions,
   makes,
-  models,
   phoneCountryCodes,
   transmissionOptions,
   upholsteryOptions,
