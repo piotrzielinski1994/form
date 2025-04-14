@@ -23,7 +23,7 @@ const LocaleLayout = async ({ children, params }: LayoutProps) => {
           <Providers>
             <div id="root" className="grid gap-10">
               <Header />
-              <Container as="main" maxW="3xl" className="grid gap-10 relative">
+              <Container as="main" maxW="4xl" className="grid gap-10 relative">
                 {children}
               </Container>
             </div>
