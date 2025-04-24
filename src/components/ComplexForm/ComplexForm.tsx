@@ -9,6 +9,7 @@ import { RadioContainer } from '@/components/Form/Radio';
 import { Select, SelectContainer } from '@/components/Form/Select';
 import { TextInputContainer } from '@/components/Form/TextInput';
 import { getZodErrorMap } from '@/i18n/validation';
+import { useVehicleConfig } from '@/providers/VehicleConfigProvider';
 import { ActionBar, Button, Portal } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { produce } from 'immer';
@@ -29,10 +30,11 @@ import {
 } from './constants';
 import { defaultValues } from './default';
 import { usePrimaryFuelTypeOptions, useVehicleDataModelOptions } from './options';
-import { FormFields, schema } from './schema';
+import { FormFields, genSchema } from './schema';
 import {
   useCarpassMileageUrlVisibility,
   useClosingCostsVisibility,
+  useContactInformationVisibility,
   useModelNameVisibility,
   useNetPriceVisibility,
   useTaxAndPriceNegotiableVisibility,
@@ -44,6 +46,7 @@ import {
 const FORM_ID = 'complex-form';
 
 const ComplexForm = () => {
+  const [vehicleConfig] = useVehicleConfig();
   const t = useTranslations('ComplexForm');
   const tZod = useTranslations('zod');
   const form = useForm({
@@ -55,14 +58,19 @@ const ComplexForm = () => {
         draft.vehicleData.make = params.get('vehicleData.make') ?? draft.vehicleData.make;
       });
     },
-    resolver: zodResolver(schema, { errorMap: getZodErrorMap(tZod) }),
+    resolver: zodResolver(genSchema(vehicleConfig), { errorMap: getZodErrorMap(tZod) }),
   });
   const { handleSubmit, control, reset } = form;
 
-  const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
+  // Vehicle
   const isModelNameVisible = useModelNameVisibility();
   const isVinVisible = useVinVisibility();
   const isCarpassMileageUrlVisible = useCarpassMileageUrlVisibility();
+  const vehicleDataModelOptions = useVehicleDataModelOptions(control);
+
+  // Fuel
+  const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
+  const primaryFuelTypeOptions = usePrimaryFuelTypeOptions(control);
 
   // Financing offer
   const isNetPriceVisible = useNetPriceVisibility();
@@ -70,8 +78,8 @@ const ComplexForm = () => {
   const isTaxAndPriceNegotiableVisible = useTaxAndPriceNegotiableVisibility();
   const isClosingCostsVisible = useClosingCostsVisibility();
 
-  const vehicleDataModelOptions = useVehicleDataModelOptions(control);
-  const primaryFuelTypeOptions = usePrimaryFuelTypeOptions(control);
+  // Contact information
+  const isContactInformationVisible = useContactInformationVisibility();
 
   return (
     <FormProvider {...form}>
@@ -1094,46 +1102,48 @@ const ComplexForm = () => {
           />
         </Fieldset>
 
-        <Fieldset legend={t('contactInformation.legend')} id="contactInformation">
-          <div className="grid grid-cols-3 gap-2">
-            <TextInputContainer
-              label={t('contactInformation.postalCode')}
-              name="contactInformation.postalCode"
-              control={control}
-            />
-            <TextInputContainer
-              label={t('contactInformation.city')}
-              name="contactInformation.city"
-              control={control}
-            />
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            <SelectContainer
-              label={t('contactInformation.phoneCountryCode')}
-              name="contactInformation.phoneCountryCode"
-              options={phoneCountryCodes}
-              control={control}
-            />
-            <TextInputContainer
-              label={t('contactInformation.phoneAreaCode')}
-              name="contactInformation.phoneAreaCode"
-              control={control}
-            />
-            <TextInputContainer
-              label={t('contactInformation.phoneSubscriberNumber')}
-              name="contactInformation.phoneSubscriberNumber"
-              control={control}
-            />
-          </div>
-          <div className="grid gap-1">
-            <div>{t('contactInformation.hidePhoneNumber')}</div>
-            <CheckboxContainer
-              name="contactInformation.hidePhoneNumber"
-              label={t('yes')}
-              control={control}
-            />
-          </div>
-        </Fieldset>
+        {isContactInformationVisible && (
+          <Fieldset legend={t('contactInformation.legend')} id="contactInformation">
+            <div className="grid grid-cols-3 gap-2">
+              <TextInputContainer
+                label={t('contactInformation.postalCode')}
+                name="contactInformation.postalCode"
+                control={control}
+              />
+              <TextInputContainer
+                label={t('contactInformation.city')}
+                name="contactInformation.city"
+                control={control}
+              />
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              <SelectContainer
+                label={t('contactInformation.phoneCountryCode')}
+                name="contactInformation.phoneCountryCode"
+                options={phoneCountryCodes}
+                control={control}
+              />
+              <TextInputContainer
+                label={t('contactInformation.phoneAreaCode')}
+                name="contactInformation.phoneAreaCode"
+                control={control}
+              />
+              <TextInputContainer
+                label={t('contactInformation.phoneSubscriberNumber')}
+                name="contactInformation.phoneSubscriberNumber"
+                control={control}
+              />
+            </div>
+            <div className="grid gap-1">
+              <div>{t('contactInformation.hidePhoneNumber')}</div>
+              <CheckboxContainer
+                name="contactInformation.hidePhoneNumber"
+                label={t('yes')}
+                control={control}
+              />
+            </div>
+          </Fieldset>
+        )}
 
         <Fieldset legend={t('financingOffer.legend')} id="financingOffer">
           <NumericInputContainer

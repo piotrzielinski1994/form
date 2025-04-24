@@ -62,9 +62,15 @@ const useClosingCostsVisibility = (): boolean => {
   return ['nl-NL', 'fr-BE', 'nl-BE', 'it-IT', 'de-DE'].includes(culture);
 };
 
+const useContactInformationVisibility = (): boolean => {
+  const [{ userType }] = useVehicleConfig();
+  return userType !== 'D';
+};
+
 export {
   useCarpassMileageUrlVisibility,
   useClosingCostsVisibility,
+  useContactInformationVisibility,
   useHsnVisibility,
   useModelNameVisibility,
   useModelVisibility,
