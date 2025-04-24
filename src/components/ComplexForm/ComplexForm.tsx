@@ -32,7 +32,11 @@ import { usePrimaryFuelTypeOptions, useVehicleDataModelOptions } from './options
 import { FormFields, schema } from './schema';
 import {
   useCarpassMileageUrlVisibility,
+  useClosingCostsVisibility,
   useModelNameVisibility,
+  useNetPriceVisibility,
+  useTaxAndPriceNegotiableVisibility,
+  useVatRateVisibility,
   useVinVisibility,
   useWltpCo2EmissionsCombinedVisibility,
 } from './visibility';
@@ -59,6 +63,12 @@ const ComplexForm = () => {
   const isModelNameVisible = useModelNameVisibility();
   const isVinVisible = useVinVisibility();
   const isCarpassMileageUrlVisible = useCarpassMileageUrlVisibility();
+
+  // Financing offer
+  const isNetPriceVisible = useNetPriceVisibility();
+  const isVatRateVisible = useVatRateVisibility();
+  const isTaxAndPriceNegotiableVisible = useTaxAndPriceNegotiableVisibility();
+  const isClosingCostsVisible = useClosingCostsVisibility();
 
   const vehicleDataModelOptions = useVehicleDataModelOptions(control);
   const primaryFuelTypeOptions = usePrimaryFuelTypeOptions(control);
@@ -1131,26 +1141,34 @@ const ComplexForm = () => {
             control={control}
             name="financingOffer.price"
           />
-          <NumericInputContainer
-            label={t('financingOffer.netPrice')}
-            control={control}
-            name="financingOffer.netPrice"
-          />
-          <CheckboxContainer
-            name="financingOffer.taxDeductible"
-            label={t('financingOffer.taxDeductible')}
-            control={control}
-          />
-          <CheckboxContainer
-            name="financingOffer.negotiable"
-            label={t('financingOffer.negotiable')}
-            control={control}
-          />
-          <NumericInputContainer
-            label={t('financingOffer.vatRate')}
-            control={control}
-            name="financingOffer.vatRate"
-          />
+          {isNetPriceVisible && (
+            <NumericInputContainer
+              label={t('financingOffer.netPrice')}
+              control={control}
+              name="financingOffer.netPrice"
+            />
+          )}
+          {isTaxAndPriceNegotiableVisible && (
+            <>
+              <CheckboxContainer
+                name="financingOffer.taxDeductible"
+                label={t('financingOffer.taxDeductible')}
+                control={control}
+              />
+              <CheckboxContainer
+                name="financingOffer.negotiable"
+                label={t('financingOffer.negotiable')}
+                control={control}
+              />
+            </>
+          )}
+          {isVatRateVisible && (
+            <NumericInputContainer
+              label={t('financingOffer.vatRate')}
+              control={control}
+              name="financingOffer.vatRate"
+            />
+          )}
           <NumericInputContainer
             label={t('financingOffer.duration')}
             control={control}
@@ -1176,6 +1194,13 @@ const ComplexForm = () => {
             control={control}
             name="financingOffer.endingRate"
           />
+          {isClosingCostsVisible && (
+            <NumericInputContainer
+              label={t('financingOffer.closingCosts')}
+              control={control}
+              name="financingOffer.closingCosts"
+            />
+          )}
         </Fieldset>
 
         <ActionBar.Root open>
