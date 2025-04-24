@@ -254,13 +254,7 @@
     },
     "description": {
       "legend": "Fahrzeugbeschreibung",
-      "text": "Beschreibung"
-    },
-    "price": {
-      "legend": "Preis",
-      "amount": "Dein Angebotspreis für dein Fahrzeug:",
-      "negotiable": "Verhandelbar",
-      "taxDeductible": "Mehrwertsteuer ausweisbar"
+      "description": "Beschreibung"
     },
     "contactInformation": {
       "legend": "Kontakt",
@@ -272,7 +266,7 @@
       "hidePhoneNumber": "Als Kontaktmöglichkeit dem Inserat hinzufügen?"
     },
     "financingOffer": {
-      "legend": "Finanzierungsangebot",
+      "legend": "Preis",
       "price": "Preis",
       "netPrice": "Nettopreis",
       "taxDeductible": "Mehrwertsteuer ausweisbar",

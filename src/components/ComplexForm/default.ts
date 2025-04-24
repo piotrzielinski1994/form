@@ -42,6 +42,10 @@ const defaultValues: UseFormProps<FormFields>['defaultValues'] = {
     accidentVehicle: false,
     roadWorthiness: false,
   },
+  description: {
+    text: '',
+    subtitle: '',
+  },
   equipment: {
     airbags: {
       rearAirbag: false,

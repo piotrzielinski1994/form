@@ -18,9 +18,9 @@ const ComplexFormNavigation = () => {
         { id: 'equipment', heading: t('equipment.legend') },
         { id: 'motor', heading: t('motor.legend') },
         { id: 'fuel', heading: t('fuel.legend') },
-        { id: 'price', heading: t('price.legend') },
-        { id: 'contactInformation', heading: t('contactInformation.legend') },
+        { id: 'description', heading: t('description.legend') },
         { id: 'financingOffer', heading: t('financingOffer.legend') },
+        { id: 'contactInformation', heading: t('contactInformation.legend') },
       ]}
       onClick={(id) => router.push(`#${id}`)}
     />

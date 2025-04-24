@@ -256,12 +256,6 @@
       "legend": "Vehicle Description",
       "text": "Description"
     },
-    "price": {
-      "legend": "Price",
-      "amount": "Your Offer Price for Your Vehicle:",
-      "negotiable": "Negotiable",
-      "taxDeductible": "Tax Deductible"
-    },
     "contactInformation": {
       "legend": "Contact",
       "postalCode": "Postal Code",
@@ -272,7 +266,7 @@
       "hidePhoneNumber": "Add as a Contact Option to the Listing?"
     },
     "financingOffer": {
-      "legend": "Financing Offer",
+      "legend": "Price",
       "price": "Price",
       "netPrice": "Net Price",
       "taxDeductible": "Tax Deductible",

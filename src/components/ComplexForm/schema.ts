@@ -42,6 +42,9 @@ const genSchema = ({ culture }: VehicleConfig) => {
         .regex(/^[0-9]+$/)
         .or(z.literal('')),
     }),
+    description: z.object({
+      description: z.string().max(10_000),
+    }),
     characteristics: z.object({
       bodyType: z.string().trim().min(1),
       seats: z.number().int(),
@@ -237,11 +240,6 @@ const genSchema = ({ culture }: VehicleConfig) => {
           }),
         ])
       ),
-    price: z.object({
-      amount: z.number(),
-      negotiable: z.boolean(),
-      taxDeductible: z.literal<boolean>(true),
-    }),
     contactInformation: z.object({
       postalCode: (() => {
         switch (culture) {

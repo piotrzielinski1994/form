@@ -1088,62 +1088,13 @@ const ComplexForm = () => {
           />
         </Fieldset>
 
-        <Fieldset legend={t('price.legend')} id="price">
-          <NumericInputContainer label={t('price.amount')} control={control} name="price.amount" />
-          <CheckboxContainer
-            name="price.negotiable"
-            label={t('price.negotiable')}
-            control={control}
-          />
-          <CheckboxContainer
-            name="price.taxDeductible"
-            label={t('price.taxDeductible')}
+        <Fieldset legend={t('description.legend')} id="description">
+          <TextInputContainer
+            label={t('description.description')}
+            name="description.description"
             control={control}
           />
         </Fieldset>
-
-        {isContactInformationVisible && (
-          <Fieldset legend={t('contactInformation.legend')} id="contactInformation">
-            <div className="grid grid-cols-3 gap-2">
-              <TextInputContainer
-                label={t('contactInformation.postalCode')}
-                name="contactInformation.postalCode"
-                control={control}
-              />
-              <TextInputContainer
-                label={t('contactInformation.city')}
-                name="contactInformation.city"
-                control={control}
-              />
-            </div>
-            <div className="grid grid-cols-3 gap-2">
-              <SelectContainer
-                label={t('contactInformation.phoneCountryCode')}
-                name="contactInformation.phoneCountryCode"
-                options={phoneCountryCodes}
-                control={control}
-              />
-              <TextInputContainer
-                label={t('contactInformation.phoneAreaCode')}
-                name="contactInformation.phoneAreaCode"
-                control={control}
-              />
-              <TextInputContainer
-                label={t('contactInformation.phoneSubscriberNumber')}
-                name="contactInformation.phoneSubscriberNumber"
-                control={control}
-              />
-            </div>
-            <div className="grid gap-1">
-              <div>{t('contactInformation.hidePhoneNumber')}</div>
-              <CheckboxContainer
-                name="contactInformation.hidePhoneNumber"
-                label={t('yes')}
-                control={control}
-              />
-            </div>
-          </Fieldset>
-        )}
 
         <Fieldset legend={t('financingOffer.legend')} id="financingOffer">
           <NumericInputContainer
@@ -1161,13 +1112,13 @@ const ComplexForm = () => {
           {isTaxAndPriceNegotiableVisible && (
             <>
               <CheckboxContainer
-                name="financingOffer.taxDeductible"
-                label={t('financingOffer.taxDeductible')}
+                name="financingOffer.negotiable"
+                label={t('financingOffer.negotiable')}
                 control={control}
               />
               <CheckboxContainer
-                name="financingOffer.negotiable"
-                label={t('financingOffer.negotiable')}
+                name="financingOffer.taxDeductible"
+                label={t('financingOffer.taxDeductible')}
                 control={control}
               />
             </>
@@ -1212,6 +1163,49 @@ const ComplexForm = () => {
             />
           )}
         </Fieldset>
+
+        {isContactInformationVisible && (
+          <Fieldset legend={t('contactInformation.legend')} id="contactInformation">
+            <div className="grid grid-cols-3 gap-2">
+              <TextInputContainer
+                label={t('contactInformation.postalCode')}
+                name="contactInformation.postalCode"
+                control={control}
+              />
+              <TextInputContainer
+                label={t('contactInformation.city')}
+                name="contactInformation.city"
+                control={control}
+              />
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              <SelectContainer
+                label={t('contactInformation.phoneCountryCode')}
+                name="contactInformation.phoneCountryCode"
+                options={phoneCountryCodes}
+                control={control}
+              />
+              <TextInputContainer
+                label={t('contactInformation.phoneAreaCode')}
+                name="contactInformation.phoneAreaCode"
+                control={control}
+              />
+              <TextInputContainer
+                label={t('contactInformation.phoneSubscriberNumber')}
+                name="contactInformation.phoneSubscriberNumber"
+                control={control}
+              />
+            </div>
+            <div className="grid gap-1">
+              <div>{t('contactInformation.hidePhoneNumber')}</div>
+              <CheckboxContainer
+                name="contactInformation.hidePhoneNumber"
+                label={t('yes')}
+                control={control}
+              />
+            </div>
+          </Fieldset>
+        )}
 
         <ActionBar.Root open>
           <Portal>
