@@ -248,9 +248,7 @@ const genSchema = ({ culture }: VehicleConfig) => {
               .string()
               .trim()
               .max(6)
-              .refine((val) => /^\d{4}( ?[a-zA-Z]{2})$/.test(val), {
-                message: 'Dutch postal code requires 4 digits and 2 letters',
-              });
+              .refine((val) => /^\d{4}( ?[a-zA-Z]{2})$/.test(val));
           case 'de-DE':
           case 'de-AT':
           case 'fr-FR':
@@ -260,24 +258,20 @@ const genSchema = ({ culture }: VehicleConfig) => {
               .string()
               .trim()
               .max(5)
-              .refine((val) => /^\d{5}$/.test(val), { message: 'Postal code requires 5 digits' });
+              .refine((val) => /^\d{5}$/.test(val));
           case 'fr-BE':
           case 'nl-BE':
             return z
               .string()
               .trim()
               .max(4)
-              .refine((val) => /^\d{4}$/.test(val), {
-                message: 'Belgian postal code requires 4 digits',
-              });
+              .refine((val) => /^\d{4}$/.test(val));
           default:
             return z
               .string()
               .trim()
               .max(6)
-              .refine((val) => /^\d{4}( ?[a-zA-Z]{2})?$|^\d{5}$/.test(val), {
-                message: 'Invalid postal code format',
-              });
+              .refine((val) => /^\d{4}( ?[a-zA-Z]{2})?$|^\d{5}$/.test(val));
         }
       })(),
       city: z.string().trim().max(30),
@@ -285,86 +279,56 @@ const genSchema = ({ culture }: VehicleConfig) => {
       phoneAreaCode: (() => {
         switch (culture) {
           case 'de-DE':
-            return z.string().trim().min(2).max(6).refine(isNumeric, {
-              message: 'Area code can only contain digits',
-            });
+            return z.string().trim().min(2).max(6).refine(isNumeric);
           case 'fr-FR':
-            return z.string().trim().min(1).max(2).refine(isNumeric, {
-              message: 'Area code can only contain digits',
-            });
+            return z.string().trim().min(1).max(2).refine(isNumeric);
           case 'es-ES':
-            return z.string().trim().min(1).max(2).refine(isNumeric, {
-              message: 'Area code can only contain digits',
-            });
+            return z.string().trim().min(1).max(2).refine(isNumeric);
           case 'nl-NL':
             return z
               .string()
               .trim()
               .min(1)
               .max(5)
-              .refine((val) => /^(0([1-7])|([1-9])\d)[\d]*$/.test(val) || val === '', {
-                message: 'Invalid Dutch area code format',
-              });
+              .refine((val) => val === '' || /^(0([1-7])|([1-9])\d)[\d]*$/.test(val));
           case 'fr-BE':
           case 'nl-BE':
-            return z.string().trim().min(2).max(4).refine(isNumeric, {
-              message: 'Area code can only contain digits',
-            });
+            return z.string().trim().min(2).max(4).refine(isNumeric);
           case 'it-IT':
-            return z.string().trim().min(2).max(4).refine(isNumeric, {
-              message: 'Area code can only contain digits',
-            });
+            return z.string().trim().min(2).max(4).refine(isNumeric);
           case 'fr-LU':
-            return z.string().trim().min(4).max(4).refine(isNumeric, {
-              message: 'Area code can only contain digits',
-            });
+            return z.string().trim().min(4).max(4).refine(isNumeric);
           default:
-            return z.string().trim().min(1).max(11).refine(isNumeric, {
-              message: 'Area code can only contain digits',
-            });
+            return z.string().trim().min(1).max(11).refine(isNumeric);
         }
       })(),
       phoneSubscriberNumber: (() => {
         switch (culture) {
           case 'fr-FR':
-            return z.string().trim().min(8).max(8).refine(isNumeric, {
-              message: 'Phone number can only contain digits',
-            });
+            return z.string().trim().min(8).max(8).refine(isNumeric);
           case 'es-ES':
             return z
               .string()
               .trim()
               .min(9)
               .max(9)
-              .refine((val) => /^[5-9](\d+)*$/.test(val) || val === '', {
-                message: 'Spanish phone number must start with 5-9',
-              });
+              .refine((val) => /^[5-9](\d+)*$/.test(val) || val === '');
           case 'nl-NL':
             return z
               .string()
               .trim()
               .min(6)
               .max(8)
-              .refine((val) => /^[1-9]\d*$/.test(val) || val === '', {
-                message: 'Dutch phone number must start with 1-9',
-              });
+              .refine((val) => /^[1-9]\d*$/.test(val) || val === '');
           case 'it-IT':
-            return z.string().trim().min(4).max(8).refine(isNumeric, {
-              message: 'Phone number can only contain digits',
-            });
+            return z.string().trim().min(4).max(8).refine(isNumeric);
           case 'fr-BE':
           case 'nl-BE':
-            return z.string().trim().min(6).max(7).refine(isNumeric, {
-              message: 'Phone number can only contain digits',
-            });
+            return z.string().trim().min(6).max(7).refine(isNumeric);
           case 'fr-LU':
-            return z.string().trim().min(5).max(11).refine(isNumeric, {
-              message: 'Phone number can only contain digits',
-            });
+            return z.string().trim().min(5).max(11).refine(isNumeric);
           default:
-            return z.string().trim().min(3).max(12).refine(isNumeric, {
-              message: 'Phone number can only contain digits',
-            });
+            return z.string().trim().min(3).max(12).refine(isNumeric);
         }
       })(),
       hidePhoneNumber: z.boolean(),

@@ -43,8 +43,7 @@ const defaultValues: UseFormProps<FormFields>['defaultValues'] = {
     roadWorthiness: false,
   },
   description: {
-    text: '',
-    subtitle: '',
+    description: undefined,
   },
   equipment: {
     airbags: {
@@ -201,11 +200,6 @@ const defaultValues: UseFormProps<FormFields>['defaultValues'] = {
     pollutionClass: undefined,
     emissionSticker: undefined,
     sootParticles: false,
-  },
-  price: {
-    amount: undefined,
-    negotiable: false,
-    taxDeductible: false,
   },
   contactInformation: {
     postalCode: undefined,

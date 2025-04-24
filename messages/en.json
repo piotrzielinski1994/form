@@ -254,7 +254,7 @@
     },
     "description": {
       "legend": "Vehicle Description",
-      "text": "Description"
+      "description": "Description"
     },
     "contactInformation": {
       "legend": "Contact",
