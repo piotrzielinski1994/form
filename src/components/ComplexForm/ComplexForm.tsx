@@ -78,7 +78,7 @@ const ComplexForm = () => {
   });
   const { handleSubmit, control, reset } = form;
 
-  // Vehicle
+  // Vehicle data =======================================================
   const isModelVisible = useModelVisibility();
   const isModelNameVisible = useModelNameVisibility();
   const isHsnVisible = useHsnVisibility();
@@ -86,20 +86,7 @@ const ComplexForm = () => {
   const isCarpassMileageUrlVisible = useCarpassMileageUrlVisibility();
   const vehicleDataModelOptions = useVehicleDataModelOptions(control);
 
-  // Fuel
-  const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
-  const primaryFuelTypeOptions = usePrimaryFuelTypeOptions(control);
-
-  // Financing offer
-  const isNetPriceVisible = useNetPriceVisibility();
-  const isVatRateVisible = useVatRateVisibility();
-  const isTaxAndPriceNegotiableVisible = useTaxAndPriceNegotiableVisibility();
-  const isClosingCostsVisible = useClosingCostsVisibility();
-
-  // Contact information
-  const isContactInformationVisible = useContactInformationVisibility();
-
-  // Characteristics
+  // Characteristics =======================================================
   const isBodyColorNameVisible = useBodyColorNameVisibility();
   const isPayloadVisible = usePayloadVisibility();
   const isGrossVehicleWeightVisible = useGrossVehicleWeightVisibility();
@@ -114,6 +101,19 @@ const ComplexForm = () => {
   const isLoadDimensionsVisible = useLoadDimensionsVisibility();
   const isTotalDimensionsVisible = useTotalDimensionsVisibility();
   const isBedCountVisible = useBedCountVisibility();
+
+  // Fuel =======================================================
+  const isWltpCo2EmissionsCombinedVisible = useWltpCo2EmissionsCombinedVisibility(control);
+  const primaryFuelTypeOptions = usePrimaryFuelTypeOptions(control);
+
+  // Financing offer =======================================================
+  const isNetPriceVisible = useNetPriceVisibility();
+  const isVatRateVisible = useVatRateVisibility();
+  const isTaxAndPriceNegotiableVisible = useTaxAndPriceNegotiableVisibility();
+  const isClosingCostsVisible = useClosingCostsVisibility();
+
+  // Contact information =======================================================
+  const isContactInformationVisible = useContactInformationVisibility();
 
   return (
     <FormProvider {...form}>

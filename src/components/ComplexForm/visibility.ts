@@ -2,7 +2,8 @@ import { useVehicleConfig } from '@/providers/VehicleConfigProvider';
 import { Control, useWatch } from 'react-hook-form';
 import { PartialFormFields } from './schema';
 
-// Vehicle Data
+// Vehicle Data =======================================================
+
 const useModelVisibility = (): boolean => {
   const [{ vehicleType }] = useVehicleConfig();
   return !['N', 'X', 'L'].includes(vehicleType);
@@ -33,7 +34,8 @@ const useCarpassMileageUrlVisibility = (): boolean => {
   return true;
 };
 
-// Characteristics
+// Characteristics =======================================================
+
 const useBodyColorVisibility = (): boolean => {
   const [{ vehicleType }] = useVehicleConfig();
   return !['L'].includes(vehicleType);
@@ -41,17 +43,9 @@ const useBodyColorVisibility = (): boolean => {
 
 const useBodyColorNameVisibility = (): boolean => {
   const [{ vehicleType, userType }] = useVehicleConfig();
-  switch (vehicleType) {
-    case 'N':
-    case 'X':
-    case 'L':
-      return true;
-    case 'C':
-    case 'B':
-      return userType === 'D';
-    default:
-      return false;
-  }
+  if (['N', 'X', 'L'].includes(vehicleType)) return true;
+  if (['C', 'B'].includes(vehicleType)) return userType === 'D';
+  return false;
 };
 
 const useUpholsteryVisibility = (): boolean => {
@@ -66,37 +60,17 @@ const useInteriorColorVisibility = (): boolean => {
 
 const usePayloadVisibility = (): boolean => {
   const [{ vehicleType }] = useVehicleConfig();
-  switch (vehicleType) {
-    case 'N':
-    case 'X':
-    case 'L':
-      return true;
-    default:
-      return false;
-  }
+  return ['N', 'X', 'L'].includes(vehicleType);
 };
 
 const useGrossVehicleWeightVisibility = (): boolean => {
   const [{ vehicleType }] = useVehicleConfig();
-  switch (vehicleType) {
-    case 'N':
-    case 'X':
-    case 'L':
-      return true;
-    default:
-      return false;
-  }
+  return ['N', 'X', 'L'].includes(vehicleType);
 };
 
 const useProductionYearVisibility = (): boolean => {
   const [{ vehicleType }] = useVehicleConfig();
-  switch (vehicleType) {
-    case 'B':
-    case 'C':
-      return false;
-    default:
-      return true;
-  }
+  return !['B', 'C'].includes(vehicleType);
 };
 
 const useAxleCountVisibility = (): boolean => {
@@ -134,13 +108,15 @@ const useBedCountVisibility = (): boolean => {
   return vehicleType === 'N';
 };
 
-// Fuel
+// Fuel =======================================================
+
 const useWltpCo2EmissionsCombinedVisibility = (control: Control<PartialFormFields>): boolean => {
   const environmentalProtocol = useWatch({ control, name: 'fuel.environmentalProtocol' });
   return environmentalProtocol === 'wltp';
 };
 
-// Financing Offer
+// Financing Offer =======================================================
+
 const useNetPriceVisibility = (): boolean => {
   const [{ vehicleType, userType, culture }] = useVehicleConfig();
   if (vehicleType === 'DSC') return false;
@@ -166,7 +142,8 @@ const useClosingCostsVisibility = (): boolean => {
   return ['nl-NL', 'fr-BE', 'nl-BE', 'it-IT', 'de-DE'].includes(culture);
 };
 
-// Contact Information
+// Contact Information =======================================================
+
 const useContactInformationVisibility = (): boolean => {
   const [{ userType }] = useVehicleConfig();
   return userType !== 'D';
@@ -176,11 +153,9 @@ export {
   useAxleCountVisibility,
   useBedCountVisibility,
   useBodyColorNameVisibility,
-  // Characteristics
   useBodyColorVisibility,
   useCarpassMileageUrlVisibility,
   useClosingCostsVisibility,
-  // Contact Information
   useContactInformationVisibility,
   useGrossVehicleWeightVisibility,
   useHasCarRegistrationVisibility,
@@ -189,9 +164,7 @@ export {
   useLoadDimensionsVisibility,
   useMaximumTowingWeightVisibility,
   useModelNameVisibility,
-  // Vehicle Data
   useModelVisibility,
-  // Financing Offer
   useNetPriceVisibility,
   usePayloadVisibility,
   useProductionYearVisibility,
@@ -201,6 +174,5 @@ export {
   useVatRateVisibility,
   useVinVisibility,
   useWheelbaseVisibility,
-  // Fuel
   useWltpCo2EmissionsCombinedVisibility,
 };
