@@ -1,0 +1,408 @@
+{
+  "HomePage": {
+    "title": "Formulaire complexe"
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, de {🇩🇪 Allemand} en {🇺🇸 Anglais} nl {🇳🇱 Néerlandais} fr {🇫🇷 Français} it {🇮🇹 Italien} es {🇪🇸 Espagnol} other {Inconnu}}"
+  },
+  "ComplexForm": {
+    "vehicleData": {
+      "legend": "Données du véhicule",
+      "make": "Marque",
+      "model": "Modèle",
+      "modelVersion": "Version du modèle",
+      "modelName": "Nom du modèle",
+      "hsn": "HSN (Code fabricant)",
+      "tsn": "TSN",
+      "licencePlateNumber": "Numéro d'immatriculation",
+      "vin": "Numéro d'identification du véhicule (VIN)",
+      "carpassMileageUrl": "URL du kilométrage Carpass",
+      "offerReference": "Référence de l'offre",
+      "natCode": "Code NAT"
+    },
+    "characteristics": {
+      "legend": "Caractéristiques",
+      "bodyType": "Type de carrosserie",
+      "seats": "Sièges",
+      "doors": "Portes",
+      "bodyColor": "Couleur extérieure",
+      "bodyColorName": "Nom de la couleur",
+      "typeOfPaint": "Type de peinture",
+      "metallic": "Métallique",
+      "upholstery": "Sellerie",
+      "interiorColor": "Couleur intérieure",
+      "payload": "Charge utile",
+      "grossVehicleWeight": "Poids total autorisé",
+      "productionYear": "Année de production",
+      "axleCount": "Nombre d'essieux",
+      "wheelbase": "Empattement",
+      "maximumTowingWeight": "Poids de remorquage maximal",
+      "hasCarRegistration": "Avec immatriculation",
+      "loadHeight": "Hauteur de chargement",
+      "loadVolume": "Volume de chargement",
+      "loadWidth": "Largeur de chargement",
+      "loadLength": "Longueur de chargement",
+      "totalHeight": "Hauteur totale",
+      "totalWidth": "Largeur totale",
+      "totalLength": "Longueur totale",
+      "bedCount": "Nombre de lits"
+    },
+    "condition": {
+      "legend": "État",
+      "vehicleOfferType": "Type de véhicule",
+      "mileage": "Kilométrage",
+      "firstRegistrationMonth": "Première immatriculation (mois)",
+      "firstRegistrationYear": "Première immatriculation (année)",
+      "owners": "Propriétaires",
+      "deliveryDay": "Jour de livraison",
+      "deliveryDate": "Date de livraison",
+      "fullServiceHistory": "Historique complet d'entretien",
+      "nonSmoking": "Véhicule non-fumeur",
+      "nextInspectionMonth": "Prochaine inspection (mois)",
+      "nextInspectionYear": "Prochaine inspection (année)",
+      "lastTechnicalServiceMonth": "Dernier entretien technique (mois)",
+      "lastTechnicalServiceYear": "Dernier entretien technique (année)",
+      "lastCamBeltServiceMonth": "Dernier changement de courroie (mois)",
+      "lastCamBeltServiceYear": "Dernier changement de courroie (année)",
+      "damagedVehicle": "Véhicule endommagé",
+      "accidentVehicle": "Véhicule accidenté",
+      "roadWorthiness": "Aptitude à la circulation"
+    },
+    "equipment": {
+      "legend": "Équipement",
+      "airbags": {
+        "legend": "Airbag",
+        "rearAirbag": "Airbag arrière",
+        "passengerAirbag": "Airbag passager",
+        "driverAirbag": "Airbag conducteur",
+        "headAirbag": "Airbag tête",
+        "sideAirbag": "Airbag latéral"
+      },
+      "assistanceSystems": {
+        "legend": "Systèmes d'assistance",
+        "distanceWarning": "Avertisseur de distance",
+        "emergencyBrakeAssist": "Assistance au freinage d'urgence",
+        "hillStartAssist": "Assistance au démarrage en côte",
+        "laneKeepingAssist": "Assistance au maintien de voie",
+        "blindSpotAssist": "Assistance angle mort",
+        "highBeamAssist": "Assistance feux de route",
+        "trafficSignRecognition": "Reconnaissance des panneaux de signalisation",
+        "nightVisionAssist": "Assistance vision nocturne"
+      },
+      "parkingAssist": {
+        "legend": "Aide au stationnement",
+        "camera360": "Caméra 360°",
+        "frontSensors": "Capteurs avant",
+        "rearSensors": "Capteurs arrière",
+        "selfSteeringSystem": "Système de direction automatique",
+        "parkingCamera": "Caméra de stationnement"
+      },
+      "extras": {
+        "legend": "Extras",
+        "allWeatherTires": "Pneus toutes saisons",
+        "punctureKit": "Kit de réparation",
+        "alloyWheels": "Jantes en alliage",
+        "smokerPackage": "Pack fumeur",
+        "ambientLighting": "Éclairage d'ambiance",
+        "towBar": "Barre de remorquage",
+        "rangeExtender": "Prolongateur d'autonomie",
+        "batteryCertificate": "Certificat de batterie",
+        "spareWheel": "Roue de secours",
+        "wheelchairAccessible": "Accessible aux fauteuils roulants",
+        "headlightCleaning": "Nettoyage des phares",
+        "bidirectionalCharging": "Recharge bidirectionnelle",
+        "rearSeatHeating": "Chauffage des sièges arrière"
+      },
+      "climateControl": {
+        "legend": "Climatisation",
+        "twoZoneClimateControl": "Climatisation automatique bi-zone",
+        "airConditioning": "Climatisation",
+        "threeZoneClimateControl": "Climatisation automatique tri-zone",
+        "automaticClimateControl": "Climatisation automatique",
+        "fourZoneClimateControl": "Climatisation automatique quadri-zone"
+      },
+      "comfort": {
+        "legend": "Confort",
+        "armrest": "Accoudoir",
+        "panoramicRoof": "Toit panoramique",
+        "heatedWindshield": "Pare-brise chauffant",
+        "rainSensor": "Capteur de pluie",
+        "heatedSteeringWheel": "Volant chauffant",
+        "paddleShifters": "Palettes au volant",
+        "electricWindows": "Vitres électriques",
+        "sunroof": "Toit ouvrant",
+        "electricTailgate": "Hayon électrique",
+        "slidingDoor": "Porte coulissante",
+        "electricSideMirrors": "Rétroviseurs électriques",
+        "headUpDisplay": "Affichage tête haute",
+        "leatherSteeringWheel": "Volant en cuir",
+        "powerSteering": "Direction assistée",
+        "lightSensor": "Capteur de lumière",
+        "parkingHeater": "Chauffage de stationnement",
+        "airSuspension": "Suspension pneumatique",
+        "startStopSystem": "Système Start/Stop"
+      },
+      "lighting": {
+        "legend": "Éclairage",
+        "biXenonHeadlights": "Phares bi-xénon",
+        "lightSensor": "Capteur de lumière",
+        "glareFreeHighBeam": "Feux de route anti-éblouissement",
+        "fogLights": "Phares antibrouillard",
+        "corneringLights": "Phares directionnels",
+        "daytimeRunningLights": "Feux de jour",
+        "ledHeadlights": "Phares LED",
+        "fullLedHeadlights": "Phares LED complets",
+        "ledDaytimeRunningLights": "Feux de jour LED",
+        "xenonHeadlights": "Phares xénon",
+        "laserLights": "Phares laser"
+      },
+      "safety": {
+        "legend": "Sécurité",
+        "abs": "ABS",
+        "emergencyCallSystem": "Système d'appel d'urgence",
+        "alarmSystem": "Système d'alarme",
+        "tirePressureMonitoring": "Système de surveillance de la pression des pneus",
+        "esp": "ESP",
+        "tractionControl": "Contrôle de traction",
+        "isofix": "Isofix",
+        "immobilizer": "Antidémarrage",
+        "fatigueWarningSystem": "Système d'alerte de fatigue"
+      },
+      "seats": {
+        "legend": "Sièges",
+        "electricSeats": "Sièges électriques",
+        "heatedSeats": "Sièges chauffants",
+        "lumbarSupport": "Support lombaire",
+        "sportSeats": "Sièges sport",
+        "massageSeats": "Sièges massants",
+        "foldablePassengerSeat": "Siège passager rabattable",
+        "ventilatedSeats": "Sièges ventilés",
+        "splitRearSeat": "Banquette arrière fractionnée"
+      },
+      "cruiseControl": {
+        "legend": "Régulateur de vitesse",
+        "adaptiveCruiseControl": "Régulateur de vitesse adaptatif",
+        "cruiseControl": "Régulateur de vitesse"
+      },
+      "entertainment": {
+        "legend": "Divertissement",
+        "androidAuto": "Android Auto",
+        "voiceControl": "Commande vocale",
+        "appleCarPlay": "Apple CarPlay",
+        "tv": "TV",
+        "dabRadio": "Radio DAB",
+        "touchscreen": "Écran tactile",
+        "wirelessCharging": "Charge sans fil pour smartphones",
+        "usb": "USB",
+        "integratedMusicStreaming": "Streaming musical intégré",
+        "digitalInstrumentCluster": "Tableau de bord numérique",
+        "soundSystem": "Système audio",
+        "wifiHotspot": "Hotspot Wi-Fi"
+      },
+      "media": {
+        "legend": "Divertissement/Media",
+        "bluetooth": "Bluetooth",
+        "mp3": "MP3",
+        "onboardComputer": "Ordinateur de bord",
+        "multifunctionSteeringWheel": "Volant multifonctions",
+        "cd": "CD",
+        "navigationSystem": "Système de navigation",
+        "handsFreeSystem": "Kit mains libres",
+        "radio": "Radio"
+      },
+      "centralLocking": {
+        "legend": "Verrouillage centralisé",
+        "keylessCentralLocking": "Verrouillage centralisé sans clé",
+        "remoteCentralLocking": "Verrouillage centralisé télécommandé",
+        "centralLocking": "Verrouillage centralisé"
+      }
+    },
+    "motor": {
+      "legend": "Motorisation",
+      "driveType": "Type de transmission",
+      "transmission": "Boîte de vitesses",
+      "powerKW": "Puissance (kW)",
+      "powerHP": "Puissance (ch)",
+      "gears": "Nombre de vitesses",
+      "cylinders": "Nombre de cylindres",
+      "engineCapacity": "Cylindrée",
+      "emptyWeight": "Poids à vide"
+    },
+    "fuel": {
+      "legend": "Environnement",
+      "fuelCategory": "Type de carburant",
+      "environmentalProtocol": "Protocole environnemental",
+      "environmentalProtocolOptions": {
+        "nedc": "NEDC",
+        "wltp": "WLTP"
+      },
+      "primaryFuelTypeLabel": "Source d'énergie/Carburant",
+      "isPluginHybrid": "Hybride rechargeable",
+      "pollutionClassLabel": "Classe de pollution",
+      "primaryFuelType": {
+        "gasoline": "Essence",
+        "diesel": "Diesel",
+        "electric": "Électrique"
+      },
+      "consumptionCombined": "Consommation de carburant combinée",
+      "co2EmissionsCombined": "Émissions de CO2 combinées",
+      "wltpConsumptionCombined": "Consommation de carburant combinée (WLTP)",
+      "wltpCo2EmissionsCombined": "Émissions de CO2 combinées (WLTP)",
+      "efficiencyClass": "Classe d'efficacité",
+      "wltpCo2Class": "Classe CO2",
+      "pollutionClass": {
+        "euro6": "Euro 6",
+        "euro5": "Euro 5"
+      },
+      "emissionSticker": "Vignette d'émission",
+      "emissionStickerOptions": {
+        "none": "Aucune",
+        "green": "Vert",
+        "yellow": "Jaune",
+        "red": "Rouge"
+      },
+      "sootParticles": "Filtre à particules",
+      "nedcWltp": "NEDC/WLTP"
+    },
+    "photos": {
+      "legend": "Photos",
+      "images": "Télécharger des images"
+    },
+    "description": {
+      "legend": "Description du véhicule",
+      "description": "Description"
+    },
+    "contactInformation": {
+      "legend": "Contact",
+      "postalCode": "Code postal",
+      "city": "Ville",
+      "phoneCountryCode": "Indicatif du pays",
+      "phoneAreaCode": "Indicatif régional",
+      "phoneSubscriberNumber": "Numéro d'abonné",
+      "hidePhoneNumber": "Ajouter au contact de l'annonce ?"
+    },
+    "financingOffer": {
+      "legend": "Prix",
+      "price": "Prix",
+      "netPrice": "Prix net",
+      "taxDeductible": "TVA déductible",
+      "negotiable": "Négociable",
+      "vatRate": "Taux de TVA",
+      "duration": "Durée",
+      "monthlyRate": "Mensualité",
+      "annualPercentageRate": "Taux annuel effectif global",
+      "initialPayment": "Acompte",
+      "endingRate": "Dernière mensualité",
+      "closingCosts": "Frais de dossier"
+    },
+    "yes": "Oui",
+    "no": "Non",
+    "submit": "Envoyer",
+    "reset": "Réinitialiser"
+  },
+  "zod": {
+    "invalid_type": "Attendu {expected}, reçu {received}",
+    "invalid_type_with_path": "{path} attendu {expected}, mais reçu {received}",
+    "invalid_type_received_undefined": "Requis",
+    "invalid_literal": "Valeur littérale invalide, attendu {expected}",
+    "unrecognized_keys": "Clés non reconnues dans l'objet : {- keys}",
+    "unrecognized_keys_one": "Clé non reconnue dans l'objet : {- keys}",
+    "unrecognized_keys_other": "Clés non reconnues dans l'objet : {- keys}",
+    "invalid_union": "Entrée invalide",
+    "invalid_union_discriminator": "Valeur de discriminateur invalide. Attendu {- options}",
+    "invalid_enum_value": "Valeur d'énumération invalide. Attendu {- options}, reçu {received}",
+    "invalid_arguments": "Arguments de fonction invalides",
+    "invalid_return_type": "Valeur de retour invalide",
+    "invalid_date": "Date invalide",
+    "custom": "Entrée invalide",
+    "invalid_intersection_types": "Impossible de fusionner les types d'intersection",
+    "not_multiple_of": "Le nombre doit être un multiple de {multipleOf}",
+    "not_finite": "Le nombre doit être fini",
+    "invalid_string": {
+      "email": "Invalide {validation}",
+      "url": "Invalide {validation}",
+      "uuid": "Invalide {validation}",
+      "cuid": "Invalide {validation}",
+      "regex": "Invalide",
+      "datetime": "Invalide {validation}",
+      "startsWith": "Entrée invalide : doit commencer par {startsWith}",
+      "endsWith": "Entrée invalide : doit se terminer par {endsWith}"
+    },
+    "too_small": {
+      "array": {
+        "inclusive": "Le tableau doit contenir au moins {minimum} élément(s)",
+        "inclusive_one": "Le tableau doit contenir au moins {minimum} élément",
+        "inclusive_other": "Le tableau doit contenir au moins {minimum} éléments",
+        "not_inclusive": "Le tableau doit contenir plus de {minimum} élément(s)",
+        "not_inclusive_one": "Le tableau doit contenir plus de {minimum} élément",
+        "not_inclusive_other": "Le tableau doit contenir plus de {minimum} éléments"
+      },
+      "string": {
+        "inclusive": "La chaîne doit contenir au moins {minimum} caractère(s)",
+        "inclusive_one": "La chaîne doit contenir au moins {minimum} caractère",
+        "inclusive_other": "La chaîne doit contenir au moins {minimum} caractères",
+        "inclusive_with_path": "{path} doit contenir au moins {minimum} caractère(s)",
+        "inclusive_with_path_one": "{path} doit contenir au moins {minimum} caractère",
+        "inclusive_with_path_other": "{path} doit contenir au moins {minimum} caractères",
+        "not_inclusive": "La chaîne doit contenir plus de {minimum} caractère(s)",
+        "not_inclusive_one": "La chaîne doit contenir plus de {minimum} caractère",
+        "not_inclusive_other": "La chaîne doit contenir plus de {minimum} caractères",
+        "not_inclusive_with_path": "{path} doit contenir plus de {minimum} caractère(s)",
+        "not_inclusive_with_path_one": "{path} doit contenir plus de {minimum} caractère",
+        "not_inclusive_with_path_other": "{path} doit contenir plus de {minimum} caractères"
+      },
+      "number": {
+        "inclusive": "Le nombre doit être supérieur ou égal à {minimum}",
+        "inclusive_with_path": "{path} doit être supérieur ou égal à {minimum}",
+        "not_inclusive": "Le nombre doit être supérieur à {minimum}",
+        "not_inclusive_with_path": "{path} doit être supérieur à {minimum}"
+      },
+      "set": {
+        "inclusive": "Entrée invalide",
+        "not_inclusive": "Entrée invalide"
+      },
+      "date": {
+        "inclusive": "La date doit être supérieure ou égale à {- minimum, datetime}",
+        "not_inclusive": "La date doit être supérieure à {- minimum, datetime}"
+      }
+    },
+    "too_big": {
+      "array": {
+        "inclusive": "Le tableau doit contenir au maximum {maximum} élément(s)",
+        "inclusive_one": "Le tableau doit contenir au maximum {maximum} élément",
+        "inclusive_other": "Le tableau doit contenir au maximum {maximum} éléments",
+        "not_inclusive": "Le tableau doit contenir moins de {maximum} élément(s)",
+        "not_inclusive_one": "Le tableau doit contenir moins de {maximum} élément",
+        "not_inclusive_other": "Le tableau doit contenir moins de {maximum} éléments"
+      },
+      "string": {
+        "inclusive": "La chaîne doit contenir au maximum {maximum} caractère(s)",
+        "inclusive_one": "La chaîne doit contenir au maximum {maximum} caractère",
+        "inclusive_other": "La chaîne doit contenir au maximum {maximum} caractères",
+        "inclusive_with_path": "{path} doit contenir au maximum {maximum} caractère(s)",
+        "inclusive_with_path_one": "{path} doit contenir au maximum {maximum} caractère",
+        "inclusive_with_path_other": "{path} doit contenir au maximum {maximum} caractères",
+        "not_inclusive": "La chaîne doit contenir moins de {maximum} caractère(s)",
+        "not_inclusive_one": "La chaîne doit contenir moins de {maximum} caractère",
+        "not_inclusive_other": "La chaîne doit contenir moins de {maximum} caractères",
+        "not_inclusive_with_path": "{path} doit contenir moins de {maximum} caractère(s)",
+        "not_inclusive_with_path_one": "{path} doit contenir moins de {maximum} caractère",
+        "not_inclusive_with_path_other": "{path} doit contenir moins de {maximum} caractères"
+      },
+      "number": {
+        "inclusive": "Le nombre doit être inférieur ou égal à {maximum}",
+        "inclusive_with_path": "{path} doit être inférieur ou égal à {maximum}",
+        "not_inclusive": "Le nombre doit être inférieur à {maximum}",
+        "not_inclusive_with_path": "{path} doit être inférieur à {maximum}"
+      },
+      "set": {
+        "inclusive": "Entrée invalide",
+        "not_inclusive": "Entrée invalide"
+      },
+      "date": {
+        "inclusive": "La date doit être inférieure ou égale à {- maximum, datetime}",
+        "not_inclusive": "La date doit être inférieure à {- maximum, datetime}"
+      }
+    }
+  }
+}

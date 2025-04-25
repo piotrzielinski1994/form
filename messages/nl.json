@@ -1,0 +1,408 @@
+{
+  "HomePage": {
+    "title": "Complex formulier"
+  },
+  "LocaleSwitcher": {
+    "locale": "{locale, select, de {🇩🇪 Duits} en {🇺🇸 Engels} nl {🇳🇱 Nederlands} fr {🇫🇷 Frans} it {🇮🇹 Italiaans} es {🇪🇸 Spaans} other {Onbekend}}"
+  },
+  "ComplexForm": {
+    "vehicleData": {
+      "legend": "Voertuiggegevens",
+      "make": "Merk",
+      "model": "Model",
+      "modelVersion": "Modelversie",
+      "modelName": "Modelnaam",
+      "hsn": "HSN (Fabrikantcode)",
+      "tsn": "TSN",
+      "licencePlateNumber": "Kenteken",
+      "vin": "Voertuigidentificatienummer (VIN)",
+      "carpassMileageUrl": "Carpass-kilometerstand-URL",
+      "offerReference": "Aanbiedingsreferentie",
+      "natCode": "NAT-code"
+    },
+    "characteristics": {
+      "legend": "Kenmerken",
+      "bodyType": "Carrosserietype",
+      "seats": "Zitplaatsen",
+      "doors": "Deuren",
+      "bodyColor": "Buitenkleur",
+      "bodyColorName": "Kleurnaam",
+      "typeOfPaint": "Laksoort",
+      "metallic": "Metallic",
+      "upholstery": "Bekleding",
+      "interiorColor": "Interieurkleur",
+      "payload": "Laadvermogen",
+      "grossVehicleWeight": "Toegestane maximum massa",
+      "productionYear": "Bouwjaar",
+      "axleCount": "Aantal assen",
+      "wheelbase": "Wielbasis",
+      "maximumTowingWeight": "Maximaal trekgewicht",
+      "hasCarRegistration": "Met registratie",
+      "loadHeight": "Laadhoogte",
+      "loadVolume": "Laadvolume",
+      "loadWidth": "Laadbreedte",
+      "loadLength": "Laadlengte",
+      "totalHeight": "Totale hoogte",
+      "totalWidth": "Totale breedte",
+      "totalLength": "Totale lengte",
+      "bedCount": "Aantal bedden"
+    },
+    "condition": {
+      "legend": "Staat",
+      "vehicleOfferType": "Voertuigtype",
+      "mileage": "Kilometerstand",
+      "firstRegistrationMonth": "Eerste registratie (maand)",
+      "firstRegistrationYear": "Eerste registratie (jaar)",
+      "owners": "Voertuigeigenaren",
+      "deliveryDay": "Leveringsdag",
+      "deliveryDate": "Leveringsdatum",
+      "fullServiceHistory": "Volledige onderhoudshistorie",
+      "nonSmoking": "Niet-roken voertuig",
+      "nextInspectionMonth": "Volgende inspectie (maand)",
+      "nextInspectionYear": "Volgende inspectie (jaar)",
+      "lastTechnicalServiceMonth": "Laatste technische service (maand)",
+      "lastTechnicalServiceYear": "Laatste technische service (jaar)",
+      "lastCamBeltServiceMonth": "Laatste distributieriemservice (maand)",
+      "lastCamBeltServiceYear": "Laatste distributieriemservice (jaar)",
+      "damagedVehicle": "Beschadigd voertuig",
+      "accidentVehicle": "Ongevallenvoertuig",
+      "roadWorthiness": "Wegwaardigheid"
+    },
+    "equipment": {
+      "legend": "Uitrusting",
+      "airbags": {
+        "legend": "Airbag",
+        "rearAirbag": "Airbag achter",
+        "passengerAirbag": "Passagiersairbag",
+        "driverAirbag": "Bestuurdersairbag",
+        "headAirbag": "Hoofdairbag",
+        "sideAirbag": "Zijairbag"
+      },
+      "assistanceSystems": {
+        "legend": "Assistentiesystemen",
+        "distanceWarning": "Afstandswaarschuwing",
+        "emergencyBrakeAssist": "Noodremassistent",
+        "hillStartAssist": "Hellingsstartassistent",
+        "laneKeepingAssist": "Hulpsysteem voor het aanhouden van de rijstrook",
+        "blindSpotAssist": "Dodehoekassistent",
+        "highBeamAssist": "Grootlichtassistent",
+        "trafficSignRecognition": "Verkeersbordherkenning",
+        "nightVisionAssist": "Nachtzichtassistent"
+      },
+      "parkingAssist": {
+        "legend": "Parkeerhulp",
+        "camera360": "360° camera",
+        "frontSensors": "Parkeerhulp sensoren voor",
+        "rearSensors": "Parkeerhulp sensoren achter",
+        "selfSteeringSystem": "Parkeerhulp zelfsturend systeem",
+        "parkingCamera": "Parkeerhulp camera"
+      },
+      "extras": {
+        "legend": "Extra's",
+        "allWeatherTires": "All-weather banden",
+        "punctureKit": "Lekkit",
+        "alloyWheels": "Lichtmetalen velgen",
+        "smokerPackage": "Rokerspakket",
+        "ambientLighting": "Sfeerverlichting",
+        "towBar": "Trekhaak",
+        "rangeExtender": "Actieradiusvergroter",
+        "batteryCertificate": "Batterijcertificaat",
+        "spareWheel": "Reservewiel",
+        "wheelchairAccessible": "Rolstoeltoegankelijk",
+        "headlightCleaning": "Koplampreiniging",
+        "bidirectionalCharging": "Bidirectioneel laden",
+        "rearSeatHeating": "Stoelverwarming achter"
+      },
+      "climateControl": {
+        "legend": "Klimaatregeling",
+        "twoZoneClimateControl": "2-zone automatische klimaatregeling",
+        "airConditioning": "Airconditioning",
+        "threeZoneClimateControl": "3-zone automatische klimaatregeling",
+        "automaticClimateControl": "Automatische klimaatregeling",
+        "fourZoneClimateControl": "4-zone automatische klimaatregeling"
+      },
+      "comfort": {
+        "legend": "Comfort",
+        "armrest": "Armsteun",
+        "panoramicRoof": "Panoramisch dak",
+        "heatedWindshield": "Verwarmde voorruit",
+        "rainSensor": "Regensensor",
+        "heatedSteeringWheel": "Verwarmd stuurwiel",
+        "paddleShifters": "Schakelwippen",
+        "electricWindows": "Elektrische ramen",
+        "sunroof": "Schuifdak",
+        "electricTailgate": "Elektrische achterklep",
+        "slidingDoor": "Schuifdeur",
+        "electricSideMirrors": "Elektrische zijspiegels",
+        "headUpDisplay": "Head-up display",
+        "leatherSteeringWheel": "Leren stuurwiel",
+        "powerSteering": "Stuurbekrachtiging",
+        "lightSensor": "Lichtsensor",
+        "parkingHeater": "Standverwarming",
+        "airSuspension": "Luchtvering",
+        "startStopSystem": "Start/stop systeem"
+      },
+      "lighting": {
+        "legend": "Verlichting",
+        "biXenonHeadlights": "Bi-xenon koplampen",
+        "lightSensor": "Lichtsensor",
+        "glareFreeHighBeam": "Oogvrije grootlicht",
+        "fogLights": "Mistlampen",
+        "corneringLights": "Bochtverlichting",
+        "daytimeRunningLights": "Dagrijverlichting",
+        "ledHeadlights": "LED-koplampen",
+        "fullLedHeadlights": "Volledige LED-koplampen",
+        "ledDaytimeRunningLights": "LED-dagrijverlichting",
+        "xenonHeadlights": "Xenon koplampen",
+        "laserLights": "Laserlicht"
+      },
+      "safety": {
+        "legend": "Veiligheid",
+        "abs": "ABS",
+        "emergencyCallSystem": "Noodoproepsysteem",
+        "alarmSystem": "Alarmsysteem",
+        "tirePressureMonitoring": "Bandenspanningscontrolesysteem",
+        "esp": "ESP",
+        "tractionControl": "Tractiecontrole",
+        "isofix": "Isofix",
+        "immobilizer": "Startonderbreker",
+        "fatigueWarningSystem": "Vermoeidheidswaarschuwingssysteem"
+      },
+      "seats": {
+        "legend": "Stoelen",
+        "electricSeats": "Elektrische stoelen",
+        "heatedSeats": "Stoelverwarming",
+        "lumbarSupport": "Lendensteun",
+        "sportSeats": "Sportstoelen",
+        "massageSeats": "Massagestoelen",
+        "foldablePassengerSeat": "Opklapbare passagiersstoel",
+        "ventilatedSeats": "Geventileerde stoelen",
+        "splitRearSeat": "Opdeelbare achterbank"
+      },
+      "cruiseControl": {
+        "legend": "Cruise control",
+        "adaptiveCruiseControl": "Adaptieve cruise control",
+        "cruiseControl": "Cruise control"
+      },
+      "entertainment": {
+        "legend": "Entertainment",
+        "androidAuto": "Android Auto",
+        "voiceControl": "Spraakbesturing",
+        "appleCarPlay": "Apple CarPlay",
+        "tv": "TV",
+        "dabRadio": "DAB-radio",
+        "touchscreen": "Touchscreen",
+        "wirelessCharging": "Draadloos opladen voor smartphones",
+        "usb": "USB",
+        "integratedMusicStreaming": "Geïntegreerde muziekstreaming",
+        "digitalInstrumentCluster": "Volledig digitaal instrumentenpaneel",
+        "soundSystem": "Geluidsinstallatie",
+        "wifiHotspot": "Wi-Fi hotspot"
+      },
+      "media": {
+        "legend": "Entertainment/Media",
+        "bluetooth": "Bluetooth",
+        "mp3": "MP3",
+        "onboardComputer": "Boordcomputer",
+        "multifunctionSteeringWheel": "Multifunctioneel stuurwiel",
+        "cd": "CD",
+        "navigationSystem": "Navigatiesysteem",
+        "handsFreeSystem": "Handsfree systeem",
+        "radio": "Radio"
+      },
+      "centralLocking": {
+        "legend": "Centrale vergrendeling",
+        "keylessCentralLocking": "Sleutelloze centrale vergrendeling",
+        "remoteCentralLocking": "Centrale vergrendeling met afstandsbediening",
+        "centralLocking": "Centrale vergrendeling"
+      }
+    },
+    "motor": {
+      "legend": "Aandrijving",
+      "driveType": "Aandrijftype",
+      "transmission": "Transmissie",
+      "powerKW": "Vermogen (kW)",
+      "powerHP": "Vermogen (PK)",
+      "gears": "Aantal versnellingen",
+      "cylinders": "Aantal cilinders",
+      "engineCapacity": "Motorinhoud",
+      "emptyWeight": "Leeggewicht"
+    },
+    "fuel": {
+      "legend": "Milieu",
+      "fuelCategory": "Brandstofcategorie",
+      "environmentalProtocol": "Milieuprotocol",
+      "environmentalProtocolOptions": {
+        "nedc": "NEDC",
+        "wltp": "WLTP"
+      },
+      "primaryFuelTypeLabel": "Energiedrager/Brandstof",
+      "isPluginHybrid": "Plug-in hybride",
+      "pollutionClassLabel": "Vervuilingsklasse",
+      "primaryFuelType": {
+        "gasoline": "Benzine",
+        "diesel": "Diesel",
+        "electric": "Elektrisch"
+      },
+      "consumptionCombined": "Brandstofverbruik gecombineerd",
+      "co2EmissionsCombined": "CO2-uitstoot gecombineerd",
+      "wltpConsumptionCombined": "Brandstofverbruik gecombineerd (WLTP)",
+      "wltpCo2EmissionsCombined": "CO2-uitstoot gecombineerd (WLTP)",
+      "efficiencyClass": "Efficiëntieklasse",
+      "wltpCo2Class": "CO2-klasse",
+      "pollutionClass": {
+        "euro6": "Euro 6",
+        "euro5": "Euro 5"
+      },
+      "emissionSticker": "Emissiesticker",
+      "emissionStickerOptions": {
+        "none": "Geen",
+        "green": "Groen",
+        "yellow": "Geel",
+        "red": "Rood"
+      },
+      "sootParticles": "Roetfilter",
+      "nedcWltp": "NEDC/WLTP"
+    },
+    "photos": {
+      "legend": "Foto's",
+      "images": "Foto's uploaden"
+    },
+    "description": {
+      "legend": "Voertuigbeschrijving",
+      "description": "Beschrijving"
+    },
+    "contactInformation": {
+      "legend": "Contact",
+      "postalCode": "Postcode",
+      "city": "Stad",
+      "phoneCountryCode": "Landcode",
+      "phoneAreaCode": "Netnummer",
+      "phoneSubscriberNumber": "Abonneenummer",
+      "hidePhoneNumber": "Als contactmogelijkheid aan de advertentie toevoegen?"
+    },
+    "financingOffer": {
+      "legend": "Prijs",
+      "price": "Prijs",
+      "netPrice": "Netto prijs",
+      "taxDeductible": "BTW aftrekbaar",
+      "negotiable": "Onderhandelbaar",
+      "vatRate": "BTW-tarief",
+      "duration": "Looptijd",
+      "monthlyRate": "Maandelijkse termijn",
+      "annualPercentageRate": "Effectieve jaarlijkse rente",
+      "initialPayment": "Aanbetaling",
+      "endingRate": "Eindtermijn",
+      "closingCosts": "Afsluitkosten"
+    },
+    "yes": "Ja",
+    "no": "Nee",
+    "submit": "Verzenden",
+    "reset": "Resetten"
+  },
+  "zod": {
+    "invalid_type": "Verwacht {expected}, ontvangen {received}",
+    "invalid_type_with_path": "{path} verwacht {expected}, maar ontvangen {received}",
+    "invalid_type_received_undefined": "Vereist",
+    "invalid_literal": "Ongeldige letterlijke waarde, verwacht {expected}",
+    "unrecognized_keys": "Onherkende sleutels in object: {- keys}",
+    "unrecognized_keys_one": "Onherkende sleutel in object: {- keys}",
+    "unrecognized_keys_other": "Onherkende sleutels in object: {- keys}",
+    "invalid_union": "Ongeldige invoer",
+    "invalid_union_discriminator": "Ongeldige discriminatorwaarde. Verwacht {- options}",
+    "invalid_enum_value": "Ongeldige enum-waarde. Verwacht {- options}, ontvangen {received}",
+    "invalid_arguments": "Ongeldige functiesteekproeven",
+    "invalid_return_type": "Ongeldig retourtype",
+    "invalid_date": "Ongeldige datum",
+    "custom": "Ongeldige invoer",
+    "invalid_intersection_types": "Doorsneden konden niet worden samengevoegd",
+    "not_multiple_of": "Het getal moet een veelvoud van {multipleOf} zijn",
+    "not_finite": "Het getal moet eindig zijn",
+    "invalid_string": {
+      "email": "Ongeldig {validation}",
+      "url": "Ongeldig {validation}",
+      "uuid": "Ongeldig {validation}",
+      "cuid": "Ongeldig {validation}",
+      "regex": "Ongeldig",
+      "datetime": "Ongeldig {validation}",
+      "startsWith": "Ongeldige invoer: moet beginnen met {startsWith}",
+      "endsWith": "Ongeldige invoer: moet eindigen met {endsWith}"
+    },
+    "too_small": {
+      "array": {
+        "inclusive": "De array moet minimaal {minimum} element(en) bevatten",
+        "inclusive_one": "De array moet minimaal {minimum} element bevatten",
+        "inclusive_other": "De array moet minimaal {minimum} elementen bevatten",
+        "not_inclusive": "De array moet meer dan {minimum} element(en) bevatten",
+        "not_inclusive_one": "De array moet meer dan {minimum} element bevatten",
+        "not_inclusive_other": "De array moet meer dan {minimum} elementen bevatten"
+      },
+      "string": {
+        "inclusive": "De string moet minimaal {minimum} tekens bevatten",
+        "inclusive_one": "De string moet minimaal {minimum} teken bevatten",
+        "inclusive_other": "De string moet minimaal {minimum} tekens bevatten",
+        "inclusive_with_path": "{path} moet minimaal {minimum} tekens bevatten",
+        "inclusive_with_path_one": "{path} moet minimaal {minimum} teken bevatten",
+        "inclusive_with_path_other": "{path} moet minimaal {minimum} tekens bevatten",
+        "not_inclusive": "De string moet meer dan {minimum} tekens bevatten",
+        "not_inclusive_one": "De string moet meer dan {minimum} teken bevatten",
+        "not_inclusive_other": "De string moet meer dan {minimum} tekens bevatten",
+        "not_inclusive_with_path": "{path} moet meer dan {minimum} tekens bevatten",
+        "not_inclusive_with_path_one": "{path} moet meer dan {minimum} teken bevatten",
+        "not_inclusive_with_path_other": "{path} moet meer dan {minimum} tekens bevatten"
+      },
+      "number": {
+        "inclusive": "Het getal moet groter of gelijk zijn aan {minimum}",
+        "inclusive_with_path": "{path} moet groter of gelijk zijn aan {minimum}",
+        "not_inclusive": "Het getal moet groter zijn dan {minimum}",
+        "not_inclusive_with_path": "{path} moet groter zijn dan {minimum}"
+      },
+      "set": {
+        "inclusive": "Ongeldige invoer",
+        "not_inclusive": "Ongeldige invoer"
+      },
+      "date": {
+        "inclusive": "De datum moet groter of gelijk zijn aan {- minimum, datetime}",
+        "not_inclusive": "De datum moet groter zijn dan {- minimum, datetime}"
+      }
+    },
+    "too_big": {
+      "array": {
+        "inclusive": "De array mag maximaal {maximum} element(en) bevatten",
+        "inclusive_one": "De array mag maximaal {maximum} element bevatten",
+        "inclusive_other": "De array mag maximaal {maximum} elementen bevatten",
+        "not_inclusive": "De array mag minder dan {maximum} element(en) bevatten",
+        "not_inclusive_one": "De array mag minder dan {maximum} element bevatten",
+        "not_inclusive_other": "De array mag minder dan {maximum} elementen bevatten"
+      },
+      "string": {
+        "inclusive": "De string mag maximaal {maximum} tekens bevatten",
+        "inclusive_one": "De string mag maximaal {maximum} teken bevatten",
+        "inclusive_other": "De string mag maximaal {maximum} tekens bevatten",
+        "inclusive_with_path": "{path} mag maximaal {maximum} tekens bevatten",
+        "inclusive_with_path_one": "{path} mag maximaal {maximum} teken bevatten",
+        "inclusive_with_path_other": "{path} mag maximaal {maximum} tekens bevatten",
+        "not_inclusive": "De string mag minder dan {maximum} tekens bevatten",
+        "not_inclusive_one": "De string mag minder dan {maximum} teken bevatten",
+        "not_inclusive_other": "De string mag minder dan {maximum} tekens bevatten",
+        "not_inclusive_with_path": "{path} mag minder dan {maximum} tekens bevatten",
+        "not_inclusive_with_path_one": "{path} mag minder dan {maximum} teken bevatten",
+        "not_inclusive_with_path_other": "{path} mag minder dan {maximum} tekens bevatten"
+      },
+      "number": {
+        "inclusive": "Het getal moet kleiner of gelijk zijn aan {maximum}",
+        "inclusive_with_path": "{path} moet kleiner of gelijk zijn aan {maximum}",
+        "not_inclusive": "Het getal moet kleiner zijn dan {maximum}",
+        "not_inclusive_with_path": "{path} moet kleiner zijn dan {maximum}"
+      },
+      "set": {
+        "inclusive": "Ongeldige invoer",
+        "not_inclusive": "Ongeldige invoer"
+      },
+      "date": {
+        "inclusive": "De datum moet kleiner of gelijk zijn aan {- maximum, datetime}",
+        "not_inclusive": "De datum moet kleiner zijn dan {- maximum, datetime}"
+      }
+    }
+  }
+}
