@@ -3,7 +3,7 @@
     "title": "Complex Form"
   },
   "LocaleSwitcher": {
-    "locale": "{locale, select, de {🇩🇪 German} en {🇺🇸 English} other {Unknown}}"
+    "locale": "{locale, select, de {🇩🇪 German} en {🇺🇸 English} nl {🇳🇱 Dutch} fr {🇫🇷 French} it {🇮🇹 Italian} es {🇪🇸 Spanish} other {Unknown}}"
   },
   "ComplexForm": {
     "vehicleData": {
