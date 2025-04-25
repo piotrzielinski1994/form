@@ -5,6 +5,7 @@ type StepsProps = {
   steps: Array<{
     id: string;
     heading: string;
+    isValid: boolean;
   }>;
   onClick: (id: string) => void;
   className?: string;
@@ -25,11 +26,18 @@ const Steps = ({ steps, onClick, className }: StepsProps) => {
     >
       <ChakraSteps.List>
         {steps.map((step, index) => (
-          <ChakraSteps.Item key={index} index={index} title={step.heading}>
+          <ChakraSteps.Item
+            key={index}
+            index={index}
+            title={step.heading}
+            className={clsx({ 'text-red-500': !step.isValid })}
+          >
             <ChakraSteps.Trigger className="cursor-pointer my-2">
               <ChakraSteps.Indicator />
-              <ChakraSteps.Title>{step.heading}</ChakraSteps.Title>
-              {/* <ChakraSteps.Separator /> */}
+              <ChakraSteps.Title>
+                {step.heading}
+                {step.isValid ? '' : '*'}
+              </ChakraSteps.Title>
             </ChakraSteps.Trigger>
           </ChakraSteps.Item>
         ))}

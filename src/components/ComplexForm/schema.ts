@@ -9,38 +9,72 @@ const isNotUrl = (val: string | null) => !z.string().url().safeParse(val).succes
 const isNotEmail = (val: string | null) => !z.string().email().safeParse(val).success;
 const hasNoXml = (value: string | null) => value === null || !/[<>()]/.test(value);
 
-const genSchema = ({ culture }: VehicleConfig) => {
+const genSchema = ({ culture, vehicleType, userType }: VehicleConfig) => {
+  const isFieldVisible = {
+    model: !['N', 'X', 'L'].includes(vehicleType),
+    modelName: ['N', 'X', 'L'].includes(vehicleType) || userType === 'D',
+    hsn:
+      (vehicleType === 'C' && userType === 'D' && culture === 'de-DE') ||
+      (vehicleType !== 'C' && vehicleType !== 'B' && vehicleType !== 'DSC' && culture === 'de-DE'),
+    tsn: vehicleType !== 'B' && vehicleType !== 'DSC' && culture === 'de-DE',
+    licencePlateNumber: culture === 'nl-NL',
+    offerReference: userType === 'D',
+    vin: userType === 'D' || vehicleType === 'DSC',
+    carpassMileageUrl:
+      ['fr-BE', 'nl-BE'].includes(culture) &&
+      userType === 'D' &&
+      !['N', 'X', 'L'].includes(vehicleType),
+    bodyColor: !['L'].includes(vehicleType),
+    bodyColorName:
+      ['N', 'X', 'L'].includes(vehicleType) ||
+      (['C', 'B'].includes(vehicleType) && userType === 'D'),
+    upholstery: ['C', 'B'].includes(vehicleType),
+    interiorColor: ['C', 'B', 'N'].includes(vehicleType),
+    payload: ['N', 'X', 'L'].includes(vehicleType),
+    grossVehicleWeight: ['N', 'X', 'L'].includes(vehicleType),
+    productionYear: !['B', 'C'].includes(vehicleType),
+    axleCount: ['N', 'X', 'L'].includes(vehicleType),
+    wheelbase: ['N', 'X', 'L'].includes(vehicleType),
+    maximumTowingWeight: ['C', 'X', 'L'].includes(vehicleType),
+    hasCarRegistration: ['C', 'B'].includes(vehicleType),
+    loadDimensions: ['N', 'X', 'L'].includes(vehicleType),
+    totalDimensions: ['N', 'X', 'L'].includes(vehicleType),
+    bedCount: vehicleType === 'N',
+  };
+
   return z.object({
     vehicleData: z.object({
       make: z.string().min(1),
-      model: z.string().min(1),
+      model: isFieldVisible.model ? z.string().min(1) : z.string().optional(),
       modelVersion: z.string().max(50).refine(hasNoXml).refine(isNotEmail).refine(isNotUrl),
-      modelName: z.string().min(1).max(50),
-      hsn: z
-        .string()
-        .regex(/^[0-9]{4}$/)
-        .or(z.literal('')),
-      tsn: z
-        .string()
-        .regex(/^[a-zA-Z0-9]{3}$/)
-        .or(z.literal('')),
-      licencePlateNumber: z
-        .string()
-        .max(8)
-        .nullable()
-        .refine(hasNoXml)
-        .refine(isNotEmail)
-        .refine(isNotUrl),
-      vin: z
-        .string()
-        .regex(/^[A-HJ-NPR-Z0-9]{17}$/)
-        .or(z.literal('')),
-      carpassMileageUrl: z.string().url().max(1000).or(z.literal('')),
-      offerReference: z.string().max(50).refine(hasNoXml).refine(isNotEmail).refine(isNotUrl),
-      natCode: z
-        .string()
-        .regex(/^[0-9]+$/)
-        .or(z.literal('')),
+      modelName: isFieldVisible.modelName ? z.string().min(1).max(50) : z.string().optional(),
+      hsn: isFieldVisible.hsn
+        ? z
+            .string()
+            .regex(/^[0-9]{4}$/)
+            .or(z.literal(''))
+        : z.string().optional(),
+      tsn: isFieldVisible.tsn
+        ? z
+            .string()
+            .regex(/^[a-zA-Z0-9]{3}$/)
+            .or(z.literal(''))
+        : z.string().optional(),
+      licencePlateNumber: isFieldVisible.licencePlateNumber
+        ? z.string().max(8).nullable().refine(hasNoXml).refine(isNotEmail).refine(isNotUrl)
+        : z.string().nullable().optional(),
+      vin: isFieldVisible.vin
+        ? z
+            .string()
+            .regex(/^[A-HJ-NPR-Z0-9]{17}$/)
+            .or(z.literal(''))
+        : z.string().optional(),
+      carpassMileageUrl: isFieldVisible.carpassMileageUrl
+        ? z.string().url().max(1000).or(z.literal(''))
+        : z.string().optional(),
+      offerReference: isFieldVisible.offerReference
+        ? z.string().max(50).refine(hasNoXml).refine(isNotEmail).refine(isNotUrl)
+        : z.string().optional(),
     }),
     description: z.object({
       description: z.string().max(10_000),
@@ -49,26 +83,60 @@ const genSchema = ({ culture }: VehicleConfig) => {
       bodyType: z.string().trim().min(1),
       seats: z.number().int().min(1).max(99).optional(),
       doors: z.number().int().min(1).max(9).optional(),
-      bodyColor: z.string().trim().optional(),
-      bodyColorName: z.string().trim().max(30).optional(),
+      bodyColor: isFieldVisible.bodyColor ? z.string().trim().optional() : z.string().optional(),
+      bodyColorName: isFieldVisible.bodyColorName
+        ? z.string().trim().max(30).optional()
+        : z.string().optional(),
       metallic: z.boolean().optional(),
-      upholstery: z.string().trim().optional(),
-      interiorColor: z.string().trim().optional(),
-      payload: z.number().int().min(0).max(9999999).optional(),
-      grossVehicleWeight: z.number().int().min(1).max(9999999).optional(),
-      productionYear: z.string().trim().optional(),
-      axleCount: z.number().int().min(1).max(99).optional(),
-      wheelbase: z.number().int().min(1).max(9999999).optional(),
-      maximumTowingWeight: z.number().int().min(1).max(9999999).optional(),
-      hasCarRegistration: z.boolean().optional(),
-      loadHeight: z.number().int().min(1).max(9999999).optional(),
-      loadVolume: z.number().min(0).max(9999999.99).optional(),
-      loadWidth: z.number().int().min(1).max(9999999).optional(),
-      loadLength: z.number().int().min(1).max(9999999).optional(),
-      totalHeight: z.number().int().min(1).max(9999999).optional(),
-      totalWidth: z.number().int().min(1).max(9999999).optional(),
-      totalLength: z.number().int().min(1).max(9999999).optional(),
-      bedCount: z.number().int().min(0).max(9).optional(),
+      upholstery: isFieldVisible.upholstery ? z.string().trim().optional() : z.string().optional(),
+      interiorColor: isFieldVisible.interiorColor
+        ? z.string().trim().optional()
+        : z.string().optional(),
+      payload: isFieldVisible.payload
+        ? z.number().int().min(0).max(9999999).optional()
+        : z.number().optional(),
+      grossVehicleWeight: isFieldVisible.grossVehicleWeight
+        ? z.number().int().min(1).max(9999999).optional()
+        : z.number().optional(),
+      productionYear: isFieldVisible.productionYear
+        ? z.string().trim().optional()
+        : z.string().optional(),
+      axleCount: isFieldVisible.axleCount
+        ? z.number().int().min(1).max(99).optional()
+        : z.number().optional(),
+      wheelbase: isFieldVisible.wheelbase
+        ? z.number().int().min(1).max(9999999).optional()
+        : z.number().optional(),
+      maximumTowingWeight: isFieldVisible.maximumTowingWeight
+        ? z.number().int().min(1).max(9999999).optional()
+        : z.number().optional(),
+      hasCarRegistration: isFieldVisible.hasCarRegistration
+        ? z.boolean().optional()
+        : z.boolean().optional(),
+      loadHeight: isFieldVisible.loadDimensions
+        ? z.number().min(0).max(9999999.99).optional()
+        : z.number().optional(),
+      loadVolume: isFieldVisible.loadDimensions
+        ? z.number().min(0).max(9999999.99).optional()
+        : z.number().optional(),
+      loadWidth: isFieldVisible.loadDimensions
+        ? z.number().min(0).max(9999999.99).optional()
+        : z.number().optional(),
+      loadLength: isFieldVisible.loadDimensions
+        ? z.number().min(0).max(9999999.99).optional()
+        : z.number().optional(),
+      totalHeight: isFieldVisible.totalDimensions
+        ? z.number().int().min(1).max(9999999).optional()
+        : z.number().optional(),
+      totalWidth: isFieldVisible.totalDimensions
+        ? z.number().int().min(1).max(9999999).optional()
+        : z.number().optional(),
+      totalLength: isFieldVisible.totalDimensions
+        ? z.number().int().min(1).max(9999999).optional()
+        : z.number().optional(),
+      bedCount: isFieldVisible.bedCount
+        ? z.number().int().min(0).max(9).optional()
+        : z.number().optional(),
     }),
     condition: z.object({
       vehicleOfferType: z.string().trim(),

@@ -44,15 +44,18 @@ import {
   useHasCarRegistrationVisibility,
   useHsnVisibility,
   useInteriorColorVisibility,
+  useLicencePlateNumberVisibility,
   useLoadDimensionsVisibility,
   useMaximumTowingWeightVisibility,
   useModelNameVisibility,
   useModelVisibility,
   useNetPriceVisibility,
+  useOfferReferenceVisibility,
   usePayloadVisibility,
   useProductionYearVisibility,
   useTaxAndPriceNegotiableVisibility,
   useTotalDimensionsVisibility,
+  useTsnVisibility,
   useUpholsteryVisibility,
   useVatRateVisibility,
   useVinVisibility,
@@ -85,6 +88,9 @@ const ComplexForm = () => {
   const isHsnVisible = useHsnVisibility();
   const isVinVisible = useVinVisibility();
   const isCarpassMileageUrlVisible = useCarpassMileageUrlVisibility();
+  const isLicencePlateNumberVisible = useLicencePlateNumberVisibility();
+  const isTsnVisible = useTsnVisibility();
+  const isOfferReferenceVisible = useOfferReferenceVisibility();
   const vehicleDataModelOptions = useVehicleDataModelOptions(control);
 
   // Characteristics =======================================================
@@ -177,6 +183,27 @@ const ComplexForm = () => {
             <TextInputContainer
               label={t('vehicleData.carpassMileageUrl')}
               name="vehicleData.carpassMileageUrl"
+              control={control}
+            />
+          )}
+          {isLicencePlateNumberVisible && (
+            <TextInputContainer
+              label={t('vehicleData.licencePlateNumber')}
+              name="vehicleData.licencePlateNumber"
+              control={control}
+            />
+          )}
+          {isOfferReferenceVisible && (
+            <TextInputContainer
+              label={t('vehicleData.offerReference')}
+              name="vehicleData.offerReference"
+              control={control}
+            />
+          )}
+          {isTsnVisible && (
+            <TextInputContainer
+              label={t('vehicleData.tsn')}
+              name="vehicleData.tsn"
               control={control}
             />
           )}
