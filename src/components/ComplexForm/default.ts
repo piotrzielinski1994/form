@@ -13,7 +13,6 @@ const defaultValues: UseFormProps<FormFields>['defaultValues'] = {
     vin: undefined,
     carpassMileageUrl: undefined,
     offerReference: undefined,
-    natCode: undefined,
   },
   characteristics: {
     bodyType: undefined,
