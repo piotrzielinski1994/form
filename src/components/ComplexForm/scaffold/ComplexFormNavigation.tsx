@@ -1,12 +1,14 @@
 'use client';
 
+import { Steps } from '@/components/Steps';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { Steps } from './Steps';
+import { useContactInformationVisibility } from '../visibility';
 
 const ComplexFormNavigation = () => {
   const t = useTranslations('ComplexForm');
   const router = useRouter();
+  const isContactInformationVisible = useContactInformationVisibility();
 
   return (
     <Steps
@@ -20,7 +22,9 @@ const ComplexFormNavigation = () => {
         { id: 'fuel', heading: t('fuel.legend') },
         { id: 'description', heading: t('description.legend') },
         { id: 'financingOffer', heading: t('financingOffer.legend') },
-        { id: 'contactInformation', heading: t('contactInformation.legend') },
+        ...(isContactInformationVisible
+          ? [{ id: 'contactInformation', heading: t('contactInformation.legend') }]
+          : []),
       ]}
       onClick={(id) => router.push(`#${id}`)}
     />

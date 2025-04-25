@@ -10,7 +10,6 @@ import { Select, SelectContainer } from '@/components/Form/Select';
 import { TextInputContainer } from '@/components/Form/TextInput';
 import { getZodErrorMap } from '@/i18n/validation';
 import { useVehicleConfig } from '@/providers/VehicleConfigProvider';
-import { ActionBar, Button, Portal } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { produce } from 'immer';
 import { useTranslations } from 'next-intl';
@@ -30,6 +29,8 @@ import {
 } from './constants';
 import { defaultValues } from './default';
 import { usePrimaryFuelTypeOptions, useVehicleDataModelOptions } from './options';
+import ComplexFormActions from './scaffold/ComplexFormActions';
+import { ComplexFormNavigation } from './scaffold/ComplexFormNavigation';
 import { FormFields, genSchema } from './schema';
 import {
   useAxleCountVisibility,
@@ -117,6 +118,7 @@ const ComplexForm = () => {
 
   return (
     <FormProvider {...form}>
+      <ComplexFormNavigation />
       <Form
         storageKey={FORM_ID}
         id={FORM_ID}
@@ -1361,39 +1363,9 @@ const ComplexForm = () => {
             </div>
           </Fieldset>
         )}
-
-        <ActionBar.Root open>
-          <Portal>
-            <ActionBar.Positioner className="z-10">
-              <ActionBar.Content>
-                <Button
-                  form={FORM_ID}
-                  variant="outline"
-                  justifySelf="center"
-                  type="reset"
-                  size="lg"
-                  position="sticky"
-                  bottom="4"
-                  px="10"
-                >
-                  {t('reset')}
-                </Button>
-                <Button
-                  form={FORM_ID}
-                  justifySelf="center"
-                  type="submit"
-                  size="lg"
-                  position="sticky"
-                  bottom="4"
-                  px="10"
-                >
-                  {t('submit')}
-                </Button>
-              </ActionBar.Content>
-            </ActionBar.Positioner>
-          </Portal>
-        </ActionBar.Root>
       </Form>
+
+      <ComplexFormActions formId={FORM_ID} />
     </FormProvider>
   );
 };
