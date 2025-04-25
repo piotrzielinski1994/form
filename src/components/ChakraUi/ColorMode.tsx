@@ -1,49 +1,28 @@
 'use client';
 
-import type { IconButtonProps, SpanProps } from '@chakra-ui/react';
-import { ClientOnly, IconButton, Skeleton, Span } from '@chakra-ui/react';
+import type { IconButtonProps } from '@chakra-ui/react';
+import { ClientOnly, IconButton, Skeleton } from '@chakra-ui/react';
 import type { ThemeProviderProps } from 'next-themes';
 import { ThemeProvider, useTheme } from 'next-themes';
 import { forwardRef } from 'react';
 import { LuMoon, LuSun } from 'react-icons/lu';
-
-function ColorModeProvider(props: ThemeProviderProps) {
-  return <ThemeProvider attribute="class" disableTransitionOnChange {...props} />;
-}
+import { setCookie } from 'typescript-cookie';
 
 type ColorMode = 'light' | 'dark';
 
-interface UseColorModeReturn {
+type UseColorModeReturn = {
   colorMode: ColorMode;
   setColorMode: (colorMode: ColorMode) => void;
   toggleColorMode: () => void;
-}
+};
 
-function useColorMode(): UseColorModeReturn {
-  const { resolvedTheme, setTheme } = useTheme();
-  const toggleColorMode = () => {
-    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
-  };
-  return {
-    colorMode: resolvedTheme as ColorMode,
-    setColorMode: setTheme,
-    toggleColorMode,
-  };
-}
-
-function useColorModeValue<T>(light: T, dark: T) {
-  const { colorMode } = useColorMode();
-  return colorMode === 'dark' ? dark : light;
-}
-
-function ColorModeIcon() {
-  const { colorMode } = useColorMode();
-  return colorMode === 'dark' ? <LuMoon /> : <LuSun />;
-}
+const ColorModeProvider = (props: ThemeProviderProps) => {
+  return <ThemeProvider attribute="class" disableTransitionOnChange {...props} />;
+};
 
 const ColorModeButton = forwardRef<HTMLButtonElement, Omit<IconButtonProps, 'aria-label'>>(
   function ColorModeButton(props, ref) {
-    const { toggleColorMode } = useColorMode();
+    const { toggleColorMode, colorMode } = useColorMode();
     return (
       <ClientOnly fallback={<Skeleton boxSize="8" />}>
         <IconButton
@@ -53,56 +32,35 @@ const ColorModeButton = forwardRef<HTMLButtonElement, Omit<IconButtonProps, 'ari
           size="sm"
           ref={ref}
           {...props}
-          css={{
-            _icon: {
-              width: '5',
-              height: '5',
-            },
-          }}
+          css={{ _icon: { width: '5', height: '5' } }}
         >
-          <ColorModeIcon />
+          {colorMode === 'dark' ? <LuMoon /> : <LuSun />}
         </IconButton>
       </ClientOnly>
     );
   }
 );
 
-const LightMode = forwardRef<HTMLSpanElement, SpanProps>(function LightMode(props, ref) {
-  return (
-    <Span
-      color="fg"
-      display="contents"
-      className="chakra-theme light"
-      colorPalette="gray"
-      colorScheme="light"
-      ref={ref}
-      {...props}
-    />
-  );
-});
+const useColorMode = (): UseColorModeReturn => {
+  const { resolvedTheme, setTheme } = useTheme();
 
-const DarkMode = forwardRef<HTMLSpanElement, SpanProps>(function DarkMode(props, ref) {
-  return (
-    <Span
-      color="fg"
-      display="contents"
-      className="chakra-theme dark"
-      colorPalette="gray"
-      colorScheme="dark"
-      ref={ref}
-      {...props}
-    />
-  );
-});
+  const setColorMode = (mode: ColorMode) => {
+    setTheme(mode);
+    setCookie('theme', mode);
+  };
+  const toggleColorMode = () => setColorMode(resolvedTheme === 'dark' ? 'light' : 'dark');
+
+  return {
+    colorMode: resolvedTheme as ColorMode,
+    setColorMode,
+    toggleColorMode,
+  };
+};
 
 export {
   ColorModeButton,
-  ColorModeIcon,
   ColorModeProvider,
-  DarkMode,
-  LightMode,
   useColorMode,
-  useColorModeValue,
   type ColorMode,
   type UseColorModeReturn,
 };

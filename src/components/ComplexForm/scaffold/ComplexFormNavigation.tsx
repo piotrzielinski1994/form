@@ -9,34 +9,32 @@ import { useContactInformationVisibility } from '../visibility';
 const ComplexFormNavigation = () => {
   const t = useTranslations('ComplexForm');
   const router = useRouter();
-  const { formState } = useFormContext();
+  const { errors } = useFormContext().formState;
   const isContactInformationVisible = useContactInformationVisibility();
 
-  console.log('@@@ vehicleData | ', JSON.stringify(formState.errors.vehicleData));
-
   const steps = [
-    { id: 'vehicleData', heading: t('vehicleData.legend'), isValid: !formState.errors.vehicleData },
+    { id: 'vehicleData', heading: t('vehicleData.legend'), isValid: !errors.vehicleData },
     {
       id: 'characteristics',
       heading: t('characteristics.legend'),
-      isValid: !formState.errors.characteristics,
+      isValid: !errors.characteristics,
     },
-    { id: 'condition', heading: t('condition.legend'), isValid: !formState.errors.condition },
-    { id: 'equipment', heading: t('equipment.legend'), isValid: !formState.errors.equipment },
-    { id: 'motor', heading: t('motor.legend'), isValid: !formState.errors.motor },
-    { id: 'fuel', heading: t('fuel.legend'), isValid: !formState.errors.fuel },
-    { id: 'description', heading: t('description.legend'), isValid: !formState.errors.description },
+    { id: 'condition', heading: t('condition.legend'), isValid: !errors.condition },
+    { id: 'equipment', heading: t('equipment.legend'), isValid: !errors.equipment },
+    { id: 'motor', heading: t('motor.legend'), isValid: !errors.motor },
+    { id: 'fuel', heading: t('fuel.legend'), isValid: !errors.fuel },
+    { id: 'description', heading: t('description.legend'), isValid: !errors.description },
     {
       id: 'financingOffer',
       heading: t('financingOffer.legend'),
-      isValid: !formState.errors.financingOffer,
+      isValid: !errors.financingOffer,
     },
     ...(isContactInformationVisible
       ? [
           {
             id: 'contactInformation',
             heading: t('contactInformation.legend'),
-            isValid: !formState.errors.contactInformation,
+            isValid: !errors.contactInformation,
           },
         ]
       : []),
