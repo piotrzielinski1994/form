@@ -38,7 +38,7 @@ const useVehicleConfig = () => {
   return context;
 };
 
-const localePerCulture: Record<string, string> = {
+const localePerCulture = {
   'de-DE': 'de',
   'es-ES': 'es',
   'fr-FR': 'fr',

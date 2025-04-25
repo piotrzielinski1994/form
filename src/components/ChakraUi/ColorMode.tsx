@@ -4,7 +4,7 @@ import type { IconButtonProps } from '@chakra-ui/react';
 import { ClientOnly, IconButton, Skeleton } from '@chakra-ui/react';
 import type { ThemeProviderProps } from 'next-themes';
 import { ThemeProvider, useTheme } from 'next-themes';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
 import { LuMoon, LuSun } from 'react-icons/lu';
 import { setCookie } from 'typescript-cookie';
 
@@ -44,16 +44,14 @@ const ColorModeButton = forwardRef<HTMLButtonElement, Omit<IconButtonProps, 'ari
 const useColorMode = (): UseColorModeReturn => {
   const { resolvedTheme, setTheme } = useTheme();
 
-  const setColorMode = (mode: ColorMode) => {
-    setTheme(mode);
-    setCookie('theme', mode);
-  };
-  const toggleColorMode = () => setColorMode(resolvedTheme === 'dark' ? 'light' : 'dark');
+  useEffect(() => {
+    setCookie('theme', resolvedTheme);
+  }, [resolvedTheme]);
 
   return {
     colorMode: resolvedTheme as ColorMode,
-    setColorMode,
-    toggleColorMode,
+    setColorMode: setTheme,
+    toggleColorMode: () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
   };
 };
 
