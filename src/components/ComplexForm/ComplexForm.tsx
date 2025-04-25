@@ -32,14 +32,30 @@ import { defaultValues } from './default';
 import { usePrimaryFuelTypeOptions, useVehicleDataModelOptions } from './options';
 import { FormFields, genSchema } from './schema';
 import {
+  useAxleCountVisibility,
+  useBedCountVisibility,
+  useBodyColorNameVisibility,
+  useBodyColorVisibility,
   useCarpassMileageUrlVisibility,
   useClosingCostsVisibility,
   useContactInformationVisibility,
+  useGrossVehicleWeightVisibility,
+  useHasCarRegistrationVisibility,
+  useHsnVisibility,
+  useInteriorColorVisibility,
+  useLoadDimensionsVisibility,
+  useMaximumTowingWeightVisibility,
   useModelNameVisibility,
+  useModelVisibility,
   useNetPriceVisibility,
+  usePayloadVisibility,
+  useProductionYearVisibility,
   useTaxAndPriceNegotiableVisibility,
+  useTotalDimensionsVisibility,
+  useUpholsteryVisibility,
   useVatRateVisibility,
   useVinVisibility,
+  useWheelbaseVisibility,
   useWltpCo2EmissionsCombinedVisibility,
 } from './visibility';
 
@@ -63,7 +79,9 @@ const ComplexForm = () => {
   const { handleSubmit, control, reset } = form;
 
   // Vehicle
+  const isModelVisible = useModelVisibility();
   const isModelNameVisible = useModelNameVisibility();
+  const isHsnVisible = useHsnVisibility();
   const isVinVisible = useVinVisibility();
   const isCarpassMileageUrlVisible = useCarpassMileageUrlVisibility();
   const vehicleDataModelOptions = useVehicleDataModelOptions(control);
@@ -80,6 +98,22 @@ const ComplexForm = () => {
 
   // Contact information
   const isContactInformationVisible = useContactInformationVisibility();
+
+  // Characteristics
+  const isBodyColorNameVisible = useBodyColorNameVisibility();
+  const isPayloadVisible = usePayloadVisibility();
+  const isGrossVehicleWeightVisible = useGrossVehicleWeightVisibility();
+  const isProductionYearVisible = useProductionYearVisibility();
+  const isBodyColorVisible = useBodyColorVisibility();
+  const isUpholsteryVisible = useUpholsteryVisibility();
+  const isInteriorColorVisible = useInteriorColorVisibility();
+  const isAxleCountVisible = useAxleCountVisibility();
+  const isWheelbaseVisible = useWheelbaseVisibility();
+  const isMaximumTowingWeightVisible = useMaximumTowingWeightVisibility();
+  const isHasCarRegistrationVisible = useHasCarRegistrationVisibility();
+  const isLoadDimensionsVisible = useLoadDimensionsVisibility();
+  const isTotalDimensionsVisible = useTotalDimensionsVisibility();
+  const isBedCountVisible = useBedCountVisibility();
 
   return (
     <FormProvider {...form}>
@@ -101,19 +135,28 @@ const ComplexForm = () => {
             options={makes.map((m) => ({ ...m, value: String(m.value) }))}
             control={control}
           />
-          <SelectContainer
-            name="vehicleData.model"
-            label={t('vehicleData.model')}
-            options={vehicleDataModelOptions.data}
-            disabled={vehicleDataModelOptions.isFetching}
-            isLoading={vehicleDataModelOptions.isFetching}
-            control={control}
-          />
+          {isModelVisible && (
+            <SelectContainer
+              name="vehicleData.model"
+              label={t('vehicleData.model')}
+              options={vehicleDataModelOptions.data}
+              disabled={vehicleDataModelOptions.isFetching}
+              isLoading={vehicleDataModelOptions.isFetching}
+              control={control}
+            />
+          )}
           <TextInputContainer
             label={t('vehicleData.modelVersion')}
             name="vehicleData.modelVersion"
             control={control}
           />
+          {isHsnVisible && (
+            <TextInputContainer
+              label={t('vehicleData.hsn')}
+              name="vehicleData.hsn"
+              control={control}
+            />
+          )}
           {isModelNameVisible && (
             <TextInputContainer
               label={t('vehicleData.modelName')}
@@ -139,47 +182,159 @@ const ComplexForm = () => {
 
         <Fieldset legend={t('characteristics.legend')} id="characteristics">
           <SelectContainer
-            name="characteristics.bodyType"
             control={control}
+            name="characteristics.bodyType"
             label={t('characteristics.bodyType')}
-            options={bodyTypes.map((m) => ({ ...m, value: String(m.value) }))}
+            options={bodyTypes.map((it) => ({ value: String(it.value), label: it.label }))}
           />
           <NumericInputContainer
-            label={t('characteristics.seats')}
             control={control}
             name="characteristics.seats"
+            label={t('characteristics.seats')}
           />
           <NumericInputContainer
-            label={t('characteristics.doors')}
             control={control}
             name="characteristics.doors"
+            label={t('characteristics.doors')}
           />
-          <RadioContainer
-            name="characteristics.color"
-            options={bodyColors}
-            label={t('characteristics.color')}
-            control={control}
-          />
-          <div className="grid gap-1">
-            <div>{t('characteristics.typeOfPaint')}</div>
+          {isBodyColorVisible && (
+            <RadioContainer
+              control={control}
+              name="characteristics.bodyColor"
+              label={t('characteristics.bodyColor')}
+              options={bodyColors}
+            />
+          )}
+          {isBodyColorNameVisible && (
+            <TextInputContainer
+              control={control}
+              name="characteristics.bodyColorName"
+              label={t('characteristics.bodyColorName')}
+            />
+          )}
+          <div className="grid gap-1.5">
+            <label className="text-sm font-medium">{t('characteristics.typeOfPaint')}</label>
             <CheckboxContainer
+              control={control}
               name="characteristics.metallic"
               label={t('characteristics.metallic')}
-              control={control}
             />
           </div>
-          <RadioContainer
-            name="characteristics.upholstery"
-            options={upholsteryOptions}
-            label={t('characteristics.upholstery')}
-            control={control}
-          />
-          <RadioContainer
-            name="characteristics.interiorColor"
-            options={interiorColorOptions}
-            label={t('characteristics.interiorColor')}
-            control={control}
-          />
+          {isUpholsteryVisible && (
+            <RadioContainer
+              control={control}
+              name="characteristics.upholstery"
+              label={t('characteristics.upholstery')}
+              options={upholsteryOptions}
+            />
+          )}
+          {isInteriorColorVisible && (
+            <RadioContainer
+              control={control}
+              name="characteristics.interiorColor"
+              label={t('characteristics.interiorColor')}
+              options={interiorColorOptions}
+            />
+          )}
+          {isPayloadVisible && (
+            <NumericInputContainer
+              control={control}
+              name="characteristics.payload"
+              label={t('characteristics.payload')}
+            />
+          )}
+          {isGrossVehicleWeightVisible && (
+            <NumericInputContainer
+              control={control}
+              name="characteristics.grossVehicleWeight"
+              label={t('characteristics.grossVehicleWeight')}
+            />
+          )}
+          {isProductionYearVisible && (
+            <TextInputContainer
+              control={control}
+              name="characteristics.productionYear"
+              label={t('characteristics.productionYear')}
+            />
+          )}
+          {isAxleCountVisible && (
+            <NumericInputContainer
+              control={control}
+              name="characteristics.axleCount"
+              label={t('characteristics.axleCount')}
+            />
+          )}
+          {isWheelbaseVisible && (
+            <NumericInputContainer
+              control={control}
+              name="characteristics.wheelbase"
+              label={t('characteristics.wheelbase')}
+            />
+          )}
+          {isMaximumTowingWeightVisible && (
+            <NumericInputContainer
+              control={control}
+              name="characteristics.maximumTowingWeight"
+              label={t('characteristics.maximumTowingWeight')}
+            />
+          )}
+          {isHasCarRegistrationVisible && (
+            <CheckboxContainer
+              control={control}
+              name="characteristics.hasCarRegistration"
+              label={t('characteristics.hasCarRegistration')}
+            />
+          )}
+          {isLoadDimensionsVisible && (
+            <>
+              <NumericInputContainer
+                control={control}
+                name="characteristics.loadHeight"
+                label={t('characteristics.loadHeight')}
+              />
+              <NumericInputContainer
+                control={control}
+                name="characteristics.loadVolume"
+                label={t('characteristics.loadVolume')}
+              />
+              <NumericInputContainer
+                control={control}
+                name="characteristics.loadWidth"
+                label={t('characteristics.loadWidth')}
+              />
+              <NumericInputContainer
+                control={control}
+                name="characteristics.loadLength"
+                label={t('characteristics.loadLength')}
+              />
+            </>
+          )}
+          {isTotalDimensionsVisible && (
+            <>
+              <NumericInputContainer
+                control={control}
+                name="characteristics.totalHeight"
+                label={t('characteristics.totalHeight')}
+              />
+              <NumericInputContainer
+                control={control}
+                name="characteristics.totalWidth"
+                label={t('characteristics.totalWidth')}
+              />
+              <NumericInputContainer
+                control={control}
+                name="characteristics.totalLength"
+                label={t('characteristics.totalLength')}
+              />
+            </>
+          )}
+          {isBedCountVisible && (
+            <NumericInputContainer
+              control={control}
+              name="characteristics.bedCount"
+              label={t('characteristics.bedCount')}
+            />
+          )}
         </Fieldset>
 
         <Fieldset legend={t('condition.legend')} id="condition">
