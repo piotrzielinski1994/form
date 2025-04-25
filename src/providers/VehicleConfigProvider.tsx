@@ -21,7 +21,10 @@ const VehicleConfigContext = createContext<
 const VehicleConfigProvider = ({ children }: PropsWithChildren) => {
   const locale = useLocale();
   const state = useState<VehicleConfig>({
-    culture: localePerCulture[locale] ?? 'en-US',
+    culture:
+      Object.entries(localePerCulture)
+        .find((it) => it[1] === locale)
+        ?.at(0) ?? 'en-US',
     userType: 'P',
     vehicleType: 'C',
   });
