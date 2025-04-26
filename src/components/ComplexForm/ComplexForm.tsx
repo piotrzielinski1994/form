@@ -20,7 +20,7 @@ import { usePrimaryFuelTypeOptions, useVehicleDataModelOptions } from './options
 import ComplexFormActions from './scaffold/ComplexFormActions';
 import { ComplexFormNavigation } from './scaffold/ComplexFormNavigation';
 import { FormFields, genSchema } from './schema';
-import * as v from './visibility.hooks';
+import * as v from './visibility';
 
 const FORM_ID = 'complex-form';
 
@@ -39,47 +39,11 @@ const ComplexForm = () => {
     },
     resolver: zodResolver(genSchema(vehicleConfig), { errorMap: getZodErrorMap(tZod) }),
   });
-  const { handleSubmit, control, reset } = form;
+  const { handleSubmit, control, reset, watch } = form;
 
   // Vehicle data =======================================================
-  const isModelVisible = v.useModelVisibility();
-  const isModelNameVisible = v.useModelNameVisibility();
-  const isHsnVisible = v.useHsnVisibility();
-  const isVinVisible = v.useVinVisibility();
-  const isCarpassMileageUrlVisible = v.useCarpassMileageUrlVisibility();
-  const isLicencePlateNumberVisible = v.useLicencePlateNumberVisibility();
-  const isTsnVisible = v.useTsnVisibility();
-  const isOfferReferenceVisible = v.useOfferReferenceVisibility();
   const vehicleDataModelOptions = useVehicleDataModelOptions(control);
-
-  // Characteristics =======================================================
-  const isBodyColorNameVisible = v.useBodyColorNameVisibility();
-  const isPayloadVisible = v.usePayloadVisibility();
-  const isGrossVehicleWeightVisible = v.useGrossVehicleWeightVisibility();
-  const isProductionYearVisible = v.useProductionYearVisibility();
-  const isBodyColorVisible = v.useBodyColorVisibility();
-  const isUpholsteryVisible = v.useUpholsteryVisibility();
-  const isInteriorColorVisible = v.useInteriorColorVisibility();
-  const isAxleCountVisible = v.useAxleCountVisibility();
-  const isWheelbaseVisible = v.useWheelbaseVisibility();
-  const isMaximumTowingWeightVisible = v.useMaximumTowingWeightVisibility();
-  const isHasCarRegistrationVisible = v.useHasCarRegistrationVisibility();
-  const isLoadDimensionsVisible = v.useLoadDimensionsVisibility();
-  const isTotalDimensionsVisible = v.useTotalDimensionsVisibility();
-  const isBedCountVisible = v.useBedCountVisibility();
-
-  // Fuel =======================================================
-  const isWltpCo2EmissionsCombinedVisible = v.useWltpCo2EmissionsCombinedVisibility(control);
   const primaryFuelTypeOptions = usePrimaryFuelTypeOptions(control);
-
-  // Financing offer =======================================================
-  const isNetPriceVisible = v.useNetPriceVisibility();
-  const isVatRateVisible = v.useVatRateVisibility();
-  const isTaxAndPriceNegotiableVisible = v.useTaxAndPriceNegotiableVisibility();
-  const isClosingCostsVisible = v.useClosingCostsVisibility();
-
-  // Contact information =======================================================
-  const isContactInformationVisible = v.useContactInformationVisibility();
 
   return (
     <FormProvider {...form}>
@@ -102,7 +66,7 @@ const ComplexForm = () => {
             options={c.makes.map((m) => ({ ...m, value: String(m.value) }))}
             control={control}
           />
-          {isModelVisible && (
+          {v.isModelVisible(vehicleConfig) && (
             <SelectContainer
               name="vehicleData.model"
               label={t('vehicleData.model')}
@@ -117,49 +81,49 @@ const ComplexForm = () => {
             name="vehicleData.modelVersion"
             control={control}
           />
-          {isHsnVisible && (
+          {v.isHsnVisible(vehicleConfig) && (
             <TextInputContainer
               label={t('vehicleData.hsn')}
               name="vehicleData.hsn"
               control={control}
             />
           )}
-          {isModelNameVisible && (
+          {v.isModelNameVisible(vehicleConfig) && (
             <TextInputContainer
               label={t('vehicleData.modelName')}
               name="vehicleData.modelName"
               control={control}
             />
           )}
-          {isVinVisible && (
+          {v.isVinVisible(vehicleConfig) && (
             <TextInputContainer
               label={t('vehicleData.vin')}
               name="vehicleData.vin"
               control={control}
             />
           )}
-          {isCarpassMileageUrlVisible && (
+          {v.isCarpassMileageUrlVisible(vehicleConfig) && (
             <TextInputContainer
               label={t('vehicleData.carpassMileageUrl')}
               name="vehicleData.carpassMileageUrl"
               control={control}
             />
           )}
-          {isLicencePlateNumberVisible && (
+          {v.isLicencePlateNumberVisible(vehicleConfig) && (
             <TextInputContainer
               label={t('vehicleData.licencePlateNumber')}
               name="vehicleData.licencePlateNumber"
               control={control}
             />
           )}
-          {isOfferReferenceVisible && (
+          {v.isOfferReferenceVisible(vehicleConfig) && (
             <TextInputContainer
               label={t('vehicleData.offerReference')}
               name="vehicleData.offerReference"
               control={control}
             />
           )}
-          {isTsnVisible && (
+          {v.isTsnVisible(vehicleConfig) && (
             <TextInputContainer
               label={t('vehicleData.tsn')}
               name="vehicleData.tsn"
@@ -185,7 +149,7 @@ const ComplexForm = () => {
             name="characteristics.doors"
             label={t('characteristics.doors')}
           />
-          {isBodyColorVisible && (
+          {v.isBodyColorVisible(vehicleConfig) && (
             <RadioContainer
               control={control}
               name="characteristics.bodyColor"
@@ -193,7 +157,7 @@ const ComplexForm = () => {
               options={c.bodyColors}
             />
           )}
-          {isBodyColorNameVisible && (
+          {v.isBodyColorNameVisible(vehicleConfig) && (
             <TextInputContainer
               control={control}
               name="characteristics.bodyColorName"
@@ -208,7 +172,7 @@ const ComplexForm = () => {
               label={t('characteristics.metallic')}
             />
           </div>
-          {isUpholsteryVisible && (
+          {v.isUpholsteryVisible(vehicleConfig) && (
             <RadioContainer
               control={control}
               name="characteristics.upholstery"
@@ -216,7 +180,7 @@ const ComplexForm = () => {
               options={c.upholsteryOptions}
             />
           )}
-          {isInteriorColorVisible && (
+          {v.isInteriorColorVisible(vehicleConfig) && (
             <RadioContainer
               control={control}
               name="characteristics.interiorColor"
@@ -224,56 +188,56 @@ const ComplexForm = () => {
               options={c.interiorColorOptions}
             />
           )}
-          {isPayloadVisible && (
+          {v.isPayloadVisible(vehicleConfig) && (
             <NumericInputContainer
               control={control}
               name="characteristics.payload"
               label={t('characteristics.payload')}
             />
           )}
-          {isGrossVehicleWeightVisible && (
+          {v.isGrossVehicleWeightVisible(vehicleConfig) && (
             <NumericInputContainer
               control={control}
               name="characteristics.grossVehicleWeight"
               label={t('characteristics.grossVehicleWeight')}
             />
           )}
-          {isProductionYearVisible && (
+          {v.isProductionYearVisible(vehicleConfig) && (
             <TextInputContainer
               control={control}
               name="characteristics.productionYear"
               label={t('characteristics.productionYear')}
             />
           )}
-          {isAxleCountVisible && (
+          {v.isAxleCountVisible(vehicleConfig) && (
             <NumericInputContainer
               control={control}
               name="characteristics.axleCount"
               label={t('characteristics.axleCount')}
             />
           )}
-          {isWheelbaseVisible && (
+          {v.isWheelbaseVisible(vehicleConfig) && (
             <NumericInputContainer
               control={control}
               name="characteristics.wheelbase"
               label={t('characteristics.wheelbase')}
             />
           )}
-          {isMaximumTowingWeightVisible && (
+          {v.isMaximumTowingWeightVisible(vehicleConfig) && (
             <NumericInputContainer
               control={control}
               name="characteristics.maximumTowingWeight"
               label={t('characteristics.maximumTowingWeight')}
             />
           )}
-          {isHasCarRegistrationVisible && (
+          {v.isHasCarRegistrationVisible(vehicleConfig) && (
             <CheckboxContainer
               control={control}
               name="characteristics.hasCarRegistration"
               label={t('characteristics.hasCarRegistration')}
             />
           )}
-          {isLoadDimensionsVisible && (
+          {v.isLoadDimensionsVisible(vehicleConfig) && (
             <>
               <NumericInputContainer
                 control={control}
@@ -297,7 +261,7 @@ const ComplexForm = () => {
               />
             </>
           )}
-          {isTotalDimensionsVisible && (
+          {v.isTotalDimensionsVisible(vehicleConfig) && (
             <>
               <NumericInputContainer
                 control={control}
@@ -316,7 +280,7 @@ const ComplexForm = () => {
               />
             </>
           )}
-          {isBedCountVisible && (
+          {v.isBedCountVisible(vehicleConfig) && (
             <NumericInputContainer
               control={control}
               name="characteristics.bedCount"
@@ -1171,7 +1135,7 @@ const ComplexForm = () => {
             label={t('fuel.sootParticles')}
             control={control}
           />
-          {isWltpCo2EmissionsCombinedVisible ? (
+          {v.isWltpCo2EmissionsCombinedVisible(watch('fuel.environmentalProtocol')) ? (
             <>
               <NumericInputContainer
                 key="wltpConsumptionCombined"
@@ -1245,14 +1209,14 @@ const ComplexForm = () => {
             control={control}
             name="financingOffer.price"
           />
-          {isNetPriceVisible && (
+          {v.isNetPriceVisible(vehicleConfig) && (
             <NumericInputContainer
               label={t('financingOffer.netPrice')}
               control={control}
               name="financingOffer.netPrice"
             />
           )}
-          {isTaxAndPriceNegotiableVisible && (
+          {v.isTaxAndPriceNegotiableVisible(vehicleConfig) && (
             <>
               <CheckboxContainer
                 name="financingOffer.negotiable"
@@ -1266,7 +1230,7 @@ const ComplexForm = () => {
               />
             </>
           )}
-          {isVatRateVisible && (
+          {v.isVatRateVisible(vehicleConfig) && (
             <NumericInputContainer
               label={t('financingOffer.vatRate')}
               control={control}
@@ -1298,7 +1262,7 @@ const ComplexForm = () => {
             control={control}
             name="financingOffer.endingRate"
           />
-          {isClosingCostsVisible && (
+          {v.isClosingCostsVisible(vehicleConfig) && (
             <NumericInputContainer
               label={t('financingOffer.closingCosts')}
               control={control}
@@ -1307,7 +1271,7 @@ const ComplexForm = () => {
           )}
         </Fieldset>
 
-        {isContactInformationVisible && (
+        {v.isContactInformationVisible(vehicleConfig) && (
           <Fieldset legend={t('contactInformation.legend')} id="contactInformation">
             <div className="grid grid-cols-3 gap-2">
               <TextInputContainer

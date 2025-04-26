@@ -1,17 +1,18 @@
 'use client';
 
 import { Steps } from '@/components/Steps';
+import { useVehicleConfig } from '@/providers/VehicleConfigProvider';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useFormContext } from 'react-hook-form';
 import { FormFields } from '../schema';
-import { useContactInformationVisibility } from '../visibility.hooks';
+import { isContactInformationVisible } from '../visibility';
 
 const ComplexFormNavigation = () => {
   const t = useTranslations('ComplexForm');
   const router = useRouter();
+  const [vehicleConfig] = useVehicleConfig();
   const { errors, touchedFields, isSubmitted } = useFormContext<FormFields>().formState;
-  const isContactInformationVisible = useContactInformationVisibility();
 
   const getSectionValidity = (sectionKey: keyof FormFields) => {
     const isSectionTouched = !!touchedFields[sectionKey];
@@ -46,7 +47,7 @@ const ComplexFormNavigation = () => {
       heading: t('financingOffer.legend'),
       isValid: getSectionValidity('financingOffer'),
     },
-    ...(isContactInformationVisible
+    ...(isContactInformationVisible(vehicleConfig)
       ? [
           {
             id: 'contactInformation',
