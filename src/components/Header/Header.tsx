@@ -7,11 +7,15 @@ import { VehicleTypeSwitcher } from './VehicleTypeSwitcher';
 const Header = () => {
   return (
     <Theme as="header" appearance="dark" className="sticky top-0 z-20">
-      <Container maxW="4xl" className="h-12 flex gap-4 items-center justify-end">
-        <UserTypeSwitcher />
-        <VehicleTypeSwitcher />
-        <LocaleSwitcher />
-        <ColorModeButton />
+      <Container maxW="4xl" className="p-2 flex flex-wrap flex-row-reverse">
+        <div className="flex gap-x-1 justify-end items-center">
+          <LocaleSwitcher />
+          <ColorModeButton />
+        </div>
+        <div className="flex flex-wrap justify-end items-center gap-x-4 gap-y-2">
+          <UserTypeSwitcher />
+          <VehicleTypeSwitcher />
+        </div>
       </Container>
     </Theme>
   );

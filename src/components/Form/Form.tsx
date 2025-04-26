@@ -12,7 +12,7 @@ const Form = forwardRef<HTMLFormElement, FormProps>((props, ref) => {
 
   return (
     <form
-      className={clsx('grid gap-10', className)}
+      className={clsx('grid gap-4 sm:gap-10', className)}
       ref={ref}
       {...rest}
       onReset={(e) => {

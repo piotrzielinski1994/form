@@ -32,10 +32,13 @@ const Steps = ({ steps, onClick, className }: StepsProps) => {
               key={index}
               index={index}
               title={step.heading}
-              className={clsx({
-                'text-red-500': step.isValid === false,
-                'text-green-600': step.isValid === true,
-              })}
+              style={{
+                color: (() => {
+                  if (step.isValid === true) return 'var(--chakra-colors-fg-success)';
+                  if (step.isValid === false) return 'var(--chakra-colors-fg-error)';
+                  return 'inherit';
+                })(),
+              }}
             >
               <ChakraSteps.Trigger className="cursor-pointer">
                 <div
@@ -46,7 +49,9 @@ const Steps = ({ steps, onClick, className }: StepsProps) => {
                 >
                   {step.isValid ? <LuCheck /> : index + 1}
                 </div>
-                <ChakraSteps.Title>{step.heading}</ChakraSteps.Title>
+                <ChakraSteps.Title className="sr-only sm:not-sr-only">
+                  {step.heading}
+                </ChakraSteps.Title>
               </ChakraSteps.Trigger>
             </ChakraSteps.Item>
           );

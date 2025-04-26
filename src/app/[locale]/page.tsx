@@ -6,7 +6,7 @@ const HomePage = async () => {
   return (
     <>
       <h1 className="text-5xl text-center">{t('title')}</h1>
-      <div className="grid grid-cols-[auto_1fr] gap-10 !items-start">
+      <div className="grid grid-cols-[auto_1fr] gap-4 sm:gap-10 !items-start">
         <ComplexForm />
       </div>
     </>

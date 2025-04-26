@@ -27,9 +27,9 @@ const LocaleLayout = async ({ children, params }: LayoutProps) => {
       <body>
         <NextIntlClientProvider>
           <Providers>
-            <div id="root" className="grid gap-10">
+            <div id="root" className="grid gap-6 sm:gap-10">
               <Header />
-              <Container as="main" maxW="4xl" className="grid gap-10 relative">
+              <Container as="main" maxW="4xl" className="grid gap-6 sm:gap-10 relative">
                 {children}
               </Container>
             </div>

@@ -36,7 +36,7 @@ export default function LocaleSwitcher() {
       )}
     >
       <select
-        className="inline-flex appearance-none bg-transparent py-3 px-2 cursor-pointer"
+        className="inline-flex appearance-none bg-transparent py-1 px-2 cursor-pointer text-end"
         defaultValue={locale}
         disabled={isPending}
         onChange={onSelectChange}
