@@ -1,29 +1,6 @@
 import { VehicleConfig } from '@/providers/VehicleConfigProvider';
 import { z } from 'zod';
-import {
-  isAxleCountVisible,
-  isBedCountVisible,
-  isBodyColorNameVisible,
-  isBodyColorVisible,
-  isCarpassMileageUrlVisible,
-  isGrossVehicleWeightVisible,
-  isHasCarRegistrationVisible,
-  isHsnVisible,
-  isInteriorColorVisible,
-  isLicencePlateNumberVisible,
-  isLoadDimensionsVisible,
-  isMaximumTowingWeightVisible,
-  isModelNameVisible,
-  isModelVisible,
-  isOfferReferenceVisible,
-  isPayloadVisible,
-  isProductionYearVisible,
-  isTotalDimensionsVisible,
-  isTsnVisible,
-  isUpholsteryVisible,
-  isVinVisible,
-  isWheelbaseVisible,
-} from './visibility';
+import * as v from './visibility';
 
 type FormFields = z.infer<ReturnType<typeof genSchema>>;
 type PartialFormFields = z.input<ReturnType<typeof genSchema>>;
@@ -37,36 +14,36 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
   return z.object({
     vehicleData: z.object({
       make: z.string().min(1),
-      model: isModelVisible(vehicleConfig) ? z.string().min(1) : z.literal(undefined),
+      model: v.isModelVisible(vehicleConfig) ? z.string().min(1) : z.literal(undefined),
       modelVersion: z.string().max(50).refine(hasNoXml).refine(isNotEmail).refine(isNotUrl),
-      modelName: isModelNameVisible(vehicleConfig)
+      modelName: v.isModelNameVisible(vehicleConfig)
         ? z.string().min(1).max(50)
         : z.literal(undefined),
-      hsn: isHsnVisible(vehicleConfig)
+      hsn: v.isHsnVisible(vehicleConfig)
         ? z
             .string()
             .regex(/^[0-9]{4}$/)
             .or(z.literal(''))
         : z.literal(undefined),
-      tsn: isTsnVisible(vehicleConfig)
+      tsn: v.isTsnVisible(vehicleConfig)
         ? z
             .string()
             .regex(/^[a-zA-Z0-9]{3}$/)
             .or(z.literal(''))
         : z.literal(undefined),
-      licencePlateNumber: isLicencePlateNumberVisible(vehicleConfig)
+      licencePlateNumber: v.isLicencePlateNumberVisible(vehicleConfig)
         ? z.string().max(8).nullable().refine(hasNoXml).refine(isNotEmail).refine(isNotUrl)
         : z.string().nullable().optional(),
-      vin: isVinVisible(vehicleConfig)
+      vin: v.isVinVisible(vehicleConfig)
         ? z
             .string()
             .regex(/^[A-HJ-NPR-Z0-9]{17}$/)
             .or(z.literal(''))
         : z.literal(undefined),
-      carpassMileageUrl: isCarpassMileageUrlVisible(vehicleConfig)
+      carpassMileageUrl: v.isCarpassMileageUrlVisible(vehicleConfig)
         ? z.string().url().max(1000).or(z.literal(''))
         : z.literal(undefined),
-      offerReference: isOfferReferenceVisible(vehicleConfig)
+      offerReference: v.isOfferReferenceVisible(vehicleConfig)
         ? z.string().max(50).refine(hasNoXml).refine(isNotEmail).refine(isNotUrl)
         : z.literal(undefined),
     }),
@@ -77,62 +54,62 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
       bodyType: z.string().trim().min(1),
       seats: z.number().int().min(1).max(99).optional(),
       doors: z.number().int().min(1).max(9).optional(),
-      bodyColor: isBodyColorVisible(vehicleConfig)
+      bodyColor: v.isBodyColorVisible(vehicleConfig)
         ? z.string().trim().optional()
         : z.literal(undefined),
-      bodyColorName: isBodyColorNameVisible(vehicleConfig)
+      bodyColorName: v.isBodyColorNameVisible(vehicleConfig)
         ? z.string().trim().max(30).optional()
         : z.literal(undefined),
       metallic: z.boolean().optional(),
-      upholstery: isUpholsteryVisible(vehicleConfig)
+      upholstery: v.isUpholsteryVisible(vehicleConfig)
         ? z.string().trim().optional()
         : z.literal(undefined),
-      interiorColor: isInteriorColorVisible(vehicleConfig)
+      interiorColor: v.isInteriorColorVisible(vehicleConfig)
         ? z.string().trim().optional()
         : z.literal(undefined),
-      payload: isPayloadVisible(vehicleConfig)
+      payload: v.isPayloadVisible(vehicleConfig)
         ? z.number().int().min(0).max(9_999_999).optional()
         : z.number().optional(),
-      grossVehicleWeight: isGrossVehicleWeightVisible(vehicleConfig)
+      grossVehicleWeight: v.isGrossVehicleWeightVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
         : z.number().optional(),
-      productionYear: isProductionYearVisible(vehicleConfig)
+      productionYear: v.isProductionYearVisible(vehicleConfig)
         ? z.string().trim().optional()
         : z.literal(undefined),
-      axleCount: isAxleCountVisible(vehicleConfig)
+      axleCount: v.isAxleCountVisible(vehicleConfig)
         ? z.number().int().min(1).max(99).optional()
         : z.number().optional(),
-      wheelbase: isWheelbaseVisible(vehicleConfig)
+      wheelbase: v.isWheelbaseVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
         : z.number().optional(),
-      maximumTowingWeight: isMaximumTowingWeightVisible(vehicleConfig)
+      maximumTowingWeight: v.isMaximumTowingWeightVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
         : z.number().optional(),
-      hasCarRegistration: isHasCarRegistrationVisible(vehicleConfig)
+      hasCarRegistration: v.isHasCarRegistrationVisible(vehicleConfig)
         ? z.boolean().optional()
         : z.boolean().optional(),
-      loadHeight: isLoadDimensionsVisible(vehicleConfig)
+      loadHeight: v.isLoadDimensionsVisible(vehicleConfig)
         ? z.number().min(0).max(9_999_999.99).optional()
         : z.number().optional(),
-      loadVolume: isLoadDimensionsVisible(vehicleConfig)
+      loadVolume: v.isLoadDimensionsVisible(vehicleConfig)
         ? z.number().min(0).max(9_999_999.99).optional()
         : z.number().optional(),
-      loadWidth: isLoadDimensionsVisible(vehicleConfig)
+      loadWidth: v.isLoadDimensionsVisible(vehicleConfig)
         ? z.number().min(0).max(9_999_999.99).optional()
         : z.number().optional(),
-      loadLength: isLoadDimensionsVisible(vehicleConfig)
+      loadLength: v.isLoadDimensionsVisible(vehicleConfig)
         ? z.number().min(0).max(9_999_999.99).optional()
         : z.number().optional(),
-      totalHeight: isTotalDimensionsVisible(vehicleConfig)
+      totalHeight: v.isTotalDimensionsVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
         : z.number().optional(),
-      totalWidth: isTotalDimensionsVisible(vehicleConfig)
+      totalWidth: v.isTotalDimensionsVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
         : z.number().optional(),
-      totalLength: isTotalDimensionsVisible(vehicleConfig)
+      totalLength: v.isTotalDimensionsVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
         : z.number().optional(),
-      bedCount: isBedCountVisible(vehicleConfig)
+      bedCount: v.isBedCountVisible(vehicleConfig)
         ? z.number().int().min(0).max(9).optional()
         : z.number().optional(),
     }),

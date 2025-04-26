@@ -10,40 +10,48 @@ import { useContactInformationVisibility } from '../visibility.hooks';
 const ComplexFormNavigation = () => {
   const t = useTranslations('ComplexForm');
   const router = useRouter();
-  const formContext = useFormContext<FormFields>();
-  const {
-    formState: { errors },
-    watch,
-  } = formContext;
+  const { errors, touchedFields, isSubmitted } = useFormContext<FormFields>().formState;
   const isContactInformationVisible = useContactInformationVisibility();
 
-  const vehicleDataModel = watch('vehicleData.model');
-  console.log('@@@ errors | ', errors.vehicleData?.model);
-  console.log('@@@ vehicleData.model value | ', vehicleDataModel);
+  const getSectionValidity = (sectionKey: keyof FormFields) => {
+    const isSectionTouched = !!touchedFields[sectionKey];
+    const isSectionValid = !errors[sectionKey];
+    if (isSubmitted) return isSectionValid;
+    if (!isSectionTouched) return undefined;
+    return isSectionValid;
+  };
 
   const steps = [
-    { id: 'vehicleData', heading: t('vehicleData.legend'), isValid: !errors.vehicleData },
+    {
+      id: 'vehicleData',
+      heading: t('vehicleData.legend'),
+      isValid: getSectionValidity('vehicleData'),
+    },
     {
       id: 'characteristics',
       heading: t('characteristics.legend'),
-      isValid: !errors.characteristics,
+      isValid: getSectionValidity('characteristics'),
     },
-    { id: 'condition', heading: t('condition.legend'), isValid: !errors.condition },
-    { id: 'equipment', heading: t('equipment.legend'), isValid: !errors.equipment },
-    { id: 'motor', heading: t('motor.legend'), isValid: !errors.motor },
-    { id: 'fuel', heading: t('fuel.legend'), isValid: !errors.fuel },
-    { id: 'description', heading: t('description.legend'), isValid: !errors.description },
+    { id: 'condition', heading: t('condition.legend'), isValid: getSectionValidity('condition') },
+    { id: 'equipment', heading: t('equipment.legend'), isValid: getSectionValidity('equipment') },
+    { id: 'motor', heading: t('motor.legend'), isValid: getSectionValidity('motor') },
+    { id: 'fuel', heading: t('fuel.legend'), isValid: getSectionValidity('fuel') },
+    {
+      id: 'description',
+      heading: t('description.legend'),
+      isValid: getSectionValidity('description'),
+    },
     {
       id: 'financingOffer',
       heading: t('financingOffer.legend'),
-      isValid: !errors.financingOffer,
+      isValid: getSectionValidity('financingOffer'),
     },
     ...(isContactInformationVisible
       ? [
           {
             id: 'contactInformation',
             heading: t('contactInformation.legend'),
-            isValid: !errors.contactInformation,
+            isValid: getSectionValidity('contactInformation'),
           },
         ]
       : []),
