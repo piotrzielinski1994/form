@@ -41,7 +41,6 @@ const ComplexForm = () => {
   });
   const { handleSubmit, control, reset, watch } = form;
 
-  // Vehicle data =======================================================
   const vehicleDataModelOptions = useVehicleDataModelOptions(control);
   const primaryFuelTypeOptions = usePrimaryFuelTypeOptions(control);
 
