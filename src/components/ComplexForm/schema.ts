@@ -69,49 +69,49 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
         : z.literal(undefined),
       payload: v.isPayloadVisible(vehicleConfig)
         ? z.number().int().min(0).max(9_999_999).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       grossVehicleWeight: v.isGrossVehicleWeightVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       productionYear: v.isProductionYearVisible(vehicleConfig)
         ? z.string().trim().optional()
         : z.literal(undefined),
       axleCount: v.isAxleCountVisible(vehicleConfig)
         ? z.number().int().min(1).max(99).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       wheelbase: v.isWheelbaseVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       maximumTowingWeight: v.isMaximumTowingWeightVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       hasCarRegistration: v.isHasCarRegistrationVisible(vehicleConfig)
         ? z.boolean().optional()
         : z.boolean().optional(),
       loadHeight: v.isLoadDimensionsVisible(vehicleConfig)
         ? z.number().min(0).max(9_999_999.99).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       loadVolume: v.isLoadDimensionsVisible(vehicleConfig)
         ? z.number().min(0).max(9_999_999.99).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       loadWidth: v.isLoadDimensionsVisible(vehicleConfig)
         ? z.number().min(0).max(9_999_999.99).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       loadLength: v.isLoadDimensionsVisible(vehicleConfig)
         ? z.number().min(0).max(9_999_999.99).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       totalHeight: v.isTotalDimensionsVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       totalWidth: v.isTotalDimensionsVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       totalLength: v.isTotalDimensionsVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
       bedCount: v.isBedCountVisible(vehicleConfig)
         ? z.number().int().min(0).max(9).optional()
-        : z.number().optional(),
+        : z.literal(undefined),
     }),
     condition: z.object({
       vehicleOfferType: z.string().trim(),
