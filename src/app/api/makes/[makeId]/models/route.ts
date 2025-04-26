@@ -1,6 +1,6 @@
 import { makes } from '@/components/ComplexForm/constants';
 
-const models = Object.fromEntries(
+export const models = Object.fromEntries(
   makes.map((make) => [
     make.value,
     [
@@ -25,5 +25,3 @@ export async function GET(req: Request, { params }: { params: Promise<{ makeId: 
     headers: { 'Content-Type': 'application/json' },
   });
 }
-
-export { models };
