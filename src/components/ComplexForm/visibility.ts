@@ -1,53 +1,44 @@
-import { useVehicleConfig } from '@/providers/VehicleConfigProvider';
-import { Control, useWatch } from 'react-hook-form';
-import { PartialFormFields } from './schema';
+import { VehicleConfig } from '@/providers/VehicleConfigProvider';
+import { FormFields } from './schema';
 
 // Vehicle Data =======================================================
 
-const useModelVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isModelVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return !['N', 'X', 'L'].includes(vehicleType);
 };
 
-const useModelNameVisibility = (): boolean => {
-  const [{ vehicleType, userType }] = useVehicleConfig();
+const isModelNameVisible = ({ userType, vehicleType }: VehicleConfig): boolean => {
   return ['N', 'X', 'L'].includes(vehicleType) || userType === 'D';
 };
 
-const useHsnVisibility = (): boolean => {
-  const [{ vehicleType, userType, culture }] = useVehicleConfig();
+const isHsnVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
   if (['B', 'DSC'].includes(vehicleType)) return false;
   if (vehicleType === 'C') return userType === 'D' && culture === 'de-DE';
   return culture === 'de-DE';
 };
 
-const useTsnVisibility = (): boolean => {
-  const [{ vehicleType, culture }] = useVehicleConfig();
+const isTsnVisible = ({ culture, vehicleType }: VehicleConfig): boolean => {
   if (['B', 'DSC'].includes(vehicleType)) return false;
   return culture === 'de-DE';
 };
 
-const useVinVisibility = (): boolean => {
-  const [{ userType, vehicleType }] = useVehicleConfig();
+const isVinVisible = ({ userType, vehicleType }: VehicleConfig): boolean => {
   if (vehicleType === 'DSC') return false;
   if (['N', 'X', 'L'].includes(vehicleType)) return false;
   return userType === 'D';
 };
 
-const useCarpassMileageUrlVisibility = (): boolean => {
-  const [{ vehicleType, userType, culture }] = useVehicleConfig();
+const isCarpassMileageUrlVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
   if (['N', 'X', 'L'].includes(vehicleType)) return false;
   if (!['fr-BE', 'nl-BE'].includes(culture)) return false;
   return userType === 'D';
 };
 
-const useLicencePlateNumberVisibility = (): boolean => {
-  const [{ culture }] = useVehicleConfig();
+const isLicencePlateNumberVisible = ({ culture }: VehicleConfig): boolean => {
   return culture === 'nl-NL';
 };
 
-const useOfferReferenceVisibility = (): boolean => {
-  const [{ userType, vehicleType }] = useVehicleConfig();
+const isOfferReferenceVisible = ({ userType, vehicleType }: VehicleConfig): boolean => {
   if (vehicleType === 'DSC') return false;
   if (['N', 'X', 'L'].includes(vehicleType)) return false;
   return userType === 'D';
@@ -55,146 +46,128 @@ const useOfferReferenceVisibility = (): boolean => {
 
 // Characteristics =======================================================
 
-const useBodyColorVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isBodyColorVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return !['L'].includes(vehicleType);
 };
 
-const useBodyColorNameVisibility = (): boolean => {
-  const [{ vehicleType, userType }] = useVehicleConfig();
+const isBodyColorNameVisible = ({ userType, vehicleType }: VehicleConfig): boolean => {
   if (['N', 'X', 'L'].includes(vehicleType)) return true;
   if (['C', 'B'].includes(vehicleType)) return userType === 'D';
   return false;
 };
 
-const useUpholsteryVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isUpholsteryVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return ['C', 'B'].includes(vehicleType);
 };
 
-const useInteriorColorVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isInteriorColorVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return ['C', 'B', 'N'].includes(vehicleType);
 };
 
-const usePayloadVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isPayloadVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return ['N', 'X', 'L'].includes(vehicleType);
 };
 
-const useGrossVehicleWeightVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isGrossVehicleWeightVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return ['N', 'X', 'L'].includes(vehicleType);
 };
 
-const useProductionYearVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isProductionYearVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return !['B', 'C'].includes(vehicleType);
 };
 
-const useAxleCountVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isAxleCountVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return ['N', 'X', 'L'].includes(vehicleType);
 };
 
-const useWheelbaseVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isWheelbaseVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return ['N', 'X', 'L'].includes(vehicleType);
 };
 
-const useMaximumTowingWeightVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isMaximumTowingWeightVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return ['C', 'X', 'L'].includes(vehicleType);
 };
 
-const useHasCarRegistrationVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isHasCarRegistrationVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return ['C', 'B'].includes(vehicleType);
 };
 
-const useLoadDimensionsVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isLoadDimensionsVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return ['N', 'X', 'L'].includes(vehicleType);
 };
 
-const useTotalDimensionsVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isTotalDimensionsVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return ['N', 'X', 'L'].includes(vehicleType);
 };
 
-const useBedCountVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isBedCountVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return vehicleType === 'N';
 };
 
 // Fuel =======================================================
 
-const useWltpCo2EmissionsCombinedVisibility = (control: Control<PartialFormFields>): boolean => {
-  const environmentalProtocol = useWatch({ control, name: 'fuel.environmentalProtocol' });
+const isWltpCo2EmissionsCombinedVisible = (
+  environmentalProtocol: FormFields['fuel']['environmentalProtocol']
+): boolean => {
   return environmentalProtocol === 'wltp';
 };
 
 // Financing Offer =======================================================
 
-const useNetPriceVisibility = (): boolean => {
-  const [{ vehicleType, userType, culture }] = useVehicleConfig();
+const isNetPriceVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
   if (vehicleType === 'DSC') return false;
   if (userType !== 'D') return false;
   return ['nl-NL', 'fr-BE', 'nl-BE', 'de-DE', 'at-AT'].includes(culture);
 };
 
-const useVatRateVisibility = (): boolean => {
-  const [{ vehicleType, userType, culture }] = useVehicleConfig();
+const isVatRateVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
   if (vehicleType === 'DSC') return false;
   if (userType !== 'D') return false;
   return ['nl-NL', 'fr-BE', 'nl-BE', 'de-DE', 'at-AT'].includes(culture);
 };
 
-const useTaxAndPriceNegotiableVisibility = (): boolean => {
-  const [{ vehicleType }] = useVehicleConfig();
+const isTaxAndPriceNegotiableVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return vehicleType !== 'DSC';
 };
 
-const useClosingCostsVisibility = (): boolean => {
-  const [{ userType, culture }] = useVehicleConfig();
+const isClosingCostsVisible = ({ userType, culture }: VehicleConfig): boolean => {
   if (userType !== 'D') return false;
   return ['nl-NL', 'fr-BE', 'nl-BE', 'it-IT', 'de-DE'].includes(culture);
 };
 
 // Contact Information =======================================================
 
-const useContactInformationVisibility = (): boolean => {
-  const [{ userType }] = useVehicleConfig();
+const isContactInformationVisible = ({ userType }: VehicleConfig): boolean => {
   return userType !== 'D';
 };
 
 export {
-  useAxleCountVisibility,
-  useBedCountVisibility,
-  useBodyColorNameVisibility,
-  useBodyColorVisibility,
-  useCarpassMileageUrlVisibility,
-  useClosingCostsVisibility,
-  useContactInformationVisibility,
-  useGrossVehicleWeightVisibility,
-  useHasCarRegistrationVisibility,
-  useHsnVisibility,
-  useInteriorColorVisibility,
-  useLicencePlateNumberVisibility,
-  useLoadDimensionsVisibility,
-  useMaximumTowingWeightVisibility,
-  useModelNameVisibility,
-  useModelVisibility,
-  useNetPriceVisibility,
-  useOfferReferenceVisibility,
-  usePayloadVisibility,
-  useProductionYearVisibility,
-  useTaxAndPriceNegotiableVisibility,
-  useTotalDimensionsVisibility,
-  useTsnVisibility,
-  useUpholsteryVisibility,
-  useVatRateVisibility,
-  useVinVisibility,
-  useWheelbaseVisibility,
-  useWltpCo2EmissionsCombinedVisibility,
+  isAxleCountVisible,
+  isBedCountVisible,
+  isBodyColorNameVisible,
+  isBodyColorVisible,
+  isCarpassMileageUrlVisible,
+  isClosingCostsVisible,
+  isContactInformationVisible,
+  isGrossVehicleWeightVisible,
+  isHasCarRegistrationVisible,
+  isHsnVisible,
+  isInteriorColorVisible,
+  isLicencePlateNumberVisible,
+  isLoadDimensionsVisible,
+  isMaximumTowingWeightVisible,
+  isModelNameVisible,
+  isModelVisible,
+  isNetPriceVisible,
+  isOfferReferenceVisible,
+  isPayloadVisible,
+  isProductionYearVisible,
+  isTaxAndPriceNegotiableVisible,
+  isTotalDimensionsVisible,
+  isTsnVisible,
+  isUpholsteryVisible,
+  isVatRateVisible,
+  isVinVisible,
+  isWheelbaseVisible,
+  isWltpCo2EmissionsCombinedVisible,
 };

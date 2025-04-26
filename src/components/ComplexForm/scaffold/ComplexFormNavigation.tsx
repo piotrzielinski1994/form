@@ -4,13 +4,22 @@ import { Steps } from '@/components/Steps';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useFormContext } from 'react-hook-form';
-import { useContactInformationVisibility } from '../visibility';
+import { FormFields } from '../schema';
+import { useContactInformationVisibility } from '../visibility.hooks';
 
 const ComplexFormNavigation = () => {
   const t = useTranslations('ComplexForm');
   const router = useRouter();
-  const { errors } = useFormContext().formState;
+  const formContext = useFormContext<FormFields>();
+  const {
+    formState: { errors },
+    watch,
+  } = formContext;
   const isContactInformationVisible = useContactInformationVisibility();
+
+  const vehicleDataModel = watch('vehicleData.model');
+  console.log('@@@ errors | ', errors.vehicleData?.model);
+  console.log('@@@ vehicleData.model value | ', vehicleDataModel);
 
   const steps = [
     { id: 'vehicleData', heading: t('vehicleData.legend'), isValid: !errors.vehicleData },
