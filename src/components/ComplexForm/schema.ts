@@ -15,7 +15,7 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
     vehicleData: z.object({
       make: z.string().min(1),
       model: v.isModelVisible(vehicleConfig) ? z.string().min(1) : z.literal(undefined),
-      modelVersion: z.string().max(50).refine(hasNoXml).refine(isNotEmail).refine(isNotUrl),
+      modelVersion: z.string().min(1).max(50).refine(hasNoXml).refine(isNotEmail).refine(isNotUrl),
       modelName: v.isModelNameVisible(vehicleConfig)
         ? z.string().min(1).max(50)
         : z.literal(undefined),
