@@ -1,18 +1,29 @@
 'use client';
 
+import { useHeaderHeight } from '@/components/Header/Header';
 import { Steps } from '@/components/Steps';
 import { useVehicleConfig } from '@/providers/VehicleConfigProvider';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { FormFields } from '../schema';
 import { isContactInformationVisible } from '../visibility';
 
+const SCROLL_OFFSET = 20; // px
+
 const ComplexFormNavigation = () => {
   const t = useTranslations('ComplexForm');
   const router = useRouter();
+  const headerHeight = useHeaderHeight();
   const [vehicleConfig] = useVehicleConfig();
   const { errors, touchedFields, isSubmitted } = useFormContext<FormFields>().formState;
+
+  useEffect(() => {
+    const fieldsetPadding = window.innerWidth >= 640 ? '2.5rem' : '1.5rem';
+    const offset = `calc(${headerHeight}px + ${SCROLL_OFFSET}px + ${fieldsetPadding})`;
+    document.documentElement.style.scrollPaddingTop = offset;
+  }, [headerHeight]);
 
   const getSectionValidity = (sectionKey: keyof FormFields) => {
     const isSectionTouched = !!touchedFields[sectionKey];
@@ -58,7 +69,14 @@ const ComplexFormNavigation = () => {
       : []),
   ];
 
-  return <Steps className="sticky top-16" steps={steps} onClick={(id) => router.push(`#${id}`)} />;
+  return (
+    <Steps
+      className="sticky"
+      style={{ top: `${headerHeight + SCROLL_OFFSET}px` }}
+      steps={steps}
+      onClick={(id) => router.push(`#${id}`)}
+    />
+  );
 };
 
 export { ComplexFormNavigation };

@@ -1,5 +1,6 @@
 import { Steps as ChakraSteps } from '@chakra-ui/react';
 import clsx from 'clsx';
+import { CSSProperties } from 'react';
 import { LuCheck } from 'react-icons/lu';
 
 type StepsProps = {
@@ -10,14 +11,16 @@ type StepsProps = {
   }>;
   onClick: (id: string) => void;
   className?: string;
+  style?: CSSProperties;
 };
 
-const Steps = ({ steps, onClick, className }: StepsProps) => {
+const Steps = ({ steps, onClick, className, style }: StepsProps) => {
   return (
     <ChakraSteps.Root
       orientation="vertical"
       count={steps.length}
       className={clsx('!h-auto', className)}
+      style={style}
       onClick={(e) => {
         const target = e.target as HTMLElement;
         const step = target.closest('button')?.id.split(':trigger:').at(1);

@@ -2,7 +2,6 @@
 @import 'tailwindcss';
 
 html {
-  scroll-padding-top: calc(64px + 0.5rem + 2.5rem);
   scroll-behavior: smooth;
 }
 
@@ -24,7 +23,4 @@ html {
   [data-part='root'] > [data-part='error-text'] {
     align-self: start;
   }
-}
-
-.label {
 }
