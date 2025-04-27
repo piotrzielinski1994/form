@@ -5,22 +5,17 @@ html {
   scroll-behavior: smooth;
 }
 
-.inputs-wrapper {
+/* To align multi-column group of fields */
+.chakra-field__root {
+  grid-row: span 3; /* label, input, error */
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: auto;
+  grid-template-rows: subgrid;
 
-  [data-part='root'] {
-    display: grid;
-    grid-template-rows: subgrid;
-    grid-row: span 3;
-  }
-
-  [data-part='root'] > [data-part='label'] {
+  & > [data-part='label'] {
     align-self: end;
   }
 
-  [data-part='root'] > [data-part='error-text'] {
+  & > [data-part='error-text'] {
     align-self: start;
   }
 }
