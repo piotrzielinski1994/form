@@ -76,15 +76,31 @@ const ComplexForm = () => {
               control={control}
             />
           )}
-          <TextInputContainer label={t('vehicleData.modelVersion')} name="vehicleData.modelVersion" control={control} />
+          <TextInputContainer
+            label={t('vehicleData.modelVersion')}
+            name="vehicleData.modelVersion"
+            control={control}
+          />
           {v.isHsnVisible(vehicleConfig) && (
-            <TextInputContainer label={t('vehicleData.hsn')} name="vehicleData.hsn" control={control} />
+            <TextInputContainer
+              label={t('vehicleData.hsn')}
+              name="vehicleData.hsn"
+              control={control}
+            />
           )}
           {v.isModelNameVisible(vehicleConfig) && (
-            <TextInputContainer label={t('vehicleData.modelName')} name="vehicleData.modelName" control={control} />
+            <TextInputContainer
+              label={t('vehicleData.modelName')}
+              name="vehicleData.modelName"
+              control={control}
+            />
           )}
           {v.isVinVisible(vehicleConfig) && (
-            <TextInputContainer label={t('vehicleData.vin')} name="vehicleData.vin" control={control} />
+            <TextInputContainer
+              label={t('vehicleData.vin')}
+              name="vehicleData.vin"
+              control={control}
+            />
           )}
           {v.isCarpassMileageUrlVisible(vehicleConfig) && (
             <TextInputContainer
@@ -108,7 +124,11 @@ const ComplexForm = () => {
             />
           )}
           {v.isTsnVisible(vehicleConfig) && (
-            <TextInputContainer label={t('vehicleData.tsn')} name="vehicleData.tsn" control={control} />
+            <TextInputContainer
+              label={t('vehicleData.tsn')}
+              name="vehicleData.tsn"
+              control={control}
+            />
           )}
         </Fieldset>
 
@@ -122,8 +142,16 @@ const ComplexForm = () => {
               label: it.label,
             }))}
           />
-          <NumericInputContainer control={control} name="characteristics.seats" label={t('characteristics.seats')} />
-          <NumericInputContainer control={control} name="characteristics.doors" label={t('characteristics.doors')} />
+          <NumericInputContainer
+            control={control}
+            name="characteristics.seats"
+            label={t('characteristics.seats')}
+          />
+          <NumericInputContainer
+            control={control}
+            name="characteristics.doors"
+            label={t('characteristics.doors')}
+          />
           {v.isBodyColorVisible(vehicleConfig) && (
             <RadioContainer
               control={control}
@@ -271,7 +299,11 @@ const ComplexForm = () => {
             options={c.vehicleOfferTypeOptions}
             control={control}
           />
-          <NumericInputContainer label={t('condition.mileage')} control={control} name="condition.mileage" />
+          <NumericInputContainer
+            label={t('condition.mileage')}
+            control={control}
+            name="condition.mileage"
+          />
           <div className="grid grid-cols-2">
             <SelectContainer
               name="condition.firstRegistrationMonth"
@@ -292,13 +324,21 @@ const ComplexForm = () => {
               control={control}
             />
           </div>
-          <NumericInputContainer label={t('condition.owners')} control={control} name="condition.owners" />
+          <NumericInputContainer
+            label={t('condition.owners')}
+            control={control}
+            name="condition.owners"
+          />
           <CheckboxContainer
             name="condition.fullServiceHistory"
             label={t('condition.fullServiceHistory')}
             control={control}
           />
-          <CheckboxContainer name="condition.nonSmoking" label={t('condition.nonSmoking')} control={control} />
+          <CheckboxContainer
+            name="condition.nonSmoking"
+            label={t('condition.nonSmoking')}
+            control={control}
+          />
           <div className="grid grid-cols-2 auto-rows-auto">
             <SelectContainer
               name="condition.nextInspectionMonth"
@@ -780,7 +820,11 @@ const ComplexForm = () => {
           <div className="grid gap-1">
             <div>{t('equipment.safety.legend')}</div>
             <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(min(20ch,100%),1fr))] gap-2">
-              <CheckboxContainer name="equipment.safety.abs" label={t('equipment.safety.abs')} control={control} />
+              <CheckboxContainer
+                name="equipment.safety.abs"
+                label={t('equipment.safety.abs')}
+                control={control}
+              />
               <CheckboxContainer
                 name="equipment.safety.emergencyCallSystem"
                 label={t('equipment.safety.emergencyCallSystem')}
@@ -796,7 +840,11 @@ const ComplexForm = () => {
                 label={t('equipment.safety.tirePressureMonitoring')}
                 control={control}
               />
-              <CheckboxContainer name="equipment.safety.esp" label={t('equipment.safety.esp')} control={control} />
+              <CheckboxContainer
+                name="equipment.safety.esp"
+                label={t('equipment.safety.esp')}
+                control={control}
+              />
               <CheckboxContainer
                 name="equipment.safety.tractionControl"
                 label={t('equipment.safety.tractionControl')}
@@ -956,7 +1004,11 @@ const ComplexForm = () => {
                 label={t('equipment.media.bluetooth')}
                 control={control}
               />
-              <CheckboxContainer name="equipment.media.mp3" label={t('equipment.media.mp3')} control={control} />
+              <CheckboxContainer
+                name="equipment.media.mp3"
+                label={t('equipment.media.mp3')}
+                control={control}
+              />
               <CheckboxContainer
                 name="equipment.media.onboardComputer"
                 label={t('equipment.media.onboardComputer')}
@@ -967,7 +1019,11 @@ const ComplexForm = () => {
                 label={t('equipment.media.multifunctionSteeringWheel')}
                 control={control}
               />
-              <CheckboxContainer name="equipment.media.cd" label={t('equipment.media.cd')} control={control} />
+              <CheckboxContainer
+                name="equipment.media.cd"
+                label={t('equipment.media.cd')}
+                control={control}
+              />
               <CheckboxContainer
                 name="equipment.media.navigationSystem"
                 label={t('equipment.media.navigationSystem')}
@@ -978,7 +1034,11 @@ const ComplexForm = () => {
                 label={t('equipment.media.handsFreeSystem')}
                 control={control}
               />
-              <CheckboxContainer name="equipment.media.radio" label={t('equipment.media.radio')} control={control} />
+              <CheckboxContainer
+                name="equipment.media.radio"
+                label={t('equipment.media.radio')}
+                control={control}
+              />
             </div>
           </div>
 
@@ -1018,14 +1078,34 @@ const ComplexForm = () => {
             control={control}
           />
           <div className="grid grid-cols-2 auto-rows-auto">
-            <NumericInputContainer label={t('motor.powerKW')} control={control} name="motor.powerKW" />
-            <NumericInputContainer label={t('motor.powerHP')} control={control} name="motor.powerHP" />
+            <NumericInputContainer
+              label={t('motor.powerKW')}
+              control={control}
+              name="motor.powerKW"
+            />
+            <NumericInputContainer
+              label={t('motor.powerHP')}
+              control={control}
+              name="motor.powerHP"
+            />
           </div>
           <NumericInputContainer label={t('motor.gears')} control={control} name="motor.gears" />
-          <NumericInputContainer label={t('motor.cylinders')} control={control} name="motor.cylinders" />
+          <NumericInputContainer
+            label={t('motor.cylinders')}
+            control={control}
+            name="motor.cylinders"
+          />
           <div className="grid grid-cols-2 auto-rows-auto">
-            <NumericInputContainer label={t('motor.engineCapacity')} control={control} name="motor.engineCapacity" />
-            <NumericInputContainer label={t('motor.emptyWeight')} control={control} name="motor.emptyWeight" />
+            <NumericInputContainer
+              label={t('motor.engineCapacity')}
+              control={control}
+              name="motor.engineCapacity"
+            />
+            <NumericInputContainer
+              label={t('motor.emptyWeight')}
+              control={control}
+              name="motor.emptyWeight"
+            />
           </div>
         </Fieldset>
 
@@ -1059,7 +1139,11 @@ const ComplexForm = () => {
             isLoading={primaryFuelTypeOptions.isFetching}
             control={control}
           />
-          <CheckboxContainer name="fuel.sootParticles" label={t('fuel.sootParticles')} control={control} />
+          <CheckboxContainer
+            name="fuel.sootParticles"
+            label={t('fuel.sootParticles')}
+            control={control}
+          />
           {v.isWltpCo2EmissionsCombinedVisible(watch('fuel.environmentalProtocol')) ? (
             <>
               <NumericInputContainer
@@ -1121,11 +1205,19 @@ const ComplexForm = () => {
         </Fieldset>
 
         <Fieldset legend={t('description.legend')} id="description">
-          <TextInputContainer label={t('description.description')} name="description.description" control={control} />
+          <TextInputContainer
+            label={t('description.description')}
+            name="description.description"
+            control={control}
+          />
         </Fieldset>
 
         <Fieldset legend={t('financingOffer.legend')} id="financingOffer">
-          <NumericInputContainer label={t('financingOffer.price')} control={control} name="financingOffer.price" />
+          <NumericInputContainer
+            label={t('financingOffer.price')}
+            control={control}
+            name="financingOffer.price"
+          />
           {v.isNetPriceVisible(vehicleConfig) && (
             <NumericInputContainer
               label={t('financingOffer.netPrice')}
@@ -1222,7 +1314,11 @@ const ComplexForm = () => {
             </div>
             <div className="grid gap-1">
               <div>{t('contactInformation.hidePhoneNumber')}</div>
-              <CheckboxContainer name="contactInformation.hidePhoneNumber" label={t('yes')} control={control} />
+              <CheckboxContainer
+                name="contactInformation.hidePhoneNumber"
+                label={t('yes')}
+                control={control}
+              />
             </div>
           </Fieldset>
         )}
