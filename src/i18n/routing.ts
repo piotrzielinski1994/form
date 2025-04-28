@@ -1,9 +1,23 @@
 import { defineRouting } from 'next-intl/routing';
+import { uniq, values } from 'ramda';
+
+const localePerCulture = {
+  'de-DE': 'de',
+  'de-AT': 'de',
+  'es-ES': 'es',
+  'fr-FR': 'fr',
+  'fr-BE': 'fr',
+  'fr-LU': 'fr',
+  'it-IT': 'it',
+  'nl-NL': 'nl',
+  'nl-BE': 'nl',
+  'en-US': 'en',
+};
 
 const routing = defineRouting({
-  locales: ['en', 'de', 'nl', 'fr', 'it', 'es'],
+  locales: uniq(values(localePerCulture)),
   defaultLocale: 'en',
   localePrefix: 'as-needed',
 });
 
-export { routing };
+export { localePerCulture, routing };

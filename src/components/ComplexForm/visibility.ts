@@ -117,13 +117,13 @@ const isWltpCo2EmissionsCombinedVisible = (
 const isNetPriceVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
   if (vehicleType === 'DSC') return false;
   if (userType !== 'D') return false;
-  return ['nl-NL', 'fr-BE', 'nl-BE', 'de-DE', 'at-AT'].includes(culture);
+  return ['nl-NL', 'fr-BE', 'nl-BE', 'de-DE', 'de-AT'].includes(culture);
 };
 
 const isVatRateVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
   if (vehicleType === 'DSC') return false;
   if (userType !== 'D') return false;
-  return ['nl-NL', 'fr-BE', 'nl-BE', 'de-DE', 'at-AT'].includes(culture);
+  return ['nl-NL', 'fr-BE', 'nl-BE', 'de-DE', 'de-AT'].includes(culture);
 };
 
 const isTaxAndPriceNegotiableVisible = ({ vehicleType }: VehicleConfig): boolean => {

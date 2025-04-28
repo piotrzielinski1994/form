@@ -1,4 +1,6 @@
+import { localePerCulture } from '@/i18n/routing';
 import { useLocale } from 'next-intl';
+import { toPairs } from 'ramda';
 import {
   createContext,
   Dispatch,
@@ -9,9 +11,9 @@ import {
 } from 'react';
 
 type VehicleConfig = {
-  culture: string;
-  userType: string;
-  vehicleType: string;
+  culture: keyof typeof localePerCulture;
+  userType: 'D' | 'P' | 'B';
+  vehicleType: 'B' | 'C' | 'X' | 'N' | 'L' | 'DSC';
 };
 
 const VehicleConfigContext = createContext<
@@ -21,10 +23,7 @@ const VehicleConfigContext = createContext<
 const VehicleConfigProvider = ({ children }: PropsWithChildren) => {
   const locale = useLocale();
   const state = useState<VehicleConfig>({
-    culture:
-      Object.entries(localePerCulture)
-        .find((it) => it[1] === locale)
-        ?.at(0) ?? 'en-US',
+    culture: toPairs(localePerCulture).find((it) => it[1] === locale)?.[0] ?? 'en-US',
     userType: 'P',
     vehicleType: 'C',
   });
@@ -36,14 +35,6 @@ const useVehicleConfig = () => {
   const context = useContext(VehicleConfigContext);
   if (!context) throw new Error('useVehicleConfig must be used within a VehicleConfigProvider');
   return context;
-};
-
-const localePerCulture = {
-  'de-DE': 'de',
-  'es-ES': 'es',
-  'fr-FR': 'fr',
-  'it-IT': 'it',
-  'nl-NL': 'nl',
 };
 
 export { useVehicleConfig, VehicleConfigProvider, type VehicleConfig };

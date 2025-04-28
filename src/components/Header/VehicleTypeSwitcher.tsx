@@ -1,7 +1,9 @@
 'use client';
 
-import { useVehicleConfig } from '@/providers/VehicleConfigProvider';
+import { useVehicleConfig, VehicleConfig } from '@/providers/VehicleConfigProvider';
 import { SegmentGroup } from '@chakra-ui/react';
+
+const vehicleTypes: VehicleConfig['vehicleType'][] = ['B', 'C', 'X', 'N', 'L', 'DSC'];
 
 const VehicleTypeSwitcher = () => {
   const setConfig = useVehicleConfig()[1];
@@ -11,11 +13,11 @@ const VehicleTypeSwitcher = () => {
       size="xs"
       onValueChange={({ value }) => {
         if (value === null) return;
-        setConfig((prev) => ({ ...prev, vehicleType: value }));
+        setConfig((prev) => ({ ...prev, vehicleType: value as VehicleConfig['vehicleType'] }));
       }}
     >
       <SegmentGroup.Indicator />
-      <SegmentGroup.Items className="cursor-pointer" items={['B', 'C', 'X', 'N', 'L', 'DSC']} />
+      <SegmentGroup.Items className="cursor-pointer" items={vehicleTypes} />
     </SegmentGroup.Root>
   );
 };
