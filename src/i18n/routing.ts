@@ -12,7 +12,7 @@ const localePerCulture = {
   'nl-NL': 'nl',
   'nl-BE': 'nl',
   'en-US': 'en',
-};
+} as const;
 
 const routing = defineRouting({
   locales: uniq(values(localePerCulture)),
