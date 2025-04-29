@@ -1,3 +1,4 @@
+import { produce } from 'immer';
 import { UseFormProps } from 'react-hook-form';
 import { FormFields } from './schema';
 
@@ -238,4 +239,11 @@ const defaultValues: UseFormProps<FormFields>['defaultValues'] = {
   },
 };
 
-export { defaultValues };
+const getDefaultValuesFromQueryString = async () => {
+  const params = new URLSearchParams(window.location.search);
+  return produce(defaultValues as FormFields, (draft) => {
+    draft.vehicleData.make = params.get('vehicleData.make') ?? draft.vehicleData.make;
+  });
+};
+
+export { defaultValues, getDefaultValuesFromQueryString };
