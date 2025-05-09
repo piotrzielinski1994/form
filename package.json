@@ -9,7 +9,7 @@
     "serve": "next start",
     "lint": "next lint",
     "test": "vitest run -u",
-    "test:watch": "vitest -u",
+    "test:watch": "vitest watch -u",
     "upgrade": "npm-check-updates -u && npm update"
   },
   "dependencies": {
