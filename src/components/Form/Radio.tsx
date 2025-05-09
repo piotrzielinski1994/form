@@ -45,7 +45,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
             );
           })}
         </RadioGroup.Root>
-        <Field.ErrorText>{error}</Field.ErrorText>
+        <Field.ErrorText role="alert">{error}</Field.ErrorText>
       </Field.Root>
     );
   }

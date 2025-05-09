@@ -1,4 +1,5 @@
 import { ColorModeProvider } from '@/components/ChakraUi/ColorMode';
+import en from '@/messages/en.json';
 import { VehicleConfigProvider } from '@/providers/VehicleConfigProvider';
 import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -7,7 +8,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { ReactNode } from 'react';
 import { expect, vi } from 'vitest';
 import * as matchers from 'vitest-axe/matchers';
-import en from './messages/en.json';
 
 expect.extend(matchers);
 

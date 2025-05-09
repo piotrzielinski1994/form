@@ -24,7 +24,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           {props.required && <Field.RequiredIndicator />}
         </Field.Label>
         <Input {...props} ref={ref} value={value ?? ''} />
-        <Field.ErrorText>{error}</Field.ErrorText>
+        <Field.ErrorText role="alert">{error}</Field.ErrorText>
       </Field.Root>
     );
   }

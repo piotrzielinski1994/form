@@ -48,7 +48,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             <NativeSelect.Indicator />
           </NativeSelect.Root>
         )}
-        <Field.ErrorText>{error}</Field.ErrorText>
+        <Field.ErrorText role="alert">{error}</Field.ErrorText>
       </Field.Root>
     );
   }

@@ -28,7 +28,7 @@ const NumericInput = forwardRef<HTMLInputElement, NumericInputProps>(
           <NumberInput.Control /> {/* TODO: This does not trigger onChange */}
           <NumberInput.Input {...props} ref={ref} />
         </NumberInput.Root>
-        <Field.ErrorText>{error}</Field.ErrorText>
+        <Field.ErrorText role="alert">{error}</Field.ErrorText>
       </Field.Root>
     );
   }
