@@ -16,11 +16,19 @@ npm i
 npm start
 ```
 
+## Test
+
+```bash
+npm run test:watch
+# or
+npm run test
+```
+
 ## Deployment
 
 ```bash
 nvm use
-npm i
+npm ci
 npm run build
 npm run serve
 ```
