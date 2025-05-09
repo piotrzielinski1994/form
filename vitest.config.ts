@@ -10,8 +10,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     env: loadEnv('', process.cwd(), ''),
-    setupFiles: ['./vitest.setup.ts'],
-    resolveSnapshotPath: (testPath) => `${testPath}.snap`,
+    setupFiles: ['./vitest.setup.tsx'],
+    resolveSnapshotPath: (testPath, snapshotExtension) => {
+      return testPath.replace(/\/src\/__tests__\//, '/src/__snapshots__/') + snapshotExtension;
+    },
     server: {
       deps: {
         inline: ['next-intl'], // https://github.com/vercel/next.js/issues/77200
