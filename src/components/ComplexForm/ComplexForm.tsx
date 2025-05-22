@@ -31,6 +31,7 @@ const ComplexForm = () => {
     mode: 'onSubmit',
     defaultValues: getDefaultValuesFromQueryString,
     resolver: zodResolver(genSchema(vehicleConfig), { errorMap: getZodErrorMap(tZod) }),
+    shouldUnregister: true,
   });
   const { handleSubmit, control, reset, watch } = form;
 
