@@ -1138,7 +1138,11 @@ const ComplexForm = () => {
             label={t('fuel.sootParticles')}
             control={control}
           />
-          {v.isWltpCo2EmissionsCombinedVisible(watch('fuel.environmentalProtocol')) ? (
+          {v.isWltpCo2EmissionsCombinedVisible(vehicleConfig, {
+            environmentalProtocol: watch('fuel.environmentalProtocol'),
+            primaryFuelType: watch('fuel.primaryFuelType'),
+            pluginHybrid: watch('fuel.pluginHybrid'),
+          }) ? (
             <>
               <NumericInputContainer
                 key="wltpConsumptionCombined"
