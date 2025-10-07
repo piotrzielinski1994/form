@@ -1,5 +1,4 @@
 import { VehicleConfig } from '@/providers/VehicleConfigProvider';
-import { FormFields } from './schema';
 
 // Vehicle Data =======================================================
 
@@ -218,14 +217,6 @@ const isTaxDeductibleVisible = ({ culture, vehicleType }: VehicleConfig): boolea
   return true;
 };
 
-// Fuel =======================================================
-
-const isWltpCo2EmissionsCombinedVisible = (
-  environmentalProtocol: FormFields['fuel']['environmentalProtocol']
-): boolean => {
-  return environmentalProtocol === 'wltp';
-};
-
 // Financing Offer =======================================================
 
 const isNetPriceVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
@@ -249,6 +240,97 @@ const isClosingCostsVisible = ({ userType, culture }: VehicleConfig): boolean =>
   return ['nl-NL', 'fr-BE', 'nl-BE', 'it-IT', 'de-DE'].includes(culture);
 };
 
+// Fuel data
+const isPrimaryFuelTypeVisible = (config: VehicleConfig): boolean => {
+  return config.vehicleType === 'C';
+};
+
+const isSootParticlesVisible = (config: VehicleConfig, fuelCategory?: string): boolean => {
+  return ['D', 'ED'].includes(fuelCategory || '');
+};
+
+const isAdditionalFuelTypesVisible = (config: VehicleConfig): boolean => {
+  return config.vehicleType === 'C';
+};
+
+const isPluginHybridVisible = (config: VehicleConfig, fuelCategory?: string): boolean => {
+  return config.vehicleType === 'C' && ['ED', 'EB', 'O'].includes(fuelCategory || '');
+};
+
+const isCo2Visible = (
+  config: VehicleConfig,
+  fuelData?: {
+    primaryFuelType?: string;
+    additionalFuelTypes?: string[];
+    environmentalProtocol?: string;
+  }
+): boolean => {
+  const isNotDealerBike = config.vehicleType !== 'B' || config.userType !== 'D';
+  const isNEDC = fuelData?.environmentalProtocol === 'nedc';
+  const isNotEV = !(
+    fuelData?.primaryFuelType === '2' &&
+    (!fuelData?.additionalFuelTypes || fuelData.additionalFuelTypes.length === 0)
+  );
+  return isNotDealerBike && isNEDC && isNotEV;
+};
+
+const isElectricRangeVisible = (
+  config: VehicleConfig,
+  fuelData?: { pluginHybrid?: boolean; primaryFuelType?: string }
+): boolean => {
+  const isEVorPHEV = fuelData?.pluginHybrid || fuelData?.primaryFuelType === '2';
+  return config.vehicleType === 'C' && isEVorPHEV;
+};
+
+const isEmissionStickerVisible = (config: VehicleConfig): boolean => {
+  return config.culture === 'de-DE' && config.vehicleType !== 'B';
+};
+
+const isEfficiencyClassVisible = (
+  config: VehicleConfig,
+  environmentalProtocol?: string
+): boolean => {
+  return (
+    config.culture === 'de-DE' && config.vehicleType !== 'B' && environmentalProtocol === 'nedc'
+  );
+};
+
+const isWltpCo2ClassVisible = (config: VehicleConfig, environmentalProtocol?: string): boolean => {
+  return config.vehicleType === 'C' && environmentalProtocol === 'wltp';
+};
+
+const isWltpCo2ClassDischargedVisible = (
+  config: VehicleConfig,
+  fuelData?: { pluginHybrid?: boolean; environmentalProtocol?: string }
+): boolean => {
+  return (
+    config.vehicleType === 'C' &&
+    fuelData?.pluginHybrid === true &&
+    fuelData?.environmentalProtocol === 'wltp'
+  );
+};
+
+const isWltpCo2EmissionsCombinedVisible = (
+  config: VehicleConfig,
+  fuelData?: { pluginHybrid?: boolean; primaryFuelType?: string; environmentalProtocol?: string }
+): boolean => {
+  const isNotEVorPHEV = !(fuelData?.pluginHybrid || fuelData?.primaryFuelType === '2');
+  return config.vehicleType === 'C' && isNotEVorPHEV && fuelData?.environmentalProtocol === 'wltp';
+};
+
+const isElectricConsumptionCombinedVisible = (
+  config: VehicleConfig,
+  fuelData?: { pluginHybrid?: boolean; primaryFuelType?: string; environmentalProtocol?: string }
+): boolean => {
+  const isEVorPHEV = fuelData?.pluginHybrid || fuelData?.primaryFuelType === '2';
+  return (
+    config.culture === 'de-DE' &&
+    config.vehicleType !== 'B' &&
+    fuelData?.environmentalProtocol === 'nedc' &&
+    isEVorPHEV
+  );
+};
+
 // Contact Information =======================================================
 
 const isContactInformationVisible = ({ userType }: VehicleConfig): boolean => {
@@ -257,6 +339,7 @@ const isContactInformationVisible = ({ userType }: VehicleConfig): boolean => {
 
 export {
   isAccidentVehicleVisible,
+  isAdditionalFuelTypesVisible,
   isAskingPriceVisible,
   isAxleCountVisible,
   isBedCountVisible,
@@ -264,10 +347,15 @@ export {
   isBodyColorVisible,
   isCarpassMileageUrlVisible,
   isClosingCostsVisible,
+  isCo2Visible,
   isContactInformationVisible,
   isCylindersVisible,
   isDamagedVehicleVisible,
   isDoorsVisible,
+  isEfficiencyClassVisible,
+  isElectricConsumptionCombinedVisible,
+  isElectricRangeVisible,
+  isEmissionStickerVisible,
   isEngineCapacityVisible,
   isFullServiceHistoryVisible,
   isGearsVisible,
@@ -287,13 +375,16 @@ export {
   isNonSmokingVisible,
   isOfferReferenceVisible,
   isPayloadVisible,
+  isPluginHybridVisible,
   isPowerKWVisible,
   isPreviousOwnersVisible,
   isPriceNegotiableVisible,
   isPriceVisible,
+  isPrimaryFuelTypeVisible,
   isProductionYearVisible,
   isRoadWorthinessVisible,
   isSeatsVisible,
+  isSootParticlesVisible,
   isStyleIdVisible,
   isTaxAndPriceNegotiableVisible,
   isTaxDeductibleVisible,
@@ -304,5 +395,7 @@ export {
   isVatRateVisible,
   isVinVisible,
   isWheelbaseVisible,
+  isWltpCo2ClassDischargedVisible,
+  isWltpCo2ClassVisible,
   isWltpCo2EmissionsCombinedVisible,
 };

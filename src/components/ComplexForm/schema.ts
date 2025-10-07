@@ -307,29 +307,84 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
       engineCapacity: z.number().min(1).max(99999).optional(),
       emptyWeight: z.number().min(1).max(99999),
     }),
-    fuel: z
-      .object({
-        fuelCategory: z.string().trim(),
-        primaryFuelType: z.string().trim(),
-        wltpCo2Class: z.string().trim(),
-        pollutionClass: z.string().trim(),
-        emissionSticker: z.string().trim(),
-        sootParticles: z.boolean(),
-      })
-      .and(
-        z.discriminatedUnion('environmentalProtocol', [
-          z.object({
-            environmentalProtocol: z.literal('wltp'),
-            wltpConsumptionCombined: z.number().min(10).max(100),
-            wltpCo2EmissionsCombined: z.number(),
-          }),
-          z.object({
-            environmentalProtocol: z.literal('nedc'),
-            consumptionCombined: z.number().min(1).max(10),
-            co2EmissionsCombined: z.number(),
-          }),
-        ])
-      ),
+    fuel: ((
+      fuelCategory?: string,
+      primaryFuelType?: string,
+      additionalFuelTypes?: string[],
+      pluginHybrid?: boolean,
+      environmentalProtocol?: 'wltp' | 'nedc'
+    ) =>
+      z
+        .object({
+          fuelCategory: z.string().trim().min(1),
+          primaryFuelType: v.isPrimaryFuelTypeVisible(vehicleConfig)
+            ? z.string().trim().optional()
+            : z.literal(undefined),
+          wltpCo2Class: v.isWltpCo2ClassVisible(vehicleConfig, environmentalProtocol)
+            ? z.string().trim().optional()
+            : z.literal(undefined),
+          pollutionClass: z.string().trim().optional(),
+          emissionSticker: v.isEmissionStickerVisible(vehicleConfig)
+            ? z.string().trim().optional()
+            : z.literal(undefined),
+          sootParticles: v.isSootParticlesVisible(vehicleConfig, fuelCategory)
+            ? z.boolean().optional()
+            : z.literal(undefined),
+          additionalFuelTypes: v.isAdditionalFuelTypesVisible(vehicleConfig)
+            ? z.array(z.string()).optional()
+            : z.literal(undefined),
+          pluginHybrid: v.isPluginHybridVisible(vehicleConfig, fuelCategory)
+            ? z.boolean().optional()
+            : z.literal(undefined),
+          wltpCo2ClassDischarged: v.isWltpCo2ClassDischargedVisible(vehicleConfig, {
+            pluginHybrid,
+            environmentalProtocol,
+          })
+            ? z.string().trim().optional()
+            : z.literal(undefined),
+        })
+        .and(
+          z.discriminatedUnion('environmentalProtocol', [
+            z.object({
+              environmentalProtocol: z.literal('wltp'),
+              wltpConsumptionCombined: z.number().min(10).max(100),
+              wltpCo2EmissionsCombined: v.isWltpCo2EmissionsCombinedVisible(vehicleConfig, {
+                pluginHybrid,
+                primaryFuelType,
+                environmentalProtocol: 'wltp',
+              })
+                ? z.number().min(0).max(9999).optional()
+                : z.literal(undefined),
+            }),
+            z.object({
+              environmentalProtocol: z.literal('nedc'),
+              consumptionCombined: z.number().min(1).max(10),
+              co2EmissionsCombined: v.isCo2Visible(vehicleConfig, {
+                primaryFuelType,
+                additionalFuelTypes,
+                environmentalProtocol: 'nedc',
+              })
+                ? z.number().min(1).max(9999999).optional()
+                : z.literal(undefined),
+              efficiencyClass: v.isEfficiencyClassVisible(vehicleConfig, 'nedc')
+                ? z.string().optional()
+                : z.literal(undefined),
+              electricConsumptionCombined: v.isElectricConsumptionCombinedVisible(vehicleConfig, {
+                pluginHybrid,
+                primaryFuelType,
+                environmentalProtocol: 'nedc',
+              })
+                ? z.number().min(1).max(99.9).optional()
+                : z.literal(undefined),
+              electricRange: v.isElectricRangeVisible(vehicleConfig, {
+                pluginHybrid,
+                primaryFuelType,
+              })
+                ? z.number().min(1).max(10000).optional()
+                : z.literal(undefined),
+            }),
+          ])
+        ))(),
     contactInformation: z.object({
       postalCode: (() => {
         switch (vehicleConfig.culture) {
