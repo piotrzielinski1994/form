@@ -59,7 +59,7 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
       trim: v.isTrimVisible(vehicleConfig) ? z.string().min(1) : z.literal(undefined),
     }),
     description: z.object({
-      description: z.string().max(10_000),
+      description: z.string().max(10_000).refine(isNotUrl).refine(hasNoXml).refine(isNotEmail),
     }),
     characteristics: z.object({
       bodyType: (() => {
