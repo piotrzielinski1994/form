@@ -61,7 +61,7 @@ const isTrimVisible = ({ userType, culture }: VehicleConfig): boolean => {
 // Characteristics =======================================================
 
 const isBodyColorVisible = ({ vehicleType }: VehicleConfig): boolean => {
-  return !['L'].includes(vehicleType);
+  return vehicleType !== 'DSC';
 };
 
 const isBodyColorNameVisible = ({ userType, vehicleType }: VehicleConfig): boolean => {
@@ -70,12 +70,30 @@ const isBodyColorNameVisible = ({ userType, vehicleType }: VehicleConfig): boole
   return false;
 };
 
-const isUpholsteryVisible = ({ vehicleType }: VehicleConfig): boolean => {
-  return ['C', 'B'].includes(vehicleType);
+const isSeatsVisible = ({ vehicleType }: VehicleConfig): boolean => {
+  return !['B', 'L'].includes(vehicleType);
+};
+
+const isDoorsVisible = ({ vehicleType }: VehicleConfig): boolean => {
+  return !['B', 'L'].includes(vehicleType);
+};
+
+const isMetallicVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
+  if (['DSC', 'L'].includes(vehicleType)) return false;
+  // Not visible for Canadian dealers
+  if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return false;
+  return true;
+};
+
+const isUpholsteryVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
+  if (['B', 'L', 'DSC'].includes(vehicleType)) return false;
+  // Not visible for Canadian dealers
+  if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return false;
+  return true;
 };
 
 const isInteriorColorVisible = ({ vehicleType }: VehicleConfig): boolean => {
-  return ['C', 'B', 'N'].includes(vehicleType);
+  return !['B', 'DSC'].includes(vehicleType);
 };
 
 const isPayloadVisible = ({ vehicleType }: VehicleConfig): boolean => {
@@ -163,6 +181,7 @@ export {
   isCarpassMileageUrlVisible,
   isClosingCostsVisible,
   isContactInformationVisible,
+  isDoorsVisible,
   isGrossVehicleWeightVisible,
   isHasCarRegistrationVisible,
   isHsnVisible,
@@ -170,6 +189,7 @@ export {
   isLicencePlateNumberVisible,
   isLoadDimensionsVisible,
   isMaximumTowingWeightVisible,
+  isMetallicVisible,
   isModelNameVisible,
   isModelVisible,
   isModelYearVisible,
@@ -177,6 +197,7 @@ export {
   isOfferReferenceVisible,
   isPayloadVisible,
   isProductionYearVisible,
+  isSeatsVisible,
   isStyleIdVisible,
   isTaxAndPriceNegotiableVisible,
   isTotalDimensionsVisible,

@@ -62,16 +62,24 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
       description: z.string().max(10_000),
     }),
     characteristics: z.object({
-      bodyType: z.string().trim().min(1),
-      seats: z.number().int().min(1).max(99).optional(),
-      doors: z.number().int().min(1).max(9).optional(),
+      bodyType: (() => {
+        const isCanadianDealer =
+          ['en-CA', 'fr-CA'].includes(vehicleConfig.culture) && vehicleConfig.userType === 'D';
+        return isCanadianDealer ? z.string().trim().optional() : z.string().trim().min(1);
+      })(),
+      seats: v.isSeatsVisible(vehicleConfig)
+        ? z.number().int().min(1).max(99).optional()
+        : z.literal(undefined),
+      doors: v.isDoorsVisible(vehicleConfig)
+        ? z.number().int().min(1).max(9).optional()
+        : z.literal(undefined),
       bodyColor: v.isBodyColorVisible(vehicleConfig)
         ? z.string().trim().optional()
         : z.literal(undefined),
       bodyColorName: v.isBodyColorNameVisible(vehicleConfig)
-        ? z.string().trim().max(30).optional()
+        ? z.string().trim().max(30).refine(isNotEmail).refine(hasNoXml).optional()
         : z.literal(undefined),
-      metallic: z.boolean().optional(),
+      metallic: v.isMetallicVisible(vehicleConfig) ? z.boolean().optional() : z.literal(undefined),
       upholstery: v.isUpholsteryVisible(vehicleConfig)
         ? z.string().trim().optional()
         : z.literal(undefined),
@@ -100,16 +108,16 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
         ? z.boolean().optional()
         : z.boolean().optional(),
       loadHeight: v.isLoadDimensionsVisible(vehicleConfig)
-        ? z.number().min(0).max(9_999_999.99).optional()
+        ? z.number().min(1).max(9_999_999.99).optional()
         : z.literal(undefined),
       loadVolume: v.isLoadDimensionsVisible(vehicleConfig)
         ? z.number().min(0).max(9_999_999.99).optional()
         : z.literal(undefined),
       loadWidth: v.isLoadDimensionsVisible(vehicleConfig)
-        ? z.number().min(0).max(9_999_999.99).optional()
+        ? z.number().min(1).max(9_999_999.99).optional()
         : z.literal(undefined),
       loadLength: v.isLoadDimensionsVisible(vehicleConfig)
-        ? z.number().min(0).max(9_999_999.99).optional()
+        ? z.number().min(1).max(9_999_999.99).optional()
         : z.literal(undefined),
       totalHeight: v.isTotalDimensionsVisible(vehicleConfig)
         ? z.number().int().min(1).max(9_999_999).optional()
