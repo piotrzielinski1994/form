@@ -12210,50 +12210,53 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             </div>
           </div>
         </div>
-        <label
-          class="!items-start chakra-checkbox__root css-14ydcpp"
+        <div
+          class="chakra-field__root css-13f87cb"
           data-part="root"
-          data-scope="checkbox"
-          data-state="unchecked"
-          dir="ltr"
-          for="checkbox:«r4t»:input"
-          id="checkbox:«r4t»"
+          data-scope="field"
+          id="field::«r4t»"
+          role="group"
         >
-          <input
-            aria-invalid="false"
-            aria-labelledby="checkbox:«r4t»:label"
-            id="checkbox:«r4t»:input"
-            name="fuel.sootParticles"
-            style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
-            type="checkbox"
-            value="false"
-          />
-          <div
-            aria-hidden="true"
-            class="chakra-checkbox__control css-1d2z6nk"
-            data-part="control"
-            data-scope="checkbox"
-            data-state="unchecked"
-            dir="ltr"
-            id="checkbox:«r4t»:control"
-          >
-            <svg
-              class="css-wuqtn7"
-              data-state="unchecked"
-              viewBox="0 0 24 24"
-            />
-          </div>
-          <span
-            class="chakra-checkbox__label css-1td7ckk"
+          <label
+            class="chakra-field__label css-65zcwe"
             data-part="label"
-            data-scope="checkbox"
-            data-state="unchecked"
-            dir="ltr"
-            id="checkbox:«r4t»:label"
+            data-scope="field"
+            for="«r4t»"
+            id="field::«r4t»::label"
           >
-            Soot Particles Filter
-          </span>
-        </label>
+            Additional Fuel Types
+          </label>
+          <div
+            class="chakra-native-select__root css-1lytf6x"
+          >
+            <select
+              class="chakra-native-select__field css-1lldn8"
+              data-part="select"
+              data-scope="field"
+              id="«r4t»"
+              name="fuel.additionalFuelTypes"
+            >
+              <option
+                hidden=""
+                value=""
+              >
+                -
+              </option>
+            </select>
+            <div
+              class="chakra-native-select__indicator css-d7tss2"
+            >
+              <svg
+                class="css-s3mb0o"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m6 9 6 6 6-6"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
         <div
           class="chakra-field__root css-13f87cb"
           data-part="root"
@@ -12294,114 +12297,6 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             for="«r4v»"
             id="field::«r4v»::label"
           >
-            CO2 Emissions Combined
-          </label>
-          <input
-            class="chakra-input css-ee9xfg"
-            data-part="input"
-            data-scope="field"
-            id="«r4v»"
-            name="fuel.co2EmissionsCombined"
-            type="number"
-            value=""
-          />
-        </div>
-        <div
-          class="chakra-field__root css-13f87cb"
-          data-part="root"
-          data-scope="field"
-          id="field::«r50»"
-          role="group"
-        >
-          <label
-            class="chakra-field__label css-65zcwe"
-            data-part="label"
-            data-scope="field"
-            for="«r50»"
-            id="field::«r50»::label"
-          >
-            CO2 Class
-          </label>
-          <div
-            class="chakra-native-select__root css-1lytf6x"
-          >
-            <select
-              class="chakra-native-select__field css-1lldn8"
-              data-part="select"
-              data-scope="field"
-              id="«r50»"
-              name="fuel.wltpCo2Class"
-            >
-              <option
-                hidden=""
-                value=""
-              >
-                -
-              </option>
-              <option
-                value="0"
-              >
-                Bitte auswählen
-              </option>
-              <option
-                value="10"
-              >
-                A
-              </option>
-              <option
-                value="20"
-              >
-                B
-              </option>
-              <option
-                value="30"
-              >
-                C
-              </option>
-              <option
-                value="40"
-              >
-                D
-              </option>
-              <option
-                value="50"
-              >
-                E
-              </option>
-              <option
-                value="60"
-              >
-                F
-              </option>
-            </select>
-            <div
-              class="chakra-native-select__indicator css-d7tss2"
-            >
-              <svg
-                class="css-s3mb0o"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="m6 9 6 6 6-6"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div
-          class="chakra-field__root css-13f87cb"
-          data-part="root"
-          data-scope="field"
-          id="field::«r51»"
-          role="group"
-        >
-          <label
-            class="chakra-field__label css-65zcwe"
-            data-part="label"
-            data-scope="field"
-            for="«r51»"
-            id="field::«r51»::label"
-          >
             Pollution Class
           </label>
           <div
@@ -12411,7 +12306,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
               class="chakra-native-select__field css-1lldn8"
               data-part="select"
               data-scope="field"
-              id="«r51»"
+              id="«r4v»"
               name="fuel.pollutionClass"
             >
               <option
@@ -12445,196 +12340,6 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             </div>
           </div>
         </div>
-        <div
-          class="chakra-field__root css-13f87cb"
-          data-part="root"
-          data-scope="field"
-          id="field::«r52»"
-          role="group"
-        >
-          <label
-            class="chakra-field__label css-65zcwe"
-            data-part="label"
-            data-scope="field"
-            for="«r52»"
-            id="field::«r52»::label"
-          >
-            Emission Sticker
-          </label>
-          <div
-            aria-labelledby="radio-group:«r53»:label"
-            aria-orientation="vertical"
-            class="w-full grid grid-cols-[repeat(auto-fit,minmax(min(10ch,100%),1fr))] gap-2 chakra-radio-group__root css-0"
-            data-orientation="vertical"
-            data-part="root"
-            data-scope="radio-group"
-            dir="ltr"
-            id="radio-group:«r53»"
-            role="radiogroup"
-            style="position: relative;"
-          >
-            <label
-              class="chakra-radio-group__item css-qqdgad"
-              data-orientation="vertical"
-              data-part="item"
-              data-scope="radio-group"
-              data-state="unchecked"
-              dir="ltr"
-              for="radio-group:«r53»:radio:input:1"
-              id="radio-group:«r53»:radio:1"
-            >
-              <input
-                data-ownedby="radio-group:«r53»"
-                id="radio-group:«r53»:radio:input:1"
-                name="fuel.emissionSticker"
-                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
-                type="radio"
-                value="1"
-              />
-              <span
-                aria-hidden="true"
-                class="css-13vx2na"
-                data-orientation="vertical"
-                data-part="item-control"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group:«r53»:radio:control:1"
-              />
-              <span
-                class="chakra-radio-group__itemText css-0"
-                data-orientation="vertical"
-                data-part="item-text"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group:«r53»:radio:label:1"
-              >
-                None
-              </span>
-            </label>
-            <label
-              class="chakra-radio-group__item css-qqdgad"
-              data-orientation="vertical"
-              data-part="item"
-              data-scope="radio-group"
-              data-state="unchecked"
-              dir="ltr"
-              for="radio-group:«r53»:radio:input:2"
-              id="radio-group:«r53»:radio:2"
-            >
-              <input
-                data-ownedby="radio-group:«r53»"
-                id="radio-group:«r53»:radio:input:2"
-                name="fuel.emissionSticker"
-                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
-                type="radio"
-                value="2"
-              />
-              <span
-                aria-hidden="true"
-                class="css-13vx2na"
-                data-orientation="vertical"
-                data-part="item-control"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group:«r53»:radio:control:2"
-              />
-              <span
-                class="chakra-radio-group__itemText css-0"
-                data-orientation="vertical"
-                data-part="item-text"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group:«r53»:radio:label:2"
-              >
-                Green
-              </span>
-            </label>
-            <label
-              class="chakra-radio-group__item css-qqdgad"
-              data-orientation="vertical"
-              data-part="item"
-              data-scope="radio-group"
-              data-state="unchecked"
-              dir="ltr"
-              for="radio-group:«r53»:radio:input:3"
-              id="radio-group:«r53»:radio:3"
-            >
-              <input
-                data-ownedby="radio-group:«r53»"
-                id="radio-group:«r53»:radio:input:3"
-                name="fuel.emissionSticker"
-                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
-                type="radio"
-                value="3"
-              />
-              <span
-                aria-hidden="true"
-                class="css-13vx2na"
-                data-orientation="vertical"
-                data-part="item-control"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group:«r53»:radio:control:3"
-              />
-              <span
-                class="chakra-radio-group__itemText css-0"
-                data-orientation="vertical"
-                data-part="item-text"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group:«r53»:radio:label:3"
-              >
-                Yellow
-              </span>
-            </label>
-            <label
-              class="chakra-radio-group__item css-qqdgad"
-              data-orientation="vertical"
-              data-part="item"
-              data-scope="radio-group"
-              data-state="unchecked"
-              dir="ltr"
-              for="radio-group:«r53»:radio:input:4"
-              id="radio-group:«r53»:radio:4"
-            >
-              <input
-                data-ownedby="radio-group:«r53»"
-                id="radio-group:«r53»:radio:input:4"
-                name="fuel.emissionSticker"
-                style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
-                type="radio"
-                value="4"
-              />
-              <span
-                aria-hidden="true"
-                class="css-13vx2na"
-                data-orientation="vertical"
-                data-part="item-control"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group:«r53»:radio:control:4"
-              />
-              <span
-                class="chakra-radio-group__itemText css-0"
-                data-orientation="vertical"
-                data-part="item-text"
-                data-scope="radio-group"
-                data-state="unchecked"
-                dir="ltr"
-                id="radio-group:«r53»:radio:label:4"
-              >
-                Red
-              </span>
-            </label>
-          </div>
-        </div>
       </div>
     </fieldset>
     <fieldset
@@ -12661,15 +12366,15 @@ exports[`ComplexForm > should match the snapshot 1`] = `
           class="chakra-field__root css-13f87cb"
           data-part="root"
           data-scope="field"
-          id="field::«r55»"
+          id="field::«r51»"
           role="group"
         >
           <label
             class="chakra-field__label css-65zcwe"
             data-part="label"
             data-scope="field"
-            for="«r55»"
-            id="field::«r55»::label"
+            for="«r51»"
+            id="field::«r51»::label"
           >
             Description
           </label>
@@ -12677,7 +12382,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             class="chakra-input css-ee9xfg"
             data-part="input"
             data-scope="field"
-            id="«r55»"
+            id="«r51»"
             name="description.description"
             value=""
           />
@@ -12708,15 +12413,15 @@ exports[`ComplexForm > should match the snapshot 1`] = `
           class="chakra-field__root css-13f87cb"
           data-part="root"
           data-scope="field"
-          id="field::«r57»"
+          id="field::«r53»"
           role="group"
         >
           <label
             class="chakra-field__label css-65zcwe"
             data-part="label"
             data-scope="field"
-            for="«r57»"
-            id="field::«r57»::label"
+            for="«r53»"
+            id="field::«r53»::label"
           >
             Price
           </label>
@@ -12724,7 +12429,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             class="chakra-input css-ee9xfg"
             data-part="input"
             data-scope="field"
-            id="«r57»"
+            id="«r53»"
             name="financingOffer.price"
             type="number"
             value=""
@@ -12736,57 +12441,13 @@ exports[`ComplexForm > should match the snapshot 1`] = `
           data-scope="checkbox"
           data-state="unchecked"
           dir="ltr"
-          for="checkbox:«r58»:input"
-          id="checkbox:«r58»"
+          for="checkbox:«r54»:input"
+          id="checkbox:«r54»"
         >
           <input
             aria-invalid="false"
-            aria-labelledby="checkbox:«r58»:label"
-            id="checkbox:«r58»:input"
-            name="financingOffer.negotiable"
-            style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
-            type="checkbox"
-            value="false"
-          />
-          <div
-            aria-hidden="true"
-            class="chakra-checkbox__control css-1d2z6nk"
-            data-part="control"
-            data-scope="checkbox"
-            data-state="unchecked"
-            dir="ltr"
-            id="checkbox:«r58»:control"
-          >
-            <svg
-              class="css-wuqtn7"
-              data-state="unchecked"
-              viewBox="0 0 24 24"
-            />
-          </div>
-          <span
-            class="chakra-checkbox__label css-1td7ckk"
-            data-part="label"
-            data-scope="checkbox"
-            data-state="unchecked"
-            dir="ltr"
-            id="checkbox:«r58»:label"
-          >
-            Negotiable
-          </span>
-        </label>
-        <label
-          class="!items-start chakra-checkbox__root css-14ydcpp"
-          data-part="root"
-          data-scope="checkbox"
-          data-state="unchecked"
-          dir="ltr"
-          for="checkbox:«r59»:input"
-          id="checkbox:«r59»"
-        >
-          <input
-            aria-invalid="false"
-            aria-labelledby="checkbox:«r59»:label"
-            id="checkbox:«r59»:input"
+            aria-labelledby="checkbox:«r54»:label"
+            id="checkbox:«r54»:input"
             name="financingOffer.taxDeductible"
             style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
             type="checkbox"
@@ -12799,7 +12460,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             data-scope="checkbox"
             data-state="unchecked"
             dir="ltr"
-            id="checkbox:«r59»:control"
+            id="checkbox:«r54»:control"
           >
             <svg
               class="css-wuqtn7"
@@ -12813,11 +12474,159 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             data-scope="checkbox"
             data-state="unchecked"
             dir="ltr"
-            id="checkbox:«r59»:label"
+            id="checkbox:«r54»:label"
           >
             Tax Deductible
           </span>
         </label>
+        <label
+          class="!items-start chakra-checkbox__root css-14ydcpp"
+          data-part="root"
+          data-scope="checkbox"
+          data-state="unchecked"
+          dir="ltr"
+          for="checkbox:«r55»:input"
+          id="checkbox:«r55»"
+        >
+          <input
+            aria-invalid="false"
+            aria-labelledby="checkbox:«r55»:label"
+            id="checkbox:«r55»:input"
+            name="financingOffer.negotiable"
+            style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
+            type="checkbox"
+            value="false"
+          />
+          <div
+            aria-hidden="true"
+            class="chakra-checkbox__control css-1d2z6nk"
+            data-part="control"
+            data-scope="checkbox"
+            data-state="unchecked"
+            dir="ltr"
+            id="checkbox:«r55»:control"
+          >
+            <svg
+              class="css-wuqtn7"
+              data-state="unchecked"
+              viewBox="0 0 24 24"
+            />
+          </div>
+          <span
+            class="chakra-checkbox__label css-1td7ckk"
+            data-part="label"
+            data-scope="checkbox"
+            data-state="unchecked"
+            dir="ltr"
+            id="checkbox:«r55»:label"
+          >
+            Negotiable
+          </span>
+        </label>
+        <div
+          class="chakra-field__root css-13f87cb"
+          data-part="root"
+          data-scope="field"
+          id="field::«r56»"
+          role="group"
+        >
+          <label
+            class="chakra-field__label css-65zcwe"
+            data-part="label"
+            data-scope="field"
+            for="«r56»"
+            id="field::«r56»::label"
+          >
+            Duration
+          </label>
+          <input
+            class="chakra-input css-ee9xfg"
+            data-part="input"
+            data-scope="field"
+            id="«r56»"
+            name="financingOffer.duration"
+            type="number"
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-field__root css-13f87cb"
+          data-part="root"
+          data-scope="field"
+          id="field::«r57»"
+          role="group"
+        >
+          <label
+            class="chakra-field__label css-65zcwe"
+            data-part="label"
+            data-scope="field"
+            for="«r57»"
+            id="field::«r57»::label"
+          >
+            Monthly Rate
+          </label>
+          <input
+            class="chakra-input css-ee9xfg"
+            data-part="input"
+            data-scope="field"
+            id="«r57»"
+            name="financingOffer.monthlyRate"
+            type="number"
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-field__root css-13f87cb"
+          data-part="root"
+          data-scope="field"
+          id="field::«r58»"
+          role="group"
+        >
+          <label
+            class="chakra-field__label css-65zcwe"
+            data-part="label"
+            data-scope="field"
+            for="«r58»"
+            id="field::«r58»::label"
+          >
+            Annual Percentage Rate
+          </label>
+          <input
+            class="chakra-input css-ee9xfg"
+            data-part="input"
+            data-scope="field"
+            id="«r58»"
+            name="financingOffer.annualPercentageRate"
+            type="number"
+            value=""
+          />
+        </div>
+        <div
+          class="chakra-field__root css-13f87cb"
+          data-part="root"
+          data-scope="field"
+          id="field::«r59»"
+          role="group"
+        >
+          <label
+            class="chakra-field__label css-65zcwe"
+            data-part="label"
+            data-scope="field"
+            for="«r59»"
+            id="field::«r59»::label"
+          >
+            Initial Payment
+          </label>
+          <input
+            class="chakra-input css-ee9xfg"
+            data-part="input"
+            data-scope="field"
+            id="«r59»"
+            name="financingOffer.initialPayment"
+            type="number"
+            value=""
+          />
+        </div>
         <div
           class="chakra-field__root css-13f87cb"
           data-part="root"
@@ -12832,117 +12641,13 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             for="«r5a»"
             id="field::«r5a»::label"
           >
-            Duration
-          </label>
-          <input
-            class="chakra-input css-ee9xfg"
-            data-part="input"
-            data-scope="field"
-            id="«r5a»"
-            name="financingOffer.duration"
-            type="number"
-            value=""
-          />
-        </div>
-        <div
-          class="chakra-field__root css-13f87cb"
-          data-part="root"
-          data-scope="field"
-          id="field::«r5b»"
-          role="group"
-        >
-          <label
-            class="chakra-field__label css-65zcwe"
-            data-part="label"
-            data-scope="field"
-            for="«r5b»"
-            id="field::«r5b»::label"
-          >
-            Monthly Rate
-          </label>
-          <input
-            class="chakra-input css-ee9xfg"
-            data-part="input"
-            data-scope="field"
-            id="«r5b»"
-            name="financingOffer.monthlyRate"
-            type="number"
-            value=""
-          />
-        </div>
-        <div
-          class="chakra-field__root css-13f87cb"
-          data-part="root"
-          data-scope="field"
-          id="field::«r5c»"
-          role="group"
-        >
-          <label
-            class="chakra-field__label css-65zcwe"
-            data-part="label"
-            data-scope="field"
-            for="«r5c»"
-            id="field::«r5c»::label"
-          >
-            Annual Percentage Rate
-          </label>
-          <input
-            class="chakra-input css-ee9xfg"
-            data-part="input"
-            data-scope="field"
-            id="«r5c»"
-            name="financingOffer.annualPercentageRate"
-            type="number"
-            value=""
-          />
-        </div>
-        <div
-          class="chakra-field__root css-13f87cb"
-          data-part="root"
-          data-scope="field"
-          id="field::«r5d»"
-          role="group"
-        >
-          <label
-            class="chakra-field__label css-65zcwe"
-            data-part="label"
-            data-scope="field"
-            for="«r5d»"
-            id="field::«r5d»::label"
-          >
-            Initial Payment
-          </label>
-          <input
-            class="chakra-input css-ee9xfg"
-            data-part="input"
-            data-scope="field"
-            id="«r5d»"
-            name="financingOffer.initialPayment"
-            type="number"
-            value=""
-          />
-        </div>
-        <div
-          class="chakra-field__root css-13f87cb"
-          data-part="root"
-          data-scope="field"
-          id="field::«r5e»"
-          role="group"
-        >
-          <label
-            class="chakra-field__label css-65zcwe"
-            data-part="label"
-            data-scope="field"
-            for="«r5e»"
-            id="field::«r5e»::label"
-          >
             Ending Rate
           </label>
           <input
             class="chakra-input css-ee9xfg"
             data-part="input"
             data-scope="field"
-            id="«r5e»"
+            id="«r5a»"
             name="financingOffer.endingRate"
             type="number"
             value=""
@@ -12977,15 +12682,15 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             class="chakra-field__root css-13f87cb"
             data-part="root"
             data-scope="field"
-            id="field::«r5g»"
+            id="field::«r5c»"
             role="group"
           >
             <label
               class="chakra-field__label css-65zcwe"
               data-part="label"
               data-scope="field"
-              for="«r5g»"
-              id="field::«r5g»::label"
+              for="«r5c»"
+              id="field::«r5c»::label"
             >
               Postal Code
             </label>
@@ -12993,7 +12698,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
               class="chakra-input css-ee9xfg"
               data-part="input"
               data-scope="field"
-              id="«r5g»"
+              id="«r5c»"
               name="contactInformation.postalCode"
               value=""
             />
@@ -13002,15 +12707,15 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             class="chakra-field__root css-13f87cb"
             data-part="root"
             data-scope="field"
-            id="field::«r5h»"
+            id="field::«r5d»"
             role="group"
           >
             <label
               class="chakra-field__label css-65zcwe"
               data-part="label"
               data-scope="field"
-              for="«r5h»"
-              id="field::«r5h»::label"
+              for="«r5d»"
+              id="field::«r5d»::label"
             >
               City
             </label>
@@ -13018,7 +12723,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
               class="chakra-input css-ee9xfg"
               data-part="input"
               data-scope="field"
-              id="«r5h»"
+              id="«r5d»"
               name="contactInformation.city"
               value=""
             />
@@ -13031,15 +12736,15 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             class="chakra-field__root css-13f87cb"
             data-part="root"
             data-scope="field"
-            id="field::«r5i»"
+            id="field::«r5e»"
             role="group"
           >
             <label
               class="chakra-field__label css-65zcwe"
               data-part="label"
               data-scope="field"
-              for="«r5i»"
-              id="field::«r5i»::label"
+              for="«r5e»"
+              id="field::«r5e»::label"
             >
               Country Code
             </label>
@@ -13050,7 +12755,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
                 class="chakra-native-select__field css-1lldn8"
                 data-part="select"
                 data-scope="field"
-                id="«r5i»"
+                id="«r5e»"
                 name="contactInformation.phoneCountryCode"
               >
                 <option
@@ -13318,15 +13023,15 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             class="chakra-field__root css-13f87cb"
             data-part="root"
             data-scope="field"
-            id="field::«r5j»"
+            id="field::«r5f»"
             role="group"
           >
             <label
               class="chakra-field__label css-65zcwe"
               data-part="label"
               data-scope="field"
-              for="«r5j»"
-              id="field::«r5j»::label"
+              for="«r5f»"
+              id="field::«r5f»::label"
             >
               Area Code
             </label>
@@ -13334,7 +13039,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
               class="chakra-input css-ee9xfg"
               data-part="input"
               data-scope="field"
-              id="«r5j»"
+              id="«r5f»"
               name="contactInformation.phoneAreaCode"
               value=""
             />
@@ -13343,15 +13048,15 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             class="chakra-field__root css-13f87cb"
             data-part="root"
             data-scope="field"
-            id="field::«r5k»"
+            id="field::«r5g»"
             role="group"
           >
             <label
               class="chakra-field__label css-65zcwe"
               data-part="label"
               data-scope="field"
-              for="«r5k»"
-              id="field::«r5k»::label"
+              for="«r5g»"
+              id="field::«r5g»::label"
             >
               Phone Number
             </label>
@@ -13359,7 +13064,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
               class="chakra-input css-ee9xfg"
               data-part="input"
               data-scope="field"
-              id="«r5k»"
+              id="«r5g»"
               name="contactInformation.phoneSubscriberNumber"
               value=""
             />
@@ -13377,13 +13082,13 @@ exports[`ComplexForm > should match the snapshot 1`] = `
             data-scope="checkbox"
             data-state="unchecked"
             dir="ltr"
-            for="checkbox:«r5l»:input"
-            id="checkbox:«r5l»"
+            for="checkbox:«r5h»:input"
+            id="checkbox:«r5h»"
           >
             <input
               aria-invalid="false"
-              aria-labelledby="checkbox:«r5l»:label"
-              id="checkbox:«r5l»:input"
+              aria-labelledby="checkbox:«r5h»:label"
+              id="checkbox:«r5h»:input"
               name="contactInformation.hidePhoneNumber"
               style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; word-wrap: normal;"
               type="checkbox"
@@ -13396,7 +13101,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
               data-scope="checkbox"
               data-state="unchecked"
               dir="ltr"
-              id="checkbox:«r5l»:control"
+              id="checkbox:«r5h»:control"
             >
               <svg
                 class="css-wuqtn7"
@@ -13410,7 +13115,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
               data-scope="checkbox"
               data-state="unchecked"
               dir="ltr"
-              id="checkbox:«r5l»:label"
+              id="checkbox:«r5h»:label"
             >
               Yes
             </span>
@@ -13423,8 +13128,8 @@ exports[`ComplexForm > should match the snapshot 1`] = `
     class="col-span-full sticky bottom-0 z-10 flex justify-center"
   >
     <div
-      aria-describedby="popover:«r5m»:desc"
-      aria-labelledby="popover:«r5m»:title"
+      aria-describedby="popover:«r5i»:desc"
+      aria-labelledby="popover:«r5i»:title"
       class="mb-4 chakra-action-bar__content css-1v82oj9"
       data-expanded=""
       data-part="content"
@@ -13432,7 +13137,7 @@ exports[`ComplexForm > should match the snapshot 1`] = `
       data-scope="popover"
       data-state="open"
       dir="ltr"
-      id="popover:«r5m»:content"
+      id="popover:«r5i»:content"
       role="dialog"
       tabindex="-1"
     >
