@@ -15,7 +15,7 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
     vehicleData: z.object({
       make: z.string().min(1),
       model: v.isModelVisible(vehicleConfig) ? z.string().min(1) : z.literal(undefined),
-      modelVersion: z.string().min(1).max(50).refine(hasNoXml).refine(isNotEmail).refine(isNotUrl),
+      modelVersion: z.string().min(1).max(121).refine(hasNoXml).refine(isNotEmail).refine(isNotUrl),
       modelName: v.isModelNameVisible(vehicleConfig)
         ? z.string().min(1).max(50)
         : z.literal(undefined),
@@ -46,6 +46,17 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
       offerReference: v.isOfferReferenceVisible(vehicleConfig)
         ? z.string().max(50).refine(hasNoXml).refine(isNotEmail).refine(isNotUrl)
         : z.literal(undefined),
+      modelYear: v.isModelYearVisible(vehicleConfig)
+        ? z
+            .number()
+            .int()
+            .min(1900)
+            .max(new Date().getFullYear() + 1)
+        : z.literal(undefined),
+      styleId: v.isStyleIdVisible(vehicleConfig)
+        ? z.number().int().optional()
+        : z.literal(undefined),
+      trim: v.isTrimVisible(vehicleConfig) ? z.string().min(1) : z.literal(undefined),
     }),
     description: z.object({
       description: z.string().max(10_000),

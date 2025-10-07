@@ -44,6 +44,20 @@ const isOfferReferenceVisible = ({ userType, vehicleType }: VehicleConfig): bool
   return userType === 'D';
 };
 
+const isModelYearVisible = ({ culture }: VehicleConfig): boolean => {
+  return ['en-CA', 'fr-CA'].includes(culture);
+};
+
+const isStyleIdVisible = ({ userType, culture }: VehicleConfig): boolean => {
+  if (userType !== 'D') return false;
+  return ['en-CA', 'fr-CA'].includes(culture);
+};
+
+const isTrimVisible = ({ userType, culture }: VehicleConfig): boolean => {
+  if (userType !== 'D') return false;
+  return ['en-CA', 'fr-CA'].includes(culture);
+};
+
 // Characteristics =======================================================
 
 const isBodyColorVisible = ({ vehicleType }: VehicleConfig): boolean => {
@@ -158,12 +172,15 @@ export {
   isMaximumTowingWeightVisible,
   isModelNameVisible,
   isModelVisible,
+  isModelYearVisible,
   isNetPriceVisible,
   isOfferReferenceVisible,
   isPayloadVisible,
   isProductionYearVisible,
+  isStyleIdVisible,
   isTaxAndPriceNegotiableVisible,
   isTotalDimensionsVisible,
+  isTrimVisible,
   isTsnVisible,
   isUpholsteryVisible,
   isVatRateVisible,
