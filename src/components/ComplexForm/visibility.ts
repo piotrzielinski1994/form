@@ -175,6 +175,22 @@ const isPreviousOwnersVisible = (vehicleOfferType: string): boolean => {
   return vehicleOfferType !== 'N';
 };
 
+const isPowerKWVisible = ({ culture }: VehicleConfig): boolean => {
+  return !['en-CA', 'fr-CA'].includes(culture);
+};
+
+const isCylindersVisible = (fuelCategory: string): boolean => {
+  return fuelCategory !== 'E';
+};
+
+const isEngineCapacityVisible = (fuelCategory: string): boolean => {
+  return fuelCategory !== 'E';
+};
+
+const isGearsVisible = (fuelCategory: string): boolean => {
+  return fuelCategory !== 'E';
+};
+
 // Fuel =======================================================
 
 const isWltpCo2EmissionsCombinedVisible = (
@@ -221,9 +237,12 @@ export {
   isCarpassMileageUrlVisible,
   isClosingCostsVisible,
   isContactInformationVisible,
+  isCylindersVisible,
   isDamagedVehicleVisible,
   isDoorsVisible,
+  isEngineCapacityVisible,
   isFullServiceHistoryVisible,
+  isGearsVisible,
   isGrossVehicleWeightVisible,
   isHasCarRegistrationVisible,
   isHsnVisible,
@@ -239,6 +258,7 @@ export {
   isNonSmokingVisible,
   isOfferReferenceVisible,
   isPayloadVisible,
+  isPowerKWVisible,
   isPreviousOwnersVisible,
   isProductionYearVisible,
   isRoadWorthinessVisible,

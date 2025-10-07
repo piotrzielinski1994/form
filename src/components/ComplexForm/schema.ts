@@ -298,12 +298,14 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
     motor: z.object({
       driveType: z.string().trim(),
       transmission: z.string().trim(),
-      powerKW: z.number().int(),
+      powerKW: v.isPowerKWVisible(vehicleConfig)
+        ? z.number().int().min(1).max(7354)
+        : z.literal(undefined),
       powerHP: z.number().int(),
-      gears: z.number().int(),
-      cylinders: z.number().int(),
-      engineCapacity: z.number(),
-      emptyWeight: z.number(),
+      gears: z.number().int().min(0).max(99).optional(),
+      cylinders: z.number().int().min(0).max(99).optional(),
+      engineCapacity: z.number().min(1).max(99999).optional(),
+      emptyWeight: z.number().min(1).max(99999),
     }),
     fuel: z
       .object({
