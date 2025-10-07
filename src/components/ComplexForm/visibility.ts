@@ -191,6 +191,33 @@ const isGearsVisible = (fuelCategory: string): boolean => {
   return fuelCategory !== 'E';
 };
 
+const isPriceVisible = ({ userType, culture }: VehicleConfig): boolean => {
+  if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return false;
+  return true;
+};
+
+const isAskingPriceVisible = ({ userType, culture }: VehicleConfig): boolean => {
+  if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return true;
+  return false;
+};
+
+const isMsrpPriceVisible = ({ userType, culture }: VehicleConfig): boolean => {
+  if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return true;
+  return false;
+};
+
+const isPriceNegotiableVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
+  if (vehicleType === 'DSC') return false;
+  if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return false;
+  return true;
+};
+
+const isTaxDeductibleVisible = ({ culture, vehicleType }: VehicleConfig): boolean => {
+  if (vehicleType === 'DSC') return false;
+  if (['en-CA', 'fr-CA'].includes(culture)) return false;
+  return true;
+};
+
 // Fuel =======================================================
 
 const isWltpCo2EmissionsCombinedVisible = (
@@ -230,6 +257,7 @@ const isContactInformationVisible = ({ userType }: VehicleConfig): boolean => {
 
 export {
   isAccidentVehicleVisible,
+  isAskingPriceVisible,
   isAxleCountVisible,
   isBedCountVisible,
   isBodyColorNameVisible,
@@ -254,17 +282,21 @@ export {
   isModelNameVisible,
   isModelVisible,
   isModelYearVisible,
+  isMsrpPriceVisible,
   isNetPriceVisible,
   isNonSmokingVisible,
   isOfferReferenceVisible,
   isPayloadVisible,
   isPowerKWVisible,
   isPreviousOwnersVisible,
+  isPriceNegotiableVisible,
+  isPriceVisible,
   isProductionYearVisible,
   isRoadWorthinessVisible,
   isSeatsVisible,
   isStyleIdVisible,
   isTaxAndPriceNegotiableVisible,
+  isTaxDeductibleVisible,
   isTotalDimensionsVisible,
   isTrimVisible,
   isTsnVisible,

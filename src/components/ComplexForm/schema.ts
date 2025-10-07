@@ -424,10 +424,22 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
       hidePhoneNumber: z.boolean(),
     }),
     financingOffer: z.object({
-      price: z.number().positive().max(10_000_000),
+      price: v.isPriceVisible(vehicleConfig)
+        ? z.number().positive().min(1).max(9_999_999)
+        : z.literal(undefined),
+      askingPrice: v.isAskingPriceVisible(vehicleConfig)
+        ? z.number().positive().min(1).max(9_999_999)
+        : z.literal(undefined),
+      msrpPrice: v.isMsrpPriceVisible(vehicleConfig)
+        ? z.number().positive().min(1).max(9_999_999).optional()
+        : z.literal(undefined),
       netPrice: z.number().positive().max(10_000_000).optional(),
-      taxDeductible: z.boolean().optional(),
-      negotiable: z.boolean().optional(),
+      taxDeductible: v.isTaxDeductibleVisible(vehicleConfig)
+        ? z.boolean().optional()
+        : z.literal(undefined),
+      negotiable: v.isPriceNegotiableVisible(vehicleConfig)
+        ? z.boolean().optional()
+        : z.literal(undefined),
       vatRate: z.number().min(0).max(100).optional(),
       duration: z.number().int().positive().max(120),
       monthlyRate: z.number().nonnegative().max(100_000),
