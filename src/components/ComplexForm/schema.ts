@@ -364,7 +364,13 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
               .refine((val) => /^\d{4}( ?[a-zA-Z]{2})?$|^\d{5}$/.test(val));
         }
       })(),
-      city: z.string().trim().max(30),
+      city: z
+        .string()
+        .trim()
+        .max(50)
+        .refine((val) => !/[@#&"<>()]/.test(val))
+        .refine(isNotEmail)
+        .refine(isNotUrl),
       phoneCountryCode: z.string().trim(),
       phoneAreaCode: (() => {
         switch (vehicleConfig.culture) {
