@@ -12,6 +12,8 @@ const localePerCulture = {
   'nl-NL': 'nl',
   'nl-BE': 'nl',
   'en-US': 'en',
+  'en-CA': 'ca',
+  'fr-CA': 'ca',
 } as const;
 
 const routing = defineRouting({

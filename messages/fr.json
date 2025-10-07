@@ -3,7 +3,7 @@
     "title": "Formulaire complexe"
   },
   "LocaleSwitcher": {
-    "locale": "{locale, select, de {🇩🇪 Allemand} en {🇺🇸 Anglais} nl {🇳🇱 Néerlandais} fr {🇫🇷 Français} it {🇮🇹 Italien} es {🇪🇸 Espagnol} other {Inconnu}}"
+    "locale": "{locale, select, de {🇩🇪 Allemand} en {🇺🇸 Anglais} nl {🇳🇱 Néerlandais} fr {🇫🇷 Français} it {🇮🇹 Italien} es {🇪🇸 Espagnol} ca {🇨🇦 Canadien} other {Inconnu}}"
   },
   "ComplexForm": {
     "vehicleData": {

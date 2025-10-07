@@ -3,7 +3,7 @@
     "title": "Modulo complesso"
   },
   "LocaleSwitcher": {
-    "locale": "{locale, select, de {🇩🇪 Tedesco} en {🇺🇸 Inglese} nl {🇳🇱 Olandese} fr {🇫🇷 Francese} it {🇮🇹 Italiano} es {🇪🇸 Spagnolo} other {Sconosciuto}}"
+    "locale": "{locale, select, de {🇩🇪 Tedesco} en {🇺🇸 Inglese} nl {🇳🇱 Olandese} fr {🇫🇷 Francese} it {🇮🇹 Italiano} es {🇪🇸 Spagnolo} ca {🇨🇦 Canadese} other {Sconosciuto}}"
   },
   "ComplexForm": {
     "vehicleData": {
