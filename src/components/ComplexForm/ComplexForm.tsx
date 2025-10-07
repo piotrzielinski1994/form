@@ -117,10 +117,24 @@ const ComplexForm = () => {
               control={control}
             />
           )}
-          {v.isTsnVisible(vehicleConfig) && (
+          {v.isModelYearVisible(vehicleConfig) && (
+            <NumericInputContainer
+              label={t('vehicleData.modelYear')}
+              name="vehicleData.modelYear"
+              control={control}
+            />
+          )}
+          {v.isStyleIdVisible(vehicleConfig) && (
+            <NumericInputContainer
+              label={t('vehicleData.styleId')}
+              name="vehicleData.styleId"
+              control={control}
+            />
+          )}
+          {v.isTrimVisible(vehicleConfig) && (
             <TextInputContainer
-              label={t('vehicleData.tsn')}
-              name="vehicleData.tsn"
+              label={t('vehicleData.trim')}
+              name="vehicleData.trim"
               control={control}
             />
           )}
@@ -136,16 +150,20 @@ const ComplexForm = () => {
               label: it.label,
             }))}
           />
-          <NumericInputContainer
-            control={control}
-            name="characteristics.seats"
-            label={t('characteristics.seats')}
-          />
-          <NumericInputContainer
-            control={control}
-            name="characteristics.doors"
-            label={t('characteristics.doors')}
-          />
+          {v.isSeatsVisible(vehicleConfig) && (
+            <NumericInputContainer
+              control={control}
+              name="characteristics.seats"
+              label={t('characteristics.seats')}
+            />
+          )}
+          {v.isDoorsVisible(vehicleConfig) && (
+            <NumericInputContainer
+              control={control}
+              name="characteristics.doors"
+              label={t('characteristics.doors')}
+            />
+          )}
           {v.isBodyColorVisible(vehicleConfig) && (
             <RadioContainer
               control={control}
@@ -161,14 +179,16 @@ const ComplexForm = () => {
               label={t('characteristics.bodyColorName')}
             />
           )}
-          <div className="grid gap-1.5">
-            <label className="text-sm font-medium">{t('characteristics.typeOfPaint')}</label>
-            <CheckboxContainer
-              control={control}
-              name="characteristics.metallic"
-              label={t('characteristics.metallic')}
-            />
-          </div>
+          {v.isMetallicVisible(vehicleConfig) && (
+            <div className="grid gap-1.5">
+              <label className="text-sm font-medium">{t('characteristics.typeOfPaint')}</label>
+              <CheckboxContainer
+                control={control}
+                name="characteristics.metallic"
+                label={t('characteristics.metallic')}
+              />
+            </div>
+          )}
           {v.isUpholsteryVisible(vehicleConfig) && (
             <RadioContainer
               control={control}
@@ -323,16 +343,20 @@ const ComplexForm = () => {
             control={control}
             name="condition.owners"
           />
-          <CheckboxContainer
-            name="condition.fullServiceHistory"
-            label={t('condition.fullServiceHistory')}
-            control={control}
-          />
-          <CheckboxContainer
-            name="condition.nonSmoking"
-            label={t('condition.nonSmoking')}
-            control={control}
-          />
+          {v.isFullServiceHistoryVisible(vehicleConfig) && (
+            <CheckboxContainer
+              name="condition.fullServiceHistory"
+              label={t('condition.fullServiceHistory')}
+              control={control}
+            />
+          )}
+          {v.isNonSmokingVisible(vehicleConfig) && (
+            <CheckboxContainer
+              name="condition.nonSmoking"
+              label={t('condition.nonSmoking')}
+              control={control}
+            />
+          )}
           <div className="grid grid-cols-2 auto-rows-auto">
             <SelectContainer
               name="condition.nextInspectionMonth"
@@ -393,54 +417,60 @@ const ComplexForm = () => {
               control={control}
             />
           </div>
-          <Controller
-            name="condition.damagedVehicle"
-            control={control}
-            render={({ field }) => (
-              <Select
-                label={t('condition.damagedVehicle')}
-                options={[
-                  { value: 'true', label: t('yes') },
-                  { value: 'false', label: t('no') },
-                ]}
-                {...field}
-                value={field.value === true ? 'true' : 'false'}
-                onChange={(e) => field.onChange(e.target.value === 'true')}
-              />
-            )}
-          />
-          <Controller
-            name="condition.accidentVehicle"
-            control={control}
-            render={({ field }) => (
-              <Select
-                label={t('condition.accidentVehicle')}
-                options={[
-                  { value: 'true', label: t('yes') },
-                  { value: 'false', label: t('no') },
-                ]}
-                {...field}
-                value={field.value === true ? 'true' : 'false'}
-                onChange={(e) => field.onChange(e.target.value === 'true')}
-              />
-            )}
-          />
-          <Controller
-            name="condition.roadWorthiness"
-            control={control}
-            render={({ field }) => (
-              <Select
-                label={t('condition.roadWorthiness')}
-                options={[
-                  { value: 'true', label: t('yes') },
-                  { value: 'false', label: t('no') },
-                ]}
-                {...field}
-                value={field.value === true ? 'true' : 'false'}
-                onChange={(e) => field.onChange(e.target.value === 'true')}
-              />
-            )}
-          />
+          {v.isDamagedVehicleVisible(vehicleConfig) && (
+            <Controller
+              name="condition.damagedVehicle"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  label={t('condition.damagedVehicle')}
+                  options={[
+                    { value: 'true', label: t('yes') },
+                    { value: 'false', label: t('no') },
+                  ]}
+                  {...field}
+                  value={field.value === true ? 'true' : 'false'}
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                />
+              )}
+            />
+          )}
+          {v.isAccidentVehicleVisible(vehicleConfig) && (
+            <Controller
+              name="condition.accidentVehicle"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  label={t('condition.accidentVehicle')}
+                  options={[
+                    { value: 'true', label: t('yes') },
+                    { value: 'false', label: t('no') },
+                  ]}
+                  {...field}
+                  value={field.value === true ? 'true' : 'false'}
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                />
+              )}
+            />
+          )}
+          {v.isRoadWorthinessVisible(vehicleConfig) && (
+            <Controller
+              name="condition.roadWorthiness"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  label={t('condition.roadWorthiness')}
+                  options={[
+                    { value: 'true', label: t('yes') },
+                    { value: 'false', label: t('no') },
+                  ]}
+                  {...field}
+                  value={field.value === true ? 'true' : 'false'}
+                  onChange={(e) => field.onChange(e.target.value === 'true')}
+                />
+              )}
+            />
+          )}
         </Fieldset>
 
         <Fieldset legend={t('equipment.legend')} id="equipment">
@@ -1072,29 +1102,37 @@ const ComplexForm = () => {
             control={control}
           />
           <div className="grid grid-cols-2 auto-rows-auto">
-            <NumericInputContainer
-              label={t('motor.powerKW')}
-              control={control}
-              name="motor.powerKW"
-            />
+            {v.isPowerKWVisible(vehicleConfig) && (
+              <NumericInputContainer
+                label={t('motor.powerKW')}
+                control={control}
+                name="motor.powerKW"
+              />
+            )}
             <NumericInputContainer
               label={t('motor.powerHP')}
               control={control}
               name="motor.powerHP"
             />
           </div>
-          <NumericInputContainer label={t('motor.gears')} control={control} name="motor.gears" />
-          <NumericInputContainer
-            label={t('motor.cylinders')}
-            control={control}
-            name="motor.cylinders"
-          />
-          <div className="grid grid-cols-2 auto-rows-auto">
+          {v.isGearsVisible(watch('fuel.fuelCategory')) && (
+            <NumericInputContainer label={t('motor.gears')} control={control} name="motor.gears" />
+          )}
+          {v.isCylindersVisible(watch('fuel.fuelCategory')) && (
             <NumericInputContainer
-              label={t('motor.engineCapacity')}
+              label={t('motor.cylinders')}
               control={control}
-              name="motor.engineCapacity"
+              name="motor.cylinders"
             />
+          )}
+          <div className="grid grid-cols-2 auto-rows-auto">
+            {v.isEngineCapacityVisible(watch('fuel.fuelCategory')) && (
+              <NumericInputContainer
+                label={t('motor.engineCapacity')}
+                control={control}
+                name="motor.engineCapacity"
+              />
+            )}
             <NumericInputContainer
               label={t('motor.emptyWeight')}
               control={control}
@@ -1125,24 +1163,39 @@ const ComplexForm = () => {
             ]}
             control={control}
           />
-          <SelectContainer
-            name="fuel.primaryFuelType"
-            label={t('fuel.primaryFuelTypeLabel')}
-            options={primaryFuelTypeOptions.data}
-            disabled={primaryFuelTypeOptions.isFetching}
-            isLoading={primaryFuelTypeOptions.isFetching}
-            control={control}
-          />
-          <CheckboxContainer
-            name="fuel.sootParticles"
-            label={t('fuel.sootParticles')}
-            control={control}
-          />
-          {v.isWltpCo2EmissionsCombinedVisible(vehicleConfig, {
-            environmentalProtocol: watch('fuel.environmentalProtocol'),
-            primaryFuelType: watch('fuel.primaryFuelType'),
-            pluginHybrid: watch('fuel.pluginHybrid'),
-          }) ? (
+          {v.isPrimaryFuelTypeVisible(vehicleConfig) && (
+            <SelectContainer
+              name="fuel.primaryFuelType"
+              label={t('fuel.primaryFuelTypeLabel')}
+              options={primaryFuelTypeOptions.data}
+              disabled={primaryFuelTypeOptions.isFetching}
+              isLoading={primaryFuelTypeOptions.isFetching}
+              control={control}
+            />
+          )}
+          {v.isSootParticlesVisible(vehicleConfig, watch('fuel.fuelCategory')) && (
+            <CheckboxContainer
+              name="fuel.sootParticles"
+              label={t('fuel.sootParticles')}
+              control={control}
+            />
+          )}
+          {v.isAdditionalFuelTypesVisible(vehicleConfig) && (
+            <SelectContainer
+              name="fuel.additionalFuelTypes"
+              label={t('fuel.additionalFuelTypes')}
+              options={[]}
+              control={control}
+            />
+          )}
+          {v.isPluginHybridVisible(vehicleConfig, watch('fuel.fuelCategory')) && (
+            <CheckboxContainer
+              name="fuel.pluginHybrid"
+              label={t('fuel.isPluginHybrid')}
+              control={control}
+            />
+          )}
+          {watch('fuel.environmentalProtocol') === 'wltp' ? (
             <>
               <NumericInputContainer
                 key="wltpConsumptionCombined"
@@ -1150,12 +1203,18 @@ const ComplexForm = () => {
                 control={control}
                 name="fuel.wltpConsumptionCombined"
               />
-              <NumericInputContainer
-                key="wltpCo2EmissionsCombined"
-                label={t('fuel.wltpCo2EmissionsCombined')}
-                control={control}
-                name="fuel.wltpCo2EmissionsCombined"
-              />
+              {v.isWltpCo2EmissionsCombinedVisible(vehicleConfig, {
+                environmentalProtocol: watch('fuel.environmentalProtocol'),
+                primaryFuelType: watch('fuel.primaryFuelType'),
+                pluginHybrid: watch('fuel.pluginHybrid'),
+              }) && (
+                <NumericInputContainer
+                  key="wltpCo2EmissionsCombined"
+                  label={t('fuel.wltpCo2EmissionsCombined')}
+                  control={control}
+                  name="fuel.wltpCo2EmissionsCombined"
+                />
+              )}
             </>
           ) : (
             <>
@@ -1165,21 +1224,71 @@ const ComplexForm = () => {
                 control={control}
                 name="fuel.consumptionCombined"
               />
-              <NumericInputContainer
-                key="co2EmissionsCombined"
-                label={t('fuel.co2EmissionsCombined')}
-                control={control}
-                name="fuel.co2EmissionsCombined"
-              />
+              {v.isCo2Visible(vehicleConfig, {
+                primaryFuelType: watch('fuel.primaryFuelType'),
+                additionalFuelTypes: watch('fuel.additionalFuelTypes'),
+                environmentalProtocol: watch('fuel.environmentalProtocol'),
+              }) && (
+                <NumericInputContainer
+                  key="co2EmissionsCombined"
+                  label={t('fuel.co2EmissionsCombined')}
+                  control={control}
+                  name="fuel.co2EmissionsCombined"
+                />
+              )}
+              {v.isEfficiencyClassVisible(vehicleConfig, watch('fuel.environmentalProtocol')) && (
+                <TextInputContainer
+                  key="efficiencyClass"
+                  label={t('fuel.efficiencyClass')}
+                  control={control}
+                  name="fuel.efficiencyClass"
+                />
+              )}
+              {v.isElectricConsumptionCombinedVisible(vehicleConfig, {
+                pluginHybrid: watch('fuel.pluginHybrid'),
+                primaryFuelType: watch('fuel.primaryFuelType'),
+                environmentalProtocol: watch('fuel.environmentalProtocol'),
+              }) && (
+                <NumericInputContainer
+                  key="electricConsumptionCombined"
+                  label={t('fuel.electricConsumptionCombined')}
+                  control={control}
+                  name="fuel.electricConsumptionCombined"
+                />
+              )}
+              {v.isElectricRangeVisible(vehicleConfig, {
+                pluginHybrid: watch('fuel.pluginHybrid'),
+                primaryFuelType: watch('fuel.primaryFuelType'),
+              }) && (
+                <NumericInputContainer
+                  key="electricRange"
+                  label={t('fuel.electricRange')}
+                  control={control}
+                  name="fuel.electricRange"
+                />
+              )}
             </>
           )}
 
-          <SelectContainer
-            name="fuel.wltpCo2Class"
-            label={t('fuel.wltpCo2Class')}
-            options={c.co2ClassOptions}
-            control={control}
-          />
+          {v.isWltpCo2ClassVisible(vehicleConfig, watch('fuel.environmentalProtocol')) && (
+            <SelectContainer
+              name="fuel.wltpCo2Class"
+              label={t('fuel.wltpCo2Class')}
+              options={c.co2ClassOptions}
+              control={control}
+            />
+          )}
+          {v.isWltpCo2ClassDischargedVisible(vehicleConfig, {
+            pluginHybrid: watch('fuel.pluginHybrid'),
+            environmentalProtocol: watch('fuel.environmentalProtocol'),
+          }) && (
+            <SelectContainer
+              name="fuel.wltpCo2ClassDischarged"
+              label={t('fuel.wltpCo2ClassDischarged')}
+              options={c.co2ClassOptions}
+              control={control}
+            />
+          )}
           <SelectContainer
             name="fuel.pollutionClass"
             label={t('fuel.pollutionClassLabel')}
@@ -1189,17 +1298,19 @@ const ComplexForm = () => {
             ]}
             control={control}
           />
-          <RadioContainer
-            name="fuel.emissionSticker"
-            label={t('fuel.emissionSticker')}
-            options={[
-              { value: '1', label: t('fuel.emissionStickerOptions.none') },
-              { value: '2', label: t('fuel.emissionStickerOptions.green') },
-              { value: '3', label: t('fuel.emissionStickerOptions.yellow') },
-              { value: '4', label: t('fuel.emissionStickerOptions.red') },
-            ]}
-            control={control}
-          />
+          {v.isEmissionStickerVisible(vehicleConfig) && (
+            <RadioContainer
+              name="fuel.emissionSticker"
+              label={t('fuel.emissionSticker')}
+              options={[
+                { value: '1', label: t('fuel.emissionStickerOptions.none') },
+                { value: '2', label: t('fuel.emissionStickerOptions.green') },
+                { value: '3', label: t('fuel.emissionStickerOptions.yellow') },
+                { value: '4', label: t('fuel.emissionStickerOptions.red') },
+              ]}
+              control={control}
+            />
+          )}
         </Fieldset>
 
         <Fieldset legend={t('description.legend')} id="description">
@@ -1211,11 +1322,27 @@ const ComplexForm = () => {
         </Fieldset>
 
         <Fieldset legend={t('financingOffer.legend')} id="financingOffer">
-          <NumericInputContainer
-            label={t('financingOffer.price')}
-            control={control}
-            name="financingOffer.price"
-          />
+          {v.isPriceVisible(vehicleConfig) && (
+            <NumericInputContainer
+              label={t('financingOffer.price')}
+              control={control}
+              name="financingOffer.price"
+            />
+          )}
+          {v.isAskingPriceVisible(vehicleConfig) && (
+            <NumericInputContainer
+              label={t('financingOffer.askingPrice')}
+              control={control}
+              name="financingOffer.askingPrice"
+            />
+          )}
+          {v.isMsrpPriceVisible(vehicleConfig) && (
+            <NumericInputContainer
+              label={t('financingOffer.msrpPrice')}
+              control={control}
+              name="financingOffer.msrpPrice"
+            />
+          )}
           {v.isNetPriceVisible(vehicleConfig) && (
             <NumericInputContainer
               label={t('financingOffer.netPrice')}
@@ -1223,19 +1350,19 @@ const ComplexForm = () => {
               name="financingOffer.netPrice"
             />
           )}
-          {v.isTaxAndPriceNegotiableVisible(vehicleConfig) && (
-            <>
-              <CheckboxContainer
-                name="financingOffer.negotiable"
-                label={t('financingOffer.negotiable')}
-                control={control}
-              />
-              <CheckboxContainer
-                name="financingOffer.taxDeductible"
-                label={t('financingOffer.taxDeductible')}
-                control={control}
-              />
-            </>
+          {v.isTaxDeductibleVisible(vehicleConfig) && (
+            <CheckboxContainer
+              name="financingOffer.taxDeductible"
+              label={t('financingOffer.taxDeductible')}
+              control={control}
+            />
+          )}
+          {v.isPriceNegotiableVisible(vehicleConfig) && (
+            <CheckboxContainer
+              name="financingOffer.negotiable"
+              label={t('financingOffer.negotiable')}
+              control={control}
+            />
           )}
           {v.isVatRateVisible(vehicleConfig) && (
             <NumericInputContainer

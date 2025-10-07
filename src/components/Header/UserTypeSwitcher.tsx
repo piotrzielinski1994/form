@@ -17,7 +17,7 @@ const UserTypeSwitcher = () => {
       }}
     >
       <SegmentGroup.Indicator />
-      <SegmentGroup.Items className="cursor-pointer" items={userTypes} />
+      <SegmentGroup.Items suppressHydrationWarning className="cursor-pointer" items={userTypes} />
     </SegmentGroup.Root>
   );
 };

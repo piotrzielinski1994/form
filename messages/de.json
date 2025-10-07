@@ -12,6 +12,9 @@
       "model": "Modell",
       "modelVersion": "Modellvariante",
       "modelName": "Modellname",
+      "modelYear": "Modelljahr",
+      "styleId": "Style-ID",
+      "trim": "Ausstattungslinie",
       "hsn": "HSN (Herstellerschlüsselnummer)",
       "tsn": "TSN",
       "licencePlateNumber": "Kennzeichen",
@@ -237,6 +240,7 @@
         "wltp": "WLTP"
       },
       "primaryFuelTypeLabel": "Energieträger/Kraftstoff",
+      "additionalFuelTypes": "Zusätzliche Kraftstoffarten",
       "isPluginHybrid": "Plug-in-Hybrid",
       "pollutionClassLabel": "Schadstoffklasse",
       "primaryFuelType": {
@@ -249,7 +253,10 @@
       "wltpConsumptionCombined": "Kraftstoffverbrauch kombiniert (WLTP)",
       "wltpCo2EmissionsCombined": "CO2 Emissionen kombiniert (WLTP)",
       "efficiencyClass": "Effizienzklasse",
+      "electricConsumptionCombined": "Stromverbrauch",
+      "electricRange": "Elektrische Reichweite",
       "wltpCo2Class": "CO2-Klasse",
+      "wltpCo2ClassDischarged": "CO2-Klasse entladen",
       "pollutionClass": {
         "euro6": "Euro 6",
         "euro5": "Euro 5"
@@ -284,6 +291,8 @@
     "financingOffer": {
       "legend": "Preis",
       "price": "Preis",
+      "askingPrice": "Preisvorstellung",
+      "msrpPrice": "Unverbindliche Preisempfehlung",
       "netPrice": "Nettopreis",
       "taxDeductible": "Mehrwertsteuer ausweisbar",
       "negotiable": "Verhandelbar",

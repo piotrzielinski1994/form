@@ -12,6 +12,9 @@
       "model": "Model",
       "modelVersion": "Model Version",
       "modelName": "Model Name",
+      "modelYear": "Model Year",
+      "styleId": "Chrome Style ID",
+      "trim": "Trim",
       "hsn": "HSN (Manufacturer Code)",
       "tsn": "TSN",
       "licencePlateNumber": "License Plate Number",
@@ -237,6 +240,7 @@
         "wltp": "WLTP"
       },
       "primaryFuelTypeLabel": "Primary Fuel Type",
+      "additionalFuelTypes": "Additional Fuel Types",
       "isPluginHybrid": "Plug-in Hybrid",
       "pollutionClassLabel": "Pollution Class",
       "primaryFuelType": {
@@ -249,7 +253,10 @@
       "wltpConsumptionCombined": "WLTP Combined Fuel Consumption",
       "wltpCo2EmissionsCombined": "WLTP CO2 Emissions Combined",
       "efficiencyClass": "Efficiency Class",
+      "electricConsumptionCombined": "Power Consumption",
+      "electricRange": "Electric Range",
       "wltpCo2Class": "CO2 Class",
+      "wltpCo2ClassDischarged": "CO2 Class Discharged",
       "pollutionClass": {
         "euro6": "Euro 6",
         "euro5": "Euro 5"
@@ -284,6 +291,8 @@
     "financingOffer": {
       "legend": "Price",
       "price": "Price",
+      "askingPrice": "Asking Price",
+      "msrpPrice": "MSRP Price",
       "netPrice": "Net Price",
       "taxDeductible": "Tax Deductible",
       "negotiable": "Negotiable",

@@ -12,6 +12,9 @@
       "model": "Model",
       "modelVersion": "Modelversie",
       "modelName": "Modelnaam",
+      "modelYear": "Modeljaar",
+      "styleId": "Stijl-ID",
+      "trim": "Uitvoering",
       "hsn": "HSN (Fabrikantcode)",
       "tsn": "TSN",
       "licencePlateNumber": "Kenteken",
@@ -237,6 +240,7 @@
         "wltp": "WLTP"
       },
       "primaryFuelTypeLabel": "Energiedrager/Brandstof",
+      "additionalFuelTypes": "Extra brandstofsoorten",
       "isPluginHybrid": "Plug-in hybride",
       "pollutionClassLabel": "Vervuilingsklasse",
       "primaryFuelType": {
@@ -249,7 +253,10 @@
       "wltpConsumptionCombined": "Brandstofverbruik gecombineerd (WLTP)",
       "wltpCo2EmissionsCombined": "CO2-uitstoot gecombineerd (WLTP)",
       "efficiencyClass": "Efficiëntieklasse",
+      "electricConsumptionCombined": "Stroomverbruik",
+      "electricRange": "Elektrische actieradius",
       "wltpCo2Class": "CO2-klasse",
+      "wltpCo2ClassDischarged": "CO2-klasse ontladen",
       "pollutionClass": {
         "euro6": "Euro 6",
         "euro5": "Euro 5"
@@ -284,6 +291,8 @@
     "financingOffer": {
       "legend": "Prijs",
       "price": "Prijs",
+      "askingPrice": "Vraagprijs",
+      "msrpPrice": "Adviesprijs van de fabrikant",
       "netPrice": "Netto prijs",
       "taxDeductible": "BTW aftrekbaar",
       "negotiable": "Onderhandelbaar",
