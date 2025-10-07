@@ -136,6 +136,45 @@ const isBedCountVisible = ({ vehicleType }: VehicleConfig): boolean => {
   return vehicleType === 'N';
 };
 
+// Condition =======================================================
+
+const isNonSmokingVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
+  if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return false;
+  if (vehicleType === 'DSC') return false;
+  return ['C', 'N'].includes(vehicleType);
+};
+
+const isFullServiceHistoryVisible = ({
+  userType,
+  culture,
+  vehicleType,
+}: VehicleConfig): boolean => {
+  if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return false;
+  if (vehicleType === 'DSC') return false;
+  return true;
+};
+
+const isDamagedVehicleVisible = ({ vehicleType }: VehicleConfig): boolean => {
+  if (vehicleType === 'DSC') return false;
+  return true;
+};
+
+const isAccidentVehicleVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
+  if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return false;
+  if (vehicleType === 'DSC') return false;
+  return true;
+};
+
+const isRoadWorthinessVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
+  if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return false;
+  if (vehicleType === 'DSC') return false;
+  return true;
+};
+
+const isPreviousOwnersVisible = (vehicleOfferType: string): boolean => {
+  return vehicleOfferType !== 'N';
+};
+
 // Fuel =======================================================
 
 const isWltpCo2EmissionsCombinedVisible = (
@@ -174,6 +213,7 @@ const isContactInformationVisible = ({ userType }: VehicleConfig): boolean => {
 };
 
 export {
+  isAccidentVehicleVisible,
   isAxleCountVisible,
   isBedCountVisible,
   isBodyColorNameVisible,
@@ -181,7 +221,9 @@ export {
   isCarpassMileageUrlVisible,
   isClosingCostsVisible,
   isContactInformationVisible,
+  isDamagedVehicleVisible,
   isDoorsVisible,
+  isFullServiceHistoryVisible,
   isGrossVehicleWeightVisible,
   isHasCarRegistrationVisible,
   isHsnVisible,
@@ -194,9 +236,12 @@ export {
   isModelVisible,
   isModelYearVisible,
   isNetPriceVisible,
+  isNonSmokingVisible,
   isOfferReferenceVisible,
   isPayloadVisible,
+  isPreviousOwnersVisible,
   isProductionYearVisible,
+  isRoadWorthinessVisible,
   isSeatsVisible,
   isStyleIdVisible,
   isTaxAndPriceNegotiableVisible,

@@ -134,21 +134,31 @@ const genSchema = (vehicleConfig: VehicleConfig) => {
     }),
     condition: z.object({
       vehicleOfferType: z.string().trim(),
-      mileage: z.number().int(),
+      mileage: (() => {
+        const isCanadianDealerWithNew =
+          ['en-CA', 'fr-CA'].includes(vehicleConfig.culture) && vehicleConfig.userType === 'D';
+        return isCanadianDealerWithNew
+          ? z.number().int().min(1).max(999999).optional()
+          : z.number().int().min(1).max(999999);
+      })(),
       firstRegistrationMonth: z.string().trim(),
       firstRegistrationYear: z.string().trim(),
-      owners: z.number().int(),
-      fullServiceHistory: z.boolean(),
-      nonSmoking: z.boolean(),
+      owners: z.number().int().min(0).max(99),
+      fullServiceHistory: v.isFullServiceHistoryVisible(vehicleConfig)
+        ? z.boolean()
+        : z.literal(undefined),
+      nonSmoking: v.isNonSmokingVisible(vehicleConfig) ? z.boolean() : z.literal(undefined),
       nextInspectionMonth: z.string().trim(),
       nextInspectionYear: z.string().trim().min(1),
       lastTechnicalServiceMonth: z.string().trim(),
       lastTechnicalServiceYear: z.string().trim(),
       lastCamBeltServiceMonth: z.string().trim(),
       lastCamBeltServiceYear: z.string().trim(),
-      damagedVehicle: z.boolean(),
-      accidentVehicle: z.boolean(),
-      roadWorthiness: z.boolean(),
+      damagedVehicle: v.isDamagedVehicleVisible(vehicleConfig) ? z.boolean() : z.literal(undefined),
+      accidentVehicle: v.isAccidentVehicleVisible(vehicleConfig)
+        ? z.boolean()
+        : z.literal(undefined),
+      roadWorthiness: v.isRoadWorthinessVisible(vehicleConfig) ? z.boolean() : z.literal(undefined),
     }),
     equipment: z.object({
       airbags: z.object({
