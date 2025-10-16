@@ -58,22 +58,19 @@ const ComplexFormNavigation = () => {
       heading: t('financingOffer.legend'),
       isValid: getSectionValidity('financingOffer'),
     },
-    ...(isContactInformationVisible(vehicleConfig)
-      ? [
-          {
-            id: 'contactInformation',
-            heading: t('contactInformation.legend'),
-            isValid: getSectionValidity('contactInformation'),
-          },
-        ]
-      : []),
+    {
+      id: 'contactInformation',
+      heading: t('contactInformation.legend'),
+      isValid: getSectionValidity('contactInformation'),
+      isVisible: isContactInformationVisible(vehicleConfig),
+    },
   ];
 
   return (
     <Steps
       className="sticky"
       style={{ top: `${headerHeight + SCROLL_OFFSET}px` }}
-      steps={steps}
+      steps={steps.filter((it) => it.isVisible !== false)}
       onClick={(id) => router.push(`#${id}`)}
     />
   );
