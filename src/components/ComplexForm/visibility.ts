@@ -12,19 +12,20 @@ const isModelNameVisible = ({ userType, vehicleType }: VehicleConfig): boolean =
 
 const isHsnVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
   if (['B', 'DSC'].includes(vehicleType)) return false;
-  if (vehicleType === 'C') return userType === 'D' && culture === 'de-DE';
-  return culture === 'de-DE';
+  if (vehicleType === 'C') return culture === 'de-DE';
+  return userType === 'D' && culture === 'de-DE';
 };
 
-const isTsnVisible = ({ culture, vehicleType }: VehicleConfig): boolean => {
+const isTsnVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
   if (['B', 'DSC'].includes(vehicleType)) return false;
-  return culture === 'de-DE';
+  if (vehicleType === 'C') return culture === 'de-DE';
+  return userType === 'D' && culture === 'de-DE';
 };
 
-const isVinVisible = ({ userType, vehicleType }: VehicleConfig): boolean => {
+const isVinVisible = ({ userType, vehicleType, culture }: VehicleConfig): boolean => {
   if (vehicleType === 'DSC') return false;
   if (['N', 'X', 'L'].includes(vehicleType)) return false;
-  return userType === 'D';
+  return userType === 'D' || ['en-CA', 'fr-CA'].includes(culture);
 };
 
 const isCarpassMileageUrlVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
@@ -79,14 +80,12 @@ const isDoorsVisible = ({ vehicleType }: VehicleConfig): boolean => {
 
 const isMetallicVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
   if (['DSC', 'L'].includes(vehicleType)) return false;
-  // Not visible for Canadian dealers
   if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return false;
   return true;
 };
 
 const isUpholsteryVisible = ({ userType, culture, vehicleType }: VehicleConfig): boolean => {
   if (['B', 'L', 'DSC'].includes(vehicleType)) return false;
-  // Not visible for Canadian dealers
   if (['en-CA', 'fr-CA'].includes(culture) && userType === 'D') return false;
   return true;
 };
