@@ -80,6 +80,13 @@ const ComplexForm = () => {
               control={control}
             />
           )}
+          {v.isTsnVisible(vehicleConfig) && (
+            <TextInputContainer
+              label={t('vehicleData.tsn')}
+              name="vehicleData.tsn"
+              control={control}
+            />
+          )}
           {v.isModelNameVisible(vehicleConfig) && (
             <TextInputContainer
               label={t('vehicleData.modelName')}
