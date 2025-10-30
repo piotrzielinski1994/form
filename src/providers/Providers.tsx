@@ -3,20 +3,31 @@
 import { ColorModeProvider } from '@/components/ChakraUi/ColorMode';
 import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { PropsWithChildren } from 'react';
+import { Locale, NextIntlClientProvider } from 'next-intl';
+import { PropsWithChildren, useEffect } from 'react';
+import z from 'zod';
 import { VehicleConfigProvider } from './VehicleConfigProvider';
 
 const queryClient = new QueryClient();
 
-const Providers = (props: PropsWithChildren) => {
+type ProvidersProps = PropsWithChildren & { locale: Locale };
+
+const Providers = ({ children, locale }: ProvidersProps) => {
+  useEffect(() => {
+    const zodLocaleFunction = z.locales[locale as keyof typeof z.locales] ?? z.locales.en;
+    z.config(zodLocaleFunction());
+  }, [locale]);
+
   return (
-    <ChakraProvider value={defaultSystem}>
-      <ColorModeProvider>
-        <QueryClientProvider client={queryClient}>
-          <VehicleConfigProvider>{props.children}</VehicleConfigProvider>
-        </QueryClientProvider>
-      </ColorModeProvider>
-    </ChakraProvider>
+    <NextIntlClientProvider locale={locale}>
+      <ChakraProvider value={defaultSystem}>
+        <ColorModeProvider>
+          <QueryClientProvider client={queryClient}>
+            <VehicleConfigProvider>{children}</VehicleConfigProvider>
+          </QueryClientProvider>
+        </ColorModeProvider>
+      </ChakraProvider>
+    </NextIntlClientProvider>
   );
 };
 

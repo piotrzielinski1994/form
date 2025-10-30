@@ -26,7 +26,7 @@ const LocaleLayout = async ({ children, params }: LayoutProps) => {
     <html className={clsx('h-full', theme)} lang={locale} suppressHydrationWarning>
       <body>
         <NextIntlClientProvider>
-          <Providers>
+          <Providers locale={locale}>
             <div id="root" className="grid gap-6 sm:gap-10">
               <Header />
               <Container as="main" maxW="4xl" className="grid gap-6 sm:gap-10 relative">

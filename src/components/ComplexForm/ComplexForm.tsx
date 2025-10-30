@@ -8,7 +8,6 @@ import { NumericInputContainer } from '@/components/Form/NumericInput';
 import { RadioContainer } from '@/components/Form/Radio';
 import { Select, SelectContainer } from '@/components/Form/Select';
 import { TextInputContainer } from '@/components/Form/TextInput';
-import { getZodErrorMap } from '@/i18n/validation';
 import { useVehicleConfig } from '@/providers/VehicleConfigProvider';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
@@ -26,11 +25,10 @@ const FORM_ID = 'complex-form';
 const ComplexForm = () => {
   const [vehicleConfig] = useVehicleConfig();
   const t = useTranslations('ComplexForm');
-  const tZod = useTranslations('zod');
   const form = useForm({
     mode: 'onSubmit',
     defaultValues: getDefaultValuesFromQueryString,
-    resolver: zodResolver(genSchema(vehicleConfig), { errorMap: getZodErrorMap(tZod) }),
+    resolver: zodResolver(genSchema(vehicleConfig)),
     shouldUnregister: true,
   });
   const { handleSubmit, control, reset, watch } = form;
